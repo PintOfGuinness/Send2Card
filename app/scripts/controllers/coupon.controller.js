@@ -13,8 +13,8 @@ angular.module('send2CardApp')
         var coupon = this;
 
         couponsService.getAllCoupons();
-        var allCoupons = couponsService.allCoupons[0];
-                        console.log("Controller: " + allCoupons);
+        coupon.allCoupons = couponsService.allCoupons;
+        console.log("Coupon Controller: " + coupon.allCoupons);
        
         coupon.clickedCoupon = $filter('filter')(allCoupons.couponList, {cpn_seq_nbr: "50100113622"})[0];
         console.log("Send To Card Service: " + coupon.sendToCardResults);

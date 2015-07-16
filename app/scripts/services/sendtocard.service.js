@@ -27,7 +27,7 @@ angular.module('send2CardApp')
                 //Success
                 console.log("Success: " + results.data + ", "+ URL + requestBody.cpnSeqNbr + ", " + requestBody.extraCareCard + ", " + requestBody.opCd + ", " + requestBody.ts);
                 angular.copy(results.data, sendToCardResults);
-                console.log(sendToCardResults);
+ 
             }, function (results) {
                 console.log("Fail: " + URL + requestBody);
                 //            logger.error(message, reason);

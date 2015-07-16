@@ -22,7 +22,6 @@ angular.module('send2CardApp')
             $http.get("data/coupons.json")
                 .then(function (results) {
                     //Success
-                    console.log("Success: " + results.data);
                     angular.copy(results.data, allCoupons); //this is the preferred; instead of $scope.coupons = result.data
                 }, function (results) {
                     //Error
