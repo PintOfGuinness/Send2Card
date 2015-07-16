@@ -16,8 +16,8 @@ angular.module('send2CardApp')
         coupon.allCoupons = couponsService.allCoupons;
         console.log("Coupon Controller: " + coupon.allCoupons);
        
-        coupon.clickedCoupon = $filter('filter')(allCoupons.couponList, {cpn_seq_nbr: "50100113622"})[0];
-        console.log("Send To Card Service: " + coupon.sendToCardResults);
+        coupon.clickedCoupon = $filter('filter')(coupon.allCoupons, {cpn_seq_nbr: "50100113622"});
+        console.log("Clicked coupon: " + coupon.clickedCoupon);
 
         var requestBody = {
             extraCareCard: "2020202020",
