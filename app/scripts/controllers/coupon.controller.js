@@ -12,11 +12,17 @@ angular.module('send2CardApp')
 
         var coupon = this;
 
-        couponsService.getAllCoupons();
+        couponsService.getAllCoupons()
+            .then(function (response) {
+            console.log(response);
+        });
+    
         coupon.allCoupons = couponsService.allCoupons;
         console.log("Coupon Controller: " + coupon.allCoupons);
-       
-        coupon.clickedCoupon = $filter('filter')(coupon.allCoupons, {cpn_seq_nbr: "50100113622"});
+
+        coupon.clickedCoupon = $filter('filter')(coupon.allCoupons, {
+            cpn_seq_nbr: "50100113622"
+        });
         console.log("Clicked coupon: " + coupon.clickedCoupon);
 
         var requestBody = {
@@ -30,10 +36,10 @@ angular.module('send2CardApp')
         coupon.unSentCouponPath = "images/sendtocard.png";
         coupon.sentCouponPath = "images/sendtocarddone.png";
 
-    
+
         var URL = "data/sendToCardSuccess.json";
         var isCouponSent = true;
-    
+
         coupon.sendCouponToCard = function () {
             coupon.sendToCardResults = sendToCardService.sendToCardResults;
             console.log('Send to Card');
