@@ -1,0 +1,24 @@
+<div class="col-md-6 col-sm-12 portfolio-item">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="pull-right">
+
+                <!--     <div ng-switch="switchPoint < $index">-->
+                <div ng-switch on="sendCoupon">
+                    <div ng-switch-when="false">
+                        <button ng-click="sendCouponToCard();"><img ng-src="{{unSentCouponPath}}"> </button>
+                    </div>
+                    <div ng-switch-when="true">
+                        <button ng-click="sendCouponToCard();"><img ng-src="{{sentCouponPath}}"> </button>
+                    </div>
+                </div>
+            </div>
+
+            <p class="text-left">
+                <h4 class="">{{ title }}</h4> {{ description }}
+                <br> {{ expiry }}
+                <br>"Isolated Scope:" {{ sendCoupon }}
+            </p>
+        </div>
+    </div>
+</div>
