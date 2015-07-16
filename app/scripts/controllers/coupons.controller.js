@@ -11,11 +11,11 @@ angular.module('send2CardApp')
     .controller('CouponsCtrl', function (couponsService, sendToCardService) {
 
         var coupons = this;
-        var URL = "data/sendToCardSuccess.json";
-        var isCouponSent = true;
-        couponsService.getAllCoupons();
-        coupons.allCoupons = couponsService.allCoupons;
 
+        couponsService.getAllCoupons();
+        coupons.allCoupons = couponsService.allCoupons.couponList;
+        console.log("Coupons all: " + coupons.allCoupons[0]);
+                    
         var requestBody = {
             extraCareCard: "2020202020",
             cpnSeqNbr: "29582525256",
@@ -28,6 +28,8 @@ angular.module('send2CardApp')
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
 
+        var URL = "data/sendToCardSuccess.json";
+        var isCouponSent = true;
 
         coupons.sendCouponToCard = function () {
             coupons.sendToCardResults = sendToCardService.sendToCardResults;

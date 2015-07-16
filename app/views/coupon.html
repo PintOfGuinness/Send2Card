@@ -1,0 +1,17 @@
+<h3>Success! Your deal is available on your ExtraCare card</h3>
+
+<p>Redeeming is easy.  Just present your ExtraCare card to the associate when you check out.</p>
+
+<div ng-controller="CouponCtrl as couponController">
+    <div class="container">
+        <div class="row">
+            <br>
+            <div class="col-md-6 col-sm-12 portfolio-item">
+                <div coupon-directive title="{{ couponController.clickedCoupon.title }}" description="{{ couponController.clickedCoupon.description }}" 
+                     expiry="{{ couponController.clickedCoupon.expiry }}" un-Sent-Coupon-Path="{{ couponController.unSentCouponPath }}" 
+                     sent-Coupon-Path="{{ couponController.sentCouponPath }}" on-Send-Coupon-To-Card="couponController.sendCouponToCard()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

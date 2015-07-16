@@ -1,12 +1,15 @@
 <h4>Send the other deals to your card now!</h4>
 
-<div ng-controller="CouponsCtrl as coupons">
+<div ng-controller="CouponsCtrl as couponsController">
     <div class="container">
         <div class="row">
             <br>
-            <div ng-repeat="coupon in coupons.allCoupons">
-                <div coupon-directive title="{{ coupon.title }}" description="{{ coupon.description }}" expiry="{{ coupon.expiry }}" un-Sent-Coupon-Path="{{ coupons.unSentCouponPath }}" sent-Coupon-Path="{{ coupons.sentCouponPath }}" on-Send-Coupon-To-Card="coupons.sendCouponToCard()"></div>
-
+            <div ng-repeat="coupon in couponsController.allCoupons">
+                <div class="col-md-6 col-sm-12 portfolio-item">
+                    <div coupon-directive title="{{ coupon.title }}" description="{{ coupon.description }}" 
+                         expiry="{{ coupon.expiry }}" un-Sent-Coupon-Path="{{ couponsController.unSentCouponPath }}" 
+                         sent-Coupon-Path="{{ couponsController.sentCouponPath }}" on-Send-Coupon-To-Card="couponsController.sendCouponToCard()"></div>
+                </div>
             </div>
         </div>
     </div>
