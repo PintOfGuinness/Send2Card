@@ -17,16 +17,20 @@ angular.module('send2CardApp')
         };
         return service;
 
-
         function getAllCoupons() {
-            $http.get("data/coupons.json")
-                .then(function (results) {
-                    //Success
-                    angular.copy(results.data, allCoupons); //this is the preferred; instead of $scope.coupons = result.data
-                }, function (results) {
-                    //Error
-                })
+            return $http.get("data/coupons.json")
         }
+
+        /*
+                function getAllCoupons() {
+                    $http.get("data/coupons.json")
+                        .then(function (results) {
+                            //Success
+                            angular.copy(results.data, allCoupons); //this is the preferred; instead of $scope.coupons = result.data
+                        }, function (results) {
+                            //Error
+                        })
+                }*/
 
 
     });

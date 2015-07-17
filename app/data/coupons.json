@@ -1,5 +1,6 @@
 {
-    "couponList": [{
+    "couponlist": [
+        {
             "title": "$3 off",
             "description": "$3 off Creat 3D Whitestrips.",
             "expiry_date": "01/01/2016",
@@ -40,5 +41,6 @@
             "description": "123c off ham.",
             "expiry_date": "05/05/2018",
             "cpn_seq_nbr": "50100113625"
-        }]
-};
+        }
+    ]
+}
