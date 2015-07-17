@@ -44,7 +44,7 @@ angular.module('send2CardApp')
 
 
         var URL = "data/sendToCardSuccess.json";
-        var isCouponSent = true;
+        var isCouponSent = false;
 
         coupon.sendCouponToCard = function () {
             coupon.sendToCardResults = sendToCardService.sendToCardResults;
