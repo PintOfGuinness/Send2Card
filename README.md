@@ -1,2 +1,8 @@
 # Send2Card
-Big big pile of angularjs 
+
+Clone this project then in using the command prompt in the project folder call:
+
+- bower update
+- npm install
+
+Have a good day!
