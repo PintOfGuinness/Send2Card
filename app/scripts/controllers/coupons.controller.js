@@ -8,18 +8,31 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsCtrl', function (couponsService, sendToCardService) {
+    .controller('CouponsCtrl', function ($location, couponsService, sendToCardService) {
 
         var coupons = this;
         var URL = "data/sendToCardSuccess.json";
         var isCouponSent = true;
         coupons.allCoupons = [];
+
+    
+        var extraCareCardNumber = $location.search().eccardnum;
+        var couponNumberFilter = $location.search().couponnum;
+        if (typeof couponNumberFilter != 'undefined' && typeof extraCareCardNumber != 'undefined') {
+            // throw error
+            console.log("Passed extraCareCardNumber: " + extraCareCardNumber);
+            console.log("Passed couponSequenceNumber: " + couponNumberFilter);
+        }
     
         couponsService.getAllCoupons().then(function (results) {
-            angular.forEach(results.data.couponlist, function (coupon, index) {
-                coupons.allCoupons.push(coupon);
+            angular.forEach(results.data.couponlist, function (eachCoupon, index) {
+                if (results.data.couponlist[index].cpn_seq_nbr != couponNumberFilter) {
+                    console.log("Coupons Controller: " + eachCoupon + ", index: " + index);
+                    coupons.allCoupons.push(eachCoupon);
+                }
             });
         });
+
 
         var requestBody = {
             extraCareCard: "2020202020",

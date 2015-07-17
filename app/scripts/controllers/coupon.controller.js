@@ -8,22 +8,30 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponCtrl', function ($filter, couponsService, sendToCardService) {
+    .controller('CouponCtrl', function ($location, $filter, couponsService, sendToCardService) {
 
         var coupon = this;
 
-        couponsService.getAllCoupons()
-            .then(function (response) {
-            console.log(response);
-        });
-    
-        coupon.allCoupons = couponsService.allCoupons;
-        console.log("Coupon Controller: " + coupon.allCoupons);
+        coupon.allCoupons = [];
 
-        coupon.clickedCoupon = $filter('filter')(coupon.allCoupons, {
-            cpn_seq_nbr: "50100113622"
-        });
-        console.log("Clicked coupon: " + coupon.clickedCoupon);
+
+        var extraCareCardNumber = $location.search().eccardnum;
+        var couponSequenceNumber = $location.search().couponnum;
+        if (typeof couponSequenceNumber != 'undefined' && typeof extraCareCardNumber != 'undefined') {
+            // throw error
+            console.log("Passed extraCareCardNumber: " + extraCareCardNumber);
+            console.log("Passed couponSequenceNumber: " + couponSequenceNumber);
+
+            couponsService.getAllCoupons().then(function (results) {
+                coupon.clickedCoupon = $filter('filter')(results.data.couponlist, {
+                    cpn_seq_nbr: couponSequenceNumber
+                })[0];
+                console.log("Clicked coupon: " + results.data.couponlist);
+            });
+        } else {
+            console.log("Failed extraCareCardNumber: " + extraCareCardNumber);
+            console.log("Failed couponSequenceNumber: " + couponSequenceNumber);
+        }
 
         var requestBody = {
             extraCareCard: "2020202020",
@@ -31,8 +39,6 @@ angular.module('send2CardApp')
             opCd: "V",
             ts: Date.now()
         }
-
-
         coupon.unSentCouponPath = "images/sendtocard.png";
         coupon.sentCouponPath = "images/sendtocarddone.png";
 
