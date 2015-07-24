@@ -69,11 +69,27 @@ module.exports = function (grunt) {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+		open: {
+			 appName: 'firefox'
+		  },
+        livereload: 35729,
+		
+                middleware: function(connect, options, middlewares) {
+                    // inject a custom middleware into the array of default middlewares
+                    // this is likely the easiest way for other grunt plugins to
+                    // extend the behavior of grunt-contrib-connect
+                    middlewares.push(function(req, res, next) {
+                        req.setHeader('Access-Control-Allow-Origin', '*');
+                        req.setHeader('Access-Control-Allow-Methods', '*');
+                        return next();
+                    });
+
+                    return middlewares;
+                }		
+		
       },
       livereload: {
-        options: {
-          open: true,
+        options: {		  
           middleware: function (connect) {
             return [
               connect.static('.tmp'),
@@ -354,7 +370,8 @@ module.exports = function (grunt) {
     }
   });
 
-
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
     if (target === 'dist') {
       return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -405,4 +422,5 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
 };
