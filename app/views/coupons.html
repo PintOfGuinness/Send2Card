@@ -6,8 +6,8 @@
             <br>
             <div ng-repeat="coupon in couponsController.allCoupons">
                 <div class="col-md-6 col-sm-12 portfolio-item">
-                    <div coupon-directive title="{{ coupon.title }}" description="{{ coupon.description }}" 
-                         expiry="{{ coupon.expiry_date }}" un-Sent-Coupon-Path="{{ couponsController.unSentCouponPath }}" 
+                    <div coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" 
+                         expiry="{{ coupon.expir_dt }}" un-Sent-Coupon-Path="{{ couponsController.unSentCouponPath }}" 
                          sent-Coupon-Path="{{ couponsController.sentCouponPath }}" on-Send-Coupon-To-Card="couponsController.sendCouponToCard()"></div>
                 </div>
             </div>

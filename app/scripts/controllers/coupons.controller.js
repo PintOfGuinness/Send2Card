@@ -23,8 +23,8 @@ angular.module('send2CardApp')
         }
     
         couponsService.getAllCoupons().then(function (results) {
-            angular.forEach(results.data.couponlist, function (eachCoupon, index) {
-                if (results.data.couponlist[index].cpn_seq_nbr != couponNumberFilter) {
+            angular.forEach(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, function (eachCoupon, index) {
+                if (results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW[index].cpn_seq_nbr != couponNumberFilter) {
                     console.log("Coupons Controller: " + eachCoupon + ", index: " + index);
                     coupons.allCoupons.push(eachCoupon);
                 }

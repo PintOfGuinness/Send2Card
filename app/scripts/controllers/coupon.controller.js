@@ -14,7 +14,6 @@ angular.module('send2CardApp')
 
         coupon.allCoupons = [];
 
-
         var extraCareCardNumber = $location.search().eccardnum;
         var couponSequenceNumber = $location.search().couponnum;
         if (typeof couponSequenceNumber != 'undefined' && typeof extraCareCardNumber != 'undefined') {
@@ -23,10 +22,11 @@ angular.module('send2CardApp')
             console.log("Passed couponSequenceNumber: " + couponSequenceNumber);
 
             couponsService.getAllCoupons().then(function (results) {
-                coupon.clickedCoupon = $filter('filter')(results.data.couponlist, {
+                coupon.clickedCoupon = 
+                    $filter('filter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, {
                     cpn_seq_nbr: couponSequenceNumber
                 })[0];
-                console.log("Clicked coupon: " + results.data.couponlist);
+                console.log("Clicked coupon: " + results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW);
             });
         } else {
             console.log("Failed extraCareCardNumber: " + extraCareCardNumber);
