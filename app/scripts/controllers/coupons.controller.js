@@ -13,7 +13,6 @@ angular.module('send2CardApp')
         var coupons = this;
         coupons.allCoupons = [];
 
-    
         var extraCareCardNumber = $location.search().eccardnum;
         var couponNumberFilter = $location.search().couponnum;
         if (typeof couponNumberFilter != 'undefined' && typeof extraCareCardNumber != 'undefined') {
@@ -21,7 +20,7 @@ angular.module('send2CardApp')
             console.log("Passed extraCareCardNumber: " + extraCareCardNumber);
             console.log("Passed couponSequenceNumber: " + couponNumberFilter);
         }
-    
+
         couponsService.getAllCoupons().then(function (results) {
             angular.forEach(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, function (eachCoupon, index) {
                 if (results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW[index].cpn_seq_nbr != couponNumberFilter) {
@@ -29,6 +28,8 @@ angular.module('send2CardApp')
                     coupons.allCoupons.push(eachCoupon);
                 }
             });
+
+            coupons.columns = coupons.columnize(coupons.allCoupons, 2);
         });
 
 
@@ -43,8 +44,8 @@ angular.module('send2CardApp')
         coupons.sentCouponPath = "images/sendtocarddone.png";
 
         var URL = "data/sendToCardSuccess.json";
-        var isCouponSent = true;    
-    
+        var isCouponSent = true;
+
         coupons.sendCouponToCard = function () {
             coupons.sendToCardResults = sendToCardService.sendToCardResults;
             console.log('Send to Card');
@@ -62,5 +63,15 @@ angular.module('send2CardApp')
             return isCouponSent;
         };
 
-
+        var data = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+        coupons.columnize = function (inputArray, numberOfcolumns) {
+            var length = inputArray.length,
+                columnsArray = [],
+                i = 0;
+            while (i < length) {
+                var size = Math.ceil((length - i) / numberOfcolumns--);
+                columnsArray.push(inputArray.slice(i, i += size));
+            }
+            return columnsArray;
+        }
     });

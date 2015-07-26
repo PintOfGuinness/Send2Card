@@ -1,22 +1,28 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div class="pull-right">
 
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="pull-right">
-
-                <!--     <div ng-switch="switchPoint < $index">-->
-                <div ng-switch on="sendCoupon">
-                    <div ng-switch-when="false">
-                        <img ng-click="sendCouponToCard();" ng-src="{{unSentCouponPath}}"> 
-                    </div>
-                    <div ng-switch-when="true">
-                        <img ng-src="{{sentCouponPath}}"> 
-                    </div>
+            <!--     <div ng-switch="switchPoint < $index">-->
+            <div ng-switch on="sendCoupon">
+                <div ng-switch-when="false">
+                    <img ng-click="sendCouponToCard();" ng-src="{{unSentCouponPath}}">
+                </div>
+                <div ng-switch-when="true">
+                    <img ng-src="{{sentCouponPath}}">
                 </div>
             </div>
-
-            <p class="text-left">
-                <h4 class="">{{ title }}</h4> {{ description }}
-                <br> {{ expiry }}
-            </p>
         </div>
+
+        <p class="text-left">
+            <h4 class="">{{ title }}</h4> {{ description }}
+            <br> {{ expiry }}
+            <br>
+            <accordion>
+                <accordion-group heading="Details" is-open="false">
+                    This content is straight in the template.
+                </accordion-group>
+            </accordion>
+        </p>
+
     </div>
+</div>
