@@ -16,16 +16,22 @@ angular.module('send2CardApp')
                 title: '@',
                 description: '@',
                 expiry: '@',
+                terms: '@',
+                barcode: '@',
                 unSentCouponPath: '@',
                 sentCouponPath: '@',
                 onSendCouponToCard: '&'
             },
             link: function (scope, elem, attrs, controller) {
-                scope.status = {
-                    isOpen: false,
-                };
+                scope.isCollapsed = true;
+                scope.collapseSection = function () {
+                    console.log("isCollapsed pre: " + scope.isCollapsed);
+                    scope.isCollapsed = !scope.isCollapsed;
+                    console.log("isCollapsed post: " + scope.isCollapsed);       
+                }
+                
+                
                 scope.sendCoupon = false;
-
                 scope.sendCouponToCard = function () {
                     console.log("$scope.onSendCouponToCard pre: " + scope.sendCoupon);
                     scope.sendCoupon = scope.onSendCouponToCard();

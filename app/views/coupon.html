@@ -8,7 +8,7 @@
             <br>
             <div class="col-md-6 col-sm-12 portfolio-item">
                 <div coupon-directive title="{{ couponController.clickedCoupon.title }}" description="{{ couponController.clickedCoupon.cpn_dsc }}" 
-                     expiry="{{ couponController.clickedCoupon.expir_dt }}" un-Sent-Coupon-Path="{{ couponController.unSentCouponPath }}" 
+                     expiry="{{ couponController.clickedCoupon.expir_dt }}" barcode="{{ couponController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponController.clickedCoupon.cpn_terms_txt }}" un-Sent-Coupon-Path="{{ couponController.unSentCouponPath }}" 
                      sent-Coupon-Path="{{ couponController.sentCouponPath }}" on-Send-Coupon-To-Card="couponController.sendCouponToCard()">
                 </div>
             </div>

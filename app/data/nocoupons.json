@@ -1,0 +1,25 @@
+{
+    "CUST_INF_RESP": {
+        "xtra_card": {
+            "XTRA_CARD_NBR": "416792728"
+        },
+        "XTRACARE": {
+            "PREFS": {
+                "PREF": [{
+                    "BEAUTY_CLUB": {
+                        "ENROLLED": "N"
+                    }
+                }, {
+                    "PAPERLESS_CPNS": {
+                        "ENROLLED": "N"
+                    }
+                }]
+            },
+            "FEATURES": {
+                "PAPERLESS_CPNS": {
+                    "ENROLLED": "N"
+                }
+            }
+        }
+    }
+}
