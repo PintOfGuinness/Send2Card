@@ -8,9 +8,22 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponCtrl', function ($location, $filter, couponsService, sendToCardService) {
+    .controller('CouponCtrl', function ($location, $filter, couponsService, sendToCardFactory) {
 
         var coupon = this;
+        var isCouponSent = false;
+    
+        coupon.sendCouponToCard = function () {
+            sendToCardFactory.sendToCard()
+                .then(function (data) {
+                    console.log(data);
+                    isCouponSent = true;
+                }, function (data) {
+                    alert(data);
+                })
+                
+            console.log("Send To Card Service: " + coupon.sendToCardResults);
+        }
 
         coupon.allCoupons = [];
 
@@ -22,10 +35,10 @@ angular.module('send2CardApp')
             console.log("Passed couponSequenceNumber: " + couponSequenceNumber);
 
             couponsService.getAllCoupons().then(function (results) {
-                coupon.clickedCoupon = 
+                coupon.clickedCoupon =
                     $filter('filter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, {
-                    cpn_seq_nbr: couponSequenceNumber
-                })[0];
+                        cpn_seq_nbr: couponSequenceNumber
+                    })[0];
                 console.log("Clicked coupon: " + results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW);
             });
         } else {
@@ -43,24 +56,23 @@ angular.module('send2CardApp')
         coupon.sentCouponPath = "images/sendtocarddone.png";
 
 
-        var URL = "data/sendToCardSuccess.json";
-        var isCouponSent = false;
+        /*      var isCouponSent = false;*/
 
-        coupon.sendCouponToCard = function () {
-            coupon.sendToCardResults = sendToCardService.sendToCardResults;
-            console.log('Send to Card');
-            sendToCardService.sendToCard(URL, requestBody)
-                .then(function (response) {
-                    console.log(response);
-                });
+        /*        coupon.sendCouponToCard = function () {
+                    coupon.sendToCardResults = sendToCardService.sendToCardResults;
+                    console.log('Send to Card');
+                    sendToCardService.sendToCard(URL, requestBody)
+                        .then(function (response) {
+                            console.log(response);
+                        });
 
-            console.log("Send To Card Service: " + coupon.sendToCardResults);
+                    console.log("Send To Card Service: " + coupon.sendToCardResults);
 
-            if (coupon.sendToCardResults != null) {
-                isCouponSent = true;
-            }
+                    if (coupon.sendToCardResults != null) {
+                        isCouponSent = true;
+                    }
 
-            return isCouponSent;
-        };
+                    return isCouponSent;
+                };*/
 
     });
