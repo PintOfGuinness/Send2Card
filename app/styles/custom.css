@@ -16,3 +16,33 @@
     cursor: pointer;
 }
     
+
+/*Andrew Dawson CSS*/
+.text-centre {
+    text-align: center;
+}
+
+.sticky {
+    background-color: #F7F7FF;
+}
+
+/*@media {
+  .sticky {
+    max-width: 235px;
+  }
+}*/
+
+.circle {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    color: black;
+    border-color: darkslateblue;
+    border: 3.5px;
+    border-style: solid;
+    vertical-align: middle;
+    text-align: center;
+    align-content: space-between;
+    background: white;
+    margin: 0 auto;
+}
