@@ -11,20 +11,23 @@ angular.module('send2CardApp')
     .controller('CouponCtrl', function ($location, $filter, couponsService, sendToCardFactory) {
 
         var coupon = this;
-        var isCouponSent = false;
+        coupon.isCouponSent = false;
+    
     
         coupon.sendCouponToCard = function () {
-            sendToCardFactory.sendToCard()
+            sendToCardFactory.sendCouponToCard()
                 .then(function (data) {
-                    console.log(data);
-                    isCouponSent = true;
+                    console.log("Control data: " + data);
+                    coupon.isCouponSent = true;
+                    console.log("isCouponAlreadySent: " + coupon.isCouponSent);
                 }, function (data) {
                     alert(data);
-                })
-                
-            console.log("Send To Card Service: " + coupon.sendToCardResults);
+                    console.log("CONTROLLER SOMETHING WRONG");
+                })    
         }
 
+        coupon.sendCouponToCard();
+        
         coupon.allCoupons = [];
 
         var extraCareCardNumber = $location.search().eccardnum;

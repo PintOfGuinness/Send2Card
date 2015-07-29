@@ -20,6 +20,7 @@ angular.module('send2CardApp')
                 barcode: '@',
                 unSentCouponPath: '@',
                 sentCouponPath: '@',
+                isCouponAlreadySent: '@',                
                 onSendCouponToCard: '&'
             },
             link: function (scope, elem, attrs, controller) {
@@ -31,7 +32,8 @@ angular.module('send2CardApp')
                 }
                 
                 
-                scope.sendCoupon = false;
+                scope.sendCoupon = false;//scope.isCouponAlreadySent;
+                console.log("isCouponAlreadySent: " + scope.isCouponAlreadySent);
                 scope.sendCouponToCard = function () {
                     console.log("$scope.onSendCouponToCard pre: " + scope.sendCoupon);
                     scope.sendCoupon = scope.onSendCouponToCard();
