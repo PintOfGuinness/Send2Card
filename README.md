@@ -2,8 +2,11 @@
 
 Clone this project, then using the command prompt call:
 
-- bower update
+1st time just call:
 - npm install
+Then subsequently call:
+- bower install
+
 
 in the Send2Card root project folder.
 

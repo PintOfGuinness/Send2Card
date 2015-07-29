@@ -10,6 +10,8 @@
 angular.module('send2CardApp')
     .service('sendToCardService', function sendToCardService($http, $q) {
 
+        var baseUrl = 'data/sendToCardSuccess.json';
+        var requestBody = '';
         var sendToCardResults = [];
         var service = {
             sendToCardResults: sendToCardResults,
@@ -24,13 +26,9 @@ angular.module('send2CardApp')
                 url: URL,
                 data: requestBody
             }).then(function (results) {
-                //Success
-                console.log("Success: " + results.data + ", "+ URL + requestBody.cpnSeqNbr + ", " + requestBody.extraCareCard + ", " + requestBody.opCd + ", " + requestBody.ts);
                 angular.copy(results.data, sendToCardResults);
- 
-            }, function (results) {
+             }, function (results) {
                 console.log("Fail: " + URL + requestBody);
-                //            logger.error(message, reason);
             });
         }
     

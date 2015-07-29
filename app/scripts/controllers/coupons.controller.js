@@ -8,7 +8,7 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsCtrl', function ($location, couponsService, sendToCardService) {
+    .controller('CouponsCtrl', function ($location, couponsService, sendToCardFactory) {
 
         var coupons = this;
         coupons.allCoupons = [];
@@ -44,24 +44,48 @@ angular.module('send2CardApp')
         coupons.sentCouponPath = "images/sendtocarddone.png";
 
         var URL = "data/sendToCardSuccess.json";
-        var isCouponSent = true;
+        coupons.isCouponSent = false;
 
         coupons.sendCouponToCard = function () {
-            coupons.sendToCardResults = sendToCardService.sendToCardResults;
-            console.log('Send to Card');
-            sendToCardService.sendToCard(URL, requestBody)
-                .then(function (response) {
-                    console.log(response);
-                });
+            sendToCardFactory.sendToCard()
+                .then(sendCouponComplete)
+                .catch(sendCouponFailure);
 
-            console.log("Send To Card Service: " + coupons.sendToCardResults);
 
-            if (coupons.sendToCardResults != null) {
-                isCouponSent = true;
-            }
+            
+        }
 
-            return isCouponSent;
-        };
+        function sendCouponComplete(data) {
+            coupons.isCouponSent = true;
+            console.log("Ctrl isCouponAlreadySent: " + coupons.isCouponSent);
+            
+            return coupons.isCouponSent;
+        }
+
+        function sendCouponFailure(data) {
+            coupons.isCouponSent = false;
+            console.log("CONTROLLER SOMETHING WRONG");
+            
+            return coupons.isCouponSent;
+        }
+
+
+        /*    
+                coupons.sendCouponToCard = function () {
+                    sendToCardFactory.sendToCard(URL, requestBody)
+                        .then(function (response) {
+                            coupons.sendToCardResults = response.data;
+                            console.log("coupons.sendCouponToCard: " + response.data);
+                        });
+
+                    console.log("Send To Card Service: " + coupons.sendToCardResults);
+
+                    if (coupons.sendToCardResults != null) {
+                        coupons.isCouponSent = true;
+                    }
+
+                    return coupons.cisCouponSent;
+                };*/
 
         var data = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
         coupons.columnize = function (inputArray, numberOfcolumns) {

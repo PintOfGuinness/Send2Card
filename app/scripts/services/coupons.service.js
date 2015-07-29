@@ -18,7 +18,7 @@ angular.module('send2CardApp')
         return service;
 
         function getAllCoupons() {
-            return $http.get("data/customer3.json")
+            return $http.get("data/customer3.json");
         }
 
         /*        function getAllCoupons() {

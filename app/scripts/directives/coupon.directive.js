@@ -31,9 +31,13 @@ angular.module('send2CardApp')
                     console.log("isCollapsed post: " + scope.isCollapsed);       
                 }
                 
+/*                scope.$watch('isCouponAlreadySent', function() {
+                    scope.sendCoupon = scope.isCouponAlreadySent;    
+                        console.log("POSTLINK isCouponAlreadySent: " + scope.isCouponAlreadySent);
+                });*/
                 
-                scope.sendCoupon = false;//scope.isCouponAlreadySent;
-                console.log("isCouponAlreadySent: " + scope.isCouponAlreadySent);
+                scope.sendCoupon = false;
+            
                 scope.sendCouponToCard = function () {
                     console.log("$scope.onSendCouponToCard pre: " + scope.sendCoupon);
                     scope.sendCoupon = scope.onSendCouponToCard();
