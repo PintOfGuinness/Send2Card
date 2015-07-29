@@ -1,15 +1,13 @@
-<h3>Success! Your deal is available on your ExtraCare card</h3>
+<h4>Success! Your deal is available on your ExtraCare card</h4>
 
-<p>Redeeming is easy.  Just present your ExtraCare card to the associate when you check out.</p>
+<p>Redeeming is easy. Just present your ExtraCare card to the associate when you check out.</p>
 
 <div ng-controller="CouponCtrl as couponController">
-    <div class="container">
-        <div class="row">
+    <div class="row">
+        <div class="panel-body">
             <br>
-            <div class="col-md-6 col-sm-12 portfolio-item">
-                <div coupon-directive title="{{ couponController.clickedCoupon.title }}" description="{{ couponController.clickedCoupon.cpn_dsc }}" 
-                     expiry="{{ couponController.clickedCoupon.expir_dt }}" barcode="{{ couponController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponController.clickedCoupon.cpn_terms_txt }}" un-Sent-Coupon-Path="{{ couponController.unSentCouponPath }}" 
-                     sent-Coupon-Path="{{ couponController.sentCouponPath }}" on-Send-Coupon-To-Card="couponController.sendCouponToCard()">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div coupon-directive title="{{ couponController.clickedCoupon.title }}" description="{{ couponController.clickedCoupon.cpn_dsc }}" expiry="{{ couponController.clickedCoupon.expir_dt }}" barcode="{{ couponController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponController.clickedCoupon.cpn_terms_txt }}" un-Sent-Coupon-Path="{{ couponController.unSentCouponPath }}" sent-Coupon-Path="{{ couponController.sentCouponPath }}" is-Coupon-Already-Sent="{{ couponController.isCouponSent }}" on-Send-Coupon-To-Card="couponController.sendCouponToCard()">
                 </div>
             </div>
         </div>
