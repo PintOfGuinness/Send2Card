@@ -11,6 +11,7 @@ angular.module('send2CardApp')
     .controller('CouponsCtrl', function ($location, couponsService, sendToCardFactory) {
 
         var coupons = this;
+        coupons.sendCouponOnStartup = false;      
         coupons.allCoupons = [];
 
         var extraCareCardNumber = $location.search().eccardnum;
@@ -21,10 +22,36 @@ angular.module('send2CardApp')
             console.log("Passed couponSequenceNumber: " + couponNumberFilter);
         }
 
+    
+        coupons.isCouponSent = false;
+
+        coupons.sendCouponToCard = function () {
+            return sendToCardFactory.sendToCard()
+                .then(sendCouponComplete)
+                .catch(sendCouponFailure);
+        
+        }
+
+        function sendCouponComplete(data) {
+            coupons.isCouponSent = true;
+            console.log("Ctrl isCouponAlreadySent: " + coupons.isCouponSent);
+            
+            return coupons.isCouponSent;
+        }
+
+        function sendCouponFailure(data) {
+            coupons.isCouponSent = false;
+            console.log("CONTROLLER PROMISE SOMETHING WRONG");
+            
+            return coupons.isCouponSent;
+        }    
+    
+    
+    
         couponsService.getAllCoupons().then(function (results) {
             angular.forEach(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, function (eachCoupon, index) {
                 if (results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW[index].cpn_seq_nbr != couponNumberFilter) {
-                    console.log("Coupons Controller: " + eachCoupon + ", index: " + index);
+/*                    console.log("Coupons Controller: " + eachCoupon + ", index: " + index);*/
                     coupons.allCoupons.push(eachCoupon);
                 }
             });
@@ -42,32 +69,6 @@ angular.module('send2CardApp')
 
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
-
-        var URL = "data/sendToCardSuccess.json";
-        coupons.isCouponSent = false;
-
-        coupons.sendCouponToCard = function () {
-            sendToCardFactory.sendToCard()
-                .then(sendCouponComplete)
-                .catch(sendCouponFailure);
-
-
-            
-        }
-
-        function sendCouponComplete(data) {
-            coupons.isCouponSent = true;
-            console.log("Ctrl isCouponAlreadySent: " + coupons.isCouponSent);
-            
-            return coupons.isCouponSent;
-        }
-
-        function sendCouponFailure(data) {
-            coupons.isCouponSent = false;
-            console.log("CONTROLLER SOMETHING WRONG");
-            
-            return coupons.isCouponSent;
-        }
 
 
         /*    
