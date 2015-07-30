@@ -10,29 +10,41 @@
 angular.module('send2CardApp')
     .controller('CouponCtrl', function ($location, $filter, couponsService, sendToCardFactory) {
 
-        var coupon = this;
+    var coupon = this;
+    coupon.isCouponSent = false;
+    coupon.sendCouponOnStartup = true;
+//    initialize();
+    
+    function initialize() {
+        coupon.sendCouponToCard();   
+    }
+    
+    coupon.sendCouponToCard = function () {
+        return sendToCardFactory.sendToCard()
+            .then(sendCouponComplete)
+            .catch(sendCouponFailure);
+
+    }
+
+    function sendCouponComplete(data) {
+        coupon.isCouponSent = true;
+        console.log("Ctrl isCouponAlreadySent: " + coupon.isCouponSent);
+
+        return coupon.isCouponSent;
+    }
+
+    function sendCouponFailure(data) {
         coupon.isCouponSent = false;
-    
-    
-        coupon.sendCouponToCard = function () {
-            sendToCardFactory.sendCouponToCard()
-                .then(function (data) {
-                    console.log("Control data: " + data);
-                    coupon.isCouponSent = true;
-                    console.log("isCouponAlreadySent: " + coupon.isCouponSent);
-                }, function (data) {
-                    alert(data);
-                    console.log("CONTROLLER SOMETHING WRONG");
-                })    
-        }
+        console.log("CONTROLLER PROMISE SOMETHING WRONG");
 
-        coupon.sendCouponToCard();
-        
-        coupon.allCoupons = [];
+        return coupon.isCouponSent;
+    } 
 
-        var extraCareCardNumber = $location.search().eccardnum;
-        var couponSequenceNumber = $location.search().couponnum;
-        if (typeof couponSequenceNumber != 'undefined' && typeof extraCareCardNumber != 'undefined') {
+    coupon.allCoupons = [];
+
+    var extraCareCardNumber = $location.search().eccardnum;
+    var couponSequenceNumber = $location.search().couponnum;
+    if (typeof couponSequenceNumber != 'undefined' && typeof extraCareCardNumber != 'undefined') {
             // throw error
             console.log("Passed extraCareCardNumber: " + extraCareCardNumber);
             console.log("Passed couponSequenceNumber: " + couponSequenceNumber);
