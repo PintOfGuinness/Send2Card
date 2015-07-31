@@ -11,34 +11,34 @@ angular.module('send2CardApp')
     .controller('CouponCtrl', function ($location, $filter, couponsService, sendToCardFactory) {
 
     var coupon = this;
-    coupon.isCouponSent = false;
-    coupon.sendCouponOnStartup = true;
-//    initialize();
-    
-    function initialize() {
-        coupon.sendCouponToCard();   
-    }
-    
-    coupon.sendCouponToCard = function () {
-        return sendToCardFactory.sendToCard()
-            .then(sendCouponComplete)
-            .catch(sendCouponFailure);
+    var isCouponSent = false;
 
+   /* initialize();
+        
+    function initialize() {
+     
+    }
+  */
+
+    coupon.sendCouponToCard = function () {
+        return sendToCardFactory.sendCouponToCard()
+            .then(sendCouponComplete)
+            .catch(sendCouponFailure);     
     }
 
     function sendCouponComplete(data) {
-        coupon.isCouponSent = true;
-        console.log("Ctrl isCouponAlreadySent: " + coupon.isCouponSent);
+        isCouponSent = true;
+        console.log("Ctrl isCouponAlreadySent: " + isCouponSent);
 
-        return coupon.isCouponSent;
+        return isCouponSent;
     }
 
     function sendCouponFailure(data) {
-        coupon.isCouponSent = false;
+        isCouponSent = false;
         console.log("CONTROLLER PROMISE SOMETHING WRONG");
 
-        return coupon.isCouponSent;
-    } 
+        return isCouponSent;
+    }
 
     coupon.allCoupons = [];
 

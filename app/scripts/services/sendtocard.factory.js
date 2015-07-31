@@ -14,7 +14,7 @@ angular.module('send2CardApp')
         var requestBody = '';
     
         return {
-            sendToCard: function () {
+            sendCouponToCard: function () {
                 return $http({
                         method: 'get',
                         url: baseUrl,

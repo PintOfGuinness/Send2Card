@@ -18,9 +18,17 @@ angular.module('send2CardApp')
             }
 
             scope.sendCoupon = false;
+            console.log("SEND COUPON " + scope.sendCoupon);      
+            
+            if(scope.sendCouponOnStartup === 'true') {
+                console.log("DIRECTIVE: SEND COUPON ON STARTUP")
+                scope.onSendCouponToCard()
+                    .then(sendCouponComplete)
+                    .catch(sendCouponFailure);
+                scope.sendCouponOnStartup = false;
+            }
             
             scope.sendCouponToCard = function () {
-                console.log("$scope.onSendCouponToCard pre: " + scope.sendCoupon);
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
@@ -29,11 +37,12 @@ angular.module('send2CardApp')
 
             function sendCouponComplete(data) {
                 scope.sendCoupon = data;
+                console.log("DIRECTIVE: SEND COUPON TO CARD SUCCESS: " + data)                
             }
 
             function sendCouponFailure(data) {
                 scope.sendCoupon = data;
-                console.log("DIRECTOR PROMISE SOMETHING WRONG");
+                console.log("DIRECTIVE: SEND COUPON TO CARD FAILURE: " + data)                
             }
 
         }

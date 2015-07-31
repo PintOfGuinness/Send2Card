@@ -26,10 +26,9 @@ angular.module('send2CardApp')
         coupons.isCouponSent = false;
 
         coupons.sendCouponToCard = function () {
-            return sendToCardFactory.sendToCard()
+            return sendToCardFactory.sendCouponToCard()
                 .then(sendCouponComplete)
-                .catch(sendCouponFailure);
-        
+                .catch(sendCouponFailure);     
         }
 
         function sendCouponComplete(data) {
@@ -44,7 +43,7 @@ angular.module('send2CardApp')
             console.log("CONTROLLER PROMISE SOMETHING WRONG");
             
             return coupons.isCouponSent;
-        }    
+        }
     
     
     
@@ -54,6 +53,10 @@ angular.module('send2CardApp')
 /*                    console.log("Coupons Controller: " + eachCoupon + ", index: " + index);*/
                     coupons.allCoupons.push(eachCoupon);
                 }
+                coupon.clickedCoupon =
+                    $filter('filter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, {
+                        cpn_seq_nbr: couponNumberFilter
+                    })[0];                
             });
 
             coupons.columns = coupons.columnize(coupons.allCoupons, 2);

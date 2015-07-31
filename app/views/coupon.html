@@ -2,12 +2,21 @@
 
 <p>Redeeming is easy. Just present your ExtraCare card to the associate when you check out.</p>
 
-<div ng-controller="CouponCtrl as couponController">
+<div ng-controller="CouponsCtrl as couponsController">
     <div class="row">
         <div class="panel-body">
             <br>
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div coupon-directive title="{{ couponController.clickedCoupon.title }}" description="{{ couponController.clickedCoupon.cpn_dsc }}" expiry="{{ couponController.clickedCoupon.expir_dt }}" barcode="{{ couponController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponController.clickedCoupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponController.unSentCouponPath }}" sent-coupon-path="{{ couponController.sentCouponPath }}" send-coupon-on-startup="{{ couponController.sendCouponOnStartup }}" on-send-coupon-to-card="couponController.sendCouponToCard()">
+                <div coupon-directive 
+                     title="{{ couponsController.clickedCoupon.title }}"    
+                     description="{{ couponsController.clickedCoupon.cpn_dsc }}" 
+                     expiry="{{ couponsController.clickedCoupon.expir_dt }}" 
+                     barcode="{{ couponsController.clickedCoupon.cpn_seq_nbr }}" 
+                     terms="{{ couponsController.clickedCoupon.cpn_terms_txt }}" un-sent-coupon-
+                     un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" 
+                     sent-coupon-path="{{ couponsController.sentCouponPath }}" 
+                     send-coupon-on-startup="{{ true }}" 
+                     on-send-coupon-to-card="couponsController.sendCouponToCard()">
                 </div>
             </div>
         </div>
