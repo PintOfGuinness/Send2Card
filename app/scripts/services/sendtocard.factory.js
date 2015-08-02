@@ -10,24 +10,28 @@
 angular.module('send2CardApp')
     .factory('sendToCardFactory', function ($http, $q) {
 
-        var baseUrl = 'data/sendToCardSuccess.json';
-        var requestBody = '';
-    
         return {
-            sendCouponToCard: function () {
+            sendCouponToCard: function (extraCareCardNumber, couponSequenceNumber) {
+                var baseUrl = 'data/sendToCardSuccess.json';
+                var requestBody = {
+                    extraCareCard: extraCareCardNumber,
+                    cpnSeqNbr: couponSequenceNumber,
+                    opCd: "V",
+                    ts: Date.now()
+                }
                 return $http({
                         method: 'get',
                         url: baseUrl,
                         data: requestBody
                     }).then(function (result) {
-                    console.log("Send To Card Service: " + result.data);
+                        console.log("Send To Card Service: " + result.data);
                         var data = result.data;
 
-/*                        if (data === "something I don't accept") {
-                            return $q.reject("Invalid data");
-                        }
+                        /*                        if (data === "something I don't accept") {
+                                                    return $q.reject("Invalid data");
+                                                }
 
-                        var processedData = processData(data);*/
+                                                var processedData = processData(data);*/
                         return data;
                     })
                     .catch(function (err) {
