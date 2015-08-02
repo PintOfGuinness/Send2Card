@@ -8,7 +8,7 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsCtrl', function ($location, $filter, couponsService, sendToCardFactory) {
+    .controller('CouponsCtrl', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory) {
 
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum;
@@ -38,19 +38,8 @@ angular.module('send2CardApp')
         }
 
         couponsService.getAllCoupons(extraCareCardNumber).then(function (results) {
-            coupons.clickedCoupon = $filter('CouponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
-            var allCoupons = $filter('CouponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
-            coupons.columns = coupons.columnize(allCoupons, 2);
+            coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
+            var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
+            coupons.columns = columniseFactory.columnise(allCoupons, 2);
         });
-
-        coupons.columnize = function (inputArray, numberOfcolumns) {
-            var length = inputArray.length,
-                columnsArray = [],
-                i = 0;
-            while (i < length) {
-                var size = Math.ceil((length - i) / numberOfcolumns--);
-                columnsArray.push(inputArray.slice(i, i += size));
-            }
-            return columnsArray;
-        }
     });

@@ -18,7 +18,7 @@ angular.module('send2CardApp')
         return service;
 
         function getAllCoupons(extraCareCardNumber) {
-            return $http.get("data/customer.json");
+            return $http.get("data/customer2.json");
         }
 
         /*        function getAllCoupons() {

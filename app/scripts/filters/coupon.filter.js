@@ -9,7 +9,7 @@
  * Filter in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .filter('CouponFilter', function ($filter) {
+    .filter('couponFilter', function ($filter) {
         return function (input, couponNumber, excludeMode) {
             var output = [];
 
