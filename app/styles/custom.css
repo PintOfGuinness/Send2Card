@@ -24,13 +24,17 @@
 
 .sticky {
     background-color: #F7F7FF;
+    position: fixed;
+    width: 200px;
+    right: 0;
+    top: 100px;
+    z-index: 100;
+    border-top: 0;
 }
 
-/*@media {
-  .sticky {
-    max-width: 235px;
-  }
-}*/
+@media screen and (max-width: 768px) {
+  .sticky { display: none; }   /* hide it elsewhere */
+}
 
 .circle {
     width: 75px;
