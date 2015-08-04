@@ -6,7 +6,7 @@
         <br>
         <div class="col-sm-6" ng-repeat="row in couponsController.columns">
             <div ng-repeat="coupon in row">
-                <div coupon-directive 
+                <coupon-directive 
                      title="{{ coupon.title }}" 
                      description="{{ coupon.cpn_dsc }}" 
                      expiry="{{ coupon.expir_dt }}" 
@@ -16,7 +16,7 @@
                      sent-coupon-path="{{ couponsController.sentCouponPath }}" 
                      send-coupon-on-startup="{{ false }}" 
                      on-send-coupon-to-card="couponsController.sendCouponToCard()"></div>
-            </div>
+                </coupon-directive>
         </div>
     </div>
 </div>

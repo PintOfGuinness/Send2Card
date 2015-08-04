@@ -13,6 +13,7 @@ angular.module('send2CardApp')
         return function (input, couponNumber, excludeMode) {
             var output = [];
 
+            console.log("Coupon Filter Input: " + input);
             if (excludeMode) {
                 angular.forEach(input, function (eachCoupon, index) {
                     if (input[index].cpn_seq_nbr != couponNumber) {
@@ -20,14 +21,15 @@ angular.module('send2CardApp')
                         output.push(eachCoupon);
                     }
                 });
+                            console.log("Coupon Filter Output exclude: " + output);
             } else {
-                output =
-                    $filter('filter')(input, {
+                output = $filter('filter')(input, {
                         cpn_seq_nbr: couponNumber
                     }, true)[0];
+                            console.log("Coupon Filter Output: " + output);
             }
 
-            console.log("Coupon Filter Ouput: " + output);
+
             return output;
         };
     });

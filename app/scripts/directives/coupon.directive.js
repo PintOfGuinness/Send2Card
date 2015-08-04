@@ -9,6 +9,8 @@
 angular.module('send2CardApp')
     .directive('couponDirective', function () {
 
+        var contentUrl = 'views/coupon-template.html';
+    
         function link(scope, elem, attrs, controller) {
             scope.isCollapsed = true;
             scope.collapseSection = function () {
@@ -48,8 +50,8 @@ angular.module('send2CardApp')
         }
 
         return {
-            templateUrl: 'views/coupon-template.html',
-            restrict: 'EA',
+            templateUrl: contentUrl,
+            restrict: 'E',
             replace: true,
             scope: {
                 title: '@',
