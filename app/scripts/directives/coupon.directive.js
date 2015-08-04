@@ -49,7 +49,7 @@ angular.module('send2CardApp')
 
         return {
             templateUrl: 'views/coupon-template.html',
-            restrict: 'EA',
+            restrict: 'E',
             replace: true,
             scope: {
                 title: '@',
