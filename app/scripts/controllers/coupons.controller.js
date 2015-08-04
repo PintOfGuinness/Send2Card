@@ -13,7 +13,6 @@ angular.module('send2CardApp')
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum;
         var couponNumber = $location.search().couponnum;
-        coupons.sendCouponOnStartup = false;
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
 
