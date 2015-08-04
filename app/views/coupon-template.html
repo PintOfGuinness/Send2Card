@@ -17,7 +17,7 @@
             <h4 class="">{{ title }}</h4> {{ description }}
             <br>EXP {{ expiry }}
         </p>
-        <a data-toggle="modal" data-target="#printModal" ng-click="print-coupon-selected(coupon)">Print Offer</a>
+        <a id="printofferdiv" data-toggle="modal" data-target="#printModal" ng-click="print-coupon-selected(coupon)">Print Offer</a>
         <p>
             <strong><div ng-click="collapseSection()" class="accordion-header">View Details<span ng-class="{'glyphicon-minus' : !isCollapsed, 'glyphicon-plus' : isCollapsed}"></span></div></strong>
         </p>

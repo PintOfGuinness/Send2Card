@@ -12,6 +12,7 @@ angular.module('send2CardApp')
 
         return {
             sendCouponToCard: function (extraCareCardNumber, couponSequenceNumber) {
+
                 var baseUrl = 'data/sendToCardSuccess.json';
                 var requestBody = {
                     extraCareCard: extraCareCardNumber,

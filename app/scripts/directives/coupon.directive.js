@@ -18,16 +18,16 @@ angular.module('send2CardApp')
             }
 
             scope.sendCoupon = false;
-            console.log("SEND COUPON " + scope.sendCoupon);      
-            
-            if(scope.sendCouponOnStartup === 'true') {
+            console.log("SEND COUPON " + scope.sendCoupon);
+
+            if (scope.sendCouponOnStartup === 'true') {
                 console.log("DIRECTIVE: SEND COUPON ON STARTUP")
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
                 scope.sendCouponOnStartup = false;
             }
-            
+
             scope.sendCouponToCard = function () {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
@@ -37,12 +37,13 @@ angular.module('send2CardApp')
 
             function sendCouponComplete(data) {
                 scope.sendCoupon = data;
-                console.log("DIRECTIVE: SEND COUPON TO CARD SUCCESS: " + data)                
+                document.getElementById('printofferdiv').style.display = 'none';
+                console.log("DIRECTIVE: SEND COUPON TO CARD SUCCESS: " + data)
             }
 
             function sendCouponFailure(data) {
                 scope.sendCoupon = data;
-                console.log("DIRECTIVE: SEND COUPON TO CARD FAILURE: " + data)                
+                console.log("DIRECTIVE: SEND COUPON TO CARD FAILURE: " + data)
             }
 
         }
