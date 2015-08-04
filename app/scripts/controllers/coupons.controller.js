@@ -30,15 +30,8 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
-        coupons.printDiv = function (divName) {
-            var printContents = document.getElementById(divName).innerHTML;
-            var originalContents = document.body.innerHTML;
-            console.log("CONTROLLER: printDiv: " + printContents);
-            document.body.innerHTML = printContents;
-
+        coupons.printCoupon = function () {
             window.print();
-
-            document.body.innerHTML = originalContents;
         }
 
         function sendCouponFailure(data) {
