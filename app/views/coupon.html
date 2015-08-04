@@ -7,16 +7,7 @@
         <div class="panel-body">
             <br>
             <div class="col-xs-12 col-sm-6 col-md-4">
-                <div coupon-directive 
-                     title="{{ couponsController.clickedCoupon.title }}"    
-                     description="{{ couponsController.clickedCoupon.cpn_dsc }}" 
-                     expiry="{{ couponsController.clickedCoupon.expir_dt }}" 
-                     barcode="{{ couponsController.clickedCoupon.cpn_seq_nbr }}" 
-                     terms="{{ couponsController.clickedCoupon.cpn_terms_txt }}" un-sent-coupon-
-                     un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" 
-                     sent-coupon-path="{{ couponsController.sentCouponPath }}" 
-                     send-coupon-on-startup="{{ true }}" 
-                     on-send-coupon-to-card="couponsController.sendCouponToCard()">
+                <div coupon-directive title="{{ couponsController.clickedCoupon.title }}" description="{{ couponsController.clickedCoupon.cpn_dsc }}" expiry="{{ couponsController.clickedCoupon.expir_dt }}" barcode="{{ couponsController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponsController.clickedCoupon.cpn_terms_txt }}" un-sent-coupon- un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ true }}" on-send-coupon-to-card="couponsController.sendCouponToCard()">
                 </div>
             </div>
         </div>

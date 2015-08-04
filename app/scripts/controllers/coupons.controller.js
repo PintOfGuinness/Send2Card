@@ -42,4 +42,5 @@ angular.module('send2CardApp')
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             coupons.columns = columniseFactory.columnise(allCoupons, 2);
         });
+
     });
