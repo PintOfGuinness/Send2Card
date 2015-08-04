@@ -30,6 +30,17 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
+        coupons.printDiv = function (divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+            console.log("CONTROLLER: printDiv: " + printContents);
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+
         function sendCouponFailure(data) {
             var isCouponSent = false;
             console.log("CONTROLLER: COUPON NOT SENT");

@@ -1,46 +1,48 @@
-<!-- Print Modal -->
-<div id="printModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+<div ng-controller="CouponsCtrl as couponsController">
+    <!-- Print Modal -->
+    <div id="printModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <br>
-                <br>
-                <p>Your coupon is ready to print!
-                    <button type="submit" onclick="window.print();" class="pull-right btn btn-success">Print</button>
-                </p>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <br>
+                    <br>
+                    <p>Your coupon is ready to print!
+                        <button type="submit" ng-click="couponsController.printDiv('printModal')" class="pull-right btn btn-success">Print</button>
+                    </p>
 
-                <h4 class="modal-title"></h4>
-            </div>
-
-            <div class="modal-body">
-                <div>
-                    <p class=" text-left">
-                        <h4>{{coupons[4].title}} </h4> You want to buy this
-                        <br> {{coupons[4].expiry}}
-                        <br>
-                        <div>
-                            <br>
-                            <p height="10 " width="10 " <li>
-                                <a ng-href="#/about "></a>
-                                </li>
-                        </div>
-                        </p>
+                    <h4 class="modal-title"></h4>
                 </div>
 
+                <div class="modal-body">
+                    <div>
+                        <p class=" text-left">
+                            <h4></h4> You want to buy this
+                            <br>
+                            <br>
+                            <div>
+                                <br>
+                                <p height="10 " width="10 " <li>
+                                    <a ng-href="#/about "></a>
+                                    </li>
+                            </div>
+                            </p>
+                    </div>
 
+
+                </div>
+
+                <div class="modal-footer pull left">
+                    <p class="pull-left">T's & C's apply</p>
+                    <br>
+                    <br>
+                    <p class="pull-left">No more than one coupon per customer</p>
+                </div>
             </div>
 
-            <div class="modal-footer pull left">
-                <p class="pull-left">T's & C's apply</p>
-                <br>
-                <br>
-                <p class="pull-left">No more than one coupon per customer</p>
-            </div>
+
         </div>
-
-
     </div>
 </div>
