@@ -61,12 +61,11 @@
   body * {
     visibility:hidden;
   }
+  .container {
+    display:none;
+    visibility:hidden;
+  }
   #printModal, #printModal * {
     visibility:visible;
-  }
-  #printModal {
-    position:absolute;
-    left:0;
-    top:0;
   }
 }
