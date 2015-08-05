@@ -48,25 +48,11 @@
 }
 @media screen {
     #printModal {
-        display: none;
+         display: none;
     }
 }
+
 @media print {
-<<<<<<< HEAD
-    body * {
-        visibility: hidden;
-    }
-    #printModal,
-    #printModal * {
-        visibility: visible;
-    }
-  /*  #printModal {
-      position: absolute;
-      left: 0;
-      top: 0;
-  }*/
-}
-=======
   body * {
     visibility:hidden;
   }
@@ -77,4 +63,3 @@
     visibility:visible;
   }
 }
->>>>>>> origin/master
