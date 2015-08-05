@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name send2CardApp.controller:CouponsCtrl
+ * @name send2CardApp.controller:CouponsController
  * @description
- * # CouponsCtrl
+ * # CouponsController
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')

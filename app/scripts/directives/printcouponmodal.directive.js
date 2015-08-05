@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc directive
- * @name send2CardApp.directive:printCouponDirective
+ * @name send2CardApp.directive:printCouponModalDirective
  * @description
- * # printCouponDirective
+ * # printCouponModalDirective
  */
 angular.module('send2CardApp')
     .directive('printCouponModalDirective', function () {
