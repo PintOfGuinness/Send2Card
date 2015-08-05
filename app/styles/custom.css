@@ -72,7 +72,6 @@
   }
   .container {
     display:none;
-    visibility:hidden;
   }
   #printModal, #printModal * {
     visibility:visible;
