@@ -1,12 +1,12 @@
-<div ng-controller="CouponsCtrl as couponsController">
+<div ng-controller="CouponsController as couponsController">
     <!-- Print Modal -->
-    <div id="printModal" class="modal fade" role="dialog">
-        <div class="modal-dialog">
+
+
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <button type="button" class="close" ng-click="cancel()">&times;</button>
                     <br>
                     <br>
                     <p>Your coupon is ready to print!
@@ -43,6 +43,5 @@
             </div>
 
 
-        </div>
-    </div>
+
 </div>

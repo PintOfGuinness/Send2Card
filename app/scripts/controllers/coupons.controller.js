@@ -8,7 +8,7 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsCtrl', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory) {
+    .controller('CouponsController', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory) {
 
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum;

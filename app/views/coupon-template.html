@@ -17,10 +17,10 @@
             <h4 class="">{{ title }}</h4> {{ description }}
             <br>EXP {{ expiry }}
         </p>
+        <div ng-controller="PrintCouponModalController">
+            <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print Offer</a>
+        </div>
 
-        <a href="#" ng-click="printModal = true">Print Modal</a>
-
-        <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" data-target="#printModal">Print Offer</a>
         <p>
             <strong><div ng-click="collapseSection()" class="accordion-header">View Details<span ng-class="{'glyphicon-minus' : !isCollapsed, 'glyphicon-plus' : isCollapsed}"></span></div></strong>
         </p>
