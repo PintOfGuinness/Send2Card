@@ -41,8 +41,9 @@ angular.module('send2CardApp')
             function sendCouponComplete(data) {
                 scope.sendCoupon = data;
                 scope.isHidden = true;
+
                 /*
-                document.getElementById('printofferdiv').style.display = 'none';
+               document.getElementById('printofferdiv').style.display = 'none';
 */
                 console.log("DIRECTIVE: SEND COUPON TO CARD SUCCESS: " + data)
             }

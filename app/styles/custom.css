@@ -52,6 +52,7 @@
     }
 }
 @media print {
+<<<<<<< HEAD
     body * {
         visibility: hidden;
     }
@@ -65,3 +66,16 @@
       top: 0;
   }*/
 }
+=======
+  body * {
+    visibility:hidden;
+  }
+  .container {
+    display:none;
+    visibility:hidden;
+  }
+  #printModal, #printModal * {
+    visibility:visible;
+  }
+}
+>>>>>>> origin/master
