@@ -1,27 +1,22 @@
-
-
-
 .expanded-div-style {
-    background-color: #F7F7FF;  /* #E9E9E9; */
+    background-color: #F7F7FF;
+    /* #E9E9E9; */
     Padding: 15px 20px 10px 20px;
     margin: 5px -15px -15px -15px;
 }
-
 .text-red {
     color: #cc0000;
 }
-
 .accordion-header:hover {
-    text-decoration: underline;   
+    text-decoration: underline;
     cursor: pointer;
 }
-    
 
 /*Andrew Dawson CSS*/
+
 .text-centre {
     text-align: center;
 }
-
 .sticky {
     background-color: #F7F7FF;
     position: fixed;
@@ -31,11 +26,12 @@
     z-index: 100;
     border-top: 0;
 }
-
 @media screen and (max-width: 768px) {
-  .sticky { display: none; }   /* hide it elsewhere */
+    .sticky {
+        display: none;
+    }
+    /* hide it elsewhere */
 }
-
 .circle {
     width: 75px;
     height: 75px;
@@ -50,23 +46,22 @@
     background: white;
     margin: 0 auto;
 }
-
 @media screen {
     #printModal {
-         display: none;
+        display: none;
     }
 }
-
 @media print {
-  body * {
-    visibility:hidden;
-  }
-  #printModal, #printModal * {
-    visibility:visible;
-  }
-  #printModal {
-    position:absolute;
-    left:0;
-    top:0;
-  }
+    body * {
+        visibility: hidden;
+    }
+    #printModal,
+    #printModal * {
+        visibility: visible;
+    }
+  /*  #printModal {
+      position: absolute;
+      left: 0;
+      top: 0;
+  }*/
 }

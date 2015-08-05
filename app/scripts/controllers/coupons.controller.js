@@ -31,7 +31,9 @@ angular.module('send2CardApp')
         }
 
         coupons.printCoupon = function () {
+
             window.print();
+
         }
 
         function sendCouponFailure(data) {

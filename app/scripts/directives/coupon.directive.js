@@ -9,7 +9,10 @@
 angular.module('send2CardApp')
     .directive('couponDirective', function () {
 
+
         function link(scope, elem, attrs, controller) {
+            scope.isHidden = false;
+
             scope.isCollapsed = true;
             scope.collapseSection = function () {
                 console.log("isCollapsed pre: " + scope.isCollapsed);
@@ -37,7 +40,10 @@ angular.module('send2CardApp')
 
             function sendCouponComplete(data) {
                 scope.sendCoupon = data;
+                scope.isHidden = true;
+                /*
                 document.getElementById('printofferdiv').style.display = 'none';
+*/
                 console.log("DIRECTIVE: SEND COUPON TO CARD SUCCESS: " + data)
             }
 
