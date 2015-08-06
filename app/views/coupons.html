@@ -15,7 +15,8 @@
                      un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" 
                      sent-coupon-path="{{ couponsController.sentCouponPath }}" 
                      send-coupon-on-startup="{{ false }}" 
-                     on-send-coupon-to-card="couponsController.sendCouponToCard()">
+                     on-send-coupon-to-card="couponsController.sendCouponToCard()"
+                     printed-path={{couponsController.couponPrinted}}>
                 </coupon-directive>
             </div>
         </div>
