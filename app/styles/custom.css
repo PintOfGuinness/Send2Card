@@ -46,20 +46,10 @@
     background: white;
     margin: 0 auto;
 }
-@media screen {
-    #printModal {
-         display: none;
-    }
-}
 
 @media print {
-  body * {
-    visibility:hidden;
-  }
-  .container {
+    .container {
     display:none;
   }
-  #printModal, #printModal * {
-    visibility:visible;
-  }
 }
+
