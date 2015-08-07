@@ -26,8 +26,6 @@ angular.module('send2CardApp')
         
         function sendCouponComplete(data) {
             var isCouponSent = 1;
-            console.log("CONTROLLER: COUPON SENT COMPLETE: " + isCouponSent);
-
             return isCouponSent;
         }
 
