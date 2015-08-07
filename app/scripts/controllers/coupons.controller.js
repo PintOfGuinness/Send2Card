@@ -50,7 +50,7 @@ angular.module('send2CardApp')
             allCoupons.sort(function (a, b) {
                 a = new Date(a.expir_dt);
                 b = new Date(b.expir_dt);
-                return a > b ? -1 : a < b ? 1 : 0;
+                return a < b ? -1 : a > b ? 1 : 0;
             });
         }
 

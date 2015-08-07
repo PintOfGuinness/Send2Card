@@ -102,7 +102,7 @@
                         "viewable_ind": "N",
                         "printable_ind": "N",
                         "loadable_ind": "N",
-                        "redeemable_ind": "N",
+                        "redeemable_ind": "Y",
                         "ever_web_redeemable_ind": "N",
                         "store_nbr": "",
                         "store_name": ""
@@ -129,7 +129,7 @@
                         "viewable_ind": "N",
                         "printable_ind": "N",
                         "loadable_ind": "N",
-                        "redeemable_ind": "N",
+                        "redeemable_ind": "Y",
                         "ever_web_redeemable_ind": "N",
                         "store_nbr": "",
                         "store_name": ""
@@ -156,7 +156,7 @@
                         "viewable_ind": "N",
                         "printable_ind": "N",
                         "loadable_ind": "N",
-                        "redeemable_ind": "N",
+                        "redeemable_ind": "Y",
                         "ever_web_redeemable_ind": "N",
                         "store_nbr": "",
                         "store_name": ""
@@ -183,7 +183,7 @@
                         "viewable_ind": "Y",
                         "printable_ind": "N",
                         "loadable_ind": "Y",
-                        "redeemable_ind": "N",
+                        "redeemable_ind": "Y",
                         "ever_web_redeemable_ind": "N",
                         "store_nbr": "",
                         "store_name": ""
