@@ -23,7 +23,7 @@ angular.module('send2CardApp')
                 .then(sendCouponComplete)
                 .catch(sendCouponFailure);
         }
-        
+
         function sendCouponComplete(data) {
             var isCouponSent = 1;
             return isCouponSent;
@@ -36,15 +36,22 @@ angular.module('send2CardApp')
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
-            console.log("CONTROLLER: COUPON NOT SENT");
-
             return isCouponSent;
         }
 
         couponsService.getAllCoupons(extraCareCardNumber).then(function (results) {
             coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
+            sortCouponsByExpiryDate(allCoupons);
             coupons.columns = columniseFactory.columnise(allCoupons, 2);
         });
+
+        function sortCouponsByExpiryDate(allCoupons) {
+            allCoupons.sort(function (a, b) {
+                a = new Date(a.expir_dt);
+                b = new Date(b.expir_dt);
+                return a > b ? -1 : a < b ? 1 : 0;
+            });
+        }
 
     });
