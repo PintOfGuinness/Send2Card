@@ -1,10 +1,9 @@
 <div ng-controller="CouponsController as couponsController">
     <!--    <div class="container">-->
     <!--        <div class="row">-->
-    <div class="col-xs-12 col-md-8">
         <h4>Send the other deals to your card now!</h4>
         <br>
-        <div class="col-sm-6" ng-repeat="row in couponsController.columns">
+        <div class="col-sm-6 col-md-4" ng-repeat="row in couponsController.columns">
             <div ng-repeat="coupon in row">
                 <coupon-directive 
                      title="{{ coupon.title }}" 
@@ -19,6 +18,5 @@
                      printed-path={{couponsController.couponPrinted}}>
                 </coupon-directive>
             </div>
-        </div>
     </div>
 </div>

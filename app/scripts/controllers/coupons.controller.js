@@ -43,7 +43,7 @@ angular.module('send2CardApp')
             coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             sortCouponsByExpiryDate(allCoupons);
-            coupons.columns = columniseFactory.columnise(allCoupons, 2);
+            coupons.columns = columniseFactory.columnise(allCoupons, 3);
         });
 
         function sortCouponsByExpiryDate(allCoupons) {
