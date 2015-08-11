@@ -53,3 +53,26 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+    .twoCols {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .oneCol {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .threeCols {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 991px) {
+    .twoCols {
+        display: none;
+    }
+}

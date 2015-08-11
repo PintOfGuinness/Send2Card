@@ -2,21 +2,18 @@
 
 describe('Controller: CouponCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('send2CardApp'));
+    var scope, couponsController;
 
-  var CouponCtrl,
-    scope;
+    beforeEach(inject(function ($rootScope, $controller) {
+        scope = $rootScope.$new();
+        couponsController = $controller('CouponsController', {
+            $scope: scope
+        });
+    }));
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    CouponCtrl = $controller('CouponCtrl', {
-      $scope: scope
+
+    it('should attach a list of awesomeThings to the scope', function () {
+        expect(true).toBe(true);
+        expect(scope.phones.length).toBe(3);
     });
-  }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
 });

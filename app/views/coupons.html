@@ -3,8 +3,8 @@
     <!--        <div class="row">-->
         <h4>Send the other deals to your card now!</h4>
         <br>
-        <div class="col-sm-6 col-md-4" ng-repeat="row in couponsController.columns">
-            <div ng-repeat="coupon in row">
+        <div class="threeCols col-sm-6 col-md-4" ng-repeat="column in couponsController.threeColumns">
+            <div ng-repeat="coupon in column">
                 <coupon-directive 
                      title="{{ coupon.title }}" 
                      description="{{ coupon.cpn_dsc }}" 
@@ -18,5 +18,37 @@
                      printed-path={{couponsController.couponPrinted}}>
                 </coupon-directive>
             </div>
-    </div>
+        </div>
+        <div class="twoCols col-sm-6 col-md-4" ng-repeat="column in couponsController.twoColumns">
+            <div ng-repeat="coupon in column">
+                <coupon-directive 
+                     title="{{ coupon.title }}" 
+                     description="{{ coupon.cpn_dsc }}" 
+                     expiry="{{ coupon.expir_dt }}" 
+                     barcode="{{ coupon.cpn_seq_nbr }}" 
+                     terms="{{ coupon.cpn_terms_txt }}" 
+                     un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" 
+                     sent-coupon-path="{{ couponsController.sentCouponPath }}" 
+                     send-coupon-on-startup="{{ false }}" 
+                     on-send-coupon-to-card="couponsController.sendCouponToCard()"
+                     printed-path={{couponsController.couponPrinted}}>
+                </coupon-directive>
+            </div>
+        </div>
+        <div class="oneCol col-sm-6 col-md-4" ng-repeat="column in couponsController.oneColumn">
+            <div ng-repeat="coupon in column">
+                <coupon-directive 
+                     title="{{ coupon.title }}" 
+                     description="{{ coupon.cpn_dsc }}" 
+                     expiry="{{ coupon.expir_dt }}" 
+                     barcode="{{ coupon.cpn_seq_nbr }}" 
+                     terms="{{ coupon.cpn_terms_txt }}" 
+                     un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" 
+                     sent-coupon-path="{{ couponsController.sentCouponPath }}" 
+                     send-coupon-on-startup="{{ false }}" 
+                     on-send-coupon-to-card="couponsController.sendCouponToCard()"
+                     printed-path={{couponsController.couponPrinted}}>
+                </coupon-directive>
+            </div>
+        </div>
 </div>

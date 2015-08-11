@@ -14,7 +14,7 @@ angular.module('send2CardApp')
 
         // Public API here
         return {
-            columnise: function (inputArray, numberOfcolumns) {
+           /* columnise: function (inputArray, numberOfcolumns) {
                 var length = inputArray.length;
                 var columnsArray = [];
                 var i = 0;
@@ -23,7 +23,21 @@ angular.module('send2CardApp')
                     columnsArray.push(inputArray.slice(i, i += size));
                 }
                 return columnsArray;
-            }
+            }*/
 
+            columnise: function (inputArray, numberOfcolumns) {
+                var length = inputArray.length;
+                var columnsArray = [];
+                
+                for (var i=0; i<numberOfcolumns; i++){
+                    var column = [];
+                    for (var j=i; j<length; j+=numberOfcolumns){
+                        column.push(inputArray[j]);
+                    }
+                    columnsArray.push(column);
+                }
+                return columnsArray;
+                
+            }
         };
     });

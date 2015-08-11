@@ -17,7 +17,7 @@ angular.module('send2CardApp')
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
         coupons.couponPrinted = "images/printed.png";
-
+    
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -43,7 +43,10 @@ angular.module('send2CardApp')
             coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             sortCouponsByExpiryDate(allCoupons);
-            coupons.columns = columniseFactory.columnise(allCoupons, 3);
+            coupons.sortedCoupons = allCoupons;
+            coupons.threeColumns = columniseFactory.columnise(allCoupons, 3);
+            coupons.twoColumns = columniseFactory.columnise(allCoupons, 2);
+            coupons.oneColumn = columniseFactory.columnise(allCoupons, 1);
         });
 
         function sortCouponsByExpiryDate(allCoupons) {
