@@ -19,6 +19,8 @@ module.exports = function(config) {
       "jasmine"
     ],
 
+    reporters: ['spec'],
+    
     // list of files / patterns to load in the browser
     files: [
       "bower_components/angular/angular.js",
@@ -56,7 +58,8 @@ module.exports = function(config) {
     // Which plugins to enable
     plugins: [
       "karma-phantomjs-launcher",
-      "karma-jasmine"
+      "karma-jasmine",
+      'karma-spec-reporter'
     ],
 
     // Continuous Integration mode

@@ -70,7 +70,8 @@ angular.module('send2CardApp')
                 sentCouponPath: '@',
                 sendCouponOnStartup: '@',
                 onSendCouponToCard: '&',
-                printedPath:'@'
+                printedPath:'@',
+                expiresSoon:'@'
             },
             link: link
         }

@@ -28,7 +28,7 @@ angular.module('send2CardApp')
             var isCouponSent = 1;
             return isCouponSent;
         }
-
+    
         coupons.printCoupon = function () {
             $scope.printCoupon();
             window.print();
@@ -43,7 +43,7 @@ angular.module('send2CardApp')
             coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             sortCouponsByExpiryDate(allCoupons);
-            coupons.sortedCoupons = allCoupons;
+            addExpiresSoon(allCoupons);
             coupons.threeColumns = columniseFactory.columnise(allCoupons, 3);
             coupons.twoColumns = columniseFactory.columnise(allCoupons, 2);
             coupons.oneColumn = columniseFactory.columnise(allCoupons, 1);
@@ -55,6 +55,21 @@ angular.module('send2CardApp')
                 b = new Date(b.expir_dt);
                 return a < b ? -1 : a > b ? 1 : 0;
             });
+        }
+    
+        function addExpiresSoon(allCoupons) {
+           for (var i=0; i<allCoupons.length; i++){
+               var today = new Date();
+               var expiresSoonRegion = new Date(today);
+               expiresSoonRegion.setDate(today.getDate() +14);
+               var expiryDate = new Date(allCoupons[i].expir_dt);
+               
+               if (expiryDate < expiresSoonRegion){
+                   allCoupons[i].expiresSoon = true;
+               } else {
+                   allCoupons[i].expiresSoon = false;
+               }
+           }
         }
 
     });

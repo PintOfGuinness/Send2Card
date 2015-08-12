@@ -18,6 +18,12 @@
         <p>
             <h4 class="">{{ title }}</h4> {{ description }}
             <br>EXP {{ expiry }}
+            <br> {{expiresSoon}}
+            <div ng-switch on="expiresSoon">
+                <div ng-switch-when=true>
+                    EXPIRES SOON
+                </div>
+            </div>
         </p>
         <div ng-controller="PrintCouponModalController">
             <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print Offer</a>

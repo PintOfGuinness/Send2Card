@@ -3,6 +3,7 @@
     <!--        <div class="row">-->
         <h4>Send the other deals to your card now!</h4>
         <br>
+        <!--Hacky but working. If we can find a cleaner way it will be implemented. Even just moving these into separate views would be tidier.-->
         <div class="threeCols col-sm-6 col-md-4" ng-repeat="column in couponsController.threeColumns">
             <div ng-repeat="coupon in column">
                 <coupon-directive 
@@ -15,7 +16,8 @@
                      sent-coupon-path="{{ couponsController.sentCouponPath }}" 
                      send-coupon-on-startup="{{ false }}" 
                      on-send-coupon-to-card="couponsController.sendCouponToCard()"
-                     printed-path={{couponsController.couponPrinted}}>
+                     printed-path={{couponsController.couponPrinted}},
+                     expires-soon={{coupon.expiresSoon}}              >
                 </coupon-directive>
             </div>
         </div>
@@ -31,7 +33,8 @@
                      sent-coupon-path="{{ couponsController.sentCouponPath }}" 
                      send-coupon-on-startup="{{ false }}" 
                      on-send-coupon-to-card="couponsController.sendCouponToCard()"
-                     printed-path={{couponsController.couponPrinted}}>
+                     printed-path={{couponsController.couponPrinted}},
+                     expires-soon={{coupon.expiresSoon}}  >
                 </coupon-directive>
             </div>
         </div>
@@ -47,7 +50,8 @@
                      sent-coupon-path="{{ couponsController.sentCouponPath }}" 
                      send-coupon-on-startup="{{ false }}" 
                      on-send-coupon-to-card="couponsController.sendCouponToCard()"
-                     printed-path={{couponsController.couponPrinted}}>
+                     printed-path={{couponsController.couponPrinted}},
+                     expires-soon={{coupon.expiresSoon}}  >
                 </coupon-directive>
             </div>
         </div>
