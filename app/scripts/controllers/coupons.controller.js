@@ -14,10 +14,11 @@ angular.module('send2CardApp')
         var extraCareCardNumber = $location.search().eccardnum;
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
+        var initialCouponsOnMobileLoad = 2;
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
         coupons.couponPrinted = "images/printed.png";
-    
+
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -28,10 +29,15 @@ angular.module('send2CardApp')
             var isCouponSent = 1;
             return isCouponSent;
         }
-    
+
         coupons.printCoupon = function () {
             $scope.printCoupon();
             window.print();
+        }
+
+        coupons.loadMoreCoupons = function () {
+            coupons.mobileOneColumn = coupons.oneColumn[0];
+            $scope.hideLoadMore = true;
         }
 
         function sendCouponFailure(data) {
@@ -47,6 +53,8 @@ angular.module('send2CardApp')
             coupons.threeColumns = columniseFactory.columnise(allCoupons, 3);
             coupons.twoColumns = columniseFactory.columnise(allCoupons, 2);
             coupons.oneColumn = columniseFactory.columnise(allCoupons, 1);
+            coupons.mobileOneColumn = coupons.oneColumn[0].slice(0, initialCouponsOnMobileLoad);
+            coupons.loadMoreNumber = coupons.oneColumn[0].length - initialCouponsOnMobileLoad;
         });
 
         function sortCouponsByExpiryDate(allCoupons) {
@@ -56,20 +64,20 @@ angular.module('send2CardApp')
                 return a < b ? -1 : a > b ? 1 : 0;
             });
         }
-    
+
         function addExpiresSoon(allCoupons) {
-           for (var i=0; i<allCoupons.length; i++){
-               var today = new Date();
-               var expiresSoonRegion = new Date(today);
-               expiresSoonRegion.setDate(today.getDate() +14);
-               var expiryDate = new Date(allCoupons[i].expir_dt);
-               
-               if (expiryDate < expiresSoonRegion){
-                   allCoupons[i].expiresSoon = true;
-               } else {
-                   allCoupons[i].expiresSoon = false;
-               }
-           }
+            for (var i = 0; i < allCoupons.length; i++) {
+                var today = new Date();
+                var expiresSoonRegion = new Date(today);
+                expiresSoonRegion.setDate(today.getDate() + 14);
+                var expiryDate = new Date(allCoupons[i].expir_dt);
+
+                if (expiryDate < expiresSoonRegion) {
+                    allCoupons[i].expiresSoon = true;
+                } else {
+                    allCoupons[i].expiresSoon = false;
+                }
+            }
         }
 
     });

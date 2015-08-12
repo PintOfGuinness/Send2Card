@@ -26,8 +26,11 @@
     z-index: 100;
     border-top: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (min-width:768px) {
     .sticky {
+        display: none;
+    }
+    .mobileView {
         display: none;
     }
     /* hide it elsewhere */
@@ -46,31 +49,26 @@
     background: white;
     margin: 0 auto;
 }
-
 @media print {
     .container {
-    display:none;
-  }
+        display: none;
+    }
 }
-
 @media screen and (max-width: 768px) {
     .twoCols {
         display: none;
     }
 }
-
 @media screen and (min-width: 768px) {
     .oneCol {
         display: none;
     }
 }
-
 @media screen and (max-width: 991px) {
     .threeCols {
         display: none;
     }
 }
-
 @media screen and (min-width: 991px) {
     .twoCols {
         display: none;

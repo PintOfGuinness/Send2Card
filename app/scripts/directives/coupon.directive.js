@@ -12,7 +12,7 @@ angular.module('send2CardApp')
 
         function link(scope, elem, attrs, controller) {
             scope.isHidden = false;
-
+            scope.hideLoadMore = false;
             scope.isCollapsed = true;
             scope.collapseSection = function () {
                 console.log("isCollapsed pre: " + scope.isCollapsed);
@@ -30,12 +30,12 @@ angular.module('send2CardApp')
                     .catch(sendCouponFailure);
                 scope.sendCouponOnStartup = false;
             }
-            
-            scope.printCoupon = function printCoupon(){
+
+            scope.printCoupon = function printCoupon() {
                 console.log("send coupon set at 2");
                 scope.sendCoupon = "2";
             }
-            
+
             scope.sendCouponToCard = function () {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
@@ -70,8 +70,8 @@ angular.module('send2CardApp')
                 sentCouponPath: '@',
                 sendCouponOnStartup: '@',
                 onSendCouponToCard: '&',
-                printedPath:'@',
-                expiresSoon:'@'
+                printedPath: '@',
+                expiresSoon: '@'
             },
             link: link
         }
