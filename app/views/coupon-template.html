@@ -18,11 +18,9 @@
         <p>
             <h4 class="">{{ title }}</h4> {{ description }}
             <br>EXP {{ expiry }}
-            <br> {{expiresSoon}}
-            <div ng-switch on="expiresSoon">
-                <div ng-switch-when=true>
-                    EXPIRES SOON
-                </div>
+            <br>
+            <div ng-if="expiresSoon">
+                EXPIRES SOON
             </div>
         </p>
         <div ng-controller="PrintCouponModalController">
