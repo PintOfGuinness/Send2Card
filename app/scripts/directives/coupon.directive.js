@@ -12,19 +12,16 @@ angular.module('send2CardApp')
 
         function link(scope, elem, attrs, controller) {
             scope.isHidden = false;
-            scope.hideLoadMore = false;
+            scope.hideNotYetActionedLoadMore = false;
+            scope.hideReadyToUseLoadMore = false;
             scope.isCollapsed = true;
             scope.collapseSection = function () {
-                console.log("isCollapsed pre: " + scope.isCollapsed);
-                scope.isCollapsed = !scope.isCollapsed;
-                console.log("isCollapsed post: " + scope.isCollapsed);
+            scope.isCollapsed = !scope.isCollapsed;
             }
 
             scope.sendCoupon = "0";
-            console.log("SEND COUPON " + scope.sendCoupon);
 
             if (scope.sendCouponOnStartup === 'true') {
-                console.log("DIRECTIVE: SEND COUPON ON STARTUP")
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
@@ -32,7 +29,6 @@ angular.module('send2CardApp')
             }
 
             scope.printCoupon = function printCoupon() {
-                console.log("send coupon set at 2");
                 scope.sendCoupon = "2";
             }
 
@@ -46,12 +42,10 @@ angular.module('send2CardApp')
             function sendCouponComplete(data) {
                 scope.sendCoupon = data;
                 scope.isHidden = true;
-                console.log("DIRECTIVE: SEND COUPON TO CARD SUCCESS: " + data)
             }
 
             function sendCouponFailure(data) {
                 scope.sendCoupon = data;
-                console.log("DIRECTIVE: SEND COUPON TO CARD FAILURE: " + data)
             }
 
         }

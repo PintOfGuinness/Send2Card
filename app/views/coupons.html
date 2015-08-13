@@ -3,28 +3,61 @@
     <!--        <div class="row">-->
     <h4>Send the other deals to your card now!</h4>
     <br>
-    <!--Hacky but working. If we can find a cleaner way it will be implemented. Even just moving these into separate views would be tidier.-->
-    <div class="threeCols col-sm-6 col-md-4" ng-repeat="column in couponsController.threeColumns">
-        <div ng-repeat="coupon in column">
-            <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}, expires-soon={{coupon.expiresSoon}}>
-            </coupon-directive>
+
+    <!--NOT YET ACTIONED COUPONS-->
+    <div class="panel-body">
+        <div class="threeCols col-sm-6 col-md-4" ng-repeat="column in couponsController.notYetActionedDesktopColumns">
+            <div ng-repeat="coupon in column">
+                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}}>
+                </coupon-directive>
+            </div>
         </div>
-    </div>
-    <div class="twoCols col-sm-6 col-md-4" ng-repeat="column in couponsController.twoColumns">
-        <div ng-repeat="coupon in column">
-            <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}, expires-soon={{coupon.expiresSoon}}>
-            </coupon-directive>
+        <div class="twoCols col-sm-6 col-md-4" ng-repeat="column in couponsController.notYetActionedTabletColumns">
+            <div ng-repeat="coupon in column">
+                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}}>
+                </coupon-directive>
+            </div>
         </div>
-    </div>
-    <div class="oneCol col-sm-6 col-md-4">
-        <div ng-repeat="coupon in couponsController.mobileOneColumn">
-            <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}, expires-soon={{coupon.expiresSoon}}>
-            </coupon-directive>
+        <div class="oneCol col-sm-6 col-md-4">
+            <div ng-repeat="coupon in couponsController.notYetActionedFilteredMobileColumn">
+                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}}>
+                </coupon-directive>
+            </div>
         </div>
+
+        <div class="mobileView">
+            <button class="mobileView" ng-hide="hideNotYetActionedLoadMore" ng-click="couponsController.notYetActionedLoadMoreCoupons()">Load more...({{couponsController.notYetActionedLoadMore}})</button>
+        </div>
+
     </div>
 
-    <div class="mobileView">
-        <button class="mobileView" ng-hide="hideLoadMore" ng-click="couponsController.loadMoreCoupons()">Load more...({{couponsController.loadMoreNumber}})</button>
+
+    <!--READY TO USE COUPONS-->
+    <div class="panel-body">
+        <h4>Offers Ready to Use</h4>
+        <br>
+        <div class="threeCols col-sm-6 col-md-4" ng-repeat="column in couponsController.readyToUseDesktopColumns">
+            <div ng-repeat="coupon in column">
+                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}}>
+                </coupon-directive>
+            </div>
+        </div>
+        <div class="twoCols col-sm-6 col-md-4" ng-repeat="column in couponsController.readyToUseTabletColumns">
+            <div ng-repeat="coupon in column">
+                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}}>
+                </coupon-directive>
+            </div>
+        </div>
+        <div class="oneCol col-sm-6 col-md-4">
+            <div ng-repeat="coupon in couponsController.readyToUseFilteredMobileColumn">
+                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}}>
+                </coupon-directive>
+            </div>
+        </div>
+
+        <div class="mobileView">
+            <button class="mobileView" ng-hide="hideReadyToUseLoadMore" ng-click="couponsController.readyToUseLoadMoreCoupons()">Load more...({{couponsController.readyToUseLoadMore}})</button>
+        </div>
 
     </div>
 
