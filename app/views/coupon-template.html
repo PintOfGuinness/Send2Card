@@ -1,8 +1,8 @@
 <div class="panel panel-default">
     <div class="panel-body">
         <div class="pull-right">
-            <!--     <div ng-switch="switchPoint < $index">-->
-            <div ng-switch on="sendCoupon">
+
+            <div ng-switch on="state">
                 <div ng-switch-when=0>
                     <img ng-click="sendCouponToCard();" ng-src="{{unSentCouponPath}}">
                 </div>

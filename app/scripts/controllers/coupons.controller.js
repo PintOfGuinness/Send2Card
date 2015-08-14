@@ -10,16 +10,15 @@
 angular.module('send2CardApp')
     .controller('CouponsController', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory, $scope) {
 
-    
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum;
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
-        var initialCouponsOnMobileLoad = 2;
+        var initialCouponsOnMobileLoad = 1;
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
         coupons.couponPrinted = "images/printed.png";
-
+    
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -53,6 +52,7 @@ angular.module('send2CardApp')
 
         couponsService.getAllCoupons(extraCareCardNumber).then(function (results) {
             coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
+            coupons.clickedCoupon.state = 1;
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW,couponNumber, true);
             //allCoupons: List of Redeemable Coupons
             addExpiresSoon(allCoupons);

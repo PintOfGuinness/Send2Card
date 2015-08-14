@@ -19,17 +19,18 @@ angular.module('send2CardApp')
             scope.isCollapsed = !scope.isCollapsed;
             }
 
-            scope.sendCoupon = "0";
-
             if (scope.sendCouponOnStartup === 'true') {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
                 scope.sendCouponOnStartup = false;
             }
+            
+            //get an attribute: attrs.state
 
             scope.printCoupon = function printCoupon() {
-                scope.sendCoupon = "2";
+                attrs.$set("state", 2);
+                
             }
 
             scope.sendCouponToCard = function () {
@@ -40,12 +41,12 @@ angular.module('send2CardApp')
             }
 
             function sendCouponComplete(data) {
-                scope.sendCoupon = data;
+                attrs.$set("state", data);
                 scope.isHidden = true;
             }
 
             function sendCouponFailure(data) {
-                scope.sendCoupon = data;
+                scope.state = data;
             }
 
         }
@@ -65,7 +66,8 @@ angular.module('send2CardApp')
                 sendCouponOnStartup: '@',
                 onSendCouponToCard: '&',
                 printedPath: '@',
-                expiresSoon: '@'
+                expiresSoon: '@',
+                state: '@'
             },
             link: link
         }
