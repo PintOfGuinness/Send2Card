@@ -1,8 +1,20 @@
 .expanded-div-style {
     background-color: #F7F7FF;
-    /* #E9E9E9; */
+    #E9E9E9;
     Padding: 15px 20px 10px 20px;
     margin: 5px -15px -15px -15px;
+}
+.overlay {
+    position: absolute;
+    top: 15;
+    left: 7;
+    width: 90%;
+    height: 100%;
+    z-index: 10;
+    background-color: #D3D3D3;
+    /*dim the background*/
+    pointer-events: none;
+    cursor: default;
 }
 .text-red {
     color: #cc0000;
