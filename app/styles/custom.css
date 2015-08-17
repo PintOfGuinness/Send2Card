@@ -26,6 +26,38 @@
     z-index: 100;
     border-top: 0;
 }
+
+/*animate enter and leave*/
+
+.ng-enter {
+    -o-transform: scaleX(-0.5);
+    transition: 0.15s;
+    opacity: 0;
+}
+.ng-enter-active {
+    -moz-transform: scaleX(-0.5);
+    -o-transform: scaleX(-0.5);
+    -webkit-transform: scaleX(-0.5);
+}
+.ng-enter-stagger {
+    -o-transform: scaleX(-0.5);
+    transition-delay: 0.1s;
+}
+.ng-leave-stagger {
+    -o-transform: scaleX(-0.5);
+    transition-delay: 0.1s;
+}
+.ng-leave {
+    -o-transform: scaleX(-0.5);
+    transition: 0.15s;
+    opacity: 1;
+}
+.ng-leave-active {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
 @media screen and (min-width:768px) {
     .sticky {
         display: none;
