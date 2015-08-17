@@ -16,32 +16,38 @@ angular.module('send2CardApp')
             scope.hideReadyToUseLoadMore = false;
             scope.isCollapsed = true;
             scope.collapseSection = function () {
-            scope.isCollapsed = !scope.isCollapsed;
+                scope.isCollapsed = !scope.isCollapsed;
             }
-
+            
             if (scope.sendCouponOnStartup === 'true') {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
                 scope.sendCouponOnStartup = false;
             }
-            
-            //get an attribute: attrs.state
+
+            if (attrs.state == 1) {
+                scope.isHidden = true;
+            }
 
             scope.printCoupon = function printCoupon() {
                 attrs.$set("state", 2);
-                
+                scope.updateState();
+            }
+            
+            scope.updateState = function (){
+                scope.updateColumns({ state : attrs.state, barcode : attrs.barcode});
             }
 
             scope.sendCouponToCard = function () {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
-
             }
-
+            
             function sendCouponComplete(data) {
                 attrs.$set("state", data);
+                scope.updateState();
                 scope.isHidden = true;
             }
 
@@ -67,7 +73,8 @@ angular.module('send2CardApp')
                 onSendCouponToCard: '&',
                 printedPath: '@',
                 expiresSoon: '@',
-                state: '@'
+                state: '@',
+                updateColumns: '&'
             },
             link: link
         }
