@@ -21,10 +21,8 @@ angular.module('send2CardApp')
         coupons.unSentCouponPath = "images/sendtocard.png";
         coupons.sentCouponPath = "images/sendtocarddone.png";
         coupons.couponPrinted = "images/printed.png";
-<<<<<<< HEAD
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
-=======
->>>>>>> origin/master
+
 
         coupons.sendCouponToCard = function () {
             console.log("EC Card No. = " + coupons.cardNumber);
@@ -101,8 +99,6 @@ angular.module('send2CardApp')
                 } else {
                     coupons.readyToUseCoupons.push(couponList[i]);
                 }
-<<<<<<< HEAD
-=======
             }
         }
 
@@ -114,7 +110,6 @@ angular.module('send2CardApp')
                         break;
                     }
                 }
->>>>>>> origin/master
             }
         }
 
