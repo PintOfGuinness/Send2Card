@@ -4,7 +4,8 @@
 
             <div ng-switch on="state">
                 <div ng-switch-when=0>
-                    <img ng-click="sendCouponToCard();" ng-src="{{unSentCouponPath}}"> <!--updateState();-->
+                    <img ng-click="sendCouponToCard();" ng-src="{{unSentCouponPath}}">
+                    <!--updateState();-->
                 </div>
                 <div ng-switch-when=1 class="enter">
                     <img ng-src="{{sentCouponPath}}">
@@ -28,7 +29,7 @@
         <p>
             <strong><div ng-click="collapseSection()" class="accordion-header">View Details<span ng-class="{'glyphicon-minus' : !isCollapsed, 'glyphicon-plus' : isCollapsed}"></span></div></strong>
         </p>
-        <div collapse="isCollapsed" class="expanded-div-style">
+        <div collapse="isCollapsed" class="expanded-div-style overlay">
             <small>
                 <p>Coupon redeemable in store only*</p>
                 <p><b>Valid through:</b><b class="text-red"> {{ expiry }} </b>
