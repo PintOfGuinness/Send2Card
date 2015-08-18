@@ -24,6 +24,7 @@ angular.module('send2CardApp')
 
 
         coupons.sendCouponToCard = function () {
+            console.log("EC Card No. = " + coupons.cardNumber);
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
                 .catch(sendCouponFailure);
