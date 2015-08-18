@@ -24,7 +24,7 @@ angular.module('send2CardApp')
                 }
                 return columnsArray;
             }*/
-
+/**/
             columnise: function (inputArray, numberOfcolumns) {
                 var length = inputArray.length;
                 var columnsArray = [];
