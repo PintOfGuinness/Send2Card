@@ -9,7 +9,8 @@
  * Main module of the application.
  */
 angular
-  .module('send2CardApp', [
+    .module('send2CardApp', [
+    'matchMedia',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -18,14 +19,14 @@ angular
     'ngTouch',
     'ui.bootstrap'
   ])
-/*  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/coupons.html',
-        controller: 'CouponsCtrl',
+    /*  .config(function ($routeProvider) {
+        $routeProvider
+          .when('/', {
+            templateUrl: 'views/coupons.html',
+            controller: 'CouponsCtrl',
 
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });*/
+          })
+          .otherwise({
+            redirectTo: '/'
+          });
+      });*/

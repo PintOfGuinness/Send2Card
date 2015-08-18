@@ -8,9 +8,11 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsController', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory, $scope) {
+    .controller('CouponsController', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory, $scope, screenSize) {
 
         var coupons = this;
+        var allFilteredCoupons = [];
+
         /*
                 var extraCareCardNumber = $location.search().eccardnum;*/
 
@@ -70,23 +72,26 @@ angular.module('send2CardApp')
             sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
             sortCouponsByExpiryDate(coupons.readyToUseCoupons);
 
-            coupons.notYetActionedDesktopColumns = columniseFactory.columnise(coupons.notYetActionedCoupons, 3);
-            coupons.notYetActionedTabletColumns = columniseFactory.columnise(coupons.notYetActionedCoupons, 2);
-            coupons.notYetActionedMobileColumn = columniseFactory.columnise(coupons.notYetActionedCoupons, 1);
-            coupons.notYetActionedFilteredMobileColumn = coupons.notYetActionedMobileColumn[0].slice(0, initialCouponsOnMobileLoad);
-            coupons.notYetActionedLoadMore = coupons.notYetActionedMobileColumn[0].length - initialCouponsOnMobileLoad;
-            if (coupons.notYetActionedLoadMore <= 0) {
-                $scope.hideNotYetActionedLoadMore = true;
-            }
+            coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
+            coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
 
-            coupons.readyToUseDesktopColumns = columniseFactory.columnise(coupons.readyToUseCoupons, 3);
-            coupons.readyToUseTabletColumns = columniseFactory.columnise(coupons.readyToUseCoupons, 2);
-            coupons.readyToUseMobileColumn = columniseFactory.columnise(coupons.readyToUseCoupons, 1);
-            coupons.readyToUseFilteredMobileColumn = coupons.readyToUseMobileColumn[0].slice(0, initialCouponsOnMobileLoad);
-            coupons.readyToUseLoadMore = coupons.readyToUseMobileColumn[0].length - initialCouponsOnMobileLoad;
-            if (coupons.readyToUseLoadMore <= 0) {
-                $scope.hideReadyToUseLoadMore = true;
-            }
+            /*            coupons.notYetActionedDesktopColumns = columniseFactory.columnise(coupons.notYetActionedCoupons, 3);
+                        coupons.notYetActionedTabletColumns = columniseFactory.columnise(coupons.notYetActionedCoupons, 2);
+                        coupons.notYetActionedMobileColumn = columniseFactory.columnise(coupons.notYetActionedCoupons, 1);
+                        coupons.notYetActionedFilteredMobileColumn = coupons.notYetActionedMobileColumn[0].slice(0, initialCouponsOnMobileLoad);
+                        coupons.notYetActionedLoadMore = coupons.notYetActionedMobileColumn[0].length - initialCouponsOnMobileLoad;
+                        if (coupons.notYetActionedLoadMore <= 0) {
+                            $scope.hideNotYetActionedLoadMore = true;
+                        }
+
+                        coupons.readyToUseDesktopColumns = columniseFactory.columnise(coupons.readyToUseCoupons, 3);
+                        coupons.readyToUseTabletColumns = columniseFactory.columnise(coupons.readyToUseCoupons, 2);
+                        coupons.readyToUseMobileColumn = columniseFactory.columnise(coupons.readyToUseCoupons, 1);
+                        coupons.readyToUseFilteredMobileColumn = coupons.readyToUseMobileColumn[0].slice(0, initialCouponsOnMobileLoad);
+                        coupons.readyToUseLoadMore = coupons.readyToUseMobileColumn[0].length - initialCouponsOnMobileLoad;
+                        if (coupons.readyToUseLoadMore <= 0) {
+                            $scope.hideReadyToUseLoadMore = true;
+                        }*/
         });
 
 
@@ -145,4 +150,9 @@ angular.module('send2CardApp')
             updateStateInCouponList(coupons.notYetActionedFilteredMobileColumn, state, barcode);
         };
 
+        /* Event triggered by any screen size change */
+        screenSize.on('xs, sm, md, lg', function (match) {
+            coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
+            coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
+        });
     });
