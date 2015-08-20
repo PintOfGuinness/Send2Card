@@ -2,7 +2,7 @@
     background-color: #F7F7FF;
     /* #E9E9E9; */
     Padding: 15px 20px 10px 20px;
-    margin: 5px -15px -15px -15px;
+    margin: 5px -15px -15px -18px;
 }
 .overlay {
     position: absolute;
@@ -11,7 +11,7 @@
     width: 90%;
     height: 100%;
     z-index: 10;
-    background-color: #d3d3d3;
+    background-color: #fff;
     /*dim the background*/
 }
 .text-red {
@@ -20,6 +20,12 @@
 .accordion-header:hover {
     text-decoration: underline;
     cursor: pointer;
+}
+
+/* Coupon Styling */
+.thick-border {
+    border: 3px solid #cc0000;
+    border-top: 0 none;
 }
 
 /*Andrew Dawson CSS*/

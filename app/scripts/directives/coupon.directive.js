@@ -40,6 +40,7 @@ angular.module('send2CardApp')
             }
 
             scope.sendCouponToCard = function () {
+                elem.addClass("thick-border");
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);

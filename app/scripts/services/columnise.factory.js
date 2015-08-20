@@ -13,25 +13,12 @@ angular.module('send2CardApp')
         // ...
 
         // Public API here
-
-        var numberOfcolumns;
-
         return {
             columnise: function (inputArray) {
-                var length = inputArray.length;
-                var columnsArray = [];
+                var numberOfColumns;
+                numberOfColumns = getNumberOfColumnsByScreenSize();
 
-                numberOfcolumns = getNumberOfColumnsByScreenSize();
-
-                /**/
-                for (var i = 0; i < numberOfcolumns; i++) {
-                    var column = [];
-                    for (var j = i; j < length; j += numberOfcolumns) {
-                        column.push(inputArray[j]);
-                    }
-                    columnsArray.push(column);
-                }
-                return columnsArray;
+                return getColumisedCoupons(numberOfColumns, inputArray);
             }
 
         };
@@ -51,5 +38,18 @@ angular.module('send2CardApp')
                 console.log("Screen Size: Default return 1");
                 return 1;
             }
+        }
+
+        function getColumisedCoupons(numberOfColumns, inputArray) {
+            var columnsArray = [];
+            var length = inputArray.length;
+            for (var i = 0; i < numberOfColumns; i++) {
+                var column = [];
+                for (var j = i; j < length; j += numberOfColumns) {
+                    column.push(inputArray[j]);
+                }
+                columnsArray.push(column);
+            }
+            return columnsArray;
         }
     });
