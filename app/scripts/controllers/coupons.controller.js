@@ -20,9 +20,9 @@ angular.module('send2CardApp')
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
         var initialCouponsOnMobileLoad = 1;
-        coupons.unSentCouponPath = "images/sendtocard.png";
-        coupons.sentCouponPath = "images/sendtocarddone.png";
-        coupons.couponPrinted = "images/printed.png";
+        coupons.unSentCouponPath = "images/sendtocardicon.png";
+        coupons.sentCouponPath = "images/senttocard.png";
+        coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
 
