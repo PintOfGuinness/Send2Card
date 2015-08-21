@@ -11,17 +11,15 @@ angular.module('send2CardApp')
     .factory('couponsManagerFactory', function (couponsService) {
 
         // Public API here
-        var couponsManager = {
-            
-            function getFilteredCoupons(extraCareCardNumber) {
-                return couponsService.getUnfilteredCoupons(extraCareCardNumber);
-            }
-        
-        
-            /*            getFilteredCoupons: getFilteredCoupons*/
-            /*            setCouponAsLoaded: setCouponAsLoaded,
-                        setCouponAsPrinted: setCouponAsPrinted*/
+        var couponsManager = function getFilteredCoupons(extraCareCardNumber) {
+            return couponsService.getUnfilteredCoupons(extraCareCardNumber);
         };
+
+
+        /*            getFilteredCoupons: getFilteredCoupons*/
+        /*            setCouponAsLoaded: setCouponAsLoaded,
+                    setCouponAsPrinted: setCouponAsPrinted*/
+
 
         return couponsManager;
 

@@ -18,7 +18,7 @@ angular.module('send2CardApp')
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
             }
-            
+
             if (scope.sendCouponOnStartup === 'true') {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
@@ -34,9 +34,12 @@ angular.module('send2CardApp')
                 attrs.$set("state", 2);
                 scope.updateState();
             }
-            
-            scope.updateState = function (){
-                scope.updateColumns({ state : attrs.state, barcode : attrs.barcode});
+
+            scope.updateState = function () {
+                scope.updateColumns({
+                    state: attrs.state,
+                    barcode: attrs.barcode
+                });
             }
 
             scope.sendCouponToCard = function () {
@@ -45,7 +48,7 @@ angular.module('send2CardApp')
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
             }
-            
+
             function sendCouponComplete(data) {
                 attrs.$set("state", data);
                 scope.updateState();
@@ -54,6 +57,21 @@ angular.module('send2CardApp')
 
             function sendCouponFailure(data) {
                 scope.state = data;
+            }
+
+            function singleCouponExpiryStatus(coupon) {
+
+                var today = new Date();
+                var expiresSoonRegion = new Date(today);
+                expiresSoonRegion.setDate(today.getDate() + 14);
+
+                var expiryDate = new Date(coupon.expiry_dt);
+
+                if (expiryDate < expiresSoonRegion) {
+                    coupon.expiresSoon = true;
+                } else {
+                    coupon.expiresSoon = false;
+                }
             }
 
         }

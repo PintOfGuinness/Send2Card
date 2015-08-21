@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default align-top">
     <div class="panel-body">
         <div class="pull-right">
 
@@ -28,17 +28,21 @@
 
         <p>
             <h4 class="">{{ title }}</h4> {{ description }}
-            <br>EXP {{ expiry }}
             <br>
-            <div ng-if="expiresSoon">
-                EXPIRES SOON
-            </div>
+            <br>
+            <div>
+                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span>
+                <strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }} </div>
+
         </p>
+
+        <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
+
+
+        <br>
 
 
         <p>
-            <br>
-            <br>
             <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span>  View Details</div></strong>
         </p>
         <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
