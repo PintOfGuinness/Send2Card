@@ -16,33 +16,45 @@
             </div>
 
         </div>
+        <div class="pull-right"><img src="images/dashedline.png" </img></div>
+
         <p>
             <h4 class="">{{ title }}</h4> {{ description }}
-            <br>EXP {{ expiry }}
             <br>
-            <div ng-if="expiresSoon">
-                EXPIRES SOON
-            </div>
+            <br>
+
+
+            <br>
+            <div>
+                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }} </div>
+
         </p>
 
+
+        <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
+        <br>
 
         <p>
-            <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
-        </p>
-        <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
-            <small>
+
+
+            <p>
+                <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
+            </p>
+
+            <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
+                <small>
                 <p>Coupon redeemable in store only*</p>
                 <p><b>Valid through:</b><b class="text-red"> {{ expiry }} </b>
                 <br/>
                     <b>Barcode/coupon code:</b><b class="text-red"> {{ barcode }} </b></p>
                 <p><b>Terms & Conditions: </b>{{ terms }}</p>
             </small>
-        </div>
+            </div>
+            <div ng-controller="PrintCouponModalController" class="pull-right">
+                <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
+                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print Offer</a>
+            </div>
 
-        <div class="pull-right" ng-controller="PrintCouponModalController">
-            <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
-            <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print Offer</a>
-        </div>
 
     </div>
 </div>
