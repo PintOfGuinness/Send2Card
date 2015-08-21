@@ -1,0 +1,132 @@
+{
+    "CUST_INF_RESP": {
+        "xtra_card": {
+            "XTRA_CARD_NBR": "4495"
+        },
+        "XTRACARE": {
+            "CPNS": {
+                "ROW": [{
+                    "cmpgn_type_cd": "C",
+                    "cmpgn_subtype_cd": "B",
+                    "cmpgn_id": "21071",
+                    "sku_nbr": "40043",
+                    "cpn_seq_nbr": "12345678907502",
+                    "cpn_dsc": "$3.99 off item (SKU: 695366)",
+                    "web_dsc": "",
+                    "cpn_terms_cd": "1",
+                    "cpn_terms_txt": "ExtraCare card must be presented to get these savings. Savings applied to total purchase with specified product. Excludes prescriptions, alcohol, milk, lottery, money orders, gift cards, postage stamps, pre-paid cards, and pseudoephedrine. No cash back. Tax charged on pre-coupon price where required. +CRV on beverages applied where applicable.",
+                    "max_redeem_amt": "3.99",
+                    "amt_type_cd": "D",
+                    "pct_off_amt": "",
+                    "expir_dt": "2015-10-30",
+                    "view_actl_dt": "",
+                    "prnt_actl_dt": "",
+                    "load_actl_dt": "",
+                    "redm_actl_dt": "",
+                    "new_cpn_ind": "N",
+                    "viewable_ind": "Y",
+                    "printable_ind": "N",
+                    "loadable_ind": "Y",
+                    "redeemable_ind": "N",
+                    "ever_web_redeemable_ind": "N",
+                    "store_nbr": "",
+                    "store_name": ""
+                }, {
+                    "cmpgn_type_cd": "C",
+                    "cmpgn_subtype_cd": "B",
+                    "cmpgn_id": "21071",
+                    "sku_nbr": "40044",
+                    "cpn_seq_nbr": "12345678907504",
+                    "cpn_dsc": "$5 off item (SKU: 687724)",
+                    "web_dsc": "",
+                    "cpn_terms_cd": "1",
+                    "cpn_terms_txt": "ExtraCare card must be presented to get these savings. Savings applied to total purchase with specified product. Excludes prescriptions, alcohol, milk, lottery, money orders, gift cards, postage stamps, pre-paid cards, and pseudoephedrine. No cash back. Tax charged on pre-coupon price where required. +CRV on beverages applied where applicable.",
+                    "max_redeem_amt": "5.00",
+                    "amt_type_cd": "D",
+                    "pct_off_amt": "0",
+                    "expir_dt": "2015-10-30",
+                    "view_actl_dt": "",
+                    "prnt_actl_dt": "",
+                    "load_actl_dt": "",
+                    "redm_actl_dt": "",
+                    "new_cpn_ind": "N",
+                    "viewable_ind": "Y",
+                    "printable_ind": "N",
+                    "loadable_ind": "Y",
+                    "redeemable_ind": "N",
+                    "ever_web_redeemable_ind": "N",
+                    "store_nbr": "",
+                    "store_name": ""
+                }, {
+                    "cmpgn_type_cd": "E",
+                    "cmpgn_subtype_cd": "S",
+                    "cmpgn_id": "38171",
+                    "sku_nbr": "41104",
+                    "cpn_seq_nbr": "12345678907501",
+                    "cpn_dsc": "$1.50 Off Womens Dove Deodorant (excl. Invisible Solid and Trial)",
+                    "web_dsc": "WINTER 2013 SPENDING:",
+                    "cpn_terms_cd": "1",
+                    "cpn_terms_txt": "ExtraCare card must be presented to get these savings. Savings applied to total purchase with specified product. Excludes prescriptions, alcohol, milk, lottery, money orders, gift cards, postage stamps, pre-paid cards, and pseudoephedrine. No cash back. Tax charged on pre-coupon price where required. +CRV on beverages applied where applicable.",
+                    "max_redeem_amt": "1.00",
+                    "amt_type_cd": "D",
+                    "pct_off_amt": "0",
+                    "expir_dt": "2015-10-30",
+                    "view_actl_dt": "",
+                    "prnt_actl_dt": "",
+                    "load_actl_dt": "",
+                    "redm_actl_dt": "",
+                    "new_cpn_ind": "N",
+                    "viewable_ind": "Y",
+                    "printable_ind": "N",
+                    "loadable_ind": "Y",
+                    "redeemable_ind": "N",
+                    "ever_web_redeemable_ind": "Y",
+                    "store_nbr": "",
+                    "store_name": ""
+                }, {
+                    "cmpgn_type_cd": "E",
+                    "cmpgn_subtype_cd": "S",
+                    "cmpgn_id": "38171",
+                    "sku_nbr": "41104",
+                    "cpn_seq_nbr": "12345678907503",
+                    "cpn_dsc": "$1.50 Off Womens Dove Deodorant (excl. Invisible Solid and Trial)",
+                    "web_dsc": "WINTER 2013 SPENDING:",
+                    "cpn_terms_cd": "1",
+                    "cpn_terms_txt": "ExtraCare card must be presented to get these savings. Savings applied to total purchase with specified product. Excludes prescriptions, alcohol, milk, lottery, money orders, gift cards, postage stamps, pre-paid cards, and pseudoephedrine. No cash back. Tax charged on pre-coupon price where required. +CRV on beverages applied where applicable.",
+                    "max_redeem_amt": "1.00",
+                    "amt_type_cd": "D",
+                    "pct_off_amt": "0",
+                    "expir_dt": "2015-10-30",
+                    "view_actl_dt": "",
+                    "prnt_actl_dt": "",
+                    "load_actl_dt": "",
+                    "redm_actl_dt": "",
+                    "new_cpn_ind": "N",
+                    "viewable_ind": "Y",
+                    "printable_ind": "N",
+                    "loadable_ind": "Y",
+                    "redeemable_ind": "N",
+                    "ever_web_redeemable_ind": "Y",
+                    "store_nbr": "",
+                    "store_name": ""
+                }]
+            },
+            "PREFS": {
+                "PREF": [{
+                    "BEAUTY_CLUB": {
+                        "ENROLLED": "N"
+                    }
+                }, {
+                    "PAPERLESS_CPNS": {
+                        "ENROLLED": "N"
+                    }
+                }]
+            },
+            "FEATURES": {
+                "PAPERLESS_CPNS": {
+                    "ENROLLED": "N"
+                }
+            }
+        }
+    }
+}
