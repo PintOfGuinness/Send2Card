@@ -13,6 +13,7 @@ angular.module('send2CardApp')
         return function (input, couponNumber, excludeMode) {
             var output = [];
 
+            
             if (excludeMode) {
                 angular.forEach(input, function (eachCoupon, index) {
                     if (input[index].cpn_seq_nbr !== couponNumber) {
@@ -27,6 +28,7 @@ angular.module('send2CardApp')
                         cpn_seq_nbr: couponNumber
                     }, true)[0];
                 couponExpiresSoon(output);
+
             }
             return output;
         };
@@ -81,7 +83,7 @@ angular.module('send2CardApp')
         }
 
         function couponExpiresSoon(eachCoupon) {
-            console.log("hitting expiry function in the filter");
+            console.log("hitting expiry function in the filter: " + eachCoupon.expir_dt);
             var today = new Date();
             var expiresSoonRegion = new Date(today);
             expiresSoonRegion.setDate(today.getDate() + 14);
@@ -89,9 +91,10 @@ angular.module('send2CardApp')
 
             if (expiryDate < expiresSoonRegion) {
                 eachCoupon.expiresSoon = true;
+                           console.log("Expires soon");
             } else {
                 eachCoupon.expiresSoon = false;
+                                           console.log("Not Expires soon");
             }
-            return eachCoupon.expiresSoon;
         }
     });
