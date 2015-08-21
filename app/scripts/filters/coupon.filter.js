@@ -56,6 +56,7 @@ angular.module('send2CardApp')
                     eachCoupon.state = 0;
                 }
             }
+            couponExpiresSoon(eachCoupon);
         }
 
         function couponRedeemed(eachCoupon) {

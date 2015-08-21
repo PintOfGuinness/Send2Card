@@ -58,22 +58,6 @@ angular.module('send2CardApp')
             function sendCouponFailure(data) {
                 scope.state = data;
             }
-
-            function singleCouponExpiryStatus(coupon) {
-
-                var today = new Date();
-                var expiresSoonRegion = new Date(today);
-                expiresSoonRegion.setDate(today.getDate() + 14);
-
-                var expiryDate = new Date(coupon.expiry_dt);
-
-                if (expiryDate < expiresSoonRegion) {
-                    coupon.expiresSoon = true;
-                } else {
-                    coupon.expiresSoon = false;
-                }
-            }
-
         }
 
         return {
