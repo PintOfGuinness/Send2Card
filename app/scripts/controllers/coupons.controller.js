@@ -13,10 +13,11 @@ angular.module('send2CardApp')
         var coupons = this;
         var allFilteredCoupons = [];
 
-        /*
-                var extraCareCardNumber = $location.search().eccardnum;*/
 
-        var extraCareCardNumber = "12345678";
+        var extraCareCardNumber = $location.search().eccardnum;
+
+        /*
+                var extraCareCardNumber = "12345678";*/
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
         var initialCouponsOnMobileLoad = 1;
@@ -44,6 +45,28 @@ angular.module('send2CardApp')
             window.print();
         }
 
+
+
+        coupons.singleCouponExpiryStatus = function (coupon) {
+            Console.log("checking if the single coupon is expiring soon");
+            var today = new Date();
+            var expiresSoonRegion = new Date(today);
+            expiresSoonRegion.setDate(today.getDate() + 14);
+
+            var expiryDate = new Date(coupon.expiry_dt);
+
+            if (expiryDate < expiresSoonRegion) {
+                coupon.expiresSoon = true;
+            } else {
+                coupon.expiresSoon = false;
+            }
+
+            return coupon.expiresSoon;
+        }
+
+
+
+
         coupons.notYetActionedLoadMoreCoupons = function () {
             coupons.notYetActionedFilteredMobileColumn = coupons.notYetActionedMobileColumn[0];
             $scope.hideNotYetActionedLoadMore = true;
@@ -65,6 +88,9 @@ angular.module('send2CardApp')
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             //allCoupons: List of Redeemable Coupons
             addExpiresSoon(allCoupons);
+
+
+
             //1. Check load_actl_dt and print_actl_dt
             sortByReadyToUse(allCoupons);
             //if they both do not exist, add to NotYetActionedArray
