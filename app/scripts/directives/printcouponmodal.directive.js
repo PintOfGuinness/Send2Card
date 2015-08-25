@@ -12,9 +12,7 @@ angular.module('send2CardApp')
         restrict: 'E',
         templateUrl: 'views/print-modal.html',
         controller: function ($scope) {
-          $scope.selected = {
-            item: $scope.items[0] 
-          };
+
         }
     };
 });

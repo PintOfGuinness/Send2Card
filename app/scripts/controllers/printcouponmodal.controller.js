@@ -9,7 +9,7 @@
  */
 angular.module('send2CardApp')
     .controller('PrintCouponModalController', function ($scope, $modal, $log) {
-        $scope.items = ['item1', 'item2', 'item3'];
+
         $scope.open = function (size) {
             var modalInstance;
             var modalScope = $scope.$new();
