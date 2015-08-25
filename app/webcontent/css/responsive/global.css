@@ -1,0 +1,1262 @@
+/************************************************
+	Global Utility Classes
+************************************************/
+.nopadding, 
+.no-gutter {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+ul.inline li {
+	display: inline-block;
+	float:left;
+}
+ul.inline li li {
+  float: none;
+}
+.divider {
+	margin:0 4px;
+}
+.vert-top {
+  vertical-align: top;
+}
+.hidden960 {
+  display: none;
+}
+.largeRedBtn {
+  background-color: #d61818;
+  border-radius: 3px;
+  color: #ffffff;
+  display: block;
+  font-size: 1.3em;
+  font-weight: bold;
+  height: 45px;
+  line-height: 3em;
+  text-align: center;
+  width: 220px;
+}
+.largeRedBtn:hover, .largeRedBtn:focus {
+  color: #ffffff;
+}
+
+.introHeader {
+  height: 91px;
+}
+
+
+/************************************************
+  Table: Portrait & Landscape 
+************************************************/
+@media (orientation : portrait) {
+}
+
+
+
+/************************************************
+	Mobile: Less then 641px
+************************************************/
+
+  /* Very Sepcifc overwrite for Mobile */
+  @media (max-width: 640px) {
+    /* Responsive Modal */
+    #cvs-overlay-two, #slideout, #addToCart-overlay {
+      left: 0 !important;
+      position: fixed !important;
+      top: 0 !important;
+      width: 86% !important;
+      background-color: #ffffff;
+      display: none;
+      z-index: 99999;
+    }
+    #addToCart-overlay {
+      height: 100%;
+    }
+    #dDealDetails {
+      float: left;
+      padding: 10px 0;
+    }
+    #cvs-overlay-two h1,
+    #slideout h1 {
+      font-size: 1.4em;
+      font-weight: normal;
+      margin: 0 0 15px 20px;
+    }
+    #cvs-overlay-two #overlayClose,
+    #slideout #closeSlideout,
+    #overlayCloseDeal {
+      background: url("/webcontent/images/common/modalGreyX.png") no-repeat scroll right center transparent;
+      height: 30px;
+      opacity: 1;
+      position: absolute;
+      right: 20px;
+      text-indent: -9999px;
+      top: 5px;
+      width: 30px;
+    }
+    #overlayLoadingImg {
+      text-align: center;
+    }
+    #dDealWrapper {
+      background-color: #f0f0f0;
+      border-bottom: 1px solid #e4e4e4;
+      border-top: 1px solid #e4e4e4;
+      float: left;
+      padding: 5px 0 10px 20px;
+      width: 100%;
+    }
+    #dDealRightSide {
+      display: none;
+    }
+    .dDealType {
+      color: #cc0000;
+      float: left;
+      margin: 0 0 10px;
+      width: 100%;
+    }
+    .dDealTypeLeft {
+      float: left;
+    }
+    .dDealTypeRight {
+      float: left;
+    }
+    .sp1 {
+      font-size: 2em;
+      font-weight: bold;
+      line-height: 2em;
+    }
+    .sp2 {
+      font-size: 3.875em;
+      font-weight: bold;
+      line-height: 1em;
+    }
+    .sp3 {
+      font-size: 3em;
+      font-weight: bold;
+    }
+    .sp4 {
+      font-size: 6.938em;
+      font-weight: bold;
+      line-height: 1em;
+    }
+    .sp5 {
+      font-size: 3.5em;
+      font-weight: bold;
+      line-height: 1.2em;
+    }
+    .sp6 {
+      font-size: 2.1em;
+      font-weight: bold;
+    }
+    .sp7 {
+      font-size: 33px;
+      font-weight: bold;
+      line-height: 1.2em;
+      position: relative;
+      top: -9px;
+    }
+    .dDealSummary {
+      font-size: 1.188em;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .dDealShopOthers .dDealAllDeals {
+      margin-bottom: 8px;
+    }
+    #dDealFooter {
+      float: left;
+      padding: 30px 20px 0;
+    }
+    .dDealOffer {
+      margin-bottom: 5px;
+      float: left;
+      font-weight: bold;
+    }
+    .dDealDisclaimer {
+      clear: both;
+      margin-bottom: 5px;
+    }
+  }
+
+#dMHeader {
+	padding-top:10px;
+	padding-bottom:10px;
+}
+
+/* Very Top of header*/
+#dMUserInfo {
+	text-align: right;
+	height:27px;
+}
+#dMUserInfo a {
+	text-decoration: underline;
+}
+#dMUserInfo a:hover {
+	color: #585858;
+}
+#iMLogo {
+	width:70px;
+}
+
+/* Menu */
+#dMMenu {
+	position: relative;
+    z-index: 1;
+}
+#dMMenu ul li {
+	width: 25%;
+	border:1px solid #cdcdcd;
+  background: #fefefe; /* Old browsers */
+  background: -moz-linear-gradient(top,  #fefefe 0%, #d3d3d3 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fefefe), color-stop(100%,#d3d3d3)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #fefefe 0%,#d3d3d3 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #fefefe 0%,#d3d3d3 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #fefefe 0%,#d3d3d3 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #fefefe 0%,#d3d3d3 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fefefe', endColorstr='#d3d3d3',GradientType=0 ); /* IE6-9 */
+
+}
+#dMMenu ul li.active {
+	background-color: white;
+    height: 55px;
+    border-bottom: 0px;
+    background: #ffffff none repeat scroll 0 0;
+}
+#dMMenu ul li:first-child.active {
+	-webkit-border-bottom-left-radius: 0px;
+	-moz-border-radius-bottomleft: 0px;
+	border-bottom-left-radius: 0px;
+}
+#dMMenu ul li a {
+	display: block;
+    text-align: center;
+    padding: 3px 0 1px;
+}
+#dMMenu ul li a span {
+	float: left;
+    width: 100%;
+}
+#dMMenu ul li a img {
+	width:30px;
+}
+#dMMenu ul li:first-child {
+	-webkit-border-top-left-radius: 8px;
+	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
+	-webkit-border-bottom-left-radius: 8px;
+	-moz-border-radius-bottomleft: 8px;
+	border-bottom-left-radius: 8px;
+}
+#dMMenu ul li:last-child {
+	-webkit-border-top-right-radius: 8px;
+	-moz-border-radius-topright: 8px;
+	border-top-right-radius: 8px;
+	-webkit-border-bottom-right-radius: 8px;
+	-moz-border-radius-bottomright: 8px;
+	border-bottom-right-radius: 8px;
+}
+
+/* Menu Fly Downs */
+#uMMenu {
+    margin-top: -1px;
+    position: absolute;
+    z-index: 3;
+   display: none;
+   width:100%;
+}
+#uMMenu li {
+	border-bottom:1px solid #cdcdcd;
+	border-right:1px solid #cdcdcd;
+	background-color:#f1f1f1;
+	width:50%;
+	height: 40px;
+}
+#uMMenu li.lTopNav:nth-child(1),
+#uMMenu li.lTopNav:nth-child(2) {
+	border-top:1px solid #cdcdcd;
+}
+#uMMenu li.lTopNav:nth-child(2),
+#uMMenu li.lTopNav:nth-child(4),
+#uMMenu li.lTopNav:nth-child(6),
+#uMMenu li.lTopNav:nth-child(8) {
+	border-right:0px;
+}
+#uMMenu li a {
+	display: block;
+	font-weight: bold;
+}
+#uMMenu li a:hover {
+	color: #585858;
+    text-decoration: none;
+}
+#uMMenu li a img {
+	height: 35px;
+    vertical-align: middle;
+}
+
+#uMMenu li a .dMMenuSprite {
+	background-image: url("../imgs/new/m-menu-sprite.png");
+	background-size: 35px auto;
+    display: inline-block;
+    height: 40px;
+    vertical-align: middle;
+    width: 35px;
+}
+
+/* Menu Search Fly Down*/
+#dMSearch {
+	margin-top: -1px;
+  position: absolute;
+  z-index: 99;
+	border-bottom:1px solid #cdcdcd;
+	border-top:1px solid #cdcdcd;
+	background-color:#f1f1f1;
+	width: 100%;
+	display: none;
+}
+#dMSearch form {
+	padding: 10px;
+}
+#dMSearch form #IMSearchInput {
+	height: 36px;
+    padding-left: 5px;
+    width: 100%;
+}
+#dMSearch form #BMSearchBoxSumit {
+	background-color: #cc0000;
+    float: right;
+    height: 35px;
+    position: absolute;
+    right: 10px;
+    width: 40px;
+    top: 10px;
+}
+#dMSearch form #BMSearchBoxSumit img {
+	height: 25px;
+    width: 30px;
+    margin-top:5px;
+}
+
+#dHlinksB {
+  clear: both;
+  float: none;
+  height: 35px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 0 0;
+}
+#dHlinksB li {
+  float: none;
+}
+/* My CVS Store Locator */
+#mainWrapper #dMyCVS {
+  width: 100%;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0 0;
+}
+#mainWrapper #dMyCVS .cvs-storepickup-icon {
+  float: left;
+  width: 35%;
+  position: relative;
+  font-size: 15px;
+}
+#mainWrapper #dMyCVS .cvs_store_logo_selector {
+  float: left;
+  font-size: 14px;
+}
+#mainWrapper #dMyCVS .cvs_store_logo_selector p {
+  margin: 0px;
+  padding: 0px;
+}
+#mainWrapper #dMyCVS .cvs_store_logo_selector .chgStore br {
+  display: none;
+}
+#mainWrapper #dMyCVS .cvs_store_logo_selector .chgStore a {
+  text-decoration: underline;
+}
+
+
+/* Footer */
+#dMSocial {
+  border-bottom: 1px solid #cccccc;
+  padding: 10px 0;
+  margin-bottom: 4px;
+}
+#dMSocial #sFollow {
+  color:#585858;
+  font-size: 1.2em;
+  position: relative;
+  top: -10px;
+}
+#dMSocial img {
+  width: 30px;
+}
+
+
+
+/************************************************
+	Tablet: ≥641px
+************************************************/
+@media (min-width: 641px) {
+
+	/* Main Header */
+	#dMainHeader {
+		background:url("webcontent/images/common/bg-top-nav.png") repeat-x 0 0 ;
+		position: relative;
+		z-index: 9999;
+	}
+  #iLogo {
+    position: relative;
+    left: 13px;
+    top: 5px;
+  }
+  #sMyCvsIcon {
+    background: url("webcontent/images/common/my-cvs-icon.png") no-repeat scroll 0 0 transparent;
+    display: inline-block;
+    height: 37px;
+    left: 5px;
+    position: absolute;
+    top: 72px;
+    width: 37px;
+  }
+	#dHeaderTabs {
+		float: left;
+	    width: 383px;
+	}
+	#dHeaderTabs ul li {
+		height: 34px;
+		text-indent: -9999px;
+	}
+
+  #dHeaderTabs ul li:nth-child(1) {
+		background:url("webcontent/images/common/cvs.png") no-repeat center -34px;
+		width: 106px;
+	}
+  #dHeaderTabs ul  li:nth-child(2){
+		background:url("webcontent/images/common/minute-clinic_new.png") no-repeat center -34px;
+		width: 90px;
+	}
+  #dHeaderTabs ul  li:nth-child(3) {
+		background:url("webcontent/images/common/photo_new.png") no-repeat center -34px;
+		width: 92px;
+	}
+  #dHeaderTabs ul  li:nth-child(4) {
+		background:url("/webcontent/images/common/optical.png") no-repeat center -34px;
+		width: 87px;
+	}
+	#dHeaderTabs ul li.selected {
+		background-position: 0 0;
+	}
+
+	/* Main Header Links */
+	li#weeklyAd {
+		height: 34px;
+		padding-top: 10px;
+		background-position: -2px 1px;
+
+	}
+	#dHlinksA {
+		float: right;
+    margin-right: 5px;
+	}
+  #dHlinksB li:last-child {
+    display: none;
+  }
+	#dHlinksC li:last-child {
+		display: none;
+	}
+	#dHlinksC {
+    float: right;
+	  margin-left: 70px;
+	  padding-top: 10px;
+    margin-bottom: 15px;
+    width: 155px;
+	}
+	@media (max-width: 780px) {
+		#dHlinksC {
+			width: 120px;
+		}
+    .loggedIn #dHlinksC li.lTopNav:nth-child(3) {
+      display: none;
+    }
+    .loggedIn #dHlinksC li.divider:nth-child(5) {
+      text-indent: 0px;
+    }
+	}
+  #dHlinksC .divider {
+    display: none;
+  }
+  .loggedIn #dHlinksC .divider {
+    display: inline-block;
+  }
+  .loggedIn #dHlinksC li.lTopNav:nth-child(5), .loggedIn #dHlinksC li:last-child {
+    text-indent: -999px;
+  }
+  #dHlinksA a, #dHlinksB a, #dHlinksC a {
+    text-decoration: underline;
+  }
+
+		/* Break point in header */
+		@media (min-width: 691px) {
+		/*	#dHlinksB li:last-child {
+				display:inline-block;
+			}
+			#dHlinksB {
+				margin-left: 0px;
+			}*/
+			#dHlinksC {
+				float: right;
+				margin-right: 15px;
+
+			}
+		}
+  #dHeadBcc {
+    display: none;
+  }
+
+	/* Main Nav */
+	#dMainNav .left {
+	    background: url("/webcontent/images/common/responsive-header/tabs-lrg-left.png") no-repeat scroll 0 0 transparent;
+	    height: 105px;
+	    width: 11px;
+	    float: left;
+	}
+	#dMainNav .right {
+	    background: url("/webcontent/images/common/responsive-header/tabs-lrg-right.png") no-repeat scroll 0 0 transparent;
+	    height: 105px;
+	    width: 12px;
+	    float: left;
+	}
+	#dMainNav nav {
+	    background: url("/webcontent/images/common/responsive-header/tabs-lrg-center.png") repeat-x scroll 0 0 transparent;
+	    height: 105px;
+	    width: 94%;
+	    float: left;
+	}
+	/*#dMainNav nav li.lTopNav a {
+		  color: #858585;
+	    display: block;
+	    font-size: 1.5em;
+	    height: 53px;
+	    line-height: 34px;
+	    padding-top: 10px;
+	    width: 100%;
+	}*/
+  #dMainNav nav li.lTopNav #pharmacy-flyout-tab,
+  #dMainNav nav li.lTopNav #shop-flyout-tab,
+  #dMainNav nav li.lTopNav #deals-flyout-tab,
+  #dMainNav nav li.lTopNav #extracare-flyout-tab {
+    color: #858585;
+    display: block;
+    font-size: 1.5em;
+    height: 53px;
+    line-height: 34px;
+    padding-top: 10px;
+    width: 100%;
+  }
+/*  #dMainNav nav li.lTopNav:hover a {
+    text-decoration: none;
+    color: #c90000;
+  }*/
+  #dMainNav nav li.lTopNav:hover #pharmacy-flyout-tab,
+  #dMainNav nav li.lTopNav:hover #shop-flyout-tab,
+  #dMainNav nav li.lTopNav:hover #deals-flyout-tab,
+  #dMainNav nav li.lTopNav:hover #extracare-flyout-tab {
+    text-decoration: none;
+    color: #c90000;
+  }
+	#dMainNav .tab-icons {
+	    float: left;
+   		height: 35px;
+    	margin: 0 5px 0 4px;
+      position: absolute;
+	}
+  #dMainNav .sNavText {
+    margin-left: 35px;
+  }
+  #dMainNav .col4 .sNavText {
+    margin-left: 45px;
+  }
+	#dMainNav nav li.lTopNav:nth-child(1) {
+		width: 27%;
+	}
+	#dMainNav nav li.lTopNav:nth-child(1) .tab-icons {
+		background: url("/webcontent/images/common/responsive-header/pharmacy-icon.png") no-repeat 0 0;
+		width: 24px;
+	}
+	#dMainNav nav li.lTopNav:nth-child(3) {
+		width: 22%;
+	}
+	#dMainNav nav li.lTopNav:nth-child(3) .tab-icons {
+		background: url("/webcontent/images/common/responsive-header/shop-icon.png") no-repeat 0 0;
+		width: 29px;
+	}
+	#dMainNav nav li.lTopNav:nth-child(5) {
+		width: 21%;
+	}
+	#dMainNav nav li.lTopNav:nth-child(5) .tab-icons {
+		background: url("/webcontent/images/common/responsive-header/deals-icon.png") no-repeat 0 0;
+		width: 25px;
+	}
+	#dMainNav nav li.lTopNav:nth-child(7) {
+		width: 29%;
+	}
+	#dMainNav nav li.lTopNav:nth-child(7) .tab-icons {
+		background: url("/webcontent/images/common/responsive-header/ec-icon.png") no-repeat 0 0;
+		width: 38px;
+	}
+  #dMainNav nav li.lTopNav:nth-child(7) span {
+    position: absolute;
+  }
+	#dMainNav nav li .dNavDivider {
+		background: url("/webcontent/images/common/responsive-header/tab-bar.png") no-repeat 0 0;
+		width: 1px;
+		height: 46px;
+	}
+	
+	#dMainNav nav li#lMainNavSearch {
+		width: 72%;
+		float: left;
+		height: 54px;
+	}
+	#dMainNav nav li#lMainNavSearch #searchbox {
+		margin: 10px 0 0 12px;
+		width: 100%;
+		float: left;
+    height: 22px;
+	}
+	#dMainNav nav li#lMainNavSearch #bSearchBoxSubmit {
+		float: right;
+    position: relative;
+    right: -8px;
+    top: -16px;
+	}
+  /* Main Menu drop downs */
+  #dMainNav nav li .sublevel {
+    display: none;
+  }
+  #dMainNav li .sublevel {
+    background: transparent url("/webcontent/images/common/bg-shop-pane.png") no-repeat scroll 0 0;
+    height: 503px;
+    left: -103px;
+    position: absolute;
+    top: 73px;
+    width: 959px;
+    z-index: 10;
+  }
+  #dMainNav li .sublevel {
+    display: none;
+  }
+  #dMainNav .col1 .sublevel {
+    background: transparent url("/webcontent/images/common/bg-pharmacy-pane.png") no-repeat scroll 0 0 !important;
+    height: 465px !important;
+  }
+  #dMainNav nav .col2 .sublevel-nav li > a:hover, #dMainNav nav .col2 .sublevel-nav li > a.hover,
+  #dMainNav nav .col3 .sublevel-nav li > a:hover, #dMainNav nav .col3 .sublevel-nav li > a.hover,
+  #dMainNav nav .col4 .sublevel-nav li > a:hover, #dMainNav nav .col4 .sublevel-nav li > a.hover   {
+    /* TODO */
+     /* background-color: #cc0000 !important;*/
+  }
+  #dMainNav nav .col1 .sublevel-nav li > a:hover, #dMainNav nav .col1 .sublevel-nav li > a.hover {
+    /* TODO */
+      /*background-color: #0099cc !important;*/
+  }
+  #dMainNav nav .sublevel-nav > li > a:hover, #dMainNav nav .sublevel-nav li > a.hover, #dMainNav nav li.lTopNav:hover .sublevel-nav li > a.hover, #dMainNav nav li.lTopNav:hover .sublevel-nav li > a:hover {
+    background: rgba(0, 0, 0, 0) url("/webcontent/images/common/arrow-white.png") no-repeat scroll 180px center;
+    color: #fff;
+  }
+  .sublevel-nav {
+    left: 11px;
+    position: absolute;
+    top: 17px;
+    width: 195px;
+  }
+  .menu_footer_img_pharmacy {
+    border: 0 solid #ccc;
+    height: 90px;
+    position: absolute;
+    right: -742px;
+    top: 331px;
+    width: 728px;
+    z-index: 20;
+  }
+  .sublevel-nav li {
+    list-style: outside none none;
+    width: 195px;
+  }
+  #dMainNav nav li.lTopNav li a, #dMainNav nav li.lTopNav:hover .sublevel-nav li a {
+    /* TODO */
+/*    background-color: #ededed;
+    border-bottom: 2px solid #ffffff;
+    color: #585858;
+    display: inline-block;
+    font-weight: bold;
+    font-size: inherit;
+    height: auto;
+    line-height: 28px;
+    padding: 0 0 0 10px;
+    text-decoration: none;*/
+    width: 195px;
+  }
+  .col1 div.menu-data-load-cont {
+    height: 392px !important;
+  }
+  div.menu-data-load-cont {
+    height: 430px;
+    left: 207px;
+    overflow: hidden;
+    position: absolute;
+    top: -4px;
+    width: 732px;
+  }
+
+
+
+
+
+  /* Mini Cart New */
+  #dMiniCart {
+    float: right;
+    position: relative;
+    right: 8%;
+    top: -54px;
+  }
+  #dMiniCart #aMiniCartBtn {
+    background: url("/webcontent/images/common/responsive-header/cart-button-short.png") no-repeat 0 -4px;
+    height: 44px;
+    width: 96px;
+    display: block;
+  }
+  #dMiniCart #aMiniCartBtn.full {
+    background-position: 0 -50px;
+  }
+  #dMiniCart #aMiniCartBtn.full .countHolder {
+    display: block;
+  }
+  #dMiniCart #aMiniCartBtn .countHolder {
+      height: 21px;
+      left: 73px;
+      overflow: hidden;
+      position: relative;
+      top: -4px;
+      width: 48px;
+      display: none;
+  }
+  #dMiniCart #aMiniCartBtn .countHolder .start, #dMiniCart #aMiniCartBtn .countHolder .end {
+    background: url("/webcontent/images/common/cart-button-items.png") no-repeat scroll 0 0 transparent;
+    width: 6px;
+  }
+  #dMiniCart #aMiniCartBtn .countHolder span {
+    display: block;
+    float: left;
+    height: 21px;
+  }
+  #dMiniCart #aMiniCartBtn .countHolder .end {
+    background-position: -6px 0;
+  }
+  #dMiniCart #aMiniCartBtn .countHolder .wrap {
+    background: url("/webcontent/images/common/cart-button-items-x.png") repeat-x scroll 0 0 transparent !important;
+    color: #cc0000;
+    font-weight: bold;
+    line-height: 21px;
+    padding: 0;
+    text-decoration: none;
+    text-indent: 0 !important;
+  }
+  #flyoutcart {
+    visibility: hidden;
+  }
+  /* /Mini Cart New  */
+
+
+
+  /* Old Mini Cart CSS in responsive */
+  #dNavWrapper div.col3 {
+    float: right;
+    position: relative;
+    right: 8%;
+    top: -58px;
+  }
+  #dNavWrapper div.col3 > a {
+    background: transparent url('/webcontent/images/common/responsive-header/cart-button-short.png') no-repeat scroll 0 0;
+    height: 50px;
+    width: 95px;
+    display:block;
+  }
+  #dNavWrapper div.col3 a.full{
+    display:inline-block;
+    background-position: 0 -49px;
+    position: relative;
+    z-index:3;
+  }
+  #dNavWrapper div.col3 a.full .countHolder span {
+    display: block;
+    height: 21px;
+    float: left;
+  }
+  #dNavWrapper div.col3 a.full .countHolder {
+    display: block;
+    height: 21px;
+    left: 81px;
+    overflow: hidden;
+    position: relative;
+    top: -4px;
+    width: 48px;
+  }
+  #dNavWrapper div.col3 a.full span.start,#dNavWrapper div.col3 a.full span.end {
+    background: url('/webcontent/images/common/cart-button-items.png') no-repeat;
+    width: 6px;
+  }
+  #dNavWrapper div.col3 a.full span.wrap {
+    background: url('/webcontent/images/common/cart-button-items-x.png') repeat-x !important;
+    color: #cc0000;
+    font-weight: bold;
+    text-indent: 0 !important;
+    text-decoration: none;
+    padding: 0;
+    line-height: 21px;
+  }
+  #dNavWrapper div.col3 a.full span.end {
+    background-position: -6px 0 !important;
+  }
+  #dNavWrapper div.col3 a.full:hover * {
+    color: #990000 !important;
+  }
+  #dNavWrapper #shoppingCartContainer .sublevel .introHeader {
+    height: 91px;
+  }
+  #shoppingCartContainer #flyoutcart.sublevel {
+    top: -23px;
+  }
+  /* End of Old Mini Cart CSS in responsive */
+
+
+  /* Header Store Locator */
+  #dMainHeader #dNavWrapper #dMyCVS {
+    margin-bottom: 5px;
+    width:auto;
+    display: table;
+  }
+
+  /* Hide Mobile Store Locator */
+  #mainWrapper #dMyCVS {
+    display: none !important;
+  }
+
+
+
+  /* Footer */
+  #dFooterWrapper {
+    background: url("/webcontent/images/common/bg-footerOuterWrap.jpg") repeat-x scroll 0 0 transparent;
+    margin-top: 45px;
+  }
+  #dFooter {
+    background: url("/webcontent/images/common/footer-bg.jpg") no-repeat scroll center top transparent;
+    position: relative;
+  }
+  #footer-links {
+    width:100% !important;
+  }
+
+  #dFooter #dMSocial {
+    border: none;
+  }
+  #dFooter #dMSocial #sFollow {
+    font-size: 1em;
+    margin-right: 20px;
+  }
+  #dFooter #dMSocial img {
+    width: 25px;
+  }
+  #dFooter #bNewsLetterSubmit {
+    background: url("/webcontent/images/common/go-button.png") no-repeat scroll 0 0 transparent;
+    height: 18px;
+    text-indent: -9999px;
+    width: 34px;
+  }
+  #dFooter .footer-column {
+    width: 20%;
+    float: left;
+  }
+  #dFooterFeedback {
+    float: right;
+  }
+  #dFooter .promoLinkred {
+      background: url("/webcontent/images/common/arrow-red-00.png") no-repeat scroll right center transparent;
+      color: #cc0000;
+      font-weight: bold;
+      padding: 0 0.833em 0 0;
+      text-decoration: none;
+  }
+  #footerMenuWrapper #footer-links {
+    width:100%;
+  }
+
+  #footer-links div.footer-column {
+    width: 20%;
+  }
+
+
+  /* Simple Overlay Style Two Responsive Modal */
+  #overlayLoadingImg {
+    margin: 20px auto auto;
+    overflow: hidden;
+    text-align: center;
+    width: 100%;
+  }
+  #cvs-overlay-two, #slideout {
+    background-color: #ffffff;
+    display: none;
+    z-index: 10001;
+    position: fixed;
+    max-height: 500px;
+    overflow-y: scroll;
+    border: 1px solid #929292;
+    width: 720px;
+    left: 0 !important;
+    right: 0 !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+  }
+  #cvs-overlay-two .details, #cvs-overlay-two .details div#overlayLoadingImg {
+    min-height: 75px;
+  }
+  #cvs-overlay-two .details,
+  #slideout .details {
+    position: relative;
+  }
+  #cvs-overlay-two #overlayClose,
+  #cvs-overlay-two #overlayCloseDeal,
+  #slideout #closeSlideout {
+    background: url("/webcontent/images/common/modalGreyX.png") no-repeat scroll right center transparent;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    opacity: 1;
+  }
+  #cvs-overlay-two h1,
+  #slideout h1 {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 0 0 10px 20px;
+  }
+  #cvs-overlay.changeStore #overlayClose,
+  #dStorePickupAvailabilityOverlay.simple_overlay_2 #overlayCloseAvail {
+    opacity: 1;
+    width:50px;
+    background-position: right -1px;
+  }
+  #dStorePickupAvailabilityOverlay #writeReview {
+    width:100px;
+  }
+  #dDealDetails {
+    padding: 20px 0;
+    float: left;
+  }
+  #dDealWrapper {
+    border-top: 1px solid #e4e4e4;
+    border-bottom: 1px solid #e4e4e4;
+    background-color:#f0f0f0;
+    padding: 30px 0 10px 20px;
+    width: 100%;
+    float: left;
+    height: 250px !important;
+  }
+  #dDealLeftSide {
+    float: left;
+    width: 65%;
+  }
+  #dDealRightSide {
+    float: left;
+    width: 35%;
+  }
+  .dDealDesc {
+    min-height: 105px;
+  }
+  .dDealType {
+    color: #cc0000;
+    margin: 0 0 10px 0;
+    width: 100%;
+    float: left;
+  }
+  .dDealDesc.two-col .dDealType {
+    width: 32%;
+  }
+  .dDealTypeLeft {
+    float: left;
+  }
+  .dDealTypeRight {
+    float:left;
+  }
+  .sp1 {
+    font-size: 2em;
+    font-weight: bold;
+  }
+  .sp2 {
+    font-size: 3.875em;
+    font-weight: bold;
+    line-height: 1em;
+  }
+  .sp3 {
+    font-size: 3em;
+    font-weight: bold;
+  }
+  .sp4 {
+    font-size: 6.938em;
+    font-weight: bold;
+    line-height: 1em;
+  }
+  .sp5 {
+    font-size: 3.5em;
+    font-weight: bold;
+    line-height: 1.2em;
+  }
+  .sp6 {
+    font-size: 2.1em;
+    font-weight: bold;
+  }
+
+  .dDealSummary {
+    font-size: 1.188em;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .dDealDesc.two-col .dDealSummary  {
+    float: left;
+    margin-top: 22px;
+    width: 55%;
+  }
+  .dDealShopOthers {
+    clear: both;
+  }
+  .dDealShopOthers .dDealAllDeals {
+    margin-bottom: 8px;
+  }
+  #dDealFooter {
+    float: left;
+    padding: 30px 20px 0 20px
+  }
+  .dDealOffer {
+    background-color: #efefef;
+    margin-bottom: 5px;
+    padding: 2px 5px;
+    float: left;
+    font-weight: bold;
+  }
+  .dDealDisclaimer {
+    margin-bottom: 5px;
+    clear: both;
+  }
+
+}
+
+
+/************************************************
+	Desktop: ≥901px
+************************************************/
+@media (min-width: 901px) {
+  /* Break point in header */
+
+  #sMyCvsIcon {
+    left: -3px;
+    top: 30px;
+  }
+
+  #dHlinksC {
+    margin-bottom: 5px;
+    width: auto;
+  }
+  .loggedIn #dHlinksC li:nth-child(5) {
+    display: inline-block;
+    text-indent: 0px;
+  }
+  #dMainNav {
+    width: 90%;
+  }
+  #dMainNav .left,
+  #dMainNav .right,
+  #dMainNav nav {
+    height:53px;
+  }
+  #dMainNav .left {
+    background: url("/webcontent/images/common/responsive-header/tabs-left.png") no-repeat scroll 0 0 transparent;
+  }
+  #dMainNav .right {
+    background: url("/webcontent/images/common/responsive-header/tabs-right.png") no-repeat scroll -2px 0 transparent;
+  }
+  #dMainNav nav {
+    background: url("/webcontent/images/common/responsive-header/tabs-center.png") repeat scroll 0 0 transparent;
+  }
+
+  #dMainNav nav li.lTopNav:nth-child(1) {
+		width: 19.6%;
+	}
+  #dMainNav nav li.lTopNav:nth-child(3) {
+		width: 14.5%;
+	}
+  #dMainNav nav li.lTopNav:nth-child(5) {
+		width: 14.6%;
+	}
+  #dMainNav nav li.lTopNav:nth-child(7) {
+		width: 23.2%;
+	}
+  #dMainNav nav li#lMainNavSearch {
+		width: 26%;
+	}
+  #dMainNav nav li.lTopNav:nth-child(8) {
+    display: block;
+  }
+  #dMainNav nav li#lMainNavSearch #searchbox {
+    margin-top: 16px;
+    width: 98%;
+    font-size: 12px;
+  }
+  #dMainNav nav li#lMainNavSearch #bSearchBoxSubmit {
+    right: -6px;
+    top: -17px;
+  }
+
+
+  #dNavWrapper div.col3 {
+    height: 50px;
+    top: -2px;
+    right: 0px;
+  }
+  #dNavWrapper div.col3 > a {
+    background: transparent url('/webcontent/images/common/responsive-header/cart-button-narrow.png') no-repeat scroll 0 0;
+    display: block;
+  }
+  #dNavWrapper div.col3 a.full{
+    background-position: 0 -60px;
+  }
+
+}
+
+
+
+/************************************************
+	Desktop: ≥960px
+************************************************/
+@media (min-width: 960px) {
+  #dHlinksC {
+    margin: 0px -1px 0 0;
+    width: auto;
+  }
+  #dHlinksC li:last-child {
+    display: block;
+  }
+   #dHlinksB {
+    float: right;
+    font-size: 11px;
+    clear: none;
+    height:auto;
+    margin-left: -2%;
+  }
+  #dHlinksB li {
+  float: left;
+  }
+  #dHlinksB li:last-child {
+    display: inline-block;
+  }
+  .loggedIn #dHlinksC .divider, .loggedIn #dHlinksC li:last-child {
+    display: inline-block;
+    text-indent: 0px;
+  }
+  .hidden960 {
+    display: block !important;
+  }
+  #iLogo {
+    top: 5px;
+  }
+  #dMainNav {
+    padding-top: 5px;
+    width: 85%;
+  }
+  #dHeadBcc {
+    width: 85%; 
+    height: 19px;
+  }
+  #dNavWrapper {
+    margin-top: 5px;
+    margin-bottom: 13px;
+  }
+  #dNavWrapper .opinionlab {
+    position: absolute;
+    top: -1px;
+  }
+  #dMainNav nav li.lTopNav:nth-child(1):hover {
+    background: url("/webcontent/images/common/responsive-header/bg-blue-pane-top-hover.png") repeat-x scroll 0 0 transparent;
+  }
+  #dMainNav nav li.lTopNav:nth-child(3):hover, #dMainNav nav li.lTopNav:nth-child(5):hover, #dMainNav nav li.lTopNav:nth-child(7):hover  {
+    background: url("/webcontent/images/common/responsive-header/bg-red-pane-top-hover.png") repeat-x scroll 0 0 transparent;
+  }
+
+
+  #dNavWrapper div.col3 > a {
+    width:127px;
+    background: url('/webcontent/images/common/cart-button.png') no-repeat transparent; text-indent:0
+  }
+  #dNavWrapper div.col3 a.full{
+    display:inline-block;
+    background-position: 0 -60px;
+    position: relative;
+    z-index:3;
+  }
+  #dNavWrapper div.col3 a.full .countHolder span {
+    display: block;
+    height: 21px;
+    float: left;
+  }
+  #dNavWrapper div.col3 a.full .countHolder {
+    display: block;
+    height: 21px;
+    left: 107px;
+    overflow: hidden;
+    position: relative;
+    top: -4px;
+    width: 48px;
+  }
+  #dNavWrapper div.col3 a.full span.start,#dNavWrapper div.col3 a.full span.end {
+    background: url('/webcontent/images/common/cart-button-items.png') no-repeat;
+    width: 6px;
+  }
+  #dNavWrapper div.col3 a.full span.wrap {
+    background: url('/webcontent/images/common/cart-button-items-x.png') repeat-x !important;
+    color: #cc0000;
+    font-weight: bold;
+    text-indent: 0 !important;
+    text-decoration: none;
+    padding: 0;
+    line-height: 21px;
+  }
+  #dNavWrapper div.col3 a.full span.end {
+    background-position: -6px 0 !important;
+  }
+  #dNavWrapper div.col3 a.full:hover * {
+    color: #990000 !important;
+  }
+  #dNavWrapper div.col3 a.fullHover {
+    background: none -180px -5000px !important;
+  }
+  #flyoutcart {
+    visibility: visible;
+  }
+
+
+
+  /* Header Store Locator */
+  #dMainHeader #dNavWrapper #dMyCVS {
+    position: static;
+  }
+
+  #shoppingCartContainer .sublevel .introHeader {
+    height: 91px;
+  }
+
+}
+

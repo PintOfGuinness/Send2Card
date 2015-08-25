@@ -9,18 +9,18 @@
  */
 angular.module('send2CardApp')
     .factory('columniseFactory', function (screenSize) {
-        // Service logic
-        // ...
 
         // Public API here
         return {
-            columnise: function (inputArray) {
-                var numberOfColumns;
-                numberOfColumns = getNumberOfColumnsByScreenSize();
+            columnise: columnise
+        };
 
-                return getColumisedCoupons(numberOfColumns, inputArray);
-            }
+        // Service logic
+        function columnise(inputArray) {
+            var numberOfColumns;
+            numberOfColumns = getNumberOfColumnsByScreenSize();
 
+            return getColumisedCoupons(numberOfColumns, inputArray);
         };
 
         function getNumberOfColumnsByScreenSize() {

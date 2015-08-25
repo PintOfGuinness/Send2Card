@@ -26,23 +26,17 @@ angular.module('send2CardApp')
                 scope.sendCouponOnStartup = false;
             }
 
-            if (attrs.state == 1) {
+            if (scope.state == 1) {
                 scope.isHidden = true;
             }
 
-            scope.printCoupon = function printCoupon() {
-                attrs.$set("state", 2);
+            scope.clickPrintCoupon = function printCoupon() {
+                /*attrs.$set("state", 2);*/
+                scope.state = 2;
                 scope.updateState();
             }
 
-            scope.updateState = function () {
-                scope.updateColumns({
-                    state: attrs.state,
-                    barcode: attrs.barcode
-                });
-            }
-
-            scope.sendCouponToCard = function () {
+            scope.clickSendCouponToCard = function () {
                 elem.addClass("thick-border");
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
@@ -50,11 +44,19 @@ angular.module('send2CardApp')
             }
 
             function sendCouponComplete(data) {
-                attrs.$set("state", data);
+                /*attrs.$set("state", data);*/
+                scope.state = data;
                 scope.updateState();
                 scope.isHidden = true;
             }
 
+            scope.updateState = function () {
+                scope.updateColumns({
+                    state: scope.state,
+                    barcode: attrs.barcode
+                });
+            }
+            
             function sendCouponFailure(data) {
                 scope.state = data;
             }

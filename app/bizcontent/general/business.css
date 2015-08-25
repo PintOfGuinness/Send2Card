@@ -1,0 +1,13 @@
+/*Full bleed background images*/
+html#homepage #featureAreaWrapper {background: url("../../../webcontent/images/home/bg-featured-area.jpg") top center no-repeat #EBE8E3;}
+html#homepage #featureAreaWrapper #featureArea {background: transparent url("../../../webcontent/images/home/pharmacist.png") no-repeat 445px 82px;}
+html#homepage #rewardsSectionWrapper {background:url("../../../webcontent/images/dashboard/bg-extraCare00.jpg") no-repeat center 20px; padding-top: 20px; margin: 0 auto; min-width: 944px;}
+html#homepage #ecDownError{background: url("../../../webcontent/images/dashboard/bg-extraCare00.jpg") no-repeat center 100px; padding-top: 20px; margin: 0 auto; min-width: 944px;}
+
+  #promocontent .promoLinkred {
+      background: url("../../webcontent/images/common/arrow-red-00.png") no-repeat scroll right center transparent;
+      color: #cc0000;
+      font-weight: bold;
+      padding: 0 0.833em 0 0;
+      text-decoration: none;
+  }

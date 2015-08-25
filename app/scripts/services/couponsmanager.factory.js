@@ -10,10 +10,22 @@
 angular.module('send2CardApp')
     .factory('couponsManagerFactory', function (couponsService) {
 
-        // Public API here
-        var couponsManager = function getFilteredCoupons(extraCareCardNumber) {
-            return couponsService.getUnfilteredCoupons(extraCareCardNumber);
+/*        // Public API here
+        return {
+            getFilteredCoupons: getFilteredCoupons
+
         };
+
+        function getFilteredCoupons(extraCareCardNumber) {
+            return couponsService.getUnfilteredCoupons(extraCareCardNumber.then(function (result) {
+                    var data = result.data;
+                    return data;
+                })
+                .catch(function (err) {
+                    console.log("SERVICE SOMETHING WRONG");
+                    return $q.reject("Data not available");
+                });
+        });*/
 
 
         /*            getFilteredCoupons: getFilteredCoupons*/
@@ -21,7 +33,7 @@ angular.module('send2CardApp')
                     setCouponAsPrinted: setCouponAsPrinted*/
 
 
-        return couponsManager;
+
 
         // Service logic
 
