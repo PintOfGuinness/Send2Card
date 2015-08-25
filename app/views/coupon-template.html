@@ -1,6 +1,6 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <div class="pull-right">
+<div class="panel panel-default couponpadding">
+    <div class="panel-body nopadding">
+        <div class="pull-right text-center">
 
             <div ng-switch on="state">
                 <div ng-switch-when=0>
@@ -14,26 +14,29 @@
                     <img ng-src="{{printedPath}}">
                 </div>
             </div>
-
+            <br>
+            <div ng-controller="PrintCouponModalController" class="float-down">
+                <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
+                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print</a>
+            </div>
+            
         </div>
         <div class="pull-right"><img src="images/dashedline.png" </img></div>
 
         <p>
             <h4 class="">{{ title }}</h4> {{ description }}
             <br>
-            <br>
 
 
             <br>
             <div>
-                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }} </div>
+                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }} 
+            </div>
 
         </p>
 
 
         <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
-        <br>
-
         <p>
 
 
@@ -50,10 +53,9 @@
                 <p><b>Terms & Conditions: </b>{{ terms }}</p>
             </small>
             </div>
-            <div ng-controller="PrintCouponModalController" class="pull-right">
-                <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
-                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print Offer</a>
-            </div>
+    
+        
+            
 
 
     </div>
