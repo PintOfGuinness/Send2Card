@@ -10,8 +10,10 @@
  */
 angular.module('send2CardApp')
     .filter('couponFilter', function ($filter) {
+        return function (input, couponNumberFilter, excludeCouponNumberFilter) {
             var output = [];
 
+            if (excludeCouponNumberFilter) {
                 output = getAllViewableCouponsByFilter(input, couponNumberFilter);
             } else {
                 output = getSingleCouponByFilter(input, couponNumberFilter);

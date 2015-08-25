@@ -101,8 +101,8 @@ angular.module('send2CardApp')
 
 
         /* Event triggered by any screen size change */
-        screenSize.on('xs, sm, md, lg', function (match) {
+/*        screenSize.on('xs, sm, md, lg', function (match) {
             coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
             coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
-        });
+        });*/
     });
