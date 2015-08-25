@@ -10,28 +10,37 @@
  */
 angular.module('send2CardApp')
     .filter('couponFilter', function ($filter) {
-        return function (input, couponNumber, excludeMode) {
             var output = [];
 
-            
-            if (excludeMode) {
-                angular.forEach(input, function (eachCoupon, index) {
-                    if (input[index].cpn_seq_nbr !== couponNumber) {
-                        if (couponViewable(eachCoupon)) {
-                            output.push(eachCoupon);
-                        }
-                    }
-                });
+                output = getAllViewableCouponsByFilter(input, couponNumberFilter);
             } else {
-                output =
-                    $filter('filter')(input, {
-                        cpn_seq_nbr: couponNumber
-                    }, true)[0];
-                couponExpiresSoon(output);
-
+                output = getSingleCouponByFilter(input, couponNumberFilter);
             }
             return output;
         };
+
+        function getAllViewableCouponsByFilter(input, couponNumberFilter) {
+            var output = [];
+            angular.forEach(input, function (eachCoupon, index) {
+                if (input[index].cpn_seq_nbr !== couponNumberFilter) {
+                    if (couponViewable(eachCoupon)) {
+                        output.push(eachCoupon);
+                    }
+                }
+            });
+
+            return output;
+        }
+
+        function getSingleCouponByFilter(input, couponNumberFilter) {
+            var output = [];
+            output = $filter('filter')(input, {
+                cpn_seq_nbr: couponNumberFilter
+            }, true)[0];
+            couponExpiresSoon(output);
+
+            return output;
+        }
 
         function couponViewable(eachCoupon) {
             var viewable = false;
@@ -92,10 +101,10 @@ angular.module('send2CardApp')
 
             if (expiryDate < expiresSoonRegion) {
                 eachCoupon.expiresSoon = true;
-                           console.log("Expires soon");
+                console.log("Expires soon");
             } else {
                 eachCoupon.expiresSoon = false;
-                                           console.log("Not Expires soon");
+                console.log("Not Expires soon");
             }
         }
     });

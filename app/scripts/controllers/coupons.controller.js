@@ -90,17 +90,6 @@ angular.module('send2CardApp')
             }
         }
 
-        function updateStateInCouponList(couponList, state, barcode) {
-            for (var i = 0; i < couponList.length; i++) {
-                for (var j = 0; j < couponList[i].length; j++) {
-                    if (couponList[i][j].cpn_seq_nbr === barcode) {
-                        couponList[i][j].state = state;
-                        break;
-                    }
-                }
-
-            }
-        }
 
         function sortCouponsByExpiryDate(couponList) {
             couponList.sort(function (a, b) {
@@ -110,12 +99,6 @@ angular.module('send2CardApp')
             });
         }
 
-        $scope.updateState = function (state, barcode) {
-            updateStateInCouponList(coupons.notYetActionedDesktopColumns, state, barcode);
-            updateStateInCouponList(coupons.notYetActionedTabletColumns, state, barcode);
-            updateStateInCouponList(coupons.notYetActionedMobileColumn, state, barcode);
-            updateStateInCouponList(coupons.notYetActionedFilteredMobileColumn, state, barcode);
-        };
 
         /* Event triggered by any screen size change */
         screenSize.on('xs, sm, md, lg', function (match) {
