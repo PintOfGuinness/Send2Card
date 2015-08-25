@@ -9,12 +9,12 @@
 angular.module('send2CardApp')
     .directive('couponDirective', function () {
 
-
-        function link(scope, elem, attrs, controller) {
+        function link(scope, elem, attrs) {
             scope.isHidden = false;
             scope.hideNotYetActionedLoadMore = false;
             scope.hideReadyToUseLoadMore = false;
             scope.isCollapsed = true;
+            
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
             }
@@ -30,35 +30,28 @@ angular.module('send2CardApp')
                 scope.isHidden = true;
             }
 
-            scope.clickPrintCoupon = function printCoupon() {
-                /*attrs.$set("state", 2);*/
-                scope.state = 2;
-                scope.updateState();
-            }
-
             scope.clickSendCouponToCard = function () {
-                elem.addClass("thick-border");
+                updateCSSForClickedCoupon();
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
             }
 
-            function sendCouponComplete(data) {
-                /*attrs.$set("state", data);*/
-                scope.state = data;
-                scope.updateState();
+            function sendCouponComplete(newState) {
+                scope.updateState(newState);
                 scope.isHidden = true;
             }
 
-            scope.updateState = function () {
-                scope.updateColumns({
-                    state: scope.state,
-                    barcode: attrs.barcode
-                });
+            scope.updateState = function (newState) {
+                scope.state = newState;
             }
             
-            function sendCouponFailure(data) {
-                scope.state = data;
+            function sendCouponFailure(failureState) {
+                scope.state = failureState;
+            }
+            
+            function updateCSSForClickedCoupon() {
+                elem.addClass("thick-border");                
             }
         }
 
@@ -78,8 +71,7 @@ angular.module('send2CardApp')
                 onSendCouponToCard: '&',
                 printedPath: '@',
                 expiresSoon: '@',
-                state: '@',
-                updateColumns: '&'
+                state: '@'
             },
             link: link
         }

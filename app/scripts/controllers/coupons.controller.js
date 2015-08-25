@@ -38,10 +38,10 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
-        coupons.printCoupon = function () {
-            $scope.printCoupon();
+        coupons.clickPrintCoupon = function () {
             console.log($scope.state);
             window.print();
+            $scope.updateState(2);
         }
 
         coupons.notYetActionedLoadMoreCoupons = function () {
@@ -101,8 +101,8 @@ angular.module('send2CardApp')
 
 
         /* Event triggered by any screen size change */
-/*        screenSize.on('xs, sm, md, lg', function (match) {
-            coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
-            coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
-        });*/
+        /*        screenSize.on('xs, sm, md, lg', function (match) {
+                    coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
+                    coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
+                });*/
     });
