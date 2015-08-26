@@ -46,16 +46,6 @@ angular.module('send2CardApp')
             $scope.updateState(2);
         }
 
-        coupons.notYetActionedLoadMoreCoupons = function () {
-            coupons.notYetActionedFilteredMobileColumn = coupons.notYetActionedMobileColumn[0];
-            $scope.hideNotYetActionedLoadMore = true;
-        }
-
-        coupons.readyToUseLoadMoreCoupons = function () {
-            coupons.readyToUseFilteredMobileColumn = coupons.readyToUseMobileColumn[0];
-            $scope.hideReadyToUseLoadMore = true;
-        }
-
         function sendCouponFailure(data) {
             var isCouponSent = false;
             return isCouponSent;
@@ -70,8 +60,14 @@ angular.module('send2CardApp')
             //1. Check load_actl_dt and print_actl_dt
             sortByReadyToUse(allCoupons);
             //if they both do not exist, add to NotYetActionedArray
+
             sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
             sortCouponsByExpiryDate(coupons.readyToUseCoupons);
+
+            $filter('sortCouponsFilter')(coupons.notYetActionedCoupons);
+            $filter('sortCouponsFilter')(coupons.readyToUseCoupons);
+            /*            sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
+                        sortCouponsByExpiryDate(coupons.readyToUseCoupons);*/
 
             coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
             coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
@@ -96,13 +92,7 @@ angular.module('send2CardApp')
         }
 
 
-        function sortCouponsByExpiryDate(couponList) {
-            couponList.sort(function (a, b) {
-                a = new Date(a.expir_dt);
-                b = new Date(b.expir_dt);
-                return a < b ? -1 : a > b ? 1 : 0;
-            });
-        }
+
 
 
         /* Event triggered by any screen size change */

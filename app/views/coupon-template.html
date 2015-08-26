@@ -15,7 +15,7 @@
                 </div>
             </div>
             <br>
-            <div ng-controller="PrintCouponModalController" class="float-down">
+            <div ng-controller="PrintCouponModalController" class="float-down desktoponly">
                 <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
                 <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print</a>
             </div>
@@ -40,9 +40,7 @@
         <p>
 
 
-            <p>
                 <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
-            </p>
 
             <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
                 <small>

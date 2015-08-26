@@ -9,7 +9,7 @@
 }
 .overlay {
     position: absolute;
-    top: 20;
+    top:90%;
     left: 18px;
     width: 100%;
     height: 100%;
@@ -42,7 +42,6 @@ img:hover {
 
 .thick-border {
     border: 1px dotted;
-    border-top: 1;
 }
 
 /*Andrew Dawson CSS*/
@@ -58,6 +57,15 @@ img:hover {
     top: 100px;
     z-index: 100;
     border-top: 0;
+}
+
+.printmodal {
+    padding: 25px;
+}
+
+.printcoupon {
+    border: 5px solid grey; 
+    padding:10px;
 }
 
 /*animate enter and leave*/
@@ -94,19 +102,25 @@ img:hover {
 
 .couponpadding {
    padding: 5px 10px !important;
-   margin: 0 5px 10px 5px !important;
+   margin: 0 5px 10px 0 !important;
    position:relative;
 }
 
 .float-down {
     position:absolute; 
-    bottom:10px;
+    bottom:15px;
     right: 25px;
 }
 
 .nopadding {
    padding: 0 !important;
    margin: 0 !important;
+}
+
+@media screen and (max-width:992px) {
+    .desktoponly {
+        display: none;
+    }
 }
 
 @media screen and (min-width:768px) {
