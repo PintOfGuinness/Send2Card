@@ -61,9 +61,6 @@ angular.module('send2CardApp')
             sortByReadyToUse(allCoupons);
             //if they both do not exist, add to NotYetActionedArray
 
-            sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
-            sortCouponsByExpiryDate(coupons.readyToUseCoupons);
-
             $filter('sortCouponsFilter')(coupons.notYetActionedCoupons);
             $filter('sortCouponsFilter')(coupons.readyToUseCoupons);
             /*            sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
