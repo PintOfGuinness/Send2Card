@@ -4,41 +4,59 @@
 
 
         <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
+        <div class="printmodal">
+            
+            <div>
                 <button type="button" class="close" ng-click="cancel()">&times;</button>
                 <br>
                 <br>
-                <p>Your coupon is ready to print!
-                    <button ng-click="couponsController.clickPrintCoupon()" class="pull-right btn btn-success">Print</button>
-                </p>
-
-                <h4 class="modal-title"></h4>
+                <button ng-click="couponsController.clickPrintCoupon()" class="btn btn-success pull-right">Print</button>
+                <h4>Your coupon is ready to print!</h4>
+                <br>
             </div>
 
-            <div class="modal-body">
+            <div class="printcoupon">
+                
+                <p class="pull-right"> extracare For <b>extra</b>care card ending in <b>{{couponsController.cardNumber}}</b></p>
+                <h3>(INSERT COUPON TITLE)</h3>
+                
+                <b>{{couponsController.clickedCoupon.cpn_dsc}}</b> <br>
+                Coupon redeemable in store only*
+                <hr>
+                <b>Valid through: {{couponsController.clickedCoupon.expir_dt}}
+                <br>
+                Barcode/coupon code:  {{couponsController.clickedCoupon.cpn_seq_nbr}}
+                </b>
+                <br>
+                <br>
+                
+                <img class="pull-right" src="images/barcode.png" height="100px" width="100px" />
+                
+                Redeeming your coupon is easy! Just present your ExtraCare card and this coupon to the associate when you check out.
+                <br>
+                <br>            
                 <div>
-                    <p class=" text-left">
-                        <h4></h4> <img class="pull-right" src="images/barcode.png" height="100px" width="100px" />
-                        <br>
-                        <br>
-                        <div>
-                            <br>
-                            <p height="10 " width="10 " <li>
-                                <a ng-href="#/about "></a>
-                                </li>
-                        </div>
-                        </p>
+                    Associate: Scan in the barcode. If unable to scan, select "Sales" tab, then seelect "item#". Key in all coupon digits and press "Enter".
                 </div>
-
-
+                <br>
             </div>
 
-            <div class="modal-footer pull left">
-                <p class="pull-left">T's & C's apply</p>
+            
+            <br>
+            <br>
+            <div >
+                <b>*Terms &amp; Conditions</b>
+                <br>
+                {{couponsController.clickedCoupon.cpn_terms_txt}}
                 <br>
                 <br>
-                <p class="pull-left">No more than one coupon per customer</p>
+                <b>CVS/pharmacy will not accept offers printed from unauthorizes internet postings or reproductions, copies or facsimilies of this offer.</b>
+                This coupon is the copyrighted property of CVS/pharmacy; it is intended for use by ExtraCare cardholders who subscribe to the CVS/pharmacy email program and have received this message directly from CVS/pharmacy. CVS/pharmacy reserves the right to eject any coupon presented by parties outside of the original distribution list. Original coupon must be relinquished at the time of purchase. Coupon is void if copied, transferred and where prohibited by law. No valid at Minute Clinic.
+                <br>
+                <br>
+                <b>Please Note:</b> All images may not print in your internet browser. Just print the coupon in black and white or color, and bring it to the store as is.
+                
+                   
             </div>
         </div>
 

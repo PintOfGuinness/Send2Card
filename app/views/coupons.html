@@ -1,9 +1,6 @@
 <div ng-controller="CouponsController as couponsController">
-    <!--    <div class="container">-->
-    <!--        <div class="row">-->
     <h4>You have {{couponsController.notYetActionedCoupons.length}} more offers available. Act on these now!</h4>
     <br>
-<div class="row nopadding">
     <!--NOT YET ACTIONED COUPONS-->
     <div class="panel-body nopadding">
         <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.notYetActionedColumns">
@@ -38,5 +35,4 @@
             </div>
 
         </div>
-    </div>
     </div>
