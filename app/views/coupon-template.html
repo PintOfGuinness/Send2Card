@@ -19,24 +19,24 @@
                 <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
                 <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print</a>
             </div>
-            
+
         </div>
         <div class="pull-right"><img src="images/dashedline.png" </img></div>
 
         <p>
-            <h4 class="">{{ title }}</h4> {{ description }}
+            <h4 class="">{{ couponFromJson.title }}</h4> {{couponFromJson.cpn_dsc}}
             <br>
 
 
             <br>
             <div>
-                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }} 
+                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }}
             </div>
 
         </p>
 
 
-        <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
+        <div ng-show="!expiresSoon"> EXP {{ couponFromJson.expir_dt }} </div>
         <p>
 
 
@@ -53,9 +53,9 @@
                 <p><b>Terms & Conditions: </b>{{ terms }}</p>
             </small>
             </div>
-    
-        
-            
+
+
+
 
 
     </div>

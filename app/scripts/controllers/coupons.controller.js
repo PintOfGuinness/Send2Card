@@ -19,6 +19,8 @@ angular.module('send2CardApp')
         var extraCareCardNumber = "12345678";
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
+        coupons.multiCouponError = false;
+        coupons.singleCouponError = false;
         var initialCouponsOnMobileLoad = 1;
         coupons.unSentCouponPath = "images/sendtocardicon.png";
         coupons.sentCouponPath = "images/senttocard.png";
@@ -68,12 +70,15 @@ angular.module('send2CardApp')
             //1. Check load_actl_dt and print_actl_dt
             sortByReadyToUse(allCoupons);
             //if they both do not exist, add to NotYetActionedArray
-
             sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
             sortCouponsByExpiryDate(coupons.readyToUseCoupons);
 
             coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
             coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
+        }).catch(function (error) {
+            console.log("BEEN AN ERROR");
+            coupons.multiCouponError = true;
+            console.log("Error state = " + coupons.singleCouponError);
         });
 
 
