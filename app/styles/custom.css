@@ -38,11 +38,36 @@ img:hover {
     filter: alpha(opacity=100);
 }
 
-/* Coupon Styling */
-
+/*--------------------------------------------------------------------------
+ Coupon Styling 
+---------------------------------------------------------------------------*/
 .thick-border {
     border: 1px dotted;
 }
+
+.couponpadding {
+   padding: 5px 10px !important;
+   margin: 0 5px 10px 0 !important;
+   position:relative;
+}
+
+.coupon-leftside{
+    margin-right:77px; 
+    padding: 5px;
+}
+
+.coupon-rightside{
+    position:absolute; 
+    right:0px; 
+    bottom:20px; 
+    top:20px; 
+    border-left: 2px dotted grey; 
+    padding: 0 5px; 
+    width: 90px;
+}
+
+/*---------------------------------------------------------------------------*/
+
 
 /*Andrew Dawson CSS*/
 
@@ -57,6 +82,12 @@ img:hover {
     top: 100px;
     z-index: 100;
     border-top: 0;
+}
+
+.print-button{
+    position:absolute; 
+    bottom:0px; 
+    right:15px;
 }
 
 .printmodal {
@@ -100,16 +131,10 @@ img:hover {
     transform: scaleX(-1);
 }
 
-.couponpadding {
-   padding: 5px 10px !important;
-   margin: 0 5px 10px 0 !important;
-   position:relative;
-}
-
 .float-down {
     position:absolute; 
-    bottom:15px;
-    right: 25px;
+    bottom:0px;
+    right: 20px;
 }
 
 .nopadding {

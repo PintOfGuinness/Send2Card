@@ -1,8 +1,8 @@
 <div class="panel panel-default couponpadding">
-    <div class="panel-body nopadding">
-        <div class="pull-right text-center">
+    <div class="panel-body coupon-leftside">
+        <div class="text-center coupon-rightside">
 
-            <div ng-switch on="state">
+            <div ng-switch on="state" class="nopadding">
                 <div ng-switch-when=0>
                     <img ng-click="clickSendCouponToCard();" ng-src="{{unSentCouponPath}}">
                     <!--updateState();-->
@@ -14,46 +14,42 @@
                     <img ng-src="{{printedPath}}">
                 </div>
             </div>
-            <br>
-            <div ng-controller="PrintCouponModalController" class="float-down desktoponly">
+            <div ng-controller="PrintCouponModalController" class="desktoponly print-button">
                 <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
                 <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print</a>
             </div>
-            
+
         </div>
-        <div class="pull-right"><img src="images/dashedline.png" </img></div>
 
-        <p>
-            <h4 class="">{{ title }}</h4> {{ description }}
-            <br>
-
-
-            <br>
-            <div>
-                <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }} 
-            </div>
-
-        </p>
+            <p>
+                <h4 class="">{{ title }}</h4> {{ description }}
+                <br>
 
 
-        <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
-        <p>
+                <br>
+                <div>
+                    <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }}
+                </div>
+
+            </p>
+
+
+            <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
+            <p>
 
 
                 <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
-
-            <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
-                <small>
+                <br>
+                <br>
+                <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
+                    <small>
                 <p>Coupon redeemable in store only*</p>
                 <p><b>Valid through:</b><b class="text-red"> {{ expiry }} </b>
                 <br/>
                     <b>Barcode/coupon code:</b><b class="text-red"> {{ barcode }} </b></p>
                 <p><b>Terms & Conditions: </b>{{ terms }}</p>
             </small>
-            </div>
-    
-        
-            
+                </div>
 
 
     </div>
