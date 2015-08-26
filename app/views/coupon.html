@@ -1,6 +1,6 @@
 <div ng-controller="CouponsController as couponsController">
-    <h2>Success!</h2>
-    <h4>The coupon loaded on your ExtraCare card ending in {{couponsController.cardNumber}} and is ready to use.</h3>
+    <div ng-hide="couponsController.singleCouponError" <h2>Success!</h2>
+        <h4>The coupon loaded on your ExtraCare card ending in {{couponsController.cardNumber}} and is ready to use.</h3>
 <h6>Just present your ExtraCare card to the associate when you check out</h6>
     <div class="row nopadding">
         <div class="panel-body nopadding">
@@ -8,9 +8,18 @@
             <!--window.width: {{windowWidth}}
             window.height: {{windowHeight}}-->
             <div class="col-xs-12 col-sm-6 col-md-4 nopadding">
-                <coupon-directive title="{{ couponsController.clickedCoupon.title }}" description="{{ couponsController.clickedCoupon.cpn_dsc }}" expiry="{{ couponsController.clickedCoupon.expir_dt }}" barcode="{{ couponsController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponsController.clickedCoupon.cpn_terms_txt }}" un-sent-coupon- un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ true }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" state="{{couponsController.clickedCoupon.state}}" expires-soon="{{couponsController.clickedCoupon.expiresSoon}}">
+                <coupon-directive title="{{ couponsController.clickedCoupon.title }}" description="{{ couponsController.clickedCoupon.cpn_dsc }}" expiry="{{ couponsController.clickedCoupon.expir_dt }}" barcode="{{ couponsController.clickedCoupon.cpn_seq_nbr }}" terms="{{ couponsController.clickedCoupon.cpn_terms_txt }}" un-sent-coupon- un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ true }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" state="{{couponsController.clickedCoupon.state}}" expires-soon="{{couponsController.clickedCoupon.expiresSoon}}" coupon="{{ couponsController.clickedCoupon }}">
                 </coupon-directive>
             </div>    
         </div>
     </div>
+</div>
+
+<div ng-controller="CouponsController as couponsController">
+<div ng-show="couponsController.singleCouponError"
+    <p>You've already printed this coupon you eejit.
+    <br>Valid Through "MM/DD/YY"
+    <br> To redeem this coupon, simply present it to the associate when you check out.
+    <br><a href="www.cvs.com">See a full list of available offers in My Savings & Rewards</b></p>
+</div>
 </div>

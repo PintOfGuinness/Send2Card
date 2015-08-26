@@ -21,7 +21,7 @@ angular.module('send2CardApp')
         function getUnfilteredCoupons(extraCareCardNumber) {
             if (couponServicePromise === null) {
                 // Coupon Service first time call
-                console.log("DATA RETRIEVED FIRST TIME");                
+                console.log("DATA RETRIEVED FIRST TIME");
                 couponServicePromise = $http.get("data/customer.json");
             }
 

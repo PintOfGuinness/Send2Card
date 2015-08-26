@@ -1,38 +1,47 @@
 <div ng-controller="CouponsController as couponsController">
     <h4>You have {{couponsController.notYetActionedCoupons.length}} more offers available. Act on these now!</h4>
     <br>
-    <!--NOT YET ACTIONED COUPONS-->
-    <div class="panel-body nopadding">
-        <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.notYetActionedColumns">
-            <div ng-repeat="coupon in column">
-                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}}>
-                </coupon-directive>
-            </div>
-        </div>
 
-        <div class="mobileView text-centre">
-            <button class="mobileView" ng-hide="hideNotYetActionedLoadMore" ng-click="couponsController.notYetActionedLoadMoreCoupons()">Load more...({{couponsController.notYetActionedLoadMore}})</button>
-        </div>
+    <div class="row nopadding">
+        <!--NOT YET ACTIONED COUPONS-->
+        <div class="panel-body nopadding">
+            <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.notYetActionedColumns">
+                <div ng-repeat="coupon in column">
+                    <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}} coupon={{coupon}}>
+                    </coupon-directive>
+                </div>
+                <!--NOT YET ACTIONED COUPONS-->
+                <div class="panel-body nopadding">
+                    <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.notYetActionedColumns">
+                        <div ng-repeat="coupon in column">
+                            <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}}>
+                            </coupon-directive>
+                        </div>
 
-    </div>
+                        <div class="mobileView text-centre">
+                            <button class="mobileView" ng-hide="hideNotYetActionedLoadMore" ng-click="couponsController.notYetActionedLoadMoreCoupons()">Load more...({{couponsController.notYetActionedLoadMore}})</button>
+                        </div>
 
-
-    <!--READY TO USE COUPONS-->
-    <div class="panel-body nopadding">
-        <h4>Offers Ready to Use</h4>
-        <br>
-        <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.readyToUseColumns">
-            <div ng-repeat="coupon in column">
-                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}}>
-                </coupon-directive>
-            </div>
-        </div>
+                    </div>
 
 
-        <div class="mobileView text-centre">
-            <div class="mobileView  text-centre">
-                <button class="mobileView" ng-hide="hideReadyToUseLoadMore" ng-click="couponsController.readyToUseLoadMoreCoupons()">Load more...({{couponsController.readyToUseLoadMore}})</button>
-            </div>
+                    <!--READY TO USE COUPONS-->
+                    <div class="panel-body nopadding">
+                        <h4>Offers Ready to Use</h4>
+                        <br>
+                        <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.readyToUseColumns">
+                            <div ng-repeat="coupon in column">
+                                <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}}>
+                                </coupon-directive>
+                            </div>
+                        </div>
 
-        </div>
-    </div>
+
+                        <div class="mobileView text-centre">
+                            <div class="mobileView  text-centre">
+                                <button class="mobileView" ng-hide="hideReadyToUseLoadMore" ng-click="couponsController.readyToUseLoadMoreCoupons()">Load more...({{couponsController.readyToUseLoadMore}})</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>

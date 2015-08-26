@@ -14,7 +14,11 @@ angular.module('send2CardApp')
             scope.hideNotYetActionedLoadMore = false;
             scope.hideReadyToUseLoadMore = false;
             scope.isCollapsed = true;
-            
+
+
+            scope.couponFromJson = angular.fromJson(scope.coupon);
+
+
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
             }
@@ -37,6 +41,10 @@ angular.module('send2CardApp')
                     .catch(sendCouponFailure);
             }
 
+            function convertFromJson(data) {
+                angular.fromJson(data);
+            }
+
             function sendCouponComplete(newState) {
                 scope.updateState(newState);
                 scope.isHidden = true;
@@ -45,13 +53,13 @@ angular.module('send2CardApp')
             scope.updateState = function (newState) {
                 scope.state = newState;
             }
-            
+
             function sendCouponFailure(failureState) {
                 scope.state = failureState;
             }
-            
+
             function updateCSSForClickedCoupon() {
-                elem.addClass("thick-border");                
+                elem.addClass("thick-border");
             }
         }
 
@@ -71,6 +79,7 @@ angular.module('send2CardApp')
                 onSendCouponToCard: '&',
                 printedPath: '@',
                 expiresSoon: '@',
+                coupon: '@',
                 state: '@'
             },
             link: link
