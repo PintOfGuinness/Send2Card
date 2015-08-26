@@ -21,16 +21,6 @@
 
         </div>
 
-            <p>
-                <h4 class="">{{ title }}</h4> {{ description }}
-                <br>
-
-
-                <br>
-                <div>
-                    <span ng-show="expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="expiresSoon"> SOON</strong> EXP {{ expiry }}
-                </div>
-
         <p>
             <h4 class="">{{ couponFromJson.title }}</h4> {{couponFromJson.cpn_dsc}}
             <br>
@@ -42,17 +32,10 @@
             </div>
 
 
-            </p>
-
-
-
-            <div ng-show="!expiresSoon"> EXP {{ expiry }} </div>
-            <p>
+        </p>
 
         <div ng-show="!expiresSoon"> EXP {{ couponFromJson.expir_dt }} </div>
         <p>
-
-
 
                 <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
                 <br>
