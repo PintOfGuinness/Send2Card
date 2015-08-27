@@ -17,14 +17,12 @@ angular.module('send2CardApp')
         coupons.sendCouponOnStartup = false;
         coupons.multiCouponError = false;
         coupons.singleCouponError = false;
-        var initialCouponsOnMobileLoad = 1;
         coupons.unSentCouponPath = "images/sendtocardicon.png";
         coupons.sentCouponPath = "images/senttocard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
         coupons.sendCouponToCard = function () {
-            console.log("EC Card No. = " + coupons.cardNumber);
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
                 .catch(sendCouponFailure);
@@ -35,38 +33,32 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
+        function sendCouponFailure(data) {
+            var isCouponSent = false;
+            return isCouponSent;
+        }
+
         coupons.clickPrintCoupon = function () {
             console.log($scope.state);
             window.print();
             $scope.updateState(2);
         }
 
-        function sendCouponFailure(data) {
-            var isCouponSent = false;
-            return isCouponSent;
-        }
 
         couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {
             coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
             coupons.clickedCoupon.state = 1;
+
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
-            //allCoupons: List of Redeemable Coupons
-
-            //1. Check load_actl_dt and print_actl_dt
             sortByReadyToUse(allCoupons);
-            //if they both do not exist, add to NotYetActionedArray
-
             $filter('sortCouponsFilter')(coupons.notYetActionedCoupons);
             $filter('sortCouponsFilter')(coupons.readyToUseCoupons);
-            /*            sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
-                        sortCouponsByExpiryDate(coupons.readyToUseCoupons);*/
 
             coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
             coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
         }).catch(function (error) {
-            console.log("BEEN AN ERROR");
             coupons.multiCouponError = true;
-            console.log("Error state = " + coupons.singleCouponError);
+            console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
 
 
@@ -82,9 +74,6 @@ angular.module('send2CardApp')
 
             }
         }
-
-
-
 
 
         /* Event triggered by any screen size change */

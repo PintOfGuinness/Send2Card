@@ -19,14 +19,4 @@ angular
     'ngTouch',
     'ui.bootstrap'
   ])
-    /*  .config(function ($routeProvider) {
-        $routeProvider
-          .when('/', {
-            templateUrl: 'views/coupons.html',
-            controller: 'CouponsCtrl',
-
-          })
-          .otherwise({
-            redirectTo: '/'
-          });
-      });*/
+   

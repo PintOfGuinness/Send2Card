@@ -95,7 +95,6 @@ angular.module('send2CardApp')
         }
 
         function couponExpiresSoon(eachCoupon) {
-            console.log("hitting expiry function in the filter: " + eachCoupon.expir_dt);
             var today = new Date();
             var expiresSoonRegion = new Date(today);
             expiresSoonRegion.setDate(today.getDate() + 14);
@@ -103,10 +102,8 @@ angular.module('send2CardApp')
 
             if (expiryDate < expiresSoonRegion) {
                 eachCoupon.expiresSoon = true;
-                console.log("Expires soon");
             } else {
                 eachCoupon.expiresSoon = false;
-                console.log("Not Expires soon");
             }
         }
     });
