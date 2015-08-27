@@ -27,8 +27,8 @@
 
 
             <br>
-            <div>
-                <span ng-show="couponFromJson.expiresSoon" class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong ng-show="couponFromJson.expiresSoon"> SOON</strong> EXP {{ couponFromJson.expir_dt }}
+            <div ng-show="couponFromJson.expiresSoon">
+                <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ couponFromJson.expir_dt }}
             </div>
 
 
@@ -37,11 +37,11 @@
         <div ng-show="!couponFromJson.expiresSoon"> EXP {{ couponFromJson.expir_dt }} </div>
         <p>
 
-                <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
-                <br>
-                <br>
-                <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
-                    <small>
+            <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
+            <br>
+            <br>
+            <div collapse="isCollapsed" class="expanded-div-style overlay" ng-class="!isCollapsed ? 'thick-border' : '' ">
+                <small>
                 <p>Coupon redeemable in store only*</p>
                 <p><b>Valid through:</b><b class="text-red"> {{ couponFromJson.expir_dt }} </b>
                 <br/>
@@ -49,14 +49,13 @@
                 <p><b>Terms & Conditions: </b>{{ couponFromJson.cpn_terms_txt }}</p>
             </small>
 
-                </div>
-
             </div>
-
-
-
-
-
 
     </div>
 
+
+
+
+
+
+</div>
