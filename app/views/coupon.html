@@ -1,7 +1,12 @@
 <div ng-controller="CouponsController as couponsController">
-    <div ng-hide="couponsController.singleCouponError" <h2>Success!</h2>
-        <h4>The coupon loaded on your ExtraCare card ending in {{couponsController.cardNumber}} and is ready to use.</h3>
-<h6>Just present your ExtraCare card to the associate when you check out</h6>
+    <div ng-hide="couponsController.singleCouponError">
+        <div class="row nopadding">
+            <div class="col-xs-12 col-sm-6 col-md-8 nopadding">
+                <h2>Success!</h2>
+                <h4>The coupon loaded on your ExtraCare card ending in {{couponsController.cardNumber}} and is ready to use.</h3>
+                <h6>Just present your ExtraCare card to the associate when you check out</h6>
+            </div>
+        </div>
     <div class="row nopadding">
         <div class="panel-body nopadding">
             <br>

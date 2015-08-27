@@ -12,11 +12,7 @@ angular.module('send2CardApp')
 
         var coupons = this;
         var allFilteredCoupons = [];
-
-        /*
-                var extraCareCardNumber = $location.search().eccardnum;*/
-
-        var extraCareCardNumber = "12345678";
+        var extraCareCardNumber = $location.search().eccardnum || "12345678";
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
         coupons.multiCouponError = false;
@@ -26,7 +22,6 @@ angular.module('send2CardApp')
         coupons.sentCouponPath = "images/senttocard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
-
 
         coupons.sendCouponToCard = function () {
             console.log("EC Card No. = " + coupons.cardNumber);
