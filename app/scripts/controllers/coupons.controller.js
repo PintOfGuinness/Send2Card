@@ -12,24 +12,17 @@ angular.module('send2CardApp')
 
         var coupons = this;
         var allFilteredCoupons = [];
-
-        /*
-                var extraCareCardNumber = $location.search().eccardnum;*/
-
-        var extraCareCardNumber = "12345678";
+        var extraCareCardNumber = $location.search().eccardnum || "12345678";
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
         coupons.multiCouponError = false;
         coupons.singleCouponError = false;
-        var initialCouponsOnMobileLoad = 1;
         coupons.unSentCouponPath = "images/sendtocardicon.png";
         coupons.sentCouponPath = "images/senttocard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
-
         coupons.sendCouponToCard = function () {
-            console.log("EC Card No. = " + coupons.cardNumber);
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
                 .catch(sendCouponFailure);
@@ -40,58 +33,34 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
+        function sendCouponFailure(data) {
+            var isCouponSent = false;
+            return isCouponSent;
+        }
+
         coupons.clickPrintCoupon = function () {
             console.log($scope.state);
             window.print();
             $scope.updateState(2);
         }
 
-        function sendCouponFailure(data) {
-            var isCouponSent = false;
-            return isCouponSent;
-        }
-
         couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {
-            coupons.clickedCoupon = [];
-            var singleCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
-            singleCoupon.state = 1;            
-            coupons.clickedCoupon.push(singleCoupon);
 
-            var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
-            //allCoupons: List of Redeemable Coupons
+        coupons.clickedCoupon = [];
+        var singleCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
+        singleCoupon.state = 1;            
+        coupons.clickedCoupon.push(singleCoupon);
 
-            //1. Check load_actl_dt and print_actl_dt
-            sortByReadyToUse(allCoupons);
-            //if they both do not exist, add to NotYetActionedArray
+        var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
+        var sortedCouponLists = $filter('sortCouponsFilter')(allCoupons);
 
-            $filter('sortCouponsFilter')(coupons.notYetActionedCoupons);
-            $filter('sortCouponsFilter')(coupons.readyToUseCoupons);
-            /*            sortCouponsByExpiryDate(coupons.notYetActionedCoupons);
-                        sortCouponsByExpiryDate(coupons.readyToUseCoupons);*/
-
-            coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
-            coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
+        coupons.notYetActionedColumns = columniseFactory.columnise(sortedCouponLists.notYetActionedCoupons);
+        coupons.readyToUseColumns = columniseFactory.columnise(sortedCouponLists.readyToUseCoupons);
+            
         }).catch(function (error) {
-            console.log("BEEN AN ERROR");
             coupons.multiCouponError = true;
-            console.log("Error state = " + coupons.singleCouponError);
+            console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
-
-
-        function sortByReadyToUse(couponList) {
-            coupons.notYetActionedCoupons = [];
-            coupons.readyToUseCoupons = [];
-            for (var i = 0; i < couponList.length; i++) {
-                if (couponList[i].load_actl_dt === "" && couponList[i].prnt_actl_dt === "") {
-                    coupons.notYetActionedCoupons.push(couponList[i]);
-                } else {
-                    coupons.readyToUseCoupons.push(couponList[i]);
-                }
-
-            }
-        }
-
-
 
 
 

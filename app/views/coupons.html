@@ -1,8 +1,8 @@
 <div ng-controller="CouponsController as couponsController">
+    <hr>
     <h4>You have {{couponsController.notYetActionedCoupons.length}} more offers available. Act on these now!</h4>
     <br>
 
-    <div class="row nopadding">
         <!--NOT YET ACTIONED COUPONS-->
         <div class="panel-body nopadding">
             <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.notYetActionedColumns">
@@ -10,11 +10,6 @@
                     <coupon-directive  coupon={{coupon}} un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}>
                     </coupon-directive>
                 </div>
-
-                <div class="mobileView text-centre">
-                    <button class="mobileView" ng-hide="hideNotYetActionedLoadMore" ng-click="couponsController.notYetActionedLoadMoreCoupons()">Load more...({{couponsController.notYetActionedLoadMore}})</button>
-                </div>
-
             </div>
 
         </div>
@@ -28,13 +23,5 @@
                     </coupon-directive>
                 </div>
             </div>
-
-
-            <div class="mobileView text-centre">
-                <div class="mobileView  text-centre">
-                    <button class="mobileView" ng-hide="hideReadyToUseLoadMore" ng-click="couponsController.readyToUseLoadMoreCoupons()">Load more...({{couponsController.readyToUseLoadMore}})</button>
-                </div>
-
-            </div>
         </div>
-    </div>
+</div>

@@ -11,15 +11,14 @@ angular.module('send2CardApp')
 
         function link(scope, elem, attrs) {
             scope.isHidden = false;
-            scope.hideNotYetActionedLoadMore = false;
-            scope.hideReadyToUseLoadMore = false;
             scope.isCollapsed = true;
-
 
             if (scope.coupon != "") {
                 scope.couponFromJson = angular.fromJson(scope.coupon);
-                                console.log(scope.couponFromJson.cpn_seq_nbr + " " + scope.couponFromJson.expiresSoon);
+                console.log(scope.couponFromJson.cpn_seq_nbr + " " + scope.couponFromJson.expiresSoon);
             }
+
+            scope.couponFromJson = angular.fromJson(scope.coupon);
 
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
