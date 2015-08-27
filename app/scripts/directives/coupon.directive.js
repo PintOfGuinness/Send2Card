@@ -16,8 +16,10 @@ angular.module('send2CardApp')
             scope.isCollapsed = true;
 
 
-            scope.couponFromJson = angular.fromJson(scope.coupon);
-
+            if (scope.coupon != "") {
+                scope.couponFromJson = angular.fromJson(scope.coupon);
+                                console.log(scope.couponFromJson.cpn_seq_nbr + " " + scope.couponFromJson.expiresSoon);
+            }
 
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
@@ -51,11 +53,11 @@ angular.module('send2CardApp')
             }
 
             scope.updateState = function (newState) {
-                scope.state = newState;
+                scope.couponFromJson.state = newState;
             }
 
             function sendCouponFailure(failureState) {
-                scope.state = failureState;
+                scope.couponFromJson.state = failureState;
             }
 
             function updateCSSForClickedCoupon() {

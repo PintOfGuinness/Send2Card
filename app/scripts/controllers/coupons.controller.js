@@ -52,8 +52,11 @@ angular.module('send2CardApp')
         }
 
         couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {
-            coupons.clickedCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
-            coupons.clickedCoupon.state = 1;
+            coupons.clickedCoupon = [];
+            var singleCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
+            singleCoupon.state = 1;            
+            coupons.clickedCoupon.push(singleCoupon);
+
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             //allCoupons: List of Redeemable Coupons
 

@@ -7,8 +7,8 @@
             <br>
             <!--window.width: {{windowWidth}}
             window.height: {{windowHeight}}-->
-            <div class="col-xs-12 col-sm-6 col-md-4 nopadding">
-                <coupon-directive title="{{couponsController.clickedCoupon.title}}" description="{{ couponsController.clickedCoupon.cpn_dsc }}" expiry="{{couponsController.clickedCoupon.expir_dt}}" barcode="{{couponsController.clickedCoupon.cpn_seq_nbr}}" terms="{{couponsController.clickedCoupon.cpn_terms_txt}}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{couponsController.sentCouponPath}}" send-coupon-on-startup="{{true}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" state="{{couponsController.clickedCoupon.state}}" expires-soon="{{couponsController.clickedCoupon.expiresSoon}}" coupon="{{couponsController.clickedCoupon}}">
+            <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in couponsController.clickedCoupon">
+                <coupon-directive coupon="{{coupon}}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{couponsController.sentCouponPath}}" send-coupon-on-startup="{{true}}" on-send-coupon-to-card="couponsController.sendCouponToCard()">
                 </coupon-directive>
             </div>    
         </div>
@@ -23,3 +23,11 @@
     <br><a href="www.cvs.com">See a full list of available offers in My Savings & Rewards</b></p>
 </div>
 </div>
+
+
+<!--
+
+                <coupon-directive title="{{couponsController.clickedCoupon[0].title}}" description="{{ couponsController.clickedCoupon[0].cpn_dsc }}" expiry="{{couponsController.clickedCoupon[0].expir_dt}}" barcode="{{couponsController.clickedCoupon[0].cpn_seq_nbr}}" terms="{{couponsController.clickedCoupon[0].cpn_terms_txt}}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{couponsController.sentCouponPath}}" send-coupon-on-startup="{{true}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" state="{{couponsController.clickedCoupon[0].state}}" expires-soon="{{couponsController.clickedCoupon[0].expiresSoon}}" coupon="{{couponsController.clickedCoupon[0]}}">
+                </coupon-directive>
+
+-->
