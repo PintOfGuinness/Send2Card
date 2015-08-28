@@ -22,8 +22,9 @@ angular.module('send2CardApp')
         coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
-        coupons.couponsPerRow=3;
-    
+        // Add to initialise
+        coupons.getCouponsPerRow;
+
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -48,40 +49,61 @@ angular.module('send2CardApp')
 
         couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {
 
-        coupons.clickedCoupon = [];
-        var singleCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
-        singleCoupon.state = 1;            
-        coupons.clickedCoupon.push(singleCoupon);
+            coupons.clickedCoupon = [];
+            var singleCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
+            singleCoupon.state = 1;
+            coupons.clickedCoupon.push(singleCoupon);
 
-        var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
-        var sortedCouponLists = $filter('sortCouponsFilter')(allCoupons);
+            var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
+            var sortedCouponLists = $filter('sortCouponsFilter')(allCoupons);
 
-        /*coupons.notYetActionedColumns = columniseFactory.columnise(sortedCouponLists.notYetActionedCoupons);
-        coupons.readyToUseColumns = columniseFactory.columnise(sortedCouponLists.readyToUseCoupons);*/
-            
-        coupons.notYetActionedColumns = sortedCouponLists.notYetActionedCoupons;
-        coupons.readyToUseColumns = sortedCouponLists.readyToUseCoupons;
-            
+            /*coupons.notYetActionedColumns = columniseFactory.columnise(sortedCouponLists.notYetActionedCoupons);
+            coupons.readyToUseColumns = columniseFactory.columnise(sortedCouponLists.readyToUseCoupons);*/
+
+            coupons.notYetActionedColumns = sortedCouponLists.notYetActionedCoupons;
+            coupons.readyToUseColumns = sortedCouponLists.readyToUseCoupons;
+
         }).catch(function (error) {
             coupons.multiCouponError = true;
             console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
 
-        coupons.getIndexNumber = function(indexNumber) {
-            var array=[];
-            
-            for (var i=indexNumber; i< coupons.couponsPerRow + indexNumber; i++){
-                if(i<coupons.notYetActionedColumns.length){
-                array.push(i);
+        coupons.getIndexNumber = function (indexNumber) {
+            var array = [];
+
+
+
+            for (var i = indexNumber; i < coupons.couponsPerRow + indexNumber; i++) {
+                if (i < coupons.notYetActionedColumns.length) {
+                    array.push(i);
                 }
-                console.log(i);
             }
             return array;
         }
 
-        /* Event triggered by any screen size change */
-        /*        screenSize.on('xs, sm, md, lg', function (match) {
-                    coupons.notYetActionedColumns = columniseFactory.columnise(coupons.notYetActionedCoupons);
-                    coupons.readyToUseColumns = columniseFactory.columnise(coupons.readyToUseCoupons);
-                });*/
+        coupons.getCouponsPerRow = function () {
+
+            coupons.couponsPerRow = 3;
+            if (screenSize.is('md, lg')) {
+                coupons.couponsPerRow = 3;
+                console.log("md lg: couponsPerRow = " + coupons.couponsPerRow);
+                return coupons.couponsPerRow;
+            } else if (screenSize.is('sm')) {
+                coupons.couponsPerRow = 2;
+                console.log("sm: couponsPerRow = " + coupons.couponsPerRow);
+                return coupons.couponsPerRow;
+            } else if (screenSize.is('xs')) {
+                coupons.couponsPerRow = 1;
+                console.log("xs: couponsPerRow = " + coupons.couponsPerRow);
+                return coupons.couponsPerRow;
+            } else {
+                coupons.couponsPerRow = 1;
+                return coupons.couponsPerRow;
+            }
+        }
+
+        screenSize.on('xs, sm, md, lg', function (match) {
+            coupons.couponsPerRow = coupons.getCouponsPerRow();
+        });        
+        
     });

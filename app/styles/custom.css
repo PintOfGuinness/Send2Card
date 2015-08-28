@@ -101,6 +101,7 @@ img:hover {
 
 /*animate enter and leave*/
 
+/*
 .ng-enter {
     -o-transform: scaleX(-0.5);
     transition: 0.15s;
@@ -130,6 +131,7 @@ img:hover {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
 }
+*/
 
 .float-down {
     position:absolute; 

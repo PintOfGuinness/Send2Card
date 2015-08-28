@@ -15,7 +15,6 @@ angular.module('send2CardApp')
 
             if (scope.coupon != "") {
                 scope.couponFromJson = angular.fromJson(scope.coupon);
-                console.log(scope.couponFromJson.cpn_seq_nbr + " " + scope.couponFromJson.expiresSoon);
             }
 
             if (scope.coupon != "") {
