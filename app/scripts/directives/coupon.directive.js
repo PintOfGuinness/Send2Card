@@ -18,7 +18,9 @@ angular.module('send2CardApp')
                 console.log(scope.couponFromJson.cpn_seq_nbr + " " + scope.couponFromJson.expiresSoon);
             }
 
-            scope.couponFromJson = angular.fromJson(scope.coupon);
+            if (scope.coupon != "") {
+                scope.couponFromJson = angular.fromJson(scope.coupon);
+            }
 
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
