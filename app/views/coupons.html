@@ -7,8 +7,10 @@
     <!--NOT YET ACTIONED COUPONS-->
     <div class="panel-body nopadding">
         <div ng-repeat="coupon in couponsController.notYetActionedColumns">
-            <div ng-if="$index%3==0" class="row">
+            <div ng-if="$index%(couponsController.couponsPerRow)==0" class="row">
+    
                 <div ng-repeat="i in couponsController.getIndexNumber($index) track by $index">
+
                     <coupon-directive class="col-sm-6 col-md-4 nopadding" coupon={{couponsController.notYetActionedColumns[i]}} un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}>
                     </coupon-directive>
                 </div>

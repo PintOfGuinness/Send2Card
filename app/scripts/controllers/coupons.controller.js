@@ -22,6 +22,8 @@ angular.module('send2CardApp')
         coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
+        coupons.couponsPerRow=3;
+    
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -65,17 +67,15 @@ angular.module('send2CardApp')
             console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
 
-        coupons.getIndexNumber = function(indexNumber, couponsPerRow) {
+        coupons.getIndexNumber = function(indexNumber) {
             var array=[];
-           /* console.log("INDEX:" + indexNumber + "/COUponsPerRow:" + couponsPerRow);
-            for (var i=indexNumber; i< couponsPerRow; i++){
-                array.push(i);
-                console.log(i);
-            }*/
             
-            var array=[indexNumber, indexNumber+1, indexNumber+2];
-            //var array=[indexNumber, indexNumber+1];
-            //var array=[indexNumber];
+            for (var i=indexNumber; i< coupons.couponsPerRow + indexNumber; i++){
+                if(i<coupons.notYetActionedColumns.length){
+                array.push(i);
+                }
+                console.log(i);
+            }
             return array;
         }
 
