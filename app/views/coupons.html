@@ -3,25 +3,29 @@
     <h4>You have {{couponsController.notYetActionedCoupons.length}} more offers available. Act on these now!</h4>
     <br>
 
-        <!--NOT YET ACTIONED COUPONS-->
-        <div class="panel-body nopadding">
-            <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.notYetActionedColumns">
-                <div ng-repeat="coupon in column">
-                    <coupon-directive  coupon={{coupon}} un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}>
-                    </coupon-directive>
-                </div>
-            </div>
 
-        </div>
-        <!--READY TO USE COUPONS-->
-        <div class="panel-body nopadding">
-            <h4>Offers Ready to Use</h4>
-            <br>
-            <div class="col-sm-6 col-md-4 nopadding" ng-repeat="column in couponsController.readyToUseColumns">
-                <div ng-repeat="coupon in column">
-                    <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}} coupon={{coupon}}>
+    <!--NOT YET ACTIONED COUPONS-->
+    <div class="panel-body nopadding">
+        <div ng-repeat="coupon in couponsController.notYetActionedColumns">
+            <div ng-if="$index%3==0" class="row">
+                <div ng-repeat="i in couponsController.getIndexNumber($index) track by $index">
+                    <coupon-directive class="col-sm-6 col-md-4 nopadding" coupon={{couponsController.notYetActionedColumns[i]}} un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}}>
                     </coupon-directive>
                 </div>
+            
             </div>
         </div>
+    </div>
+
+    <!--READY TO USE COUPONS-->
+    <div class="panel-body nopadding">
+        <h4>Offers Ready to Use</h4>
+        <br>
+        <div class="col-sm-6 col-md-4 nopadding" ng-repeat="coupon in couponsController.readyToUseColumns">
+            <coupon-directive title="{{ coupon.title }}" description="{{ coupon.cpn_dsc }}" expiry="{{ coupon.expir_dt }}" barcode="{{ coupon.cpn_seq_nbr }}" terms="{{ coupon.cpn_terms_txt }}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{ false }}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} expires-soon={{coupon.expiresSoon}} state={{coupon.state}} coupon={{coupon}}>
+            </coupon-directive>
+        </div>
+    </div>
+
+
 </div>

@@ -54,15 +54,30 @@ angular.module('send2CardApp')
         var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
         var sortedCouponLists = $filter('sortCouponsFilter')(allCoupons);
 
-        coupons.notYetActionedColumns = columniseFactory.columnise(sortedCouponLists.notYetActionedCoupons);
-        coupons.readyToUseColumns = columniseFactory.columnise(sortedCouponLists.readyToUseCoupons);
+        /*coupons.notYetActionedColumns = columniseFactory.columnise(sortedCouponLists.notYetActionedCoupons);
+        coupons.readyToUseColumns = columniseFactory.columnise(sortedCouponLists.readyToUseCoupons);*/
+            
+        coupons.notYetActionedColumns = sortedCouponLists.notYetActionedCoupons;
+        coupons.readyToUseColumns = sortedCouponLists.readyToUseCoupons;
             
         }).catch(function (error) {
             coupons.multiCouponError = true;
             console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
 
-
+        coupons.getIndexNumber = function(indexNumber, couponsPerRow) {
+            var array=[];
+           /* console.log("INDEX:" + indexNumber + "/COUponsPerRow:" + couponsPerRow);
+            for (var i=indexNumber; i< couponsPerRow; i++){
+                array.push(i);
+                console.log(i);
+            }*/
+            
+            var array=[indexNumber, indexNumber+1, indexNumber+2];
+            //var array=[indexNumber, indexNumber+1];
+            //var array=[indexNumber];
+            return array;
+        }
 
         /* Event triggered by any screen size change */
         /*        screenSize.on('xs, sm, md, lg', function (match) {
