@@ -62,7 +62,7 @@ angular.module('send2CardApp')
             }
 
             function updateCSSForClickedCoupon() {
-                elem.addClass("thick-border");
+                //elem.addClass("thick-border");
             }
         }
 
