@@ -1,4 +1,4 @@
-<div class="panel panel-default couponpadding">
+<div class="panel panel-default couponpadding" style="position:relative;" ng-class="!isCollapsed ? 'removeBottomBorder' : '' ">
     <div class="panel-body coupon-leftside">
         <div class="text-center coupon-rightside">
 
@@ -41,15 +41,16 @@
             <br>
 
     </div>
-<!--ng-class="!isCollapsed ? 'thick-border' : '' "-->
-    <div collapse="isCollapsed" class="expanded-div-style overlay thick-border">
-                <small>
+    <!--ng-class="!isCollapsed ? 'thick-border' : '' "-->
+    <div collapse="isCollapsed" class="overlay thick-border">
+        <div class="expanded-div-style">
+            <small>
                 <p>Coupon redeemable in store only*</p>
                 <p><b>Valid through:</b><b class="text-red"> {{ couponFromJson.expir_dt }} </b>
                 <br/>
                     <b>Barcode/coupon code:</b><b class="text-red"> {{ couponFromJson.cpn_seq_nbr }} </b></p>
                 <p><b>Terms & Conditions: </b>{{ couponFromJson.cpn_terms_txt }}</p>
             </small>
-
+        </div>
     </div>
 </div>

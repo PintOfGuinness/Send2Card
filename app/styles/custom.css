@@ -1,20 +1,19 @@
 .expanded-div-style {
-    background-color: #F7F7FF;
-    /* #E9E9E9; */
-    Padding: 15px 20px 10px 20px;
-    margin: 5px -15px -15px -18px;
+    padding: 15px 20px 10px 20px;
 }
 .align-top {
     vertical-align: top;
 }
 .overlay {
     position: absolute;
-    top:95%;
-    left: 17px;
-    right:14px;
-    height: 100%;
+    top:100%;
+    left: 0px;
+    right: 0px;
     z-index: 10;
     background-color: white;
+    /*padding: 15px 20px 10px 20px;*/
+    margin: 0px -1px;
+   /* margin: 5px -15px -15px -18px;*/
 }
 .text-red {
     color: #cc0000;
@@ -72,6 +71,11 @@ img:hover {
     width: 90px;
 }
 
+.removeBottomBorder{
+    /*border-bottom: none;*/
+    border-bottom-left-radius:0;
+    border-bottom-right-radius:0;
+}
 /*---------------------------------------------------------------------------*/
 
 
