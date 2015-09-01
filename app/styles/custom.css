@@ -11,9 +11,7 @@
     right: 0px;
     z-index: 10;
     background-color: white;
-    /*padding: 15px 20px 10px 20px;*/
     margin: 0px -1px;
-   /* margin: 5px -15px -15px -18px;*/
 }
 .text-red {
     color: #cc0000;
@@ -44,16 +42,14 @@ img:hover {
     border: 1px solid;   
     border-color: #DDD;
     border-top: none;
-    border-radius: 4px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-    border-top-left-radius:0;
-    border-top-right-radius:0;
 }
 
 .couponpadding {
    padding: 5px 10px !important;
-   margin: 0 5px 10px 0 !important;
+   margin: 0 5px 5px 0 !important;
    position:relative;
+   border-radius:0;
 }
 
 .coupon-leftside{
@@ -71,11 +67,6 @@ img:hover {
     width: 90px;
 }
 
-.removeBottomBorder{
-    /*border-bottom: none;*/
-    border-bottom-left-radius:0;
-    border-bottom-right-radius:0;
-}
 /*---------------------------------------------------------------------------*/
 
 
