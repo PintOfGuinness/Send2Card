@@ -4,7 +4,7 @@
 
             <div ng-switch on="couponFromJson.state" class="nopadding">
                 <div ng-switch-when=0>
-                    <img ng-click="clickSendCouponToCard();" ng-src="{{unSentCouponPath}}">
+                    <img ng-click="clickSendCouponToCard(); updateState();" ng-src="{{unSentCouponPath}}">
                 </div>
                 <div ng-switch-when=1 class="enter">
                     <img ng-src="{{sentCouponPath}}">

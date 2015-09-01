@@ -41,8 +41,15 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
+        coupons.updateState = function(barcode, state){
+            for( var i=0; i<coupons.notYetActionedCoupons.length;i++ ){
+                if(coupons.notYetActionedCoupons[i].cpn_seq_nbr == barcode){
+                    coupons.notYetActionedCoupons[i].state = state;
+                }
+            }
+        }
+    
         coupons.clickPrintCoupon = function () {
-            console.log($scope.state);
             window.print();
             $scope.updateState(2);
         }
@@ -57,24 +64,25 @@ angular.module('send2CardApp')
             var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
             var sortedCouponLists = $filter('sortCouponsFilter')(allCoupons);
 
-            /*coupons.notYetActionedColumns = columniseFactory.columnise(sortedCouponLists.notYetActionedCoupons);
-            coupons.readyToUseColumns = columniseFactory.columnise(sortedCouponLists.readyToUseCoupons);*/
-
-            coupons.notYetActionedColumns = sortedCouponLists.notYetActionedCoupons;
-            coupons.readyToUseColumns = sortedCouponLists.readyToUseCoupons;
+            coupons.notYetActionedCoupons = sortedCouponLists.notYetActionedCoupons;
+            coupons.readyToUseCoupons = sortedCouponLists.readyToUseCoupons;
 
         }).catch(function (error) {
             coupons.multiCouponError = true;
             console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
 
-        coupons.getIndexNumber = function (indexNumber) {
+        coupons.getIndexNumber = function (indexNumber, arrayName) {
             var array = [];
-
-
-
+            var couponArray = [];
+            if(arrayName=="notYetActioned"){
+                couponArray = coupons.notYetActionedCoupons;
+            }
+            if(arrayName=="readyToUse"){
+                couponArray = coupons.readyToUseCoupons;
+            }
             for (var i = indexNumber; i < coupons.couponsPerRow + indexNumber; i++) {
-                if (i < coupons.notYetActionedColumns.length) {
+                if (i < couponArray.length) {
                     array.push(i);
                 }
             }
@@ -82,22 +90,17 @@ angular.module('send2CardApp')
         }
 
         coupons.getCouponsPerRow = function () {
-
             coupons.couponsPerRow = 3;
             if (screenSize.is('md, lg')) {
                 coupons.couponsPerRow = 3;
-                console.log("md lg: couponsPerRow = " + coupons.couponsPerRow);
                 return coupons.couponsPerRow;
             } else if (screenSize.is('sm')) {
                 coupons.couponsPerRow = 2;
-                console.log("sm: couponsPerRow = " + coupons.couponsPerRow);
                 return coupons.couponsPerRow;
             } else if (screenSize.is('xs')) {
                 coupons.couponsPerRow = 1;
-                console.log("xs: couponsPerRow = " + coupons.couponsPerRow);
                 return coupons.couponsPerRow;
             } else {
-                coupons.couponsPerRow = 1;
                 return coupons.couponsPerRow;
             }
         }

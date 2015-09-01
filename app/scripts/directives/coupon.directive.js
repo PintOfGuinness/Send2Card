@@ -32,7 +32,7 @@ angular.module('send2CardApp')
                 scope.sendCouponOnStartup = false;
             }
 
-            if (scope.state == 1) {
+            if (scope.couponFromJson.state == 1) {
                 scope.isHidden = true;
             }
 
@@ -54,6 +54,7 @@ angular.module('send2CardApp')
 
             scope.updateState = function (newState) {
                 scope.couponFromJson.state = newState;
+                scope.onUpdateState({barcode:scope.couponFromJson.cpn_seq_nbr, state: newState});
             }
 
             function sendCouponFailure(failureState) {
@@ -70,19 +71,13 @@ angular.module('send2CardApp')
             restrict: 'E',
             replace: true,
             scope: {
-                title: '@',
-                description: '@',
-                expiry: '@',
-                terms: '@',
-                barcode: '@',
                 unSentCouponPath: '@',
                 sentCouponPath: '@',
                 sendCouponOnStartup: '@',
                 onSendCouponToCard: '&',
                 printedPath: '@',
-                expiresSoon: '@',
                 coupon: '@',
-                state: '@'
+                onUpdateState: '&'
             },
             link: link
         }

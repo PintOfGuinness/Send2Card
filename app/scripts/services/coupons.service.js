@@ -10,18 +10,14 @@
 angular.module('send2CardApp')
     .service('couponsService', function couponsService($http) {
 
-        /*        var allUnfilteredCoupons = [];*/
         var couponServicePromise = null;
         var service = {
-            /*    allUnfilteredCoupons: allUnfilteredCoupons,*/
             getUnfilteredCoupons: getUnfilteredCoupons
         };
         return service;
 
         function getUnfilteredCoupons(extraCareCardNumber) {
             if (couponServicePromise === null) {
-                // Coupon Service first time call
-                console.log("DATA RETRIEVED FIRST TIME");
                 couponServicePromise = $http.get("data/customer.json");
             }
 
