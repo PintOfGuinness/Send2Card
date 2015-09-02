@@ -23,6 +23,9 @@ angular.module('send2CardApp')
 
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
+
+                elem.addClass("expanded-hide-bottom-border");
+                console.log("element class name = " + elem);
             }
 
             if (scope.sendCouponOnStartup === 'true') {
@@ -62,7 +65,8 @@ angular.module('send2CardApp')
             }
 
             function updateCSSForClickedCoupon() {
-                //elem.addClass("thick-border");
+                elem.addClass("thick-border");
+                elem.addClass("show-top");
             }
         }
 
