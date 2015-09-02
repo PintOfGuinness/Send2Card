@@ -1,6 +1,6 @@
-<div class="panel panel-default couponpadding">
+<div class="panel panel-default couponpadding" ng-class="{'border-yellow' : isReadyToUse }">
     <div class="panel-body coupon-leftside">
-        <div class="text-center coupon-rightside">
+        <div class="text-center coupon-rightside" ng-class="{'border-yellow' : isReadyToUse }">
 
             <div ng-switch on="couponFromJson.state" class="nopadding">
                 <div ng-switch-when=0>
@@ -45,8 +45,8 @@
             <br>
 
     </div>
-    <!--ng-class="!isCollapsed ? 'thick-border' : '' "-->
-    <div collapse="isCollapsed" class="overlay hide-top thick-border">
+
+    <div collapse="isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !isReadyToUse, 'border-yellow' : isReadyToUse }">
         <div class="expanded-div-style">
             <small>
                 <p>Coupon redeemable in store only*</p>

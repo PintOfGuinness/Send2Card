@@ -82,7 +82,11 @@ img:hover {
 /*Andrew Dawson is an onion CSS*/
 
 .border-yellow {
-  border-left: #ffe87c;
+  border-color: #ffe87c;
+}
+
+.border-grey {
+  border-color: #DDD;
 }
 
 .hide-top{

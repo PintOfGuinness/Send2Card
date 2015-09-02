@@ -12,7 +12,8 @@ angular.module('send2CardApp')
         function link(scope, elem, attrs) {
             scope.isHidden = false;
             scope.isCollapsed = true;
-
+            scope.isReadyToUse= false;
+            
             if (scope.coupon != "") {
                 scope.couponFromJson = angular.fromJson(scope.coupon);
             }
@@ -23,11 +24,14 @@ angular.module('send2CardApp')
 
             scope.collapseSection = function () {
                 scope.isCollapsed = !scope.isCollapsed;
-
                 elem.addClass("expanded-hide-bottom-border");
                 console.log("element class name = " + elem);
             }
 
+            if(scope.couponFromJson.state != 0){
+                scope.isReadyToUse =true;
+            }
+            
             if (scope.sendCouponOnStartup === 'true') {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
@@ -40,7 +44,6 @@ angular.module('send2CardApp')
             }
 
             scope.clickSendCouponToCard = function () {
-                updateCSSForClickedCoupon();
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);
@@ -56,6 +59,7 @@ angular.module('send2CardApp')
             }
 
             scope.updateState = function (newState) {
+                scope.isReadyToUse =true;
                 scope.couponFromJson.state = newState;
                 scope.onUpdateState({barcode:scope.couponFromJson.cpn_seq_nbr, state: newState});
             }
@@ -64,10 +68,6 @@ angular.module('send2CardApp')
                 scope.couponFromJson.state = failureState;
             }
 
-            function updateCSSForClickedCoupon() {
-                elem.addClass("thick-border");
-                elem.addClass("show-top");
-            }
         }
 
         return {
