@@ -3,7 +3,7 @@
         <div class="row nopadding">
             <div class="col-xs-12 col-sm-6 col-md-8 nopadding">
                 <h2>Success!</h2>
-                <h4>The coupon loaded on your ExtraCare card ending in {{couponsController.cardNumber}} and is ready to use.</h3>
+                <h3>The coupon loaded on your ExtraCare card ending in {{couponsController.cardNumber}} and is ready to use.</h3>
                 <h6>Just present your ExtraCare card to the associate when you check out</h6>
             </div>
         </div>
@@ -11,17 +11,18 @@
         <div class="panel-body nopadding">
             <br>
             <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in couponsController.clickedCoupon">
-                <coupon-directive coupon="{{coupon}}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{couponsController.sentCouponPath}}" send-coupon-on-startup="{{true}}" on-send-coupon-to-card="couponsController.sendCouponToCard()">
+                <coupon-directive coupon="{{coupon}}" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{couponsController.sentCouponPath}}" send-coupon-on-startup="{{true}}" on-send-coupon-to-card="couponsController.sendCouponToCard()"></coupon-directive>
         </div>
     </div>
 </div>
 
 <div ng-controller="CouponsController as couponsController">
-<div ng-show="couponsController.singleCouponError"
-    <p>You've already printed this coupon you eejit.
+<div ng-show="couponsController.singleCouponError">
+    You've already printed this coupon you eejit.
     <br>Valid Through "MM/DD/YY"
     <br> To redeem this coupon, simply present it to the associate when you check out.
-    <br><a href="www.cvs.com">See a full list of available offers in My Savings & Rewards</b></p>
+    <br><a href="www.cvs.com" See a full list of available offers in My Savings & Rewards /></b></p>
 </div>
 </div>
-
+</div>
+</div>

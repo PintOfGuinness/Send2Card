@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/scripts/controllers/coupons.controller.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/directives/singlecoupondirective.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/directives/singlecoupondirective.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/directives/viewallcouponsdirective.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/directives/viewallcouponsdirective.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/coupon-template.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/coupon.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/views/coupons.html" charset="UTF-8" />
+  </component>
+</project>
