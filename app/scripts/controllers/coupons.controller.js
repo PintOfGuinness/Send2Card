@@ -18,7 +18,7 @@ angular.module('send2CardApp')
         coupons.multiCouponError = false;
         coupons.singleCouponError = false;
         coupons.unSentCouponPath = "images/sendtocardicon.png";
-        coupons.sentCouponPath = "images/senttocard.png";
+        coupons.sentCouponPath = "images/oncard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
@@ -48,7 +48,7 @@ angular.module('send2CardApp')
                 }
             }
         }
-    
+
         coupons.clickPrintCoupon = function () {
             window.print();
             $scope.updateState(2);
@@ -107,6 +107,6 @@ angular.module('send2CardApp')
 
         screenSize.on('xs, sm, md, lg', function (match) {
             coupons.couponsPerRow = coupons.getCouponsPerRow();
-        });        
-        
+        });
+
     });
