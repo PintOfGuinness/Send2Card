@@ -18,7 +18,7 @@ angular.module('send2CardApp')
             } else {
                 output = getSingleCouponByFilter(input, couponNumberFilter);
             }
-      
+
             return output;
         };
 
@@ -69,6 +69,7 @@ angular.module('send2CardApp')
                 }
             }
             couponExpiresSoon(eachCoupon);
+            couponIsNew(eachCoupon);
         }
 
         function couponRedeemed(eachCoupon) {
@@ -107,4 +108,18 @@ angular.module('send2CardApp')
                 eachCoupon.expiresSoon = false;
             }
         }
+
+
+        function couponIsNew(eachCoupon){
+
+          if(eachCoupon.viewable_ind === "Y"){
+            eachCoupon.isNew = true;
+          } else {
+            eachCoupon.isNew = false;
+          }
+
+        }
+
+
+
     });

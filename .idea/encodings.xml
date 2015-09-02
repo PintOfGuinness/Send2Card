@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/app/scripts/directives/singlecoupondirective.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/directives/viewallcouponsdirective.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/scripts/directives/viewallcouponsdirective.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/scripts/filters/coupon.filter.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/coupon-template.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/coupon.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/views/coupons.html" charset="UTF-8" />
