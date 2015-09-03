@@ -10,7 +10,7 @@
                 <button type="button" class="close" ng-click="cancel()">&times;</button>
                 <br>
                 <br>
-                <button ng-click="couponsController.clickPrintCoupon()" class="btn btn-success pull-right">Print</button>
+                <button ng-click="couponsController.clickPrintCoupon();" class="btn btn-success pull-right">Print</button>
                 <h4>Your coupon is ready to print!</h4>
                 <br>
             </div>
@@ -20,12 +20,12 @@
                 <p class="pull-right"> extracare For <b>extra</b>care card ending in <b>{{couponsController.cardNumber}}</b></p>
                 <h3>(INSERT COUPON TITLE)</h3>
                 
-                <b>{{couponFromJson.cpn_dsc}}</b> <br>
+                <b>{{coupon.cpn_dsc}}</b> <br>
                 Coupon redeemable in store only*
                 <hr>
-                <b>Valid through: {{couponFromJson.expir_dt}} 
+                <b>Valid through: {{coupon.expir_dt}} 
                 <br>
-                Barcode/coupon code:  {{couponFromJson.cpn_seq_nbr}}
+                Barcode/coupon code:  {{coupon.cpn_seq_nbr}}
                 </b>
                 <br>
                 <br>
@@ -47,7 +47,7 @@
             <div >
                 <b>*Terms &amp; Conditions</b>
                 <br>
-                {{couponFromJson.cpn_terms_txt}}
+                {{coupon.cpn_terms_txt}}
                 <br>
                 <br>
                 <b>CVS/pharmacy will not accept offers printed from unauthorizes internet postings or reproductions, copies or facsimilies of this offer.</b>
