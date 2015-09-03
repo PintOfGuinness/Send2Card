@@ -9,7 +9,7 @@
         <div ng-repeat="coupon in couponsController.notYetActionedCoupons">
             <div ng-if="$index%(couponsController.getCouponsPerRow())==0" class="row nopadding" style="display: flex;">
                 <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in couponsController.getIndexNumber($index, 'notYetActioned') track by $index" style="display: flex;">
-                    <coupon-directive class="col-xs-12" coupon="couponsController.notYetActionedCoupons[i]" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} on-update-collapse-index="couponsController.updateCollapseIndex(index)" coupon-index="{{$index}}">
+                    <coupon-directive class="col-xs-12" coupon="couponsController.notYetActionedCoupons[i]" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} on-reset-collapse-state-for-all="couponsController.resetCollapseStateForAll()">
                     </coupon-directive>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div ng-repeat="coupon in couponsController.readyToUseCoupons">
             <div ng-if="$index%(couponsController.getCouponsPerRow())==0" class="row nopadding" style="display: flex;">
                 <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in couponsController.getIndexNumber($index, 'readyToUse') track by $index" style="display: flex;">
-                    <coupon-directive class="col-xs-12" coupon="couponsController.readyToUseCoupons[i]" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} on-update-state="couponsController.updateState(barcode,state)" coupon-index="{{$index}}">
+                    <coupon-directive class="col-xs-12" coupon="couponsController.readyToUseCoupons[i]" un-sent-coupon-path="{{ couponsController.unSentCouponPath }}" sent-coupon-path="{{ couponsController.sentCouponPath }}" send-coupon-on-startup="{{false}}" on-send-coupon-to-card="couponsController.sendCouponToCard()" printed-path={{couponsController.couponPrinted}} on-reset-collapse-state-for-all="couponsController.resetCollapseStateForAll()">
                     </coupon-directive>
                 </div>
             </div>

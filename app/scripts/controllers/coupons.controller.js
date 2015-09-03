@@ -25,17 +25,15 @@ angular.module('send2CardApp')
         // Add to initialise
         coupons.getCouponsPerRow;
 
-        coupons.updateCollapseIndex = function (index) {
-            console.log('do i work' + index);
+        coupons.resetCollapseStateForAll = function () {
+            console.log('do i work');
+            coupons.clickedCoupon[0].isCollapsed = true;
             for (var i = 0; i < coupons.notYetActionedCoupons.length; i++) {
-                if (i != index) {
                     coupons.notYetActionedCoupons[i].isCollapsed = true;
-                }
+
             }
             for (var i = 0; i < coupons.readyToUseCoupons.length; i++) {
-/*                if (i != index) {*/
                     coupons.readyToUseCoupons[i].isCollapsed = true;
-                //}
             }            
         }
 

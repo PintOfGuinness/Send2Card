@@ -15,8 +15,8 @@ angular.module('send2CardApp')
             scope.isReadyToUse= false;
      
             scope.collapseSection = function () {
-                scope.coupon.isCollapsed = !scope.coupon.isCollapsed;
-                scope.onUpdateCollapseIndex({index:scope.couponIndex});
+                scope.onResetCollapseStateForAll();
+                scope.coupon.isCollapsed = false;                
                 elem.addClass("expanded-hide-bottom-border");
                 console.log("element class name = " + elem);
             }
@@ -71,9 +71,7 @@ angular.module('send2CardApp')
                 printedPath: '@',
                 coupon: '=',
                 onUpdateState: '&',
-                onUpdateCollapseIndex: '&',
-            /*    isCollapsed: '@',*/
-                couponIndex: '@'
+                onResetCollapseStateForAll: '&',
             },
             link: link
         }
