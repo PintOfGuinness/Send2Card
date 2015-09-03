@@ -2,7 +2,7 @@
     <div class="panel-body coupon-leftside">
         <div class="text-center coupon-rightside" ng-class="{'border-yellow' : isReadyToUse }">
 
-            <div ng-switch on="couponFromJson.state" class="nopadding">
+            <div ng-switch on="coupon.state" class="nopadding">
                 <div ng-switch-when=0>
                     <img ng-click="clickSendCouponToCard(); updateState();" ng-src="{{unSentCouponPath}}">
                 </div>
@@ -21,39 +21,39 @@
         </div>
 
         <p>
-            <h4 class="">{{ couponFromJson.title }}</h4> {{couponFromJson.cpn_dsc}}
+            <h4 class="">{{ coupon.title }}</h4> {{coupon.cpn_dsc}}
             <br>
 
 
             <br>
-            <div ng-show="couponFromJson.expiresSoon">
-                <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ couponFromJson.expir_dt }}
+            <div ng-show="coupon.expiresSoon">
+                <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ coupon.expir_dt }}
             </div>
 
       <br>
-      <div ng-show="couponFromJson.isNew">
+      <div ng-show="coupon.isNew">
         <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! </strong>
       </div>
 
         </p>
 
-        <div ng-show="!couponFromJson.expiresSoon"> EXP {{ couponFromJson.expir_dt }} </div>
+        <div ng-show="!coupon.expiresSoon"> EXP {{ coupon.expir_dt }} </div>
         <p>
 
-            <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !isCollapsed, 'glyphicon glyphicon-chevron-right' : isCollapsed}"></span> View Details</div></strong>
+            <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details {{coupon.isCollapsed}}</div></strong>
             <br>
             <br>
 
     </div>
 
-    <div collapse="isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !isReadyToUse, 'border-yellow' : isReadyToUse }">
+    <div collapse="coupon.isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !isReadyToUse, 'border-yellow' : isReadyToUse }">
         <div class="expanded-div-style">
             <small>
                 <p>Coupon redeemable in store only*</p>
-                <p><b>Valid through:</b><b class="text-red"> {{ couponFromJson.expir_dt }} </b>
+                <p><b>Valid through:</b><b class="text-red"> {{ coupon.expir_dt }} </b>
                 <br/>
-                    <b>Barcode/coupon code:</b><b class="text-red"> {{ couponFromJson.cpn_seq_nbr }} </b></p>
-                <p><b>Terms & Conditions: </b>{{ couponFromJson.cpn_terms_txt }}</p>
+                    <b>Barcode/coupon code:</b><b class="text-red"> {{ coupon.cpn_seq_nbr }} </b></p>
+                <p><b>Terms & Conditions: </b>{{ coupon.cpn_terms_txt }}</p>
             </small>
         </div>
     </div>

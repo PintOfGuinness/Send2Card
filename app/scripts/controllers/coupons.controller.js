@@ -25,6 +25,16 @@ angular.module('send2CardApp')
         // Add to initialise
         coupons.getCouponsPerRow;
 
+        coupons.updateCollapseIndex = function (index) {
+            console.log('do i work' + index);
+            for (var i = 0; i < coupons.notYetActionedCoupons.length; i++) {
+                if (i != index) {
+                    coupons.notYetActionedCoupons[i].isCollapsed = true;
+                }
+            }
+        }
+
+
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -41,13 +51,6 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
-        coupons.updateState = function(barcode, state){
-            for( var i=0; i<coupons.notYetActionedCoupons.length;i++ ){
-                if(coupons.notYetActionedCoupons[i].cpn_seq_nbr == barcode){
-                    coupons.notYetActionedCoupons[i].state = state;
-                }
-            }
-        }
 
         coupons.clickPrintCoupon = function () {
             window.print();
@@ -75,10 +78,10 @@ angular.module('send2CardApp')
         coupons.getIndexNumber = function (indexNumber, arrayName) {
             var array = [];
             var couponArray = [];
-            if(arrayName=="notYetActioned"){
+            if (arrayName == "notYetActioned") {
                 couponArray = coupons.notYetActionedCoupons;
             }
-            if(arrayName=="readyToUse"){
+            if (arrayName == "readyToUse") {
                 couponArray = coupons.readyToUseCoupons;
             }
             for (var i = indexNumber; i < coupons.couponsPerRow + indexNumber; i++) {

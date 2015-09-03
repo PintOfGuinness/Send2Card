@@ -27,6 +27,7 @@ angular.module('send2CardApp')
             angular.forEach(input, function (eachCoupon, index) {
                 if (input[index].cpn_seq_nbr !== couponNumberFilter) {
                     if (couponViewable(eachCoupon)) {
+                        eachCoupon.isCollapsed = true;
                         output.push(eachCoupon);
                     }
                 }

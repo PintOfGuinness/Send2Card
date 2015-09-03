@@ -13,25 +13,14 @@ angular.module('send2CardApp')
             scope.isHidden = false;
             scope.isCollapsed = true;
             scope.isReadyToUse= false;
-            
-            if (scope.coupon != "") {
-                scope.couponFromJson = angular.fromJson(scope.coupon);
-            }
-
-            if (scope.coupon != "") {
-                scope.couponFromJson = angular.fromJson(scope.coupon);
-            }
-
+     
             scope.collapseSection = function () {
-                scope.isCollapsed = !scope.isCollapsed;
+                scope.coupon.isCollapsed = !scope.coupon.isCollapsed;
+                scope.onUpdateCollapseIndex({index:scope.couponIndex});
                 elem.addClass("expanded-hide-bottom-border");
                 console.log("element class name = " + elem);
             }
 
-            if(scope.couponFromJson.state != 0){
-                scope.isReadyToUse =true;
-            }
-            
             if (scope.sendCouponOnStartup === 'true') {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
@@ -39,7 +28,12 @@ angular.module('send2CardApp')
                 scope.sendCouponOnStartup = false;
             }
 
-            if (scope.couponFromJson.state == 1) {
+            if(scope.coupon.state != 0){
+                scope.isReadyToUse =true;
+            }
+            
+            
+            if (scope.coupon.state == 1) {
                 scope.isHidden = true;
             }
 
@@ -49,10 +43,6 @@ angular.module('send2CardApp')
                     .catch(sendCouponFailure);
             }
 
-            function convertFromJson(data) {
-                angular.fromJson(data);
-            }
-
             function sendCouponComplete(newState) {
                 scope.updateState(newState);
                 scope.isHidden = true;
@@ -60,12 +50,11 @@ angular.module('send2CardApp')
 
             scope.updateState = function (newState) {
                 scope.isReadyToUse =true;
-                scope.couponFromJson.state = newState;
-                scope.onUpdateState({barcode:scope.couponFromJson.cpn_seq_nbr, state: newState});
+                scope.coupon.state = newState;
             }
 
             function sendCouponFailure(failureState) {
-                scope.couponFromJson.state = failureState;
+                scope.coupon.state = failureState;
             }
 
         }
@@ -80,8 +69,11 @@ angular.module('send2CardApp')
                 sendCouponOnStartup: '@',
                 onSendCouponToCard: '&',
                 printedPath: '@',
-                coupon: '@',
-                onUpdateState: '&'
+                coupon: '=',
+                onUpdateState: '&',
+                onUpdateCollapseIndex: '&',
+            /*    isCollapsed: '@',*/
+                couponIndex: '@'
             },
             link: link
         }
