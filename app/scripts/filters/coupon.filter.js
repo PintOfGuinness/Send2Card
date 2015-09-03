@@ -27,7 +27,7 @@ angular.module('send2CardApp')
             angular.forEach(input, function (eachCoupon, index) {
                 if (input[index].cpn_seq_nbr !== couponNumberFilter) {
                     if (couponViewable(eachCoupon)) {
-                        eachCoupon.isCollapsed = true;
+                        setCouponCollapsedDefault(eachCoupon);
                         output.push(eachCoupon);
                     }
                 }
@@ -41,9 +41,14 @@ angular.module('send2CardApp')
             output = $filter('filter')(input, {
                 cpn_seq_nbr: couponNumberFilter
             }, true)[0];
+            setCouponCollapsedDefault(output);
             couponExpiresSoon(output);
 
             return output;
+        }
+    
+        function setCouponCollapsedDefault(coupon) {
+               coupon.isCollapsed = true;
         }
 
         function couponViewable(eachCoupon) {

@@ -32,6 +32,11 @@ angular.module('send2CardApp')
                     coupons.notYetActionedCoupons[i].isCollapsed = true;
                 }
             }
+            for (var i = 0; i < coupons.readyToUseCoupons.length; i++) {
+/*                if (i != index) {*/
+                    coupons.readyToUseCoupons[i].isCollapsed = true;
+                //}
+            }            
         }
 
 
