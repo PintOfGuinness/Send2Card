@@ -17,7 +17,6 @@ angular.module('send2CardApp')
             scope.collapseSection = function () {
                 var localIsCollapsed = scope.coupon.isCollapsed;
                 scope.onResetCollapseStateForAll();
-
                 scope.coupon.isCollapsed = !localIsCollapsed;
 
                 elem.addClass("expanded-hide-bottom-border");
@@ -35,7 +34,6 @@ angular.module('send2CardApp')
                 scope.isReadyToUse = true;
             }
 
-
             if (scope.coupon.state == 1) {
                 scope.isHidden = true;
             }
@@ -49,6 +47,10 @@ angular.module('send2CardApp')
             function sendCouponComplete(newState) {
                 scope.updateState(newState);
                 scope.isHidden = true;
+            }
+
+            scope.printCoupon = function () {
+                window.print();
             }
 
             scope.updateState = function (newState) {
@@ -72,6 +74,7 @@ angular.module('send2CardApp')
                 sendCouponOnStartup: '@',
                 onSendCouponToCard: '&',
                 printedPath: '@',
+                extraCareCardNumberEndDigits: '@',
                 coupon: '=',
                 onUpdateState: '&',
                 onResetCollapseStateForAll: '&',

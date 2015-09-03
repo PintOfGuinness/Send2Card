@@ -9,8 +9,9 @@
  */
 angular.module('send2CardApp')
     .controller('PrintCouponModalController', function ($scope, $modal, $log) {
-
-        $scope.open = function (size) {
+    
+        var printCouponModal = this;
+        printCouponModal.open = function (size) {
             var modalInstance;
             var modalScope = $scope.$new();
             modalScope.ok = function () {
@@ -25,7 +26,7 @@ angular.module('send2CardApp')
                 scope: modalScope
             });
             modalInstance.result.then(function (selectedItem) {
-                $scope.selected = selectedItem;
+                printCouponModal.selected = selectedItem;
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });

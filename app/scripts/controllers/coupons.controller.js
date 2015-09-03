@@ -20,7 +20,7 @@ angular.module('send2CardApp')
         coupons.unSentCouponPath = "images/sendtocardicon.png";
         coupons.sentCouponPath = "images/oncard.png";
         coupons.couponPrinted = "images/printedicon.png";
-        coupons.cardNumber = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
+        coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
         // Add to initialise
         coupons.getCouponsPerRow;
@@ -37,7 +37,6 @@ angular.module('send2CardApp')
             }            
         }
 
-
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -52,12 +51,6 @@ angular.module('send2CardApp')
         function sendCouponFailure(data) {
             var isCouponSent = false;
             return isCouponSent;
-        }
-
-
-        coupons.clickPrintCoupon = function () {
-            window.print();
-            $scope.updateState(2);
         }
 
         couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {

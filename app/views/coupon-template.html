@@ -13,9 +13,9 @@
                     <img ng-src="{{printedPath}}">
                 </div>
             </div>
-            <div ng-controller="PrintCouponModalController" class="desktoponly print-button">
+            <div ng-controller="PrintCouponModalController as printCouponModalController" class="desktoponly print-button">
                 <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
-                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="open()">Print</a>
+                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="printCouponModalController.open()">Print</a>
             </div>
 
         </div>
@@ -30,10 +30,10 @@
                 <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ coupon.expir_dt }}
             </div>
 
-      <br>
-      <div ng-show="coupon.isNew">
-        <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! </strong>
-      </div>
+            <br>
+            <div ng-show="coupon.isNew">
+                <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! </strong>
+            </div>
 
         </p>
 
