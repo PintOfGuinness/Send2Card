@@ -12,11 +12,14 @@ angular.module('send2CardApp')
         function link(scope, elem, attrs) {
             scope.isHidden = false;
             scope.isCollapsed = true;
-            scope.isReadyToUse= false;
-     
+            scope.isReadyToUse = false;
+
             scope.collapseSection = function () {
+                var localIsCollapsed = scope.coupon.isCollapsed;
                 scope.onResetCollapseStateForAll();
-                scope.coupon.isCollapsed = false;                
+
+                scope.coupon.isCollapsed = !localIsCollapsed;
+
                 elem.addClass("expanded-hide-bottom-border");
                 console.log("element class name = " + elem);
             }
@@ -28,11 +31,11 @@ angular.module('send2CardApp')
                 scope.sendCouponOnStartup = false;
             }
 
-            if(scope.coupon.state != 0){
-                scope.isReadyToUse =true;
+            if (scope.coupon.state != 0) {
+                scope.isReadyToUse = true;
             }
-            
-            
+
+
             if (scope.coupon.state == 1) {
                 scope.isHidden = true;
             }
@@ -49,7 +52,7 @@ angular.module('send2CardApp')
             }
 
             scope.updateState = function (newState) {
-                scope.isReadyToUse =true;
+                scope.isReadyToUse = true;
                 scope.coupon.state = newState;
             }
 
