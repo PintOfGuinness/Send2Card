@@ -20,12 +20,12 @@
                 <p class="pull-right"> extracare For <b>extra</b>care card ending in <b>{{couponsController.cardNumber}}</b></p>
                 <h3>(INSERT COUPON TITLE)</h3>
                 
-                <b>{{description}}</b> <br>
+                <b>{{couponFromJson.cpn_dsc}}</b> <br>
                 Coupon redeemable in store only*
                 <hr>
-                <b>Valid through: {{expiry}}
+                <b>Valid through: {{couponFromJson.expir_dt}} 
                 <br>
-                Barcode/coupon code:  {{barcode}}
+                Barcode/coupon code:  {{couponFromJson.cpn_seq_nbr}}
                 </b>
                 <br>
                 <br>
@@ -47,7 +47,7 @@
             <div >
                 <b>*Terms &amp; Conditions</b>
                 <br>
-                {{terms}}
+                {{couponFromJson.cpn_terms_txt}}
                 <br>
                 <br>
                 <b>CVS/pharmacy will not accept offers printed from unauthorizes internet postings or reproductions, copies or facsimilies of this offer.</b>
