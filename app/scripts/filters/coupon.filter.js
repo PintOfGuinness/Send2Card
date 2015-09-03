@@ -65,6 +65,7 @@ angular.module('send2CardApp')
         }
 
         function filterCoupon(eachCoupon) {
+         if(eachCoupon.state == undefined){
             if (couponLoaded(eachCoupon)) {
                 eachCoupon.state = 1;
             } else {
@@ -74,6 +75,7 @@ angular.module('send2CardApp')
                     eachCoupon.state = 0;
                 }
             }
+         }
             couponExpiresSoon(eachCoupon);
             couponIsNew(eachCoupon);
         }
