@@ -41,6 +41,13 @@ img:hover {
     filter: alpha(opacity=100);
 }
 
+.grey-background{
+  background-color:#FAFAFA;
+}
+
+.bottom-align{
+  vertical-align:bottom;
+}
 /*--------------------------------------------------------------------------
  Coupon Styling
 ---------------------------------------------------------------------------*/
@@ -80,15 +87,15 @@ img:hover {
 /*Andrew Dawson is an onion CSS*/
 
 .couponpadding:hover{
-     border-color: #ffe87c;
+     border-color: #FDE8C9;
 }
 
 .couponpadding:hover * {
-     border-color: #ffe87c;
+     border-color: #FDE8C9;
 }
 
 .border-yellow {
-  border-color: #ffe87c;
+  border-color: #FDE8C9;
 }
 
 .border-grey {
@@ -112,8 +119,8 @@ img:hover {
   vertical-align:top;
 }
 
-.no-padding{
-  line-height: 0.5em;
+.half-size-font{
+  font-size:50%;
 }
 
 .sticky {
@@ -132,6 +139,7 @@ img:hover {
 
 .bigger-font{
   font-size: xx-large;
+  font-stretch: ultra-expanded;
 }
 
 .print-button{
