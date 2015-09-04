@@ -21,26 +21,12 @@
         </div>
 
       <p>
-<<<<<<< HEAD
       <h4 class="no-padding">
         <font color = "red" class = "bigger-font">
           <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{coupon.dollar}}</strong><sup ng-show="coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong> {{coupon.cents}}</strong></sup> off</font> <br>
 
       </h4>
       {{coupon.cpn_dsc}}
-=======
-      <h4>
-        <font color = "red" class = "bigger-font">
-          <sup ng-show="coupon.showDollarSign">$</sup>
-          <strong class = "bigger-font">{{ coupon.dollar }}</strong>
-          <sup ng-show="coupon.showPercentSign">%</sup>
-          <sup class = "medium-font"><strong>{{coupon.cents}}</strong></sup>
-          off
-        </font>
-      </h4> 
-        
-        {{coupon.cpn_dsc}}
->>>>>>> ac751c91ed7f6b7f0944dcbc8c60e0d8d60de1ce
 
             <br>
             <div ng-show="coupon.expiresSoon">
@@ -58,6 +44,7 @@
         <p>
 
             <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details </div></strong>
+            <br>
             <br>
 
     </div>
