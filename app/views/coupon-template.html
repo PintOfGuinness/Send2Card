@@ -21,7 +21,7 @@
         </div>
 
       <p>
-      <h4 class="">
+      <h4>
         <font color = "red" class = "bigger-font">
           <sup ng-show="coupon.showDollarSign">$</sup>
           <strong class = "bigger-font">{{ coupon.dollar }}</strong>
@@ -29,10 +29,9 @@
           <sup class = "medium-font"><strong>{{coupon.cents}}</strong></sup>
           off
         </font>
-
-
-
-      </h4> {{coupon.cpn_dsc}}
+      </h4> 
+        
+        {{coupon.cpn_dsc}}
 
             <br>
             <div ng-show="coupon.expiresSoon">
@@ -50,7 +49,6 @@
         <p>
 
             <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details </div></strong>
-            <br>
             <br>
 
     </div>

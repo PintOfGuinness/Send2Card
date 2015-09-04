@@ -38,7 +38,6 @@ angular.module('send2CardApp')
             }
 
           if(scope.coupon.amt_type_cd === "D"){
-            console.log("DECIMAL M8");
             scope.coupon.title = scope.coupon.max_redeem_amt;
             scope.coupon.showDollarSign = true;
             scope.coupon.showPercentSign = false;
@@ -48,7 +47,6 @@ angular.module('send2CardApp')
 
 
           } else if (scope.coupon.amt_type_cd==="P"){
-            console.log("PERCENTAGE M8");
             scope.coupon.showDollarSign = false;
             scope.coupon.showPercentSign = true;
             scope.coupon.title=scope.coupon.max_redeem_amt + " off";
