@@ -11,13 +11,12 @@ angular.module('send2CardApp')
 
         function link(scope, elem, attrs) {
             scope.isHidden = false;
-            scope.isCollapsed = true;
             scope.isReadyToUse = false;
 
             scope.collapseSection = function () {
-                var localIsCollapsed = scope.coupon.isCollapsed;
+                var tempIsCollapsed = scope.coupon.isCollapsed;
                 scope.onResetCollapseStateForAll();
-                scope.coupon.isCollapsed = !localIsCollapsed;
+                scope.coupon.isCollapsed = !tempIsCollapsed;
 
                 elem.addClass("expanded-hide-bottom-border");
                 console.log("element class name = " + elem);

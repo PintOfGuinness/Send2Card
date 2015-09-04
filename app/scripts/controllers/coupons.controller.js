@@ -15,18 +15,15 @@ angular.module('send2CardApp')
         var extraCareCardNumber = $location.search().eccardnum || "12345678";
         var couponNumber = $location.search().couponnum;
         coupons.sendCouponOnStartup = false;
-        coupons.multiCouponError = false;
-        coupons.singleCouponError = false;
+        coupons.couponError = false;
+        coupons.errorPath = "views/error3.html";
         coupons.unSentCouponPath = "images/sendtocardicon.png";
         coupons.sentCouponPath = "images/oncard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
-
-        // Add to initialise
         coupons.getCouponsPerRow;
 
         coupons.resetCollapseStateForAll = function () {
-            console.log('do i work');
             coupons.clickedCoupon[0].isCollapsed = true;
             for (var i = 0; i < coupons.notYetActionedCoupons.length; i++) {
                     coupons.notYetActionedCoupons[i].isCollapsed = true;
@@ -50,6 +47,8 @@ angular.module('send2CardApp')
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
+            coupons.couponError = true;
+            coupons.errorPath = "views/error1.html";
             return isCouponSent;
         }
 
@@ -68,7 +67,6 @@ angular.module('send2CardApp')
 
         }).catch(function (error) {
             coupons.multiCouponError = true;
-            console.log("ERROR: Error state = " + coupons.singleCouponError);
         });
 
         coupons.getIndexNumber = function (indexNumber, arrayName) {

@@ -6,7 +6,7 @@
                 <div ng-switch-when=0>
                     <img ng-click="clickSendCouponToCard(); updateState();" ng-src="{{unSentCouponPath}}">
                 </div>
-                <div ng-switch-when=1 class="enter">
+                <div ng-switch-when=1>
                     <img ng-src="{{sentCouponPath}}">
                 </div>
                 <div ng-switch-when=2>
@@ -40,7 +40,7 @@
         <div ng-show="!coupon.expiresSoon"> EXP {{ coupon.expir_dt }} </div>
         <p>
 
-            <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details {{coupon.isCollapsed}}</div></strong>
+            <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details </div></strong>
             <br>
             <br>
 
