@@ -51,7 +51,7 @@ img:hover {
 }
 
 .couponpadding {
-   padding: 5px 10px !important;
+   padding: 5px 10x !important;
    margin: 0 5px 5px 0 !important;
    position:relative;
    border-radius:0;
@@ -147,6 +147,13 @@ img:hover {
 .printcoupon {
     border: 5px solid grey;
     padding:10px;
+}
+
+.full-width {
+   position:absolute; 
+    left:0; 
+    right:0; 
+    background-color:#FAFAFA;
 }
 
 /*animate enter and leave*/
