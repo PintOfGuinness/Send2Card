@@ -106,6 +106,14 @@ img:hover {
     border-top: 0;
 }
 
+.medium-font{
+  font-size:medium;
+}
+
+.bigger-font{
+  font-size: xx-large;
+}
+
 .print-button{
     position:absolute;
     bottom:0px;

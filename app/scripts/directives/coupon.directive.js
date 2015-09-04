@@ -37,7 +37,27 @@ angular.module('send2CardApp')
                 scope.isHidden = true;
             }
 
-            scope.clickSendCouponToCard = function () {
+          if(scope.coupon.amt_type_cd === "D"){
+            console.log("DECIMAL M8");
+            scope.coupon.title = scope.coupon.max_redeem_amt;
+            scope.coupon.showDollarSign = true;
+            scope.coupon.showPercentSign = false;
+            scope.coupon.dollar = scope.coupon.title.substring([0],[1]);
+            scope.coupon.cents = scope.coupon.title.substring([2],[scope.coupon.title.length]);
+
+
+
+          } else if (scope.coupon.amt_type_cd==="P"){
+            console.log("PERCENTAGE M8");
+            scope.coupon.showDollarSign = false;
+            scope.coupon.showPercentSign = true;
+            scope.coupon.title=scope.coupon.max_redeem_amt + " off";
+            scope.coupon.dollar = scope.coupon.title.substring([0],[1]);
+
+          }
+
+
+          scope.clickSendCouponToCard = function () {
                 scope.onSendCouponToCard()
                     .then(sendCouponComplete)
                     .catch(sendCouponFailure);

@@ -20,10 +20,19 @@
 
         </div>
 
-        <p>
-            <h4 class="">{{ coupon.title }}</h4> {{coupon.cpn_dsc}}
-            <br>
+      <p>
+      <h4 class="">
+        <font color = "red" class = "bigger-font">
+          <sup ng-show="coupon.showDollarSign">$</sup>
+          <strong class = "bigger-font">{{ coupon.dollar }}</strong>
+          <sup ng-show="coupon.showPercentSign">%</sup>
+          <sup class = "medium-font"><strong>{{coupon.cents}}</strong></sup>
+          off
+        </font>
 
+
+
+      </h4> {{coupon.cpn_dsc}}
 
             <br>
             <div ng-show="coupon.expiresSoon">
