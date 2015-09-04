@@ -50,8 +50,6 @@ img:hover {
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
-
-
 .couponpadding {
    padding: 5px 10px !important;
    margin: 0 5px 5px 0 !important;
@@ -69,7 +67,7 @@ img:hover {
     right:0px;
     bottom:20px;
     top:20px;
-    border-left: 2px dotted grey;
+    border-left: 2px dotted #DDD;
     padding: 0 5px;
     width: 90px;
 }
@@ -80,6 +78,14 @@ img:hover {
 
 
 /*Andrew Dawson is an onion CSS*/
+
+.couponpadding:hover{
+     border-color: #ffe87c;
+}
+
+.couponpadding:hover * {
+     border-color: #ffe87c;
+}
 
 .border-yellow {
   border-color: #ffe87c;
