@@ -46,7 +46,7 @@ angular.module('send2CardApp')
 
             return output;
         }
-    
+
         function setCouponCollapsedDefault(coupon) {
                coupon.isCollapsed = true;
         }
@@ -78,6 +78,7 @@ angular.module('send2CardApp')
          }
             couponExpiresSoon(eachCoupon);
             couponIsNew(eachCoupon);
+
         }
 
         function couponRedeemed(eachCoupon) {
@@ -128,6 +129,10 @@ angular.module('send2CardApp')
 
         }
 
-
+        function showSoonOverNew(eachCoupon){
+          if(eachCoupon.isSoon === true && eachCoupon.isNew === true){
+            eachCoupon.isNew = false;
+          }
+        }
 
     });

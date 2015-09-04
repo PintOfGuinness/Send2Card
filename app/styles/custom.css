@@ -96,6 +96,20 @@ img:hover {
 .text-centre {
     text-align: center;
 }
+
+.top-aligned{
+  vertical-align:inherit;
+
+}
+.small-font{
+  font-size: 50%;
+  vertical-align:top;
+}
+
+.no-padding{
+  line-height: 0.5em;
+}
+
 .sticky {
     background-color: #F7F7FF;
     position: fixed;
