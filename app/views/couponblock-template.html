@@ -30,23 +30,31 @@
 
             <br>
             <div ng-show="coupon.expiresSoon">
+              <br>
                 <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ coupon.expir_dt }}
+
+              <br>
             </div>
 
-            <br>
             <div ng-show="coupon.isNew">
-                <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! EXP {{ coupon.expir_dt }} </strong>
+              <br>
+                <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! </strong> EXP {{ coupon.expir_dt }}
             </div>
 
         </p>
 
-        <div ng-show="!coupon.expiresSoon"> EXP {{ coupon.expir_dt }} </div>
+        <div ng-show="!coupon.expiresSoon && !coupon.isNew"> EXP {{ coupon.expir_dt }} </div>
         <p>
 
             <strong><div ng-click="collapseSection()" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details </div></strong>
             <br>
 
     </div>
+
+
+
+
+
 
     <div collapse="coupon.isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !isReadyToUse, 'border-yellow' : isReadyToUse }">
         <div class="expanded-div-style">

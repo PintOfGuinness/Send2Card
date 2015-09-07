@@ -26,7 +26,7 @@ angular.module('send2CardApp')
             var output = {};
             var actionedCoupons = [];
             var unactionedCoupons = [];
-            
+
             angular.forEach(input, function (eachCoupon, index) {
                 if (input[index].cpn_seq_nbr !== couponNumberFilter) {
                     if (couponViewable(eachCoupon)) {
@@ -87,6 +87,7 @@ angular.module('send2CardApp')
             }
             couponExpiresSoon(eachCoupon);
             couponIsNew(eachCoupon);
+            showSoonOverNew(eachCoupon);
 
         }
 
@@ -139,8 +140,8 @@ angular.module('send2CardApp')
         }
 
         function showSoonOverNew(eachCoupon) {
-            if (eachCoupon.isSoon === true && eachCoupon.isNew === true) {
-                eachCoupon.isNew = false;
+            if (eachCoupon.expiresSoon === true && eachCoupon.isNew === true) {
+                eachCoupon.isNew  = false;
             }
         }
 
