@@ -26,7 +26,6 @@ angular.module('send2CardApp')
             coupons.clickedCoupon[0].isCollapsed = true;
             for (var i = 0; i < coupons.unactionedCoupons.length; i++) {
                 coupons.unactionedCoupons[i].isCollapsed = true;
-
             }
             for (var i = 0; i < coupons.actionedCoupons.length; i++) {
                 coupons.actionedCoupons[i].isCollapsed = true;
@@ -55,23 +54,28 @@ angular.module('send2CardApp')
             coupons.clickedCoupon = results.singleCoupon;
             coupons.unactionedCoupons = results.unactionedCoupons;
             coupons.actionedCoupons = results.actionedCoupons;
-
         }).catch(function (error) {
             coupons.multiCouponError = error.multiCouponError;
         });
 
 
-        /*        coupons.getRowIndexNumber = function (indexNumber, arrayName) {
-                    var array = [];
-                    array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
-                    console.log(array);
-                    return array;
-                }
+        /*To use the live service, use this code instead of the above*/
+        /*couponsManagerFactory.getFilteredCouponListsFromService(extraCareCardNumber, couponNumber).then(function(results){
+                coupons.clickedCoupon = results.singleCoupon;
+                coupons.unactionedCoupons = results.unactionedCoupons;
+                coupons.actionedCoupons = results.actionedCoupons;
+            });*/
 
-
-                coupons.getCouponsPerRow = function () {
-                    return displayInformationFactory.getCouponsPerRow(coupons);
-                }*/
+        /*coupons.getRowIndexNumber = function (indexNumber, arrayName) {
+            var array = [];
+            array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
+                console.log(array);
+                return array;
+            }
+            
+            coupons.getCouponsPerRow = function () {
+                return displayInformationFactory.getCouponsPerRow(coupons);
+            }*/
 
         coupons.getRowIndexNumbers = function (indexNumber, arrayName) {
             var array = [];

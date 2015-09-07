@@ -17,9 +17,6 @@ angular.module('send2CardApp')
         var tempIsCollapsed = scope.coupon.isCollapsed;
         scope.onResetCollapseStateForAll();
         scope.coupon.isCollapsed = !tempIsCollapsed;
-
-        elem.addClass("expanded-hide-bottom-border");
-        console.log("element class name = " + elem);
       }
 
       if (scope.sendCouponOnStartup === 'true') {
