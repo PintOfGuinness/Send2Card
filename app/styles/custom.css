@@ -142,6 +142,16 @@ img:hover {
   font-stretch: ultra-expanded;
 }
 
+.img-size{
+  height:72px;
+  width: 83px;
+}
+
+.img-alt-size{
+  height:75px;
+  width: 60px;
+}
+
 .print-button{
     position:absolute;
     bottom:0px;
@@ -158,9 +168,9 @@ img:hover {
 }
 
 .full-width {
-   position:absolute; 
-    left:0; 
-    right:0; 
+   position:absolute;
+    left:0;
+    right:0;
     background-color:#FAFAFA;
 }
 
