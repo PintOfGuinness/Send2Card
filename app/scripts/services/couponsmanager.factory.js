@@ -17,6 +17,8 @@ angular.module('send2CardApp')
         };
 
         function getFilteredCouponListsFromService(extraCareCardNumber, couponNumber){
+            //open with:
+            //chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
             return couponsService.getUnfilteredCouponsFromService(extraCareCardNumber, couponNumber).then(function (results) {
                 var couponLists = {};
                 var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
