@@ -91,7 +91,7 @@ angular.module('send2CardApp')
     }
 
     return {
-      templateUrl: 'views/coupon-template.html',
+      templateUrl: 'views/couponblock-template.html',
       restrict: 'E',
       replace: true,
       scope: {

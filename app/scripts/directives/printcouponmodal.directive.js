@@ -10,6 +10,6 @@ angular.module('send2CardApp')
     .directive('printCouponModalDirective', function () {
         return {
             restrict: 'E',
-            templateUrl: 'views/print-modal.html'
+            templateUrl: 'views/printcoupon-modal.html'
         };
     });

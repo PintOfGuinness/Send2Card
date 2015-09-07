@@ -8,13 +8,12 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsController', function ($location, $filter, couponsService, sendToCardFactory, columniseFactory, $scope, screenSize) {
+    .controller('CouponsController', function ($location, couponsManagerFactory, sendToCardFactory, $scope, displayInformationFactory, screenSize) {
 
         var coupons = this;
-        var allFilteredCoupons = [];
         var extraCareCardNumber = $location.search().eccardnum || "12345678";
         var couponNumber = $location.search().couponnum;
-        coupons.sendCouponOnStartup = false;
+
         coupons.couponError = false;
         coupons.errorPath = "views/error3.html";
         coupons.unSentCouponPath = "images/sendtocardicon.png";
@@ -25,13 +24,13 @@ angular.module('send2CardApp')
 
         coupons.resetCollapseStateForAll = function () {
             coupons.clickedCoupon[0].isCollapsed = true;
-            for (var i = 0; i < coupons.notYetActionedCoupons.length; i++) {
-                    coupons.notYetActionedCoupons[i].isCollapsed = true;
+            for (var i = 0; i < coupons.unactionedCoupons.length; i++) {
+                coupons.unactionedCoupons[i].isCollapsed = true;
 
             }
-            for (var i = 0; i < coupons.readyToUseCoupons.length; i++) {
-                    coupons.readyToUseCoupons[i].isCollapsed = true;
-            }            
+            for (var i = 0; i < coupons.actionedCoupons.length; i++) {
+                coupons.actionedCoupons[i].isCollapsed = true;
+            }
         }
 
         coupons.sendCouponToCard = function () {
@@ -52,37 +51,43 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
-        couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {
-
-            coupons.clickedCoupon = [];
-            var singleCoupon = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, false);
-            singleCoupon.state = 1;
-            coupons.clickedCoupon.push(singleCoupon);
-
-            var allCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
-            var sortedCouponLists = $filter('sortCouponsFilter')(allCoupons);
-
-            coupons.notYetActionedCoupons = sortedCouponLists.notYetActionedCoupons;
-            coupons.readyToUseCoupons = sortedCouponLists.readyToUseCoupons;
+        couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber).then(function (results) {
+            coupons.clickedCoupon = results.singleCoupon;
+            coupons.unactionedCoupons = results.unactionedCoupons;
+            coupons.actionedCoupons = results.actionedCoupons;
 
         }).catch(function (error) {
-            coupons.multiCouponError = true;
+            coupons.multiCouponError = error.multiCouponError;
         });
 
-        coupons.getIndexNumber = function (indexNumber, arrayName) {
+
+        /*        coupons.getRowIndexNumber = function (indexNumber, arrayName) {
+                    var array = [];
+                    array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
+                    console.log(array);
+                    return array;
+                }
+
+
+                coupons.getCouponsPerRow = function () {
+                    return displayInformationFactory.getCouponsPerRow(coupons);
+                }*/
+
+        coupons.getRowIndexNumbers = function (indexNumber, arrayName) {
             var array = [];
             var couponArray = [];
-            if (arrayName == "notYetActioned") {
-                couponArray = coupons.notYetActionedCoupons;
+            if (arrayName == "unactioned") {
+                couponArray = coupons.unactionedCoupons;
             }
-            if (arrayName == "readyToUse") {
-                couponArray = coupons.readyToUseCoupons;
+            if (arrayName == "actioned") {
+                couponArray = coupons.actionedCoupons;
             }
             for (var i = indexNumber; i < coupons.couponsPerRow + indexNumber; i++) {
                 if (i < couponArray.length) {
                     array.push(i);
                 }
             }
+
             return array;
         }
 
@@ -103,6 +108,7 @@ angular.module('send2CardApp')
         }
 
         screenSize.on('xs, sm, md, lg', function (match) {
+            //coupons.couponsPerRow = displayInformationFactory.getCouponsPerRow(coupons);
             coupons.couponsPerRow = coupons.getCouponsPerRow();
         });
 

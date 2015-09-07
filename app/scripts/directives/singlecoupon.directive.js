@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc directive
- * @name send2CardApp.directive:viewAllCouponsDirective
+ * @name send2CardApp.directive:SingleCouponDirective
  * @description
- * # viewAllCouponsDirective
+ * # SingleCouponDirective
  */
 angular.module('send2CardApp')
-  .directive('viewAllCouponsDirective', function () {
+  .directive('singleCouponDirective', function () {
     return {
-      templateUrl: 'views/coupons.html',
+      templateUrl: 'views/singlecoupon.html',
       restrict: 'E',
       link: function postLink(scope, element, attrs) {
       }

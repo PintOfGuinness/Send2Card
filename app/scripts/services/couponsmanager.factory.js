@@ -8,41 +8,43 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('couponsManagerFactory', function (couponsService) {
+    .factory('couponsManagerFactory', function (couponsService, $filter) {
 
-/*        // Public API here
+        // Public API here
         return {
-            getFilteredCoupons: getFilteredCoupons
-
+            getFilteredCouponLists: getFilteredCouponLists
         };
 
-        function getFilteredCoupons(extraCareCardNumber) {
-            return couponsService.getUnfilteredCoupons(extraCareCardNumber.then(function (result) {
-                    var data = result.data;
-                    return data;
-                })
-                .catch(function (err) {
-                    console.log("SERVICE SOMETHING WRONG");
-                    return $q.reject("Data not available");
-                });
-        });*/
+        function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
+
+            return couponsService.getUnfilteredCoupons(extraCareCardNumber).then(function (results) {
+
+                var couponLists = {};
+                var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
+                couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);
 
 
-        /*            getFilteredCoupons: getFilteredCoupons*/
-        /*            setCouponAsLoaded: setCouponAsLoaded,
-                    setCouponAsPrinted: setCouponAsPrinted*/
+                var sortedactionedCoupons = $filter('sortCouponsFilter')(allFilteredCoupons.actionedCoupons);
+                couponLists.unactionedCoupons = getSortedCoupons(allFilteredCoupons.unactionedCoupons);
+                couponLists.actionedCoupons = getSortedCoupons(allFilteredCoupons.actionedCoupons);
 
+                return couponLists;
 
+            }).catch(function (error) {
+                console.log("getFilteredCouponLists SOMETHING WENT WRONG!!!!!!");
+                return error.multiCouponError = true;
+            });
+        };
 
+        function getSingleCoupon(allUnactionedCoupons, couponNumber) {
+            var singleCoupon = [];
+            singleCoupon.push($filter('couponFilter')(allUnactionedCoupons, couponNumber, false));
+            return singleCoupon;
+        }
 
-        // Service logic
+        function getSortedCoupons(couponsList) {
+            var sortedCoupons = $filter('sortCouponsFilter')(couponsList);
+            return sortedCoupons;
+        }
 
-
-        /*        function setCouponAsLoad(couponSequenceNumber) {
-                    return null;
-                }
-            
-                function setCouponAsPrinted(couponSequenceNumber) {
-                    return null;            
-                }  */
     });

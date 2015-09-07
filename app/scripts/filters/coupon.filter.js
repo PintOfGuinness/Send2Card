@@ -23,16 +23,25 @@ angular.module('send2CardApp')
         };
 
         function getAllViewableCouponsByFilter(input, couponNumberFilter) {
-            var output = [];
+            var output = {};
+            var actionedCoupons = [];
+            var unactionedCoupons = [];
+            
             angular.forEach(input, function (eachCoupon, index) {
                 if (input[index].cpn_seq_nbr !== couponNumberFilter) {
                     if (couponViewable(eachCoupon)) {
                         setCouponCollapsedDefault(eachCoupon);
-                        output.push(eachCoupon);
+                        console.log("coupon: " + eachCoupon);
+                        if (couponActioned(eachCoupon)) {
+                            actionedCoupons.push(eachCoupon);
+                        } else {
+                            unactionedCoupons.push(eachCoupon);
+                        }
                     }
                 }
             });
-
+            output.actionedCoupons = actionedCoupons;
+            output.unactionedCoupons = unactionedCoupons;
             return output;
         }
 
@@ -48,7 +57,7 @@ angular.module('send2CardApp')
         }
 
         function setCouponCollapsedDefault(coupon) {
-               coupon.isCollapsed = true;
+            coupon.isCollapsed = true;
         }
 
         function couponViewable(eachCoupon) {
@@ -65,17 +74,17 @@ angular.module('send2CardApp')
         }
 
         function filterCoupon(eachCoupon) {
-         if(eachCoupon.state == undefined){
-            if (couponLoaded(eachCoupon)) {
-                eachCoupon.state = 1;
-            } else {
-                if (couponPrinted(eachCoupon)) {
-                    eachCoupon.state = 2
+            if (eachCoupon.state == undefined) {
+                if (couponLoaded(eachCoupon)) {
+                    eachCoupon.state = 1;
                 } else {
-                    eachCoupon.state = 0;
+                    if (couponPrinted(eachCoupon)) {
+                        eachCoupon.state = 2
+                    } else {
+                        eachCoupon.state = 0;
+                    }
                 }
             }
-         }
             couponExpiresSoon(eachCoupon);
             couponIsNew(eachCoupon);
 
@@ -119,20 +128,28 @@ angular.module('send2CardApp')
         }
 
 
-        function couponIsNew(eachCoupon){
+        function couponIsNew(eachCoupon) {
 
-          if(eachCoupon.viewable_ind === "Y"){
-            eachCoupon.isNew = true;
-          } else {
-            eachCoupon.isNew = false;
-          }
+            if (eachCoupon.viewable_ind === "Y") {
+                eachCoupon.isNew = true;
+            } else {
+                eachCoupon.isNew = false;
+            }
 
         }
 
-        function showSoonOverNew(eachCoupon){
-          if(eachCoupon.isSoon === true && eachCoupon.isNew === true){
-            eachCoupon.isNew = false;
-          }
+        function showSoonOverNew(eachCoupon) {
+            if (eachCoupon.isSoon === true && eachCoupon.isNew === true) {
+                eachCoupon.isNew = false;
+            }
+        }
+
+        function couponActioned(eachCoupon) {
+            if (eachCoupon.load_actl_dt === "" && eachCoupon.prnt_actl_dt === "") {
+                return false;
+            } else {
+                return true;
+            }
         }
 
     });
