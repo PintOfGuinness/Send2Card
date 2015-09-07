@@ -23,7 +23,10 @@ angular.module('send2CardApp')
         coupons.getCouponsPerRow;
 
         coupons.resetCollapseStateForAll = function () {
-            coupons.clickedCoupon[0].isCollapsed = true;
+
+            if (angular.isDefined(coupons.clickedCoupon)) {
+                coupons.clickedCoupon[0].isCollapsed = true;
+            }
             for (var i = 0; i < coupons.unactionedCoupons.length; i++) {
                 coupons.unactionedCoupons[i].isCollapsed = true;
             }
@@ -50,8 +53,16 @@ angular.module('send2CardApp')
             return isCouponSent;
         }
 
-        couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber).then(function (results) {
-            coupons.clickedCoupon = results.singleCoupon;
+        couponsManagerFactory.getFilteredCouponListsFromService(extraCareCardNumber, couponNumber).then(function (results) {
+
+            /*  Check a valid single coupon is returned, otherwise display a generic error */
+            if (angular.isDefined(results.singleCoupon)) {
+                coupons.clickedCoupon = results.singleCoupon;                
+                console.log(results.singleCoupon[0]);
+            } else {
+                coupons.couponError = true;
+                coupons.errorPath = "views/error4.html";
+            }
             coupons.unactionedCoupons = results.unactionedCoupons;
             coupons.actionedCoupons = results.actionedCoupons;
         }).catch(function (error) {

@@ -16,7 +16,9 @@ angular.module('send2CardApp')
             if (excludeCouponNumberFilter) {
                 output = getAllViewableCouponsByFilter(input, couponNumberFilter);
             } else {
+
                 output = getSingleCouponByFilter(input, couponNumberFilter);
+
             }
 
             return output;
@@ -41,17 +43,24 @@ angular.module('send2CardApp')
             });
             output.actionedCoupons = actionedCoupons;
             output.unactionedCoupons = unactionedCoupons;
+
             return output;
         }
 
         function getSingleCouponByFilter(input, couponNumberFilter) {
             var output = [];
-            output = $filter('filter')(input, {
-                cpn_seq_nbr: couponNumberFilter
-            }, true)[0];
-            setCouponCollapsedDefault(output);
-            couponExpiresSoon(output);
+            if (angular.isDefined(couponNumberFilter)) {
+                output = $filter('filter')(input, {
+                    cpn_seq_nbr: couponNumberFilter
+                }, true)[0];
 
+                if (angular.isDefined(output)) {
+                    setCouponCollapsedDefault(output);
+                    couponExpiresSoon(output);
+                }
+            } else {
+                output = undefined;
+            }
             return output;
         }
 
@@ -91,7 +100,7 @@ angular.module('send2CardApp')
         }
 
         function couponRedeemed(eachCoupon) {
-            if (eachCoupon.redeemable_ind === "Y") {
+            if (eachCoupon.redeemable_ind === "N") {
                 return false;
             } else {
                 return true;
@@ -140,7 +149,7 @@ angular.module('send2CardApp')
 
         function showSoonOverNew(eachCoupon) {
             if (eachCoupon.expiresSoon === true && eachCoupon.isNew === true) {
-                eachCoupon.isNew  = false;
+                eachCoupon.isNew = false;
             }
         }
 

@@ -16,7 +16,7 @@ angular.module('send2CardApp')
             getFilteredCouponListsFromService: getFilteredCouponListsFromService
         };
 
-        function getFilteredCouponListsFromService(extraCareCardNumber, couponNumber){
+        function getFilteredCouponListsFromService(extraCareCardNumber, couponNumber) {
             return couponsService.getUnfilteredCouponsFromService(extraCareCardNumber, couponNumber).then(function (results) {
                 var couponLists = {};
                 var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
@@ -28,7 +28,7 @@ angular.module('send2CardApp')
                 return couponLists;
             });
         }
-    
+
         function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
 
             return couponsService.getUnfilteredCouponsFromJSON(extraCareCardNumber).then(function (results) {
@@ -50,7 +50,12 @@ angular.module('send2CardApp')
 
         function getSingleCoupon(allUnactionedCoupons, couponNumber) {
             var singleCoupon = [];
-            singleCoupon.push($filter('couponFilter')(allUnactionedCoupons, couponNumber, false));
+            var filteredSingleCoupon = $filter('couponFilter')(allUnactionedCoupons, couponNumber, false);
+            if (angular.isDefined(filteredSingleCoupon)) {
+                singleCoupon.push(filteredSingleCoupon);
+            } else {
+                return undefined;
+            }
             return singleCoupon;
         }
 
