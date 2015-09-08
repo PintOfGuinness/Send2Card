@@ -58,7 +58,7 @@ img:hover {
 }
 
 .couponpadding {
-   padding: 5px 10x !important;
+   padding: 5px 10px;
    margin: 0 10px 10px 0px !important;
    position:relative;
    border-radius:0;

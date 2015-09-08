@@ -10,7 +10,7 @@
                     <img ng-src="{{sentCouponPath}}">
                 </div>
                 <div ng-switch-when=2>
-                    <img class=""img-size" ng-src="{{printedPath}}">
+                    <img class="img-size" ng-src="{{printedPath}}">
                 </div>
             </div>
             <div ng-controller="PrintCouponModalController as printCouponModalController" class="desktoponly print-button">
@@ -24,7 +24,6 @@
       <h4>
         <font color = "red" class = "bigger-font">
           <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{coupon.dollar}}</strong><sup ng-show="coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</b></strong></sup><strong class="half-size-font"> off</strong></font><br>
-
       </h4>
       {{coupon.cpn_dsc}}
 
