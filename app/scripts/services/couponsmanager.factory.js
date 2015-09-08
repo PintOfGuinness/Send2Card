@@ -22,12 +22,10 @@ angular.module('send2CardApp')
                 var couponLists = {};
                 var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
                 couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);
-
-
-                var sortedactionedCoupons = $filter('sortCouponsFilter')(allFilteredCoupons.actionedCoupons);
                 couponLists.unactionedCoupons = getSortedCoupons(allFilteredCoupons.unactionedCoupons);
                 couponLists.actionedCoupons = getSortedCoupons(allFilteredCoupons.actionedCoupons);
-
+                couponLists.unactionedSavings = allFilteredCoupons.unactionedSavings;
+                couponLists.actionedSavings = allFilteredCoupons.actionedSavings;
                 return couponLists;
 
             }).catch(function (error) {

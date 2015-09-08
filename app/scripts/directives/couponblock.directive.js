@@ -42,13 +42,13 @@ angular.module('send2CardApp')
         scope.coupon.showDollarSign = true;
         scope.coupon.showPercentSign = false;
         scope.coupon.dontShowCents = false;
-        scope.coupon.dollar = scope.coupon.title.substring([0],[1]);
 
-        if(scope.coupon.title.length >= 5) {
-          scope.coupon.cents = scope.coupon.title.substring([3], [scope.coupon.title.length]);
-        } else {
-          scope.coupon.cents = scope.coupon.title.substring([2], [scope.coupon.title.length]);
-        }
+        scope.coupon.dollars = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
+        console.log("Dollars = " + scope.coupon.dollars);
+
+
+          scope.coupon.cents = scope.coupon.title.substring([scope.coupon.title.indexOf('.')+1], [scope.coupon.title.length]);
+
         var zeros = '00';
 
         if((scope.coupon.cents === zeros)){
@@ -57,12 +57,13 @@ angular.module('send2CardApp')
           scope.coupon.dontShowCents = false;
         }
 
-      } else if (scope.coupon.amt_type_cd==="P"){
+      } else if (scope.coupon.amt_type_cd==="P") {
         scope.coupon.showDollarSign = false;
         scope.coupon.showPercentSign = true;
-        scope.coupon.title=scope.coupon.max_redeem_amt + " off";
-        scope.coupon.dollar = scope.coupon.title.substring([0],[1]);
+        scope.coupon.title = scope.coupon.max_redeem_amt + " off";
+        scope.coupon.dollar = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
       }
+
 
       scope.clickSendCouponToCard = function () {
         scope.onSendCouponToCard()
@@ -88,6 +89,14 @@ angular.module('send2CardApp')
         scope.coupon.state = failureState;
       }
 
+      scope.progressBarUpdate=function(){
+        console.log("STATE:" + scope.coupon.state);
+        if(scope.coupon.state !=2){
+          scope.incrementProgressBarValue();
+        }
+      }
+
+
     }
 
     return {
@@ -104,6 +113,7 @@ angular.module('send2CardApp')
         coupon: '=',
         onUpdateState: '&',
         onResetCollapseStateForAll: '&',
+        incrementProgressBarValue:'&'
       },
       link: link
     }

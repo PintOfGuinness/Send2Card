@@ -119,8 +119,17 @@ img:hover {
   vertical-align:top;
 }
 
+.shmedium-font{
+  font-size:75%;
+  vertical-align: top;
+}
+
 .half-size-font{
   font-size:50%;
+}
+
+.smaller-width{
+  width:40px;
 }
 
 .sticky {
@@ -172,6 +181,21 @@ img:hover {
     left:0;
     right:0;
     background-color:#FAFAFA;
+}
+.red-text{
+  color:red;
+}
+
+.full-width-black-background {
+  position:absolute;
+  left:0;
+  right:0;
+  background-color:#000000;
+  opacity:0.82;
+}
+
+.white-text{
+  color:#ffffff;
 }
 
 /*animate enter and leave*/

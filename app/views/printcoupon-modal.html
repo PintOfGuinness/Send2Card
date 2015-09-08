@@ -9,7 +9,7 @@
             <button type="button" class="close" ng-click="cancel()">&times;</button>
             <br>
             <br>
-            <button ng-click="printCoupon(); updateState(2);" class="btn btn-success pull-right">Print</button>
+            <button ng-click="printCoupon(); progressBarUpdate();updateState(2);" class="btn btn-success pull-right">Print</button>
             <h4>Your coupon is ready to print!</h4>
             <br>
         </div>
@@ -30,7 +30,7 @@
             <b>{{coupon.cpn_dsc}}</b>
             <br> Coupon redeemable in store only*
             <hr>
-            <b>Valid through: {{coupon.expir_dt}} 
+            <b>Valid through: {{coupon.expir_dt}}
                 <br>
                 Barcode/coupon code:  {{coupon.cpn_seq_nbr}}
                 </b>

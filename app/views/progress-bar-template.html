@@ -1,0 +1,19 @@
+<div class="full-width-black-background">
+  <div class="container">
+    <div class="white-text">More Offers <p class="pull-right white-text">{{couponsController.unactionedCoupons.length + couponsController.actionedCoupons.length}}
+      Offers Available
+      <br>
+      <i class="shmedium-font">That's over $ {{couponsController.unactionedSavings + couponsController.actionedSavings }} in savings!</i></b></p>
+    </div>
+    <br>
+    <h5 class="white-text">You have {{couponsController.unactionedCoupons.length}} more offers available. Act on these offers now!
+      <div class="white-text pull-right">On Your Card / Printed</div></h5>
+    <div class="progress">
+      <div id="progressBar" class="progress-bar active" role="progressbar" aria-valuemin="0" aria-valuenow="{{couponsController.progressBarValue}}" aria-valuemax="100" style="width:{{couponsController.progressBarValue}}%;">{{couponsController.actionedLength}}
+      </div>
+      <br>
+      <br>
+      <div class="white-text pull-right"><i>That's over {{couponsController.actionedSavings}} in savings!</i></div>
+    </div>
+  </div>
+</div>
