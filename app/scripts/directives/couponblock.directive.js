@@ -19,12 +19,12 @@ angular.module('send2CardApp')
         scope.coupon.isCollapsed = !tempIsCollapsed;
       }
 
-/*      if (scope.sendCouponOnStartup === 'true') {
+      if (scope.sendCouponOnStartup === 'true') {
         scope.onSendCouponToCard()
           .then(sendCouponComplete)
           .catch(sendCouponFailure);
         scope.sendCouponOnStartup = false;
-      }*/
+      }
 
       if (scope.coupon.state != 0) {
         scope.isReadyToUse = true;
