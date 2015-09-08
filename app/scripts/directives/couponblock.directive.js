@@ -66,6 +66,7 @@ angular.module('send2CardApp')
       }
 
       function sendCouponComplete(newState) {
+        console.log("Directive:sendCouponComplete");          
         scope.updateState(newState);
         scope.isHidden = true;
       }
@@ -80,6 +81,7 @@ angular.module('send2CardApp')
       }
 
       function sendCouponFailure(failureState) {
+        console.log("Directive:sendCouponFailure");              
         scope.coupon.state = failureState;
       }
 

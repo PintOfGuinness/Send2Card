@@ -12,41 +12,29 @@ angular.module('send2CardApp')
 
         // Public API here
         return {
-            getFilteredCouponLists: getFilteredCouponLists,
-            getFilteredCouponListsFromService: getFilteredCouponListsFromService
+            getFilteredCouponLists: getFilteredCouponLists
         };
 
-        function getFilteredCouponListsFromService(extraCareCardNumber, couponNumber) {
-            return couponsService.getUnfilteredCouponsFromService(extraCareCardNumber, couponNumber).then(function (results) {
-                var couponLists = {};
-                var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
-                couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);
-
-                couponLists.unactionedCoupons = getSortedCoupons(allFilteredCoupons.unactionedCoupons);
-                couponLists.actionedCoupons = getSortedCoupons(allFilteredCoupons.actionedCoupons);
-
-                return couponLists;
-            });
-        }
-
         function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
-
-            return couponsService.getUnfilteredCouponsFromJSON(extraCareCardNumber).then(function (results) {
-
+  //          return couponsService.getUnfilteredCouponsFromService(extraCareCardNumber, couponNumber).then(function (results) {
+            return couponsService.getUnfilteredCouponsFromJSON(extraCareCardNumber, couponNumber).then(function (results) {            
                 var couponLists = {};
                 var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
+                
                 couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);
                 couponLists.unactionedCoupons = getSortedCoupons(allFilteredCoupons.unactionedCoupons);
                 couponLists.actionedCoupons = getSortedCoupons(allFilteredCoupons.actionedCoupons);
                 couponLists.unactionedSavings = allFilteredCoupons.unactionedSavings;
                 couponLists.actionedSavings = allFilteredCoupons.actionedSavings;
+                
                 return couponLists;
-
+                
             }).catch(function (error) {
                 console.log("getFilteredCouponLists SOMETHING WENT WRONG!!!!!!");
                 return error.multiCouponError = true;
             });
-        };
+        }
+
 
         function getSingleCoupon(allUnactionedCoupons, couponNumber) {
             var singleCoupon = [];

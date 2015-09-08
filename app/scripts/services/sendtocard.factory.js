@@ -26,6 +26,9 @@ angular.module('send2CardApp')
                         data: requestBody
                     }).then(function (result) {
                         var data = result.data;
+                    
+                        // If success return 1
+                        data = 1;
                         return data;
                     })
                     .catch(function (err) {

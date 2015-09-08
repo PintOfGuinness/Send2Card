@@ -42,14 +42,13 @@ angular.module('send2CardApp')
         }
 
         function sendCouponComplete(data) {
-            console.log("sendCouponComplete");
-            var isCouponSent = 1;
-            return isCouponSent;
+            console.log("Controller:sendCouponComplete");
+            return data;
         }
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
-            console.log("sendCouponFailure");            
+            console.log("Controller:sendCouponFailure");            
             coupons.couponError = true;
             coupons.errorPath = "views/error1.html";
             return isCouponSent;
