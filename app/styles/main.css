@@ -25,6 +25,10 @@ body {
   padding-bottom: 19px;
 }
 
+.container {
+    padding-left:25px;
+}
+
 /* Custom page footer */
 .footer {
   padding-top: 19px;

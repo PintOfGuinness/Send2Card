@@ -12,11 +12,12 @@ angular.module('send2CardApp')
 
         var couponServicePromise = null;
         var service = {
-            getUnfilteredCoupons: getUnfilteredCoupons
+            getUnfilteredCouponsFromJSON: getUnfilteredCouponsFromJSON,
+            getUnfilteredCouponsFromService: getUnfilteredCouponsFromService
         };
         return service;
 
-        function getUnfilteredCoupons(extraCareCardNumber) {
+        function getUnfilteredCouponsFromJSON(extraCareCardNumber) {
             if (couponServicePromise === null) {
                 couponServicePromise = $http.get("data/customer.json");
             }
@@ -24,44 +25,25 @@ angular.module('send2CardApp')
             return couponServicePromise;
         }
 
-        /*        function getAllCoupons() {
-                    return $http({
-                        method: 'POST',
-                        url: 'https://esldp-east.corp.cvscaremark.com:2030/DigitalService/ExtraCare/v1/ECGetCustomerProfile',                
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'src_loc_cd': '90042',
-                            'msg_src_cd': 'M',
-                            'user_id': 'MOBILE_ENT'
-                        },
-                        data: {
-                            'extraCareCard': '4872123456288',
-                            'card_type': '0004',
-                            'xtracare': ['CPNS', 'PTS'],
-                            'prefs': ['beauty_club', 'paperless_cpns']
-                        }                
-                    })
-                }*/
-
-    });
-/*
-
-function POST(URL, requestParams, requestBody, ResponseModel) {
-    return $http({
-        method: 'POST',
-        url: URL + requestParams,
-        data: requestBody
-    }).then(serviceCallComplete)['catch'](serviceCallFailed);
-
-    function serviceCallComplete(responseBody) {
-        if (ResponseModel) {
-            return angular.extend({}, new ResponseModel(), responseBody);
+        function getUnfilteredCouponsFromService() {
+            return $http({
+                method: 'POST',   
+                url: 'https://rri2eslatp1v.corp.cvscaremark.com:2030/DigitalService/ExtraCare/v1/ECGetCustomerProfile',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'src_loc_cd': '90042',
+                    'msg_src_cd': 'M',
+                    'user_id': 'MOBILE_ENT'
+                },
+                data: {
+                    'extraCareCard': '4872000044959',
+                    'card_type': '0004',
+                    'xtracare': ['CPNS', 'PTS'],
+                    'prefs': ['beauty_club', 'paperless_cpns']
+                }
+            }).
+            then(function (response) {
+                return response;
+            });
         }
-        return responseBody;
-    }
-
-    function serviceCallFailed(error) {
-        return $q.reject(error);
-    }
-}
-*/
+    });

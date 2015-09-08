@@ -20,13 +20,14 @@ angular.module('send2CardApp')
     coupons.sentCouponPath = "images/oncard.png";
     coupons.couponPrinted = "images/printedicon.png";
     coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
-    coupons.getCouponsPerRow;
 
     coupons.resetCollapseStateForAll = function () {
-      coupons.clickedCoupon[0].isCollapsed = true;
+
+      if (angular.isDefined(coupons.clickedCoupon)) {
+        coupons.clickedCoupon[0].isCollapsed = true;
+      }
       for (var i = 0; i < coupons.unactionedCoupons.length; i++) {
         coupons.unactionedCoupons[i].isCollapsed = true;
-
       }
       for (var i = 0; i < coupons.actionedCoupons.length; i++) {
         coupons.actionedCoupons[i].isCollapsed = true;
@@ -38,7 +39,6 @@ angular.module('send2CardApp')
         .then(sendCouponComplete)
         .catch(sendCouponFailure);
     }
-
 
     function sendCouponComplete(data) {
       var isCouponSent = 1;
@@ -53,8 +53,13 @@ angular.module('send2CardApp')
     }
 
     couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber).then(function (results) {
-      console.log("getFilteredCoupons Called");
-      coupons.clickedCoupon = results.singleCoupon;
+
+      if (angular.isDefined(results.singleCoupon)) {
+        coupons.clickedCoupon = results.singleCoupon;
+      } else {
+        coupons.couponError = true;
+        coupons.errorPath = "views/error4.html";
+      }
       coupons.unactionedCoupons = results.unactionedCoupons;
       coupons.actionedCoupons = results.actionedCoupons;
       coupons.unactionedSavings = results.unactionedSavings;
@@ -72,17 +77,23 @@ angular.module('send2CardApp')
     });
 
 
-    /*        coupons.getRowIndexNumber = function (indexNumber, arrayName) {
-     var array = [];
-     array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
-     console.log(array);
-     return array;
-     }
+        /*To use the live service, use this code instead of the above*/
+        /*couponsManagerFactory.getFilteredCouponListsFromService(extraCareCardNumber, couponNumber).then(function(results){
+                coupons.clickedCoupon = results.singleCoupon;
+                coupons.unactionedCoupons = results.unactionedCoupons;
+                coupons.actionedCoupons = results.actionedCoupons;
+            });*/
 
+        /*coupons.getRowIndexNumber = function (indexNumber, arrayName) {
+            var array = [];
+            array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
+                console.log(array);
+                return array;
+            }
 
-     coupons.getCouponsPerRow = function () {
-     return displayInformationFactory.getCouponsPerRow(coupons);
-     }*/
+            coupons.getCouponsPerRow = function () {
+                return displayInformationFactory.getCouponsPerRow(coupons);
+            }*/
 
     coupons.incrementProgressBarValue = function(){
 
@@ -91,11 +102,7 @@ angular.module('send2CardApp')
       coupons.unactionedLength--;
       coupons.actionedLength++;
 
-      // add a coupons value for length for the each thing - actioned / unactioned / total length
-
-
       var progressValue = (coupons.actionedLength/totalLength) * 100;
-      console.log("PROGRESS VALUE: " + progressValue);
       coupons.progressBarValue=progressValue;
     }
 
@@ -113,7 +120,6 @@ angular.module('send2CardApp')
           array.push(i);
         }
       }
-
       return array;
     }
 

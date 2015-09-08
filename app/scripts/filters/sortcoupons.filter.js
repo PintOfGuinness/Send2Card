@@ -17,10 +17,10 @@ angular.module('send2CardApp')
         };
 
         function sortCouponsByExpiryDate(unsortedCouponList) {
-            return unsortedCouponList.sort(function (a, b) {
-                a = new Date(a.expir_dt);
-                b = new Date(b.expir_dt);
-                return a < b ? -1 : a > b ? 1 : 0;
+            return unsortedCouponList.sort(function (date1, date2) {
+                date1 = new Date(date1.expir_dt);
+                date2 = new Date(date2.expir_dt);
+                return date1 < date2 ? -1 : date1 > date2 ? 1 : 0;
             });
         }
     });

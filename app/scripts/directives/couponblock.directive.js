@@ -17,9 +17,6 @@ angular.module('send2CardApp')
         var tempIsCollapsed = scope.coupon.isCollapsed;
         scope.onResetCollapseStateForAll();
         scope.coupon.isCollapsed = !tempIsCollapsed;
-
-        elem.addClass("expanded-hide-bottom-border");
-        console.log("element class name = " + elem);
       }
 
       if (scope.sendCouponOnStartup === 'true') {
@@ -44,10 +41,7 @@ angular.module('send2CardApp')
         scope.coupon.dontShowCents = false;
 
         scope.coupon.dollars = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
-        console.log("Dollars = " + scope.coupon.dollars);
-
-
-          scope.coupon.cents = scope.coupon.title.substring([scope.coupon.title.indexOf('.')+1], [scope.coupon.title.length]);
+        scope.coupon.cents = scope.coupon.title.substring([scope.coupon.title.indexOf('.')+1], [scope.coupon.title.length]);
 
         var zeros = '00';
 
@@ -90,7 +84,6 @@ angular.module('send2CardApp')
       }
 
       scope.progressBarUpdate=function(){
-        console.log("STATE:" + scope.coupon.state);
         if(scope.coupon.state !=2){
           scope.incrementProgressBarValue();
         }

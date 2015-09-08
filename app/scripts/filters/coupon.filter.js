@@ -6,6 +6,7 @@
  * @function
  * @description
  * # CouponFilter
+ *  *
  * Filter in the send2CardApp.
  */
 angular.module('send2CardApp')
@@ -22,61 +23,64 @@ angular.module('send2CardApp')
       return output;
     };
 
-    function getAllViewableCouponsByFilter(input, couponNumberFilter) {
+    function getAllViewableCouponsByFilter(input, couponNumberFilter){
       var output = {};
+
       var actionedCoupons = [];
       var unactionedCoupons = [];
-      var unactionedSavings = 0;
+
       var actionedSavings = 0;
+      var unactionedSavings = 0;
+      var totalSavings = 0;
 
       angular.forEach(input, function (eachCoupon, index) {
+        totalSavings += parseFloat(input[index].max_redeem_amt);
+
         if (input[index].cpn_seq_nbr !== couponNumberFilter) {
           if (couponViewable(eachCoupon)) {
             setCouponCollapsedDefault(eachCoupon);
-            console.log("coupon: " + eachCoupon);
             if (couponActioned(eachCoupon)) {
-
               actionedCoupons.push(eachCoupon);
-              if(input[index].amt_type_cd != "P") {
-
-                actionedSavings += parseFloat(input[index].max_redeem_amt);
-              }
+              actionedSavings += parseFloat(input[index].max_redeem_amt);
             } else {
               unactionedCoupons.push(eachCoupon);
-              if(input[index].amt_type_cd != "P") {
-
-                unactionedSavings += parseFloat(input[index].max_redeem_amt);
-              }
+              unactionedSavings += parseFloat(input[index].max_redeem_amt);
             }
           }
         }
-
-
-
       });
-
-
-
-
-
-      console.log("total saving = " + unactionedSavings);
       output.actionedCoupons = actionedCoupons;
       output.unactionedCoupons = unactionedCoupons;
-
-
-      output.unactionedSavings = unactionedSavings;
       output.actionedSavings = actionedSavings;
+      output.unactionedSavings = unactionedSavings;
+      output.totalSavings=totalSavings;
+
+
       return output;
     }
 
     function getSingleCouponByFilter(input, couponNumberFilter) {
       var output = [];
-      output = $filter('filter')(input, {
-        cpn_seq_nbr: couponNumberFilter
-      }, true)[0];
-      setCouponCollapsedDefault(output);
-      couponExpiresSoon(output);
+      if (angular.isDefined(couponNumberFilter)) {
+        output = $filter('filter')(input, {
+          cpn_seq_nbr: couponNumberFilter
+        }, true)[0];
 
+        if (angular.isDefined(output)) {
+          setCouponCollapsedDefault(output);
+          couponExpiresSoon(output);
+        }
+      } else {
+        output = undefined;
+      };
+
+      function couponRedeemed(eachCoupon) {
+        if (eachCoupon.redeemable_ind === "N") {
+          return false;
+        } else {
+          return true;
+        }
+      }
       return output;
     }
 
@@ -95,6 +99,12 @@ angular.module('send2CardApp')
       }
 
       return viewable;
+    }
+
+    function showSoonOverNew(eachCoupon) {
+      if (eachCoupon.expiresSoon === true && eachCoupon.isNew === true) {
+        eachCoupon.isNew = false;
+      }
     }
 
     function filterCoupon(eachCoupon) {
@@ -160,12 +170,6 @@ angular.module('send2CardApp')
         eachCoupon.isNew = false;
       }
 
-    }
-
-    function showSoonOverNew(eachCoupon) {
-      if (eachCoupon.expiresSoon === true && eachCoupon.isNew === true) {
-        eachCoupon.isNew  = false;
-      }
     }
 
     function couponActioned(eachCoupon) {
