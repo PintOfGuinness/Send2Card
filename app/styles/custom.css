@@ -155,10 +155,16 @@ img:hover {
 }
 
 /* The starting CSS styles for the enter animation */
+
+.slight-delay{
+  transition:1s linear all 1s;
+}
+
 .progress-bar-section.ng-enter {
   transition:1s linear all 1s;
   opacity:0;
 }
+
 
 /* The finishing CSS styles for the enter animation */
 .progress-bar-section.ng-enter.ng-enter-active {
