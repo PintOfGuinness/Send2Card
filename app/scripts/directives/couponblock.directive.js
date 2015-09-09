@@ -65,8 +65,7 @@ angular.module('send2CardApp')
           .catch(sendCouponFailure);
       }
 
-      function sendCouponComplete(newState) {
-        console.log("Directive:sendCouponComplete");          
+      function sendCouponComplete(newState) {       
         scope.updateState(newState);
         scope.isHidden = true;
       }

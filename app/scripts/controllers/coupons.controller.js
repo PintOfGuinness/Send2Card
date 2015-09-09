@@ -22,7 +22,7 @@ angular.module('send2CardApp')
         coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
         coupons.resetCollapseStateForAll = function () {
-            couponsManagerFactory.resetCollapseStateForAll();  
+            couponsManagerFactory.resetCollapseStateForAll();
         }
 
         coupons.sendCouponToCard = function () {
@@ -38,7 +38,7 @@ angular.module('send2CardApp')
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
-            console.log("Controller:sendCouponFailure");            
+            console.log("Controller:sendCouponFailure");
             coupons.couponError = true;
             coupons.errorPath = "views/error1.html";
             return isCouponSent;
@@ -49,9 +49,9 @@ angular.module('send2CardApp')
             if (angular.isUndefined(results.singleCoupon)) {
                 coupons.couponError = true;
                 coupons.errorPath = "views/error4.html";
-            }            
+            }
             coupons.couponsServiceData = results;
-            
+
             var totalCoupons = coupons.couponsServiceData.actionedCoupons.length + coupons.couponsServiceData.unactionedCoupons.length;
             coupons.unactionedLength = coupons.couponsServiceData.unactionedCoupons.length;
             coupons.actionedLength = coupons.couponsServiceData.actionedCoupons.length;
