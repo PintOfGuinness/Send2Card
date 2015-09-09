@@ -31,8 +31,6 @@ angular.module('send2CardApp')
             for (var i = 0; i < coupons.actionedCoupons.length; i++) {
                 coupons.actionedCoupons[i].isCollapsed = true;
             }
-            
-            couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber);
         }
 
         coupons.sendCouponToCard = function () {
