@@ -100,7 +100,9 @@ img:hover {
 
 .border-grey {
   border-color: #DDD;
+
 }
+
 
 .hide-top{
   border-top:none;
@@ -129,7 +131,22 @@ img:hover {
 }
 
 .smaller-width{
-  width:40px;
+  width:200px;
+  margin-left: 5px;
+}
+
+.progress-bar-colour{
+  background-image:none;
+  background-color:lightseagreen;
+}
+
+.pad-right{
+  padding-right:10px;
+  padding-left:10px;
+}
+.padded-top{
+  padding-top:15px;
+  padding-bottom:10px;
 }
 
 .sticky {
