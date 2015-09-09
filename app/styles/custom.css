@@ -130,9 +130,14 @@ img:hover {
   font-size:50%;
 }
 
+.text-size-uniform{
+  font-size:larger;
+}
+
 .smaller-width{
-  width:200px;
-  margin-left: 5px;
+  width:250px;
+ height:22px;
+  margin-left: 8px;
 }
 
 .progress-bar-colour{
@@ -207,8 +212,12 @@ img:hover {
   position:absolute;
   left:0;
   right:0;
-  background-color:#000000;
-  opacity:0.82;
+  background-color:#363636;
+  opacity:0.98;
+}
+
+.more-padding-right{
+  padding-right:75px;
 }
 
 .white-text{
