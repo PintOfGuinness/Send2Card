@@ -19,15 +19,6 @@ module.exports = function (config) {
       "jasmine"
     ],
 
-        preprocessors: {
-            'app/views/*.html': ['ng-html2js']
-        },
-
-        ngHtml2JsPreprocessor: {
-            stripPrefix: 'app/',
-            moduleName: 'send2CardApp'
-        },
-
         reporters: ['spec'],
 
         // list of files / patterns to load in the browser
@@ -68,8 +59,7 @@ module.exports = function (config) {
         plugins: [
       "karma-phantomjs-launcher",
       "karma-jasmine",
-      'karma-spec-reporter',
-      'karma-ng-html2js-preprocessor'
+      'karma-spec-reporter'
     ],
 
         // Continuous Integration mode

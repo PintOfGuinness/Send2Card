@@ -4,12 +4,12 @@ describe('Controller: CouponCtrl', function () {
     
     beforeEach(module('send2CardApp'));
 
-    beforeEach(inject(function ($controller) {
+   /* beforeEach(inject(function ($controller) {
         scope = {};
         ctrl = $controller('KarmaTestController', {
             $scope: scope
         });
-    }));
+    }));*/
     
     /*beforeEach(inject(function ($rootScope, $controller) {
         scope = $rootScope.$new();
