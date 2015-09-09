@@ -19,7 +19,7 @@ module.exports = function (config) {
       "jasmine"
     ],
 
-        reporters: ['spec'],
+        reporters: ['mocha'],
 
         // list of files / patterns to load in the browser
         files: [
@@ -31,8 +31,9 @@ module.exports = function (config) {
       "bower_components/angular-route/angular-route.js",
       "bower_components/angular-sanitize/angular-sanitize.js",
       "bower_components/angular-touch/angular-touch.js",
+      "bower_components/angular-media-queries/match-media.js",
+      "bower_components/angular-bootstrap/ui-bootstrap.js",     
       "app/scripts/**/*.js",
-      "test/mock/**/*.js",
       "test/spec/**/*.js"
     ],
 
@@ -59,12 +60,12 @@ module.exports = function (config) {
         plugins: [
       "karma-phantomjs-launcher",
       "karma-jasmine",
-      'karma-spec-reporter'
+      'karma-mocha-reporter'
     ],
 
         // Continuous Integration mode
         // if true, it capture browsers, run tests and exit
-        singleRun: true,
+        singleRun: false,
 
         colors: true,
 

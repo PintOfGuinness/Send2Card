@@ -1,4 +1,5 @@
-/*
+
+
 'use strict';
 
 describe('Filter: sortCouponFilter', function () {
@@ -132,4 +133,5 @@ describe('Filter: sortCouponFilter', function () {
   }));
 
 });
-*/
+
+
