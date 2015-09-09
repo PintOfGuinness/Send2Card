@@ -1,6 +1,6 @@
 .expanded-div-style {
-    padding: 15px 20px 10px 20px;
-    border-top: none;
+  padding: 15px 20px 10px 20px;
+  border-top: none;
 }
 
 .show-top{
@@ -8,37 +8,37 @@
 }
 
 .align-top {
-    vertical-align: top;
+  vertical-align: top;
 }
 .overlay {
-    position: absolute;
-    top:100%;
-    left: 0px;
-    right: 0px;
-    z-index: 10;
-    background-color: white;
-    margin: 0px -1px;
+  position: absolute;
+  top:100%;
+  left: 0px;
+  right: 0px;
+  z-index: 10;
+  background-color: white;
+  margin: 0px -1px;
 }
 .text-red {
-    color: #cc0000;
+  color: #cc0000;
 }
 .soonmarker {
-    display: inline-block;
+  display: inline-block;
 }
 .accordion-header:hover {
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 .inline {
-    display: inline-block;
+  display: inline-block;
 }
 img {
-    opacity: 0.8;
-    filter: alpha(opacity=40);
+  opacity: 0.8;
+  filter: alpha(opacity=40);
 }
 img:hover {
-    opacity: 1.0;
-    filter: alpha(opacity=100);
+  opacity: 1.0;
+  filter: alpha(opacity=100);
 }
 
 .grey-background{
@@ -52,31 +52,31 @@ img:hover {
  Coupon Styling
 ---------------------------------------------------------------------------*/
 .thick-border {
-    border: 1px solid;
-    border-color: #ffe87c;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  border: 1px solid;
+  border-color: #ffe87c;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 
 .couponpadding {
-   padding: 5px 10px;
-   margin: 0 10px 10px 0px !important;
-   position:relative;
-   border-radius:0;
+  padding: 5px 10px;
+  margin: 0 10px 10px 0px !important;
+  position:relative;
+  border-radius:0;
 }
 
 .coupon-leftside{
-    margin-right:77px;
-    padding: 5px;
+  margin-right:77px;
+  padding: 5px;
 }
 
 .coupon-rightside{
-    position:absolute;
-    right:0px;
-    bottom:20px;
-    top:20px;
-    border-left: 2px dotted #DDD;
-    padding: 0 5px;
-    width: 90px;
+  position:absolute;
+  right:0px;
+  bottom:20px;
+  top:20px;
+  border-left: 2px dotted #DDD;
+  padding: 0 5px;
+  width: 90px;
 }
 
 
@@ -87,11 +87,11 @@ img:hover {
 /*Andrew Dawson is an onion CSS*/
 
 .couponpadding:hover{
-     border-color: #FDE8C9;
+  border-color: #FDE8C9;
 }
 
 .couponpadding:hover * {
-     border-color: #FDE8C9;
+  border-color: #FDE8C9;
 }
 
 .border-yellow {
@@ -109,7 +109,7 @@ img:hover {
 }
 
 .text-centre {
-    text-align: center;
+  text-align: center;
 }
 
 .top-aligned{
@@ -136,7 +136,7 @@ img:hover {
 
 .smaller-width{
   width:250px;
- height:22px;
+  height:22px;
   margin-left: 8px;
 }
 
@@ -154,14 +154,27 @@ img:hover {
   padding-bottom:10px;
 }
 
+/* The starting CSS styles for the enter animation */
+.progress-bar-section.ng-enter {
+  transition:1s linear all 1s;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.progress-bar-section.ng-enter.ng-enter-active {
+  transition:1s linear all 1s;
+  opacity:1;
+}
+
+
 .sticky {
-    background-color: #F7F7FF;
-    position: fixed;
-    width: 200px;
-    right: 0;
-    top: 100px;
-    z-index: 100;
-    border-top: 0;
+  background-color: #F7F7FF;
+  position: fixed;
+  width: 200px;
+  right: 0;
+  top: 100px;
+  z-index: 100;
+  border-top: 0;
 }
 
 .medium-font{
@@ -184,25 +197,25 @@ img:hover {
 }
 
 .print-button{
-    position:absolute;
-    bottom:0px;
-    right:18px;
+  position:absolute;
+  bottom:0px;
+  right:18px;
 }
 
 .printmodal {
-    padding: 25px;
+  padding: 25px;
 }
 
 .printcoupon {
-    border: 5px solid grey;
-    padding:10px;
+  border: 5px solid grey;
+  padding:10px;
 }
 
 .full-width {
-   position:absolute;
-    left:0;
-    right:0;
-    background-color:#FAFAFA;
+  position:absolute;
+  left:0;
+  right:0;
+  background-color:#FAFAFA;
 }
 .red-text{
   color:red;
@@ -259,32 +272,32 @@ img:hover {
 */
 
 .float-down {
-    position:absolute;
-    bottom:0px;
-    right: 20px;
+  position:absolute;
+  bottom:0px;
+  right: 20px;
 }
 
 .nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 @media screen and (max-width:992px) {
-    .desktoponly {
-        display: none;
-    }
+  .desktoponly {
+    display: none;
+  }
 }
 
 @media screen and (min-width:768px) {
-    .sticky {
-        display: none;
-    }
-    .mobileView {
-        display: none;
-    }
+  .sticky {
+    display: none;
+  }
+  .mobileView {
+    display: none;
+  }
 }
 @media print {
-    .container {
-        display: none;
-    }
+  .container {
+    display: none;
+  }
 }
