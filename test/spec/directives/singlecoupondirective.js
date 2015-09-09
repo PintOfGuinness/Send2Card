@@ -2,19 +2,25 @@
 
 describe('Directive: SingleCouponDirective', function () {
 
-  // load the directive's module
+  it('should make hidden element visible', inject(function ($compile, $templateCache) {
+      
+   /* expect(true).toEqual(true);
+element = angular.element('<single-coupon-directive></single-coupon-directive>');
+    element = $compile(element)(scope);
+       scope.$digest();*/
+  }));
+    
+    
   beforeEach(module('send2CardApp'));
 
   var element,
     scope;
 
-  beforeEach(inject(function ($rootScope) {
+  beforeEach(inject(function ($rootScope, $compile, $templateCache) {
     scope = $rootScope.$new();
-  }));
-
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<-single-coupon-directive></-single-coupon-directive>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the SingleCouponDirective directive');
+    $templateCache.put('views/singleCoupon.html', 'Template1');
+   /* element = angular.element('<single-coupon-directive></single-coupon-directive>');
+    element = $compile(element)(scope);*/
+/*    scope.$digest();*/
   }));
 });

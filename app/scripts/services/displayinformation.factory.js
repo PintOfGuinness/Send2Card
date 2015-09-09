@@ -10,8 +10,6 @@
 angular.module('send2CardApp')
     .factory('displayInformationFactory', function (screenSize) {
 
-
-
         // Public API here
         return {
 
