@@ -8,8 +8,6 @@ Then subsequently call:
 - bower install
 
 
-in the Send2Card root project folder.
-
 Run the following command. It will avoid an "No 'Access-Control-Allow-Origin' header is present on the request resource" error.  It allows us to make an XMLHttpRequest to a different domain that our page is on, usually the browser blocks this but an app like Postman will allow it.
 
 chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security

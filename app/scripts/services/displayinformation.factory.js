@@ -17,10 +17,10 @@ angular.module('send2CardApp')
                 var array = [];
                 var couponArray = [];
                 if (arrayName == "unactioned") {
-                    couponArray = coupons.unactionedCoupons;
+                    couponArray = coupons.couponsServiceData.unactionedCoupons;
                 }
                 if (arrayName == "actioned") {
-                    couponArray = coupons.actionedCoupons;
+                    couponArray = coupons.couponsServiceData.actionedCoupons;
                 }
                 for (var i = indexNumber; i < coupons.couponsPerRow + indexNumber; i++) {
                     if (i < couponArray.length) {

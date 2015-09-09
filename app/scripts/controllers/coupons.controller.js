@@ -22,17 +22,7 @@ angular.module('send2CardApp')
         coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
         coupons.resetCollapseStateForAll = function () {
-            if (angular.isDefined(coupons.clickedCoupon)) {
-                coupons.clickedCoupon[0].isCollapsed = true;
-            }
-            for (var i = 0; i < coupons.unactionedCoupons.length; i++) {
-                coupons.unactionedCoupons[i].isCollapsed = true;
-            }
-            for (var i = 0; i < coupons.actionedCoupons.length; i++) {
-                coupons.actionedCoupons[i].isCollapsed = true;
-            }
-            
-            couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber);
+            couponsManagerFactory.resetCollapseStateForAll();  
         }
 
         coupons.sendCouponToCard = function () {
@@ -56,23 +46,16 @@ angular.module('send2CardApp')
 
         couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber).then(function (results) {
 
-            if (angular.isDefined(results.singleCoupon)) {
-                coupons.clickedCoupon = results.singleCoupon;
-            } else {
+            if (angular.isUndefined(results.singleCoupon)) {
                 coupons.couponError = true;
                 coupons.errorPath = "views/error4.html";
-            }
-            coupons.unactionedCoupons = results.unactionedCoupons;
-            coupons.actionedCoupons = results.actionedCoupons;
-            coupons.unactionedSavings = results.unactionedSavings;
-            coupons.actionedSavings = results.actionedSavings;
-
-            var totalCoupons = coupons.actionedCoupons.length + coupons.unactionedCoupons.length;
-            coupons.unactionedLength = coupons.unactionedCoupons.length;
-            coupons.actionedLength = coupons.actionedCoupons.length;
-
-            coupons.progressBarValue = (coupons.actionedCoupons.length / totalCoupons) * 100;
-
+            }            
+            coupons.couponsServiceData = results;
+            
+            var totalCoupons = coupons.couponsServiceData.actionedCoupons.length + coupons.couponsServiceData.unactionedCoupons.length;
+            coupons.unactionedLength = coupons.couponsServiceData.unactionedCoupons.length;
+            coupons.actionedLength = coupons.couponsServiceData.actionedCoupons.length;
+            coupons.progressBarValue = (coupons.couponsServiceData.actionedCoupons.length / totalCoupons) * 100;
 
         }).catch(function (error) {
             coupons.multiCouponError = error.multiCouponError;
