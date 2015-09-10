@@ -172,8 +172,24 @@ img:hover {
 /* The finishing CSS styles for the enter animation */
 .progress-bar-section.ng-enter.ng-enter-active {
   transition:1s linear all 1s;
-  opacity:1;
+  opacity:0.8;
 }
+
+.progress-bar-section.ng-show.ng-show-add-active{
+  transition:1s linear all 1s;
+  opacity:0.8;
+}
+
+.progress-bar-section.ng-show.ng-show-remove{
+  transition:1s linear all 1s;
+  opacity:0.8;
+}
+
+.progress-bar-section.ng-show.ng-show-add{
+  transition:1s linear all 1s;
+  opacity:0.8;
+}
+
 
 .sticky {
   background-color: #F7F7FF;

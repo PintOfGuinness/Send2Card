@@ -12,6 +12,7 @@ angular.module('send2CardApp')
     function link(scope, elem, attrs) {
       scope.isHidden = false;
       scope.isReadyToUse = false;
+      scope.showProgressBar = false;
 
       scope.collapseSection = function () {
         var tempIsCollapsed = scope.coupon.isCollapsed;
@@ -58,16 +59,17 @@ angular.module('send2CardApp')
         scope.coupon.dollar = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
       }
 
-
       scope.clickSendCouponToCard = function () {
         scope.onSendCouponToCard()
           .then(sendCouponComplete)
           .catch(sendCouponFailure);
       }
 
-      function sendCouponComplete(newState) {       
+      function sendCouponComplete(newState) {
         scope.updateState(newState);
         scope.isHidden = true;
+        console.log("Calling show progress bar on CTAs....");
+        scope.showProgressBarOnCTA();
       }
 
       scope.printCoupon = function () {
@@ -80,7 +82,7 @@ angular.module('send2CardApp')
       }
 
       function sendCouponFailure(failureState) {
-        console.log("Directive:sendCouponFailure");              
+        console.log("Directive:sendCouponFailure");
         scope.coupon.state = failureState;
       }
 
@@ -89,8 +91,6 @@ angular.module('send2CardApp')
           scope.incrementProgressBarValue();
         }
       }
-
-
     }
 
     return {
@@ -107,7 +107,8 @@ angular.module('send2CardApp')
         coupon: '=',
         onUpdateState: '&',
         onResetCollapseStateForAll: '&',
-        incrementProgressBarValue:'&'
+        incrementProgressBarValue:'&',
+        showProgressBarOnCTA:'&'
       },
       link: link
     }

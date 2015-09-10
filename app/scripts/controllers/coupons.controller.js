@@ -20,10 +20,13 @@ angular.module('send2CardApp')
         coupons.sentCouponPath = "images/oncard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
+        coupons.showProgressBar = false;
+
 
         coupons.resetCollapseStateForAll = function () {
             couponsManagerFactory.resetCollapseStateForAll();
         }
+
 
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
@@ -34,6 +37,14 @@ angular.module('send2CardApp')
         function sendCouponComplete(data) {
             console.log("Controller:sendCouponComplete");
             return data;
+        }
+
+
+        coupons.showProgressBarOnCTA = function(){
+          console.log("show progress bar before setting to true..." + coupons.showProgressBar);
+          coupons.showProgressBar = true;
+          console.log("show progress bar after setting to true..." + coupons.showProgressBar);
+
         }
 
         function sendCouponFailure(data) {
