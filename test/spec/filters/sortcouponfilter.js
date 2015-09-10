@@ -1,3 +1,5 @@
+
+
 'use strict';
 
 describe('Filter: sortCouponFilter', function () {
@@ -6,12 +8,12 @@ describe('Filter: sortCouponFilter', function () {
   beforeEach(module('send2CardApp'));
 
   it('should order the coupons by expiry date', function () {
-      expect(true).toEqual(true);
-     /* var sortedCoupons = sortCouponFilter(sampleCouponArray);
+
+      var sortedCoupons = sortCouponFilter(sampleCouponArray);
       expect(sortedCoupons[0].expir_dt).toEqual("2015-09-02");
       expect(sortedCoupons[1].expir_dt).toEqual("2015-09-03");
       expect(sortedCoupons[2].expir_dt).toEqual("2015-10-09");
-      expect(sortedCoupons[3].expir_dt).toEqual("2015-10-30");*/
+      expect(sortedCoupons[3].expir_dt).toEqual("2015-10-30");
   });
 
   var sortCouponFilter;
@@ -131,3 +133,5 @@ describe('Filter: sortCouponFilter', function () {
   }));
 
 });
+
+

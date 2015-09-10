@@ -3,7 +3,7 @@
 describe('Service: couponManagerFactory', function () {
 
   // load the service's module
-  beforeEach(module('send2CardApp'));
+/*  beforeEach(module('send2CardApp'));*/
 
   // instantiate service
   var couponManagerFactory;
