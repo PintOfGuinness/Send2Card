@@ -10,6 +10,7 @@
 .align-top {
   vertical-align: top;
 }
+
 .overlay {
   position: absolute;
   top:100%;
@@ -19,19 +20,24 @@
   background-color: white;
   margin: 0px -1px;
 }
+
 .text-red {
   color: #cc0000;
 }
+
 .soonmarker {
   display: inline-block;
 }
+
 .accordion-header:hover {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .inline {
   display: inline-block;
 }
+
 img {
   opacity: 0.8;
   filter: alpha(opacity=40);
@@ -100,9 +106,7 @@ img:hover {
 
 .border-grey {
   border-color: #DDD;
-
 }
-
 
 .hide-top{
   border-top:none;
@@ -114,8 +118,8 @@ img:hover {
 
 .top-aligned{
   vertical-align:inherit;
-
 }
+
 .small-font{
   font-size: 50%;
   vertical-align:top;
@@ -157,7 +161,7 @@ img:hover {
 /* The starting CSS styles for the enter animation */
 
 .slight-delay{
-  transition:1s linear all 1s;
+  transition:1s linear all 0.80s;
 }
 
 .progress-bar-section.ng-enter {
@@ -165,13 +169,11 @@ img:hover {
   opacity:0;
 }
 
-
 /* The finishing CSS styles for the enter animation */
 .progress-bar-section.ng-enter.ng-enter-active {
   transition:1s linear all 1s;
   opacity:1;
 }
-
 
 .sticky {
   background-color: #F7F7FF;
@@ -223,16 +225,18 @@ img:hover {
   right:0;
   background-color:#FAFAFA;
 }
+
 .red-text{
   color:red;
 }
 
 .full-width-black-background {
-  position:absolute;
+  position:fixed;
   left:0;
+  top:0;
   right:0;
   background-color:#363636;
-  opacity:0.98;
+  opacity:0.80;
 }
 
 .more-padding-right{
@@ -302,6 +306,7 @@ img:hover {
     display: none;
   }
 }
+
 @media print {
   .container {
     display: none;
