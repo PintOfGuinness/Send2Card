@@ -40,16 +40,16 @@ angular.module('send2CardApp')
         }
 
 
-/*        coupons.showProgressBarOnCTA = function(){
-          console.log("show progress bar before setting to true..." + coupons.showProgressBar);
-          coupons.showProgressBar = true;
-          console.log("show progress bar after setting to true..." + coupons.showProgressBar);
+        coupons.showProgressBarOnCTA = function(){
+  //        console.log("show progress bar before setting to true..." + coupons.couponsServiceData.showProgressBar);
+          coupons.couponsServiceData.showProgressBar = true;
+          console.log("show progress bar after setting to true..." + coupons.couponsServiceData.showProgressBar);
 
 
           // scroll and set it to false
  //         coupons.showProgressBar = false;
 
-        }*/
+        }
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
