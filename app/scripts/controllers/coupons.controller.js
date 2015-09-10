@@ -40,12 +40,16 @@ angular.module('send2CardApp')
         }
 
 
-        coupons.showProgressBarOnCTA = function(){
+/*        coupons.showProgressBarOnCTA = function(){
           console.log("show progress bar before setting to true..." + coupons.showProgressBar);
           coupons.showProgressBar = true;
           console.log("show progress bar after setting to true..." + coupons.showProgressBar);
 
-        }
+
+          // scroll and set it to false
+ //         coupons.showProgressBar = false;
+
+        }*/
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
@@ -63,10 +67,10 @@ angular.module('send2CardApp')
             }
             coupons.couponsServiceData = results;
 
-            var totalCoupons = coupons.couponsServiceData.actionedCoupons.length + coupons.couponsServiceData.unactionedCoupons.length;
+/*            var totalCoupons = coupons.couponsServiceData.actionedCoupons.length + coupons.couponsServiceData.unactionedCoupons.length;
             coupons.unactionedLength = coupons.couponsServiceData.unactionedCoupons.length;
             coupons.actionedLength = coupons.couponsServiceData.actionedCoupons.length;
-            coupons.progressBarValue = (coupons.couponsServiceData.actionedCoupons.length / totalCoupons) * 100;
+            coupons.progressBarValue = (coupons.couponsServiceData.actionedCoupons.length / totalCoupons) * 100;*/
 
         }).catch(function (error) {
             coupons.multiCouponError = error.multiCouponError;
@@ -82,7 +86,7 @@ angular.module('send2CardApp')
             return displayInformationFactory.getCouponsPerRow(coupons);
         }
 
-        coupons.incrementProgressBarValue = function () {
+ /*       coupons.incrementProgressBarValue = function () {
             var totalLength = coupons.actionedLength + coupons.unactionedLength;
 
             coupons.unactionedLength--;
@@ -90,7 +94,7 @@ angular.module('send2CardApp')
 
             var progressValue = (coupons.actionedLength / totalLength) * 100;
             coupons.progressBarValue = progressValue;
-        }
+        }*/
 
         screenSize.on('xs, sm, md, lg', function (match) {
             coupons.couponsPerRow = displayInformationFactory.getCouponsPerRow(coupons);
