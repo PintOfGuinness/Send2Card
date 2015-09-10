@@ -69,7 +69,7 @@ angular.module('send2CardApp')
         scope.updateState(newState);
         scope.isHidden = true;
         console.log("Calling show progress bar on CTAs....");
-        scope.showProgressBarOnCTA();
+        scope.showSavingsDisplay();
       }
 
       scope.printCoupon = function () {
@@ -108,7 +108,7 @@ angular.module('send2CardApp')
         onUpdateState: '&',
         onResetCollapseStateForAll: '&',
         incrementProgressBarValue:'&',
-        showProgressBarOnCTA:'&'
+        showSavingsDisplay:'&'
       },
       link: link
     }
