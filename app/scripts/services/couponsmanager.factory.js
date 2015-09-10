@@ -20,7 +20,7 @@ angular.module('send2CardApp')
 
         function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
             //          return couponsService.getUnfilteredCouponsFromService(extraCareCardNumber, couponNumber).then(function (results) {
-            return couponsService.getUnfilteredCouponsFromJSON(extraCareCardNumber, couponNumber).then(function (results) {
+            return couponsService.getUnfilteredCouponsFromJSON(extraCareCardNumber).then(function (results) {
                 var allFilteredCoupons = $filter('couponFilter')(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
 
                 couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);
