@@ -23,10 +23,12 @@ angular.module('send2CardApp')
             getServiceData: getServiceData,
             toggleProgressBarDisplay: toggleProgressBarDisplay,
             setUnactionedLength: setUnactionedLength,
-            getUnactionedLength: getUnactionedLength,            
+            getUnactionedLength: getUnactionedLength,
             setActionedLength: setActionedLength,
-            getActionedLength: getActionedLength,              
-            setProgressBarValue: setProgressBarValue
+            getActionedLength: getActionedLength,
+            setProgressBarValue: setProgressBarValue,
+            setActionedSavings: setActionedSavings,
+            setUnactionedSavings: setUnactionedSavings
         };
 
         function getServiceData() {
@@ -44,7 +46,7 @@ angular.module('send2CardApp')
         function getUnactionedLength() {
             return progressBarData.unactionedLength;
         }
-    
+
         function setActionedLength(actionedLength) {
             progressBarData.actionedLength = actionedLength;
         }
@@ -56,4 +58,13 @@ angular.module('send2CardApp')
         function setProgressBarValue(progressBarValue) {
             progressBarData.progressBarValue = progressBarValue;
         }
+
+    function setActionedSavings(actionedSavings){
+      progressBarData.actionedSavings = actionedSavings;
+    }
+
+    function setUnactionedSavings(unactionedSavings){
+      progressBarData.unactionedSavings = unactionedSavings;
+    }
+
     });
