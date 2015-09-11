@@ -40,31 +40,36 @@ angular.module('send2CardApp')
         }
 
         function setUnactionedLength(unactionedLength) {
+            console.log("setUnactionedLength: " + progressBarData.actionedLength);            
             progressBarData.unactionedLength = unactionedLength;
         }
 
         function getUnactionedLength() {
+            console.log("getUnactionedLength: " + progressBarData.unactionedLength);            
             return progressBarData.unactionedLength;
         }
 
         function setActionedLength(actionedLength) {
+            console.log("setActionedLength: " + progressBarData.actionedLength);
             progressBarData.actionedLength = actionedLength;
         }
 
         function getActionedLength() {
+            console.log("getActionedLength: " + progressBarData.actionedLength);
             return progressBarData.actionedLength;
         }
 
         function setProgressBarValue(progressBarValue) {
             progressBarData.progressBarValue = progressBarValue;
+            console.log("setProgressBarValue: " + progressBarData.progressBarValue);
         }
 
-    function setActionedSavings(actionedSavings){
-      progressBarData.actionedSavings = actionedSavings;
-    }
+        function setActionedSavings(actionedSavings) {
+            progressBarData.actionedSavings = actionedSavings;
+        }
 
-    function setUnactionedSavings(unactionedSavings){
-      progressBarData.unactionedSavings = unactionedSavings;
-    }
+        function setUnactionedSavings(unactionedSavings) {
+            progressBarData.unactionedSavings = unactionedSavings;
+        }
 
     });
