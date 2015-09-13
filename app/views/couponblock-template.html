@@ -4,7 +4,7 @@
 
             <div ng-switch on="coupon.state" class="nopadding">
                 <div ng-switch-when=0>
-                    <img class="img-alt-size" ng-click="clickSendCouponToCard(); updateState(); incrementProgressBarValue();" ng-src="{{unSentCouponPath}}">
+                    <img class="img-alt-size" ng-click="clickSendCouponToCard(); updateState();" ng-src="{{unSentCouponPath}}">
                 </div>
                 <div ng-switch-when=1>
                     <img ng-src="{{sentCouponPath}}">

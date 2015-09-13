@@ -20,7 +20,6 @@ angular.module('send2CardApp')
         coupons.sentCouponPath = "images/oncard.png";
         coupons.couponPrinted = "images/printedicon.png";
         coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
-        coupons.showProgressBar = false;
 
 
         coupons.resetCollapseStateForAll = function () {
@@ -39,23 +38,6 @@ angular.module('send2CardApp')
             return data;
         }
 
-
-        coupons.showSavingsDisplay = function () {
-            var totalCoupons = coupons.couponsServiceData.actionedCoupons.length + coupons.couponsServiceData.unactionedCoupons.length;
-            var unactionedLength = coupons.couponsServiceData.unactionedCoupons.length;
-            var actionedLength = coupons.couponsServiceData.actionedCoupons.length;
-            var actionedSavings = coupons.couponsServiceData.actionedSavings;
-            var unactionedSavings = coupons.couponsServiceData.unactionedSavings;
-            var totalSavings = coupons.couponsServiceData.totalSavings;
-
-            progressBarFactory.setUnactionedLength(unactionedLength);
-            progressBarFactory.setActionedLength(actionedLength);
-            progressBarFactory.setProgressBarValue((actionedLength / totalCoupons) * 100);
-            progressBarFactory.toggleProgressBarDisplay(true);
-            progressBarFactory.setActionedSavings(actionedSavings);
-            progressBarFactory.setUnactionedSavings(unactionedSavings);
-
-        }
 
         function sendCouponFailure(data) {
             var isCouponSent = false;
@@ -87,17 +69,15 @@ angular.module('send2CardApp')
             return displayInformationFactory.getCouponsPerRow(coupons);
         }
 
+        coupons.showSavingsDisplay = function () {
+            console.log("savingsDisplay");
+            progressBarFactory.calculateSavingsAttributes(coupons.couponsServiceData);
+/*            progressBarFactory.toggleProgressBarDisplay(true);*/
+        }
+        
         coupons.incrementProgressBarValue = function () {
-            var totalCoupons = coupons.couponsServiceData.actionedCoupons.length + coupons.couponsServiceData.unactionedCoupons.length;
-
-            var unactionedLength = progressBarFactory.getUnactionedLength();
-            var actionedLength = progressBarFactory.getActionedLength();
-            unactionedLength--;
-            actionedLength++;
-
-            progressBarFactory.setUnactionedLength(unactionedLength);
-            progressBarFactory.setActionedLength(actionedLength);
-            progressBarFactory.setProgressBarValue((actionedLength / totalCoupons) * 100);
+            progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData);
+            progressBarFactory.toggleProgressBarDisplay(true);            
         }
 
         screenSize.on('xs, sm, md, lg', function (match) {

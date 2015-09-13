@@ -19,7 +19,8 @@ angular.module('send2CardApp')
         scope.onResetCollapseStateForAll();
         scope.coupon.isCollapsed = !tempIsCollapsed;
       }
-
+scope.showSavingsDisplay();
+        
       if (scope.sendCouponOnStartup === 'true') {
         scope.onSendCouponToCard()
           .then(sendCouponComplete)
@@ -69,7 +70,8 @@ angular.module('send2CardApp')
         scope.updateState(newState);
         scope.isHidden = true;
         console.log("Calling show progress bar on CTAs....");
-        scope.showSavingsDisplay();
+        
+          scope.progressBarUpdate();
       }
 
       scope.printCoupon = function () {

@@ -9,27 +9,62 @@
  */
 angular.module('send2CardApp')
     .factory('progressBarFactory', function () {
-        // Service logic
-        // ...
 
         var progressBarData = {};
         progressBarData.display = false;
         progressBarData.unactionedLength = 0;
         progressBarData.actionedLength = 0;
         progressBarData.progressBarValue = 0;
+        progressBarData.unactionedSavings = 0;
+        progressBarData.actionedSavings = 0;
 
         // Public API here
         return {
-            getServiceData: getServiceData,
+            calculateSavingsAttributes: calculateSavingsAttributes,
+            updateProgressBarAfterAction: updateProgressBarAfterAction,
             toggleProgressBarDisplay: toggleProgressBarDisplay,
-            setUnactionedLength: setUnactionedLength,
-            getUnactionedLength: getUnactionedLength,
-            setActionedLength: setActionedLength,
-            getActionedLength: getActionedLength,
-            setProgressBarValue: setProgressBarValue,
-            setActionedSavings: setActionedSavings,
-            setUnactionedSavings: setUnactionedSavings
+            getServiceData: getServiceData
         };
+
+        function calculateSavingsAttributes(couponsData) {
+
+            var totalCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
+            progressBarData.unactionedLength = couponsData.unactionedCoupons.length;
+            progressBarData.actionedLength = couponsData.actionedCoupons.length;
+            progressBarData.unactionedSavings = calculateUnactionedSavings(couponsData.unactionedCoupons);
+            progressBarData.actionedSavings = calculateActionedSavings(couponsData.actionedCoupons);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, totalCoupons);
+        }
+
+        function calculateUnactionedSavings(unactionedCoupons) {
+            var unactionedSavings = 0.00;
+            angular.forEach(unactionedCoupons, function (eachCoupon, index) {
+                unactionedSavings += parseFloat(eachCoupon.max_redeem_amt);
+            });
+            return unactionedSavings;
+        }
+
+        function calculateActionedSavings(actionedCoupons) {
+            var actionedSavings = 0.00;
+            angular.forEach(actionedCoupons, function (eachCoupon, index) {
+                actionedSavings += parseFloat(eachCoupon.max_redeem_amt);
+            });
+            return actionedSavings;
+        }
+    
+        function updateProgressBarAfterAction(couponsData) {
+            var totalCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
+            progressBarData.unactionedLength--;
+            progressBarData.actionedLength++;
+            getProgressBarValue(progressBarData.actionedLength, totalCoupons);
+        }
+
+        function getProgressBarValue(actionedLength, totalCoupons) {
+            var progressBarValue = (actionedLength / totalCoupons) * 100;
+            console.log("progressBarValue " + progressBarValue);
+            return progressBarValue;
+        }
+
 
         function getServiceData() {
             return progressBarData;
@@ -39,37 +74,6 @@ angular.module('send2CardApp')
             progressBarData.display = show;
         }
 
-        function setUnactionedLength(unactionedLength) {
-            console.log("setUnactionedLength: " + progressBarData.actionedLength);            
-            progressBarData.unactionedLength = unactionedLength;
-        }
 
-        function getUnactionedLength() {
-            console.log("getUnactionedLength: " + progressBarData.unactionedLength);            
-            return progressBarData.unactionedLength;
-        }
-
-        function setActionedLength(actionedLength) {
-            console.log("setActionedLength: " + progressBarData.actionedLength);
-            progressBarData.actionedLength = actionedLength;
-        }
-
-        function getActionedLength() {
-            console.log("getActionedLength: " + progressBarData.actionedLength);
-            return progressBarData.actionedLength;
-        }
-
-        function setProgressBarValue(progressBarValue) {
-            progressBarData.progressBarValue = progressBarValue;
-            console.log("setProgressBarValue: " + progressBarData.progressBarValue);
-        }
-
-        function setActionedSavings(actionedSavings) {
-            progressBarData.actionedSavings = actionedSavings;
-        }
-
-        function setUnactionedSavings(unactionedSavings) {
-            progressBarData.unactionedSavings = unactionedSavings;
-        }
 
     });
