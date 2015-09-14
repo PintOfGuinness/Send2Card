@@ -71,7 +71,7 @@ angular.module('send2CardApp')
 
         coupons.showSavingsDisplay = function () {
             console.log("savingsDisplay");
-            progressBarFactory.calculateSavingsAttributes(coupons.couponsServiceData);
+            progressBarFactory.calculateInitialSavings(coupons.couponsServiceData);
 /*            progressBarFactory.toggleProgressBarDisplay(true);*/
         }
         
