@@ -10,6 +10,8 @@
 angular.module('send2CardApp')
     .controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, sendToCardFactory, $scope, displayInformationFactory, screenSize) {
 
+    
+    
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum || "12345678";
         var couponNumber = $location.search().couponnum;
@@ -22,6 +24,7 @@ angular.module('send2CardApp')
         coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
         coupons.resetCollapseStateForAll = function () {
+            //reset jhbndvjhbsdiovrvreivrneimvoremvreiomveirviveiorveverneviernv
             couponsManagerFactory.resetCollapseStateForAll();
         }
         
