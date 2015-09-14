@@ -7,7 +7,7 @@
  * # couponDirective
  */
 angular.module('send2CardApp')
-  .directive('couponDirective', function () {
+  .directive('couponDirective', function (modalProvider) {
 
     function link(scope, elem, attrs) {
       scope.isHidden = false;
@@ -69,15 +69,17 @@ scope.showSavingsDisplay();
       function sendCouponComplete(newState) {
         scope.updateState(newState);
         scope.isHidden = true;
-        console.log("Calling show progress bar on CTAs....");
-        
-          scope.progressBarUpdate();
+        scope.progressBarUpdate();
       }
 
       scope.printCoupon = function () {
         window.print();
       }
 
+      scope.openPrintModal = function(){
+          modalProvider.openPrintModal(scope);
+      }
+      
       scope.updateState = function (newState) {
         scope.isReadyToUse = true;
         scope.coupon.state = newState;

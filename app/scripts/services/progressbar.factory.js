@@ -12,28 +12,34 @@ angular.module('send2CardApp')
 
         var progressBarData = {};
         progressBarData.display = false;
-        progressBarData.unactionedLength = 0;
+/*        progressBarData.unactionedLength = 0;*/
         progressBarData.actionedLength = 0;
         progressBarData.progressBarValue = 0;
         progressBarData.unactionedSavings = 0;
         progressBarData.actionedSavings = 0;
+        progressBarData.totalCoupons = 0;
 
         // Public API here
         return {
-            calculateSavingsAttributes: calculateSavingsAttributes,
+            calculateInitialSavings: calculateInitialSavings,
             updateProgressBarAfterAction: updateProgressBarAfterAction,
             toggleProgressBarDisplay: toggleProgressBarDisplay,
             getServiceData: getServiceData
         };
 
-        function calculateSavingsAttributes(couponsData) {
+        function calculateInitialSavings(couponsData) {
 
-            var totalCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
-            progressBarData.unactionedLength = couponsData.unactionedCoupons.length;
+            progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
+/*            progressBarData.unactionedLength = couponsData.unactionedCoupons.length;*/
             progressBarData.actionedLength = couponsData.actionedCoupons.length;
             progressBarData.unactionedSavings = calculateUnactionedSavings(couponsData.unactionedCoupons);
             progressBarData.actionedSavings = calculateActionedSavings(couponsData.actionedCoupons);
-            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, totalCoupons);
+            progressBarData.totalSavings = calculateTotalSavings(progressBarData.unactionedSavings, progressBarData.actionedSavings);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
+        }
+
+        function getTotalNumberOfCoupons(couponsData) {
+            return couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length + couponsData.singleCoupon.length;
         }
 
         function calculateUnactionedSavings(unactionedCoupons) {
@@ -51,17 +57,20 @@ angular.module('send2CardApp')
             });
             return actionedSavings;
         }
-    
+
+        function calculateTotalSavings(unactionedSavings, actionedSavings) {
+            return unactionedSavings + actionedSavings;
+        }
+
         function updateProgressBarAfterAction(couponsData) {
             var totalCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
-            progressBarData.unactionedLength--;
+/*            progressBarData.unactionedLength--;*/
             progressBarData.actionedLength++;
-            getProgressBarValue(progressBarData.actionedLength, totalCoupons);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, totalCoupons);
         }
 
         function getProgressBarValue(actionedLength, totalCoupons) {
             var progressBarValue = (actionedLength / totalCoupons) * 100;
-            console.log("progressBarValue " + progressBarValue);
             return progressBarValue;
         }
 

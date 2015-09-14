@@ -1,17 +1,7 @@
-
 <div class="full-width">
     <div class="container" style="padding-left:25px;">
         <br>
-        <br>
-      <br>
-      <br>
-<br>
-      <br>
-      <br>
-      <br>
-      <br>
-
-      <!--NOT YET ACTIONED COUPONS-->
+        <!--UNACTIONED COUPONS-->
         <div class="panel-body nopadding">
             <div ng-repeat="coupon in couponsController.couponsServiceData.unactionedCoupons track by $index">
                 <div ng-if="$index%(couponsController.getCouponsPerRow())==0" class="row nopadding" style="display: flex;">
@@ -23,7 +13,7 @@
             </div>
         </div>
 
-        <!--READY TO USE COUPONS-->
+        <!-- ACTIONED COUPONS-->
         <div class="panel-body nopadding">
             <h4>Offers Ready to Use</h4>
             <br>
