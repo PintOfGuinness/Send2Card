@@ -2,105 +2,106 @@
 <html class="no-js">
 
 <head>
-  <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-  <!-- build:css(.) styles/vendor.css -->
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <!-- endbower -->
-  <!-- endbuild -->
-  <!-- build:css(.tmp) styles/main.css -->
-  <link rel="stylesheet" href="styles/main.css" type="text/css">
-  <link rel="stylesheet" href="styles/custom.css" type="text/css">
-  <!-- endbuild -->
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <link rel="stylesheet" href="styles/custom.css" type="text/css">
+    <!-- endbuild -->
 </head>
 
 <body>
 
-<div ng-app="send2CardApp">
+    <div ng-app="send2CardApp">
 
-  <div class="container" ng-controller="CouponsController as couponsController">
-    <single-coupon-directive></single-coupon-directive>
-    <view-all-coupons-directive></view-all-coupons-directive>
-    <progress-bar-directive></progress-bar-directive>
+        <div class="container" ng-controller="CouponsController as couponsController">
+            <single-coupon-directive></single-coupon-directive>
+            <view-all-coupons-directive></view-all-coupons-directive>
+            <progress-bar-directive></progress-bar-directive>
 
-  </div>
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-    <script>
-      (function(i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-          }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-          m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        </div>
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+        <script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-      ga('create', 'UA-XXXXX-X');
-      ga('send', 'pageview');
+            ga('create', 'UA-XXXXX-X');
+            ga('send', 'pageview');
 
-    </script>
+        </script>
 
-    <!-- build:js(.) scripts/oldieshim.js -->
-    <!--[if lt IE 9]>
+        <!-- build:js(.) scripts/oldieshim.js -->
+        <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
     <![endif]-->
-    <!-- endbuild -->
+        <!-- endbuild -->
 
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="bower_components/angular-scenario/angular-scenario.js"></script>
-    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-    <script src="bower_components/matchmedia/matchMedia.js"></script>
-    <script src="bower_components/ngSticky/lib/sticky.js"></script>
-    <script src="bower_components/angular-media-queries/match-media.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
+        <script src="bower_components/angular-touch/angular-touch.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+        <script src="bower_components/angular-scenario/angular-scenario.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/matchmedia/matchMedia.js"></script>
+        <script src="bower_components/ngSticky/lib/sticky.js"></script>
+        <script src="bower_components/angular-media-queries/match-media.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
 
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <!--Controllers-->
-    <script src="scripts/controllers/coupons.controller.js"></script>
-    <script src="scripts/controllers/printcouponmodal.controller.js"></script>
-    <!--Services-->
-    <script src="scripts/services/coupons.service.js"></script>
-    <!--Factorys-->
-    <script src="scripts/services/sendtocard.factory.js"></script>
-    <script src="scripts/services/couponsmanager.factory.js"></script>
-    <script src="scripts/services/displayinformation.factory.js"></script>
-    <script src="scripts/services/progressbar.factory.js"></script>    
-    <!--Directives-->
-    <script src="scripts/directives/singlecoupon.directive.js"></script>
-    <script src="scripts/directives/viewallcoupons.directive.js"></script>
-    <script src="scripts/directives/couponblock.directive.js"></script>
-    <script src="scripts/directives/printcouponmodal.directive.js"></script>
-    <script src="scripts/directives/progressbar.directive.js"></script>    
-    <!--Filters-->
-    <script src="scripts/filters/coupon.filter.js"></script>
-    <script src="scripts/filters/sortcoupons.filter.js"></script>
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <!--Controllers-->
+        <script src="scripts/controllers/coupons.controller.js"></script>
+        <script src="scripts/controllers/modal.controller.js"></script>
+        <!--Services-->
+        <script src="scripts/services/coupons.service.js"></script>
+        <script src="scripts/services/modalprovider.service.js"></script>
+        <!--Factorys-->
+        <script src="scripts/services/sendtocard.factory.js"></script>
+        <script src="scripts/services/couponsmanager.factory.js"></script>
+        <script src="scripts/services/displayinformation.factory.js"></script>
+        <script src="scripts/services/progressbar.factory.js"></script>
+        <!--Directives-->
+        <script src="scripts/directives/singlecoupon.directive.js"></script>
+        <script src="scripts/directives/viewallcoupons.directive.js"></script>
+        <script src="scripts/directives/couponblock.directive.js"></script>
+        <script src="scripts/directives/printcouponmodal.directive.js"></script>
+        <script src="scripts/directives/progressbar.directive.js"></script>
+        <!--Filters-->
+        <script src="scripts/filters/coupon.filter.js"></script>
+        <script src="scripts/filters/sortcoupons.filter.js"></script>
 
 
-    <script src="scripts/directives/bccareadirective.js"></script>
-    <!-- endbuild -->
+        <script src="scripts/directives/bccarea.directive.js"></script>
+        <!-- endbuild -->
 
-  </div>
+    </div>
 </body>
 
 </html>
