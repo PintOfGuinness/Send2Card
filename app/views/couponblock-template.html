@@ -13,18 +13,16 @@
                     <img class="img-size" ng-src="{{printedPath}}">
                 </div>
             </div>
-            <div ng-controller="PrintCouponModalController as printCouponModalController" class="desktoponly print-button">
+            <div class="desktoponly print-button">
                 <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
-                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="printCouponModalController.open();">Print</a>
+                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
             </div>
         </div>
 
         <p>
-            <h4>
-        <font color = "red" class = "bigger-font">
-          <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{coupon.dollars}}</strong><sup ng-show="coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</b></strong></sup><strong class="half-size-font"> off</strong></font><br>
-
-      </h4> {{coupon.cpn_dsc}}
+            <h4><font color = "red" class = "bigger-font">
+          <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{coupon.dollars}}</strong><sup ng-show="coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</b></strong></sup><strong class="half-size-font"> off</strong></font>
+        <br></h4> {{coupon.cpn_dsc}}
 
             <br>
             <div ng-show="coupon.expiresSoon">

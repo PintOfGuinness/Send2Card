@@ -71,7 +71,6 @@ angular.module('send2CardApp')
 
         function getProgressBarValue(actionedLength, totalCoupons) {
             var progressBarValue = (actionedLength / totalCoupons) * 100;
-            console.log("progressBarValue " + progressBarValue);
             return progressBarValue;
         }
 

@@ -297,6 +297,10 @@ img:hover {
 }
 */
 
+.errorModalPadding {
+    padding: 10px;
+}
+
 .float-down {
   position:absolute;
   bottom:0px;
