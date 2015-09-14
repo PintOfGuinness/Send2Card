@@ -69,14 +69,9 @@ angular.module('send2CardApp')
         }
 
         coupons.showSavingsDisplay = function () {
-            progressBarFactory.calculateInitialSavings(coupons.couponsServiceData);
-/*            progressBarFactory.toggleProgressBarDisplay(true);*/
-
-        }
-        
-        coupons.incrementProgressBarValue = function () {
             progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData);
-            progressBarFactory.toggleProgressBarDisplay(true);            
+            progressBarFactory.toggleProgressBarDisplay(true);   
+
         }
 
         screenSize.on('xs, sm, md, lg', function (match) {

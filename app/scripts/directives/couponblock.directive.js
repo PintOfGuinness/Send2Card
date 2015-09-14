@@ -19,7 +19,6 @@ angular.module('send2CardApp')
         scope.onResetCollapseStateForAll();
         scope.coupon.isCollapsed = !tempIsCollapsed;
       }
-scope.showSavingsDisplay();
         
       if (scope.sendCouponOnStartup === 'true') {
         scope.onSendCouponToCard()
@@ -69,7 +68,7 @@ scope.showSavingsDisplay();
       function sendCouponComplete(newState) {
         scope.updateState(newState);
         scope.isHidden = true;
-        scope.progressBarUpdate();
+        scope.showSavingsDisplay();
       }
 
       scope.printCoupon = function () {
@@ -90,11 +89,11 @@ scope.showSavingsDisplay();
         scope.coupon.state = failureState;
       }
 
-      scope.progressBarUpdate=function(){
+/*      scope.progressBarUpdate=function(){
         if(scope.coupon.state !=2){
           scope.incrementProgressBarValue();
         }
-      }
+      }*/
     }
 
     return {
@@ -111,7 +110,6 @@ scope.showSavingsDisplay();
         coupon: '=',
         onUpdateState: '&',
         onResetCollapseStateForAll: '&',
-        incrementProgressBarValue:'&',
         showSavingsDisplay:'&'
       },
       link: link
