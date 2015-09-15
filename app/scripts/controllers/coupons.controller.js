@@ -24,7 +24,7 @@ angular.module('send2CardApp')
         coupons.resetCollapseStateForAll = function () {
             couponsManagerFactory.resetCollapseStateForAll();
         }
-        
+
         coupons.sendCouponToCard = function () {
             return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
                 .then(sendCouponComplete)
@@ -67,13 +67,13 @@ angular.module('send2CardApp')
 
         coupons.showSavingsDisplay = function () {
             progressBarFactory.calculateInitialSavings(coupons.couponsServiceData);
-/*            progressBarFactory.toggleProgressBarDisplay(true);*/
+            /*            progressBarFactory.toggleProgressBarDisplay(true);*/
 
         }
-        
+
         coupons.incrementProgressBarValue = function () {
             progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData);
-            progressBarFactory.toggleProgressBarDisplay(true);            
+            progressBarFactory.toggleProgressBarDisplay(true);
         }
 
         screenSize.on('xs, sm, md, lg', function (match) {

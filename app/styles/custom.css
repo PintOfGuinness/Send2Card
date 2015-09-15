@@ -1,269 +1,235 @@
 .expanded-div-style {
-  padding: 15px 20px 10px 20px;
-  border-top: none;
+    padding: 15px 20px 10px 20px;
+    border-top: none;
 }
-
-.show-top{
-  border-top:solid;
+.show-top {
+    border-top: solid;
 }
-
 .align-top {
-  vertical-align: top;
+    vertical-align: top;
 }
-
+.shaded {
+    background-blend-mode: color-dodge;
+    background-color: darkgrey;
+}
 .overlay {
-  position: absolute;
-  top:100%;
-  left: 0px;
-  right: 0px;
-  z-index: 10;
-  background-color: white;
-  margin: 0px -1px;
+    position: absolute;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+    background-color: white;
+    margin: 0px -1px;
 }
-
+.padded-left {
+    padding-left: 250px;
+    height: 200px;
+}
 .text-red {
-  color: #cc0000;
+    color: #cc0000;
 }
-
 .soonmarker {
-  display: inline-block;
+    display: inline-block;
 }
-
 .accordion-header:hover {
-  text-decoration: underline;
-  cursor: pointer;
+    text-decoration: underline;
+    cursor: pointer;
 }
-
 .inline {
-  display: inline-block;
+    display: inline-block;
 }
-
 img {
-  opacity: 0.8;
-  filter: alpha(opacity=40);
+    opacity: 0.8;
+    filter: alpha(opacity=40);
 }
 img:hover {
-  opacity: 1.0;
-  filter: alpha(opacity=100);
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+}
+.grey-background {
+    background-color: #FAFAFA;
+}
+.bottom-align {
+    vertical-align: bottom;
 }
 
-.grey-background{
-  background-color:#FAFAFA;
-}
-
-.bottom-align{
-  vertical-align:bottom;
-}
 /*--------------------------------------------------------------------------
  Coupon Styling
 ---------------------------------------------------------------------------*/
+
 .thick-border {
-  border: 1px solid;
-  border-color: #ffe87c;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+    border: 1px solid;
+    border-color: #ffe87c;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
-
 .couponpadding {
-  padding: 5px 10px;
-  margin: 0 10px 10px 0px !important;
-  position:relative;
-  border-radius:0;
+    padding: 5px 10px;
+    margin: 0 10px 10px 0px !important;
+    position: relative;
+    border-radius: 0;
 }
-
-.coupon-leftside{
-  margin-right:77px;
-  padding: 5px;
+.coupon-leftside {
+    margin-right: 77px;
+    padding: 5px;
 }
-
-.coupon-rightside{
-  position:absolute;
-  right:0px;
-  bottom:20px;
-  top:20px;
-  border-left: 2px dotted #DDD;
-  padding: 0 5px;
-  width: 90px;
+.coupon-rightside {
+    position: absolute;
+    right: 0px;
+    bottom: 20px;
+    top: 20px;
+    border-left: 2px dotted #DDD;
+    padding: 0 5px;
+    width: 90px;
 }
-
-
 
 /*---------------------------------------------------------------------------*/
 
 
 /*Andrew Dawson is an onion CSS*/
 
-.couponpadding:hover{
-  border-color: #FDE8C9;
+.couponpadding:hover {
+    border-color: #FDE8C9;
 }
-
 .couponpadding:hover * {
-  border-color: #FDE8C9;
+    border-color: #FDE8C9;
 }
-
 .border-yellow {
-  border-color: #FDE8C9;
+    border-color: #FDE8C9;
 }
-
 .border-grey {
-  border-color: #DDD;
+    border-color: #DDD;
 }
-
-.hide-top{
-  border-top:none;
+.hide-top {
+    border-top: none;
 }
-
 .text-centre {
-  text-align: center;
+    text-align: center;
 }
-
-.top-aligned{
-  vertical-align:inherit;
+.top-aligned {
+    vertical-align: inherit;
 }
-
-.small-font{
-  font-size: 50%;
-  vertical-align:top;
+.small-font {
+    font-size: 50%;
+    vertical-align: top;
 }
-
-.shmedium-font{
-  font-size:75%;
-  vertical-align: top;
+.shmedium-font {
+    font-size: 75%;
+    vertical-align: top;
 }
-
-.half-size-font{
-  font-size:50%;
+.half-size-font {
+    font-size: 50%;
 }
-
-.text-size-uniform{
-  font-size:larger;
+.text-size-uniform {
+    font-size: larger;
 }
-
-.smaller-width{
-  width:250px;
-  height:22px;
-  margin-left: 8px;
+.smaller-width {
+    width: 250px;
+    height: 22px;
+    margin-left: 8px;
 }
-
-.progress-bar-colour{
-  background-image:none;
-  background-color:#65ccc0;
+.progress-bar-colour {
+    background-image: none;
+    background-color: #65ccc0;
 }
-
-.pad-right{
-  padding-right:10px;
-  padding-left:10px;
+.pad-right {
+    padding-right: 10px;
+    padding-left: 10px;
 }
-.padded-top{
-  padding-top:15px;
-  padding-bottom:10px;
+.padded-top {
+    padding-top: 15px;
+    padding-bottom: 10px;
 }
 
 /* The starting CSS styles for the enter animation */
 
-.slight-delay{
-  transition:1s linear all 0.80s;
+.slight-delay {
+    transition: 1s linear all 0.80s;
 }
-
 .progress-bar-section.ng-enter {
-  transition:1s linear all 1s;
-  opacity:0;
+    transition: 1s linear all 1s;
+    opacity: 0;
 }
 
 /* The finishing CSS styles for the enter animation */
+
 .progress-bar-section.ng-enter.ng-enter-active {
-  transition:1s linear all 1s;
-  opacity:0.8;
+    transition: 1s linear all 1s;
+    opacity: 0.8;
 }
-
-.progress-bar-section.ng-show.ng-show-add-active{
-  transition:1s linear all 1s;
-  opacity:0.8;
+.progress-bar-section.ng-show.ng-show-add-active {
+    transition: 1s linear all 1s;
+    opacity: 0.8;
 }
-
-.progress-bar-section.ng-show.ng-show-remove{
-  transition:1s linear all 1s;
-  opacity:0.8;
+.progress-bar-section.ng-show.ng-show-remove {
+    transition: 1s linear all 1s;
+    opacity: 0.8;
 }
-
-.progress-bar-section.ng-show.ng-show-add{
-  transition:1s linear all 1s;
-  opacity:0.8;
+.progress-bar-section.ng-show.ng-show-add {
+    transition: 1s linear all 1s;
+    opacity: 0.8;
 }
-
-
 .sticky {
-  background-color: #F7F7FF;
-  position: fixed;
-  width: 200px;
-  right: 0;
-  top: 100px;
-  z-index: 100;
-  border-top: 0;
+    background-color: #F7F7FF;
+    position: fixed;
+    width: 200px;
+    right: 0;
+    top: 100px;
+    z-index: 100;
+    border-top: 0;
 }
-
-.medium-font{
-  font-size:medium;
+.medium-font {
+    font-size: medium;
 }
-
-.bigger-font{
-  font-size: xx-large;
-  font-stretch: ultra-expanded;
+.bigger-font {
+    font-size: xx-large;
+    font-stretch: ultra-expanded;
 }
-
-.img-size{
-  height:72px;
-  width: 83px;
+.img-size {
+    height: 72px;
+    width: 83px;
 }
-
-.img-alt-size{
-  height:75px;
-  width: 60px;
+.img-alt-size {
+    height: 75px;
+    width: 60px;
 }
-
-.print-button{
-  position:absolute;
-  bottom:0px;
-  right:18px;
+.print-button {
+    position: absolute;
+    bottom: 0px;
+    right: 18px;
 }
-
 .printmodal {
-  padding: 25px;
+    padding: 25px;
 }
-
 .printcoupon {
-  border: 5px solid grey;
-  padding:10px;
+    border: 5px solid grey;
+    padding: 10px;
 }
-
 .full-width {
-  position:absolute;
-  left:0;
-  right:0;
-  background-color:#FAFAFA;
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #FAFAFA;
 }
-
-.red-text{
-  color:red;
+.red-text {
+    color: red;
 }
-
 .full-width-black-background {
-  position:fixed;
-  left:0;
-  top:0;
-  right:0;
-  background-color:#363636;
-  opacity:0.80;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    background-color: #363636;
+    opacity: 0.80;
 }
-
-.more-padding-right{
-  padding-right:75px;
+.more-padding-right {
+    padding-right: 75px;
 }
-
-.white-text{
-  color:#ffffff;
+.white-text {
+    color: #ffffff;
 }
 
 /*animate enter and leave*/
+
 
 /*
 .ng-enter {
@@ -300,35 +266,30 @@ img:hover {
 .errorModalPadding {
     padding: 10px;
 }
-
 .float-down {
-  position:absolute;
-  bottom:0px;
-  right: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
 }
-
 .nopadding {
-  padding: 0 !important;
-  margin: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
-
 @media screen and (max-width:992px) {
-  .desktoponly {
-    display: none;
-  }
+    .desktoponly {
+        display: none;
+    }
 }
-
 @media screen and (min-width:768px) {
-  .sticky {
-    display: none;
-  }
-  .mobileView {
-    display: none;
-  }
+    .sticky {
+        display: none;
+    }
+    .mobileView {
+        display: none;
+    }
 }
-
 @media print {
-  .container {
-    display: none;
-  }
+    .container {
+        display: none;
+    }
 }
