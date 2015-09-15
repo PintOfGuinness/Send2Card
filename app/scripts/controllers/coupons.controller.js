@@ -24,7 +24,7 @@ angular.module('send2CardApp')
         coupons.resetCollapseStateForAll = function () {
             couponsManagerFactory.resetCollapseStateForAll();
         }
-        
+
         coupons.sendSingleCoupon = function (actionedCoupon) {
             return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, actionedCoupon)
                 .then(sendSingleCouponComplete)
@@ -68,7 +68,7 @@ angular.module('send2CardApp')
 
         coupons.showSavingsDisplay = function (actionedCoupon) {
             progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData, actionedCoupon);
-            progressBarFactory.toggleProgressBarDisplay(true);   
+            progressBarFactory.toggleProgressBarDisplay(true);
 
         }
 
