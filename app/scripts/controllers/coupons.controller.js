@@ -10,8 +10,6 @@
 angular.module('send2CardApp')
     .controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, singleCouponFactory, $scope, displayInformationFactory, screenSize) {
 
-    
-    
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum || "12345678";
         var couponNumber = $location.search().couponnum;
@@ -42,6 +40,7 @@ angular.module('send2CardApp')
             console.log("Controller:sendSingleCouponFailure");
             coupons.couponError = true;
             coupons.errorPath = "views/error1.html";
+            
             return isCouponSent;
         }
 
