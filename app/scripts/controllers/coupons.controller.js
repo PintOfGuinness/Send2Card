@@ -27,8 +27,8 @@ angular.module('send2CardApp')
             couponsManagerFactory.resetCollapseStateForAll();
         }
 
-        coupons.sendSingleCoupon = function (actionedCoupon) {
-            return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, actionedCoupon)
+        coupons.sendSingleCoupon = function () {
+            return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
                 .then(sendSingleCouponComplete)
                 .catch(sendSingleCouponFailure);
         }

@@ -29,7 +29,7 @@ angular.module('send2CardApp')
 
                         // If success return 1 (Load)
                         data.state = 1;
-                        data.couponSequenceNumber = couponSequenceNumber;
+                        /*data.couponSequenceNumber = couponSequenceNumber;*/
                         return data;
                     })
                     .catch(function (err) {
