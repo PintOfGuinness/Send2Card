@@ -36,30 +36,6 @@ angular.module('send2CardApp')
                 scope.isHidden = true;
             }
 
-/*            if (scope.coupon.amt_type_cd === "D") {
-                scope.coupon.title = scope.coupon.max_redeem_amt;
-                scope.coupon.showDollarSign = true;
-                scope.coupon.showPercentSign = false;
-                scope.coupon.dontShowCents = false;
-
-                scope.coupon.dollars = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
-                scope.coupon.cents = scope.coupon.title.substring([scope.coupon.title.indexOf('.') + 1], [scope.coupon.title.length]);
-
-                var zeros = '00';
-
-                if ((scope.coupon.cents === zeros)) {
-                    scope.coupon.dontShowCents = true;
-                } else {
-                    scope.coupon.dontShowCents = false;
-                }
-
-            } else if (scope.coupon.amt_type_cd === "P") {
-                scope.coupon.showDollarSign = false;
-                scope.coupon.showPercentSign = true;
-                scope.coupon.title = scope.coupon.max_redeem_amt + " off";
-                scope.coupon.dollar = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
-            }*/
-
             scope.clickSendCouponToCard = function () {
                 scope.onSendSingleCoupon()
                     .then(sendSingleCouponComplete)
