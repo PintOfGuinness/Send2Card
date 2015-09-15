@@ -8,13 +8,11 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, singleCouponFactory, $scope, displayInformationFactory, screenSize) {
-
-
+    .controller('CouponsController', function (couponsManagerFactory, progressBarFactory, singleCouponFactory, $scope, displayInformationFactory, queryParameterFactory, screenSize) {
 
         var coupons = this;
-        var extraCareCardNumber = $location.search().eccardnum || "12345678";
-        var couponNumber = $location.search().couponnum;
+        var extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
+        var couponNumber = queryParameterFactory.getCouponNumberParameter();
 
         coupons.couponError = false;
         coupons.errorPath = "views/error3.html";

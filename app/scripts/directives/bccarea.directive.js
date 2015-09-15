@@ -7,28 +7,24 @@
  * # bccAreaDirective
  */
 angular.module('send2CardApp')
-    .directive('bccAreaDirective', function ($cookies) {
+    .directive('bccAreaDirective', function ($cookies, queryParameterFactory) {
+
         return {
-            controller: function () {
+            controller: function ($scope) {
 
                 this.createRememberMeCookie = function () {
                     console.log("Accessing remember me cookie");
-                    console.log("Card Number = " + scope.cardNumber);
-                    $cookies.ECCardNumber = 'Sausages';
-                    console.log($cookies['ECCardNumber']);
+                    $cookies.ECCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
+                    console.log("Card Number = " + $cookies['ECCardNumber']);
                     console.dir($cookies);
-
                 }
-
             },
             controllerAs: 'bccController',
             bindToController: true,
             templateUrl: 'views/bcc-area.html',
             restrict: 'E',
-            /*
-                        link: function postLink(scope, element, attrs) {}*/
             scope: {
-                cardNumber: '='
+                cardNumber: '@'
             }
 
         };
