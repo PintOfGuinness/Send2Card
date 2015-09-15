@@ -19,13 +19,13 @@ angular.module('send2CardApp')
         scope.onResetCollapseStateForAll();
         scope.coupon.isCollapsed = !tempIsCollapsed;
       }
-scope.showSavingsDisplay();
         
-      if (scope.sendCouponOnStartup === 'true') {
-        scope.onSendCouponToCard()
-          .then(sendCouponComplete)
-          .catch(sendCouponFailure);
-        scope.sendCouponOnStartup = false;
+      /* Probably don't need to send full single coupon at this point */
+      if (scope.autoSendSingleCoupon === 'true') {
+        scope.onSendSingleCoupon({singleCoupon: scope.coupon})
+          .then(sendSingleCouponComplete)
+          .catch(sendSingleCouponFailure);
+        scope.autoSendSingleCoupon = false;
       }
 
       if (scope.coupon.state != 0) {
@@ -61,15 +61,15 @@ scope.showSavingsDisplay();
       }
 
       scope.clickSendCouponToCard = function () {
-        scope.onSendCouponToCard()
-          .then(sendCouponComplete)
-          .catch(sendCouponFailure);
+        scope.onSendSingleCoupon()
+          .then(sendSingleCouponComplete)
+          .catch(sendSingleCouponFailure);
       }
 
-      function sendCouponComplete(newState) {
-        scope.updateState(newState);
+      function sendSingleCouponComplete(data) {
+        scope.updateState(data.state);
         scope.isHidden = true;
-        scope.progressBarUpdate();
+        scope.showSavingsDisplay({actionedCoupon: scope.coupon});
       }
 
       scope.printCoupon = function () {
@@ -85,16 +85,16 @@ scope.showSavingsDisplay();
         scope.coupon.state = newState;
       }
 
-      function sendCouponFailure(failureState) {
-        console.log("Directive:sendCouponFailure");
+      function sendSingleCouponFailure(failureState) {
+        console.log("Directive:sendSingleCouponFailure");
         scope.coupon.state = failureState;
       }
 
-      scope.progressBarUpdate=function(){
+/*      scope.progressBarUpdate=function(){
         if(scope.coupon.state !=2){
           scope.incrementProgressBarValue();
         }
-      }
+      }*/
     }
 
     return {
@@ -104,14 +104,13 @@ scope.showSavingsDisplay();
       scope: {
         unSentCouponPath: '@',
         sentCouponPath: '@',
-        sendCouponOnStartup: '@',
-        onSendCouponToCard: '&',
+        autoSendSingleCoupon: '@',
+        onSendSingleCoupon: '&',
         printedPath: '@',
         extraCareCardNumberEndDigits: '@',
         coupon: '=',
         onUpdateState: '&',
         onResetCollapseStateForAll: '&',
-        incrementProgressBarValue:'&',
         showSavingsDisplay:'&'
       },
       link: link

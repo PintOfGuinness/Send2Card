@@ -8,7 +8,9 @@
  * Controller of the send2CardApp
  */
 angular.module('send2CardApp')
-    .controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, sendToCardFactory, $scope, displayInformationFactory, screenSize) {
+    .controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, singleCouponFactory, $scope, displayInformationFactory, screenSize) {
+
+
 
         var coupons = this;
         var extraCareCardNumber = $location.search().eccardnum || "12345678";
@@ -25,19 +27,19 @@ angular.module('send2CardApp')
             couponsManagerFactory.resetCollapseStateForAll();
         }
 
-        coupons.sendCouponToCard = function () {
-            return sendToCardFactory.sendCouponToCard(extraCareCardNumber, couponNumber)
-                .then(sendCouponComplete)
-                .catch(sendCouponFailure);
+        coupons.sendSingleCoupon = function (actionedCoupon) {
+            return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, actionedCoupon)
+                .then(sendSingleCouponComplete)
+                .catch(sendSingleCouponFailure);
         }
 
-        function sendCouponComplete(data) {
+        function sendSingleCouponComplete(data) {
             return data;
         }
 
-        function sendCouponFailure(data) {
+        function sendSingleCouponFailure(data) {
             var isCouponSent = false;
-            console.log("Controller:sendCouponFailure");
+            console.log("Controller:sendSingleCouponFailure");
             coupons.couponError = true;
             coupons.errorPath = "views/error1.html";
             return isCouponSent;
@@ -65,15 +67,10 @@ angular.module('send2CardApp')
             return displayInformationFactory.getCouponsPerRow(coupons);
         }
 
-        coupons.showSavingsDisplay = function () {
-            progressBarFactory.calculateInitialSavings(coupons.couponsServiceData);
-            /*            progressBarFactory.toggleProgressBarDisplay(true);*/
-
-        }
-
-        coupons.incrementProgressBarValue = function () {
-            progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData);
+        coupons.showSavingsDisplay = function (actionedCoupon) {
+            progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData, actionedCoupon);
             progressBarFactory.toggleProgressBarDisplay(true);
+
         }
 
         screenSize.on('xs, sm, md, lg', function (match) {

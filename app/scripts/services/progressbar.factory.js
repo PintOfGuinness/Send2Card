@@ -11,8 +11,9 @@ angular.module('send2CardApp')
     .factory('progressBarFactory', function () {
 
         var progressBarData = {};
+        var propertiesInitialised = false;
         progressBarData.display = false;
-/*        progressBarData.unactionedLength = 0;*/
+        progressBarData.unactionedLength = 0;
         progressBarData.actionedLength = 0;
         progressBarData.progressBarValue = 0;
         progressBarData.unactionedSavings = 0;
@@ -21,7 +22,6 @@ angular.module('send2CardApp')
 
         // Public API here
         return {
-            calculateInitialSavings: calculateInitialSavings,
             updateProgressBarAfterAction: updateProgressBarAfterAction,
             toggleProgressBarDisplay: toggleProgressBarDisplay,
             getServiceData: getServiceData
@@ -30,19 +30,32 @@ angular.module('send2CardApp')
         function calculateInitialSavings(couponsData) {
 
             progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
-/*            progressBarData.unactionedLength = couponsData.unactionedCoupons.length;*/
             progressBarData.actionedLength = couponsData.actionedCoupons.length;
-            progressBarData.unactionedSavings = calculateUnactionedSavings(couponsData.unactionedCoupons);
-            progressBarData.actionedSavings = calculateActionedSavings(couponsData.actionedCoupons);
-            progressBarData.totalSavings = calculateTotalSavings(progressBarData.unactionedSavings, progressBarData.actionedSavings);
+            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon[0]);
+            progressBarData.unactionedSavings = getUnactionedSavings(couponsData.unactionedCoupons);
+            progressBarData.actionedSavings = getActionedSavings(couponsData.actionedCoupons);
+            progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
+            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
         }
 
         function getTotalNumberOfCoupons(couponsData) {
-            return couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length + couponsData.singleCoupon.length;
+            var totalNumberOfCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
+            if (couponsData.singleCoupon != undefined) {
+                totalNumberOfCoupons += couponsData.singleCoupon.length;
+            }
+            return totalNumberOfCoupons;
         }
 
-        function calculateUnactionedSavings(unactionedCoupons) {
+        function getSingleCouponSavings(singleCoupon) {
+            var singleCouponSavings = 0.00;
+            if (singleCoupon != undefined) {
+                singleCouponSavings += parseFloat(singleCoupon.max_redeem_amt);
+            }
+            return singleCouponSavings;
+        }
+
+        function getUnactionedSavings(unactionedCoupons) {
             var unactionedSavings = 0.00;
             angular.forEach(unactionedCoupons, function (eachCoupon, index) {
                 unactionedSavings += parseFloat(eachCoupon.max_redeem_amt);
@@ -50,7 +63,7 @@ angular.module('send2CardApp')
             return unactionedSavings;
         }
 
-        function calculateActionedSavings(actionedCoupons) {
+        function getActionedSavings(actionedCoupons) {
             var actionedSavings = 0.00;
             angular.forEach(actionedCoupons, function (eachCoupon, index) {
                 actionedSavings += parseFloat(eachCoupon.max_redeem_amt);
@@ -58,22 +71,37 @@ angular.module('send2CardApp')
             return actionedSavings;
         }
 
-        function calculateTotalSavings(unactionedSavings, actionedSavings) {
-            return unactionedSavings + actionedSavings;
+        function updateActionedSavings(actionedCoupon) {
+            var actionedSavings = 0.00;
+            actionedSavings += parseFloat(actionedCoupon.max_redeem_amt);
+            return actionedSavings;
         }
 
-        function updateProgressBarAfterAction(couponsData) {
-            var totalCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
-/*            progressBarData.unactionedLength--;*/
+        function getTotalSavings(singleCoupon, unactionedSavings, actionedSavings) {
+            return singleCoupon + unactionedSavings + actionedSavings;
+        }
+
+        function updateProgressBarAfterAction(couponsData, actionedCoupon) {
+
+            if (propertiesInitialised === false) {
+                calculateInitialSavings(couponsData);
+                propertiesInitialised = true;
+            }
             progressBarData.actionedLength++;
-            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, totalCoupons);
+            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
+            progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
+        }
+
+        function getUnactionedLength(actionedLength, totalCoupons) {
+            var unactionedLength = totalCoupons - actionedLength;
+            return unactionedLength;
         }
 
         function getProgressBarValue(actionedLength, totalCoupons) {
             var progressBarValue = (actionedLength / totalCoupons) * 100;
             return progressBarValue;
         }
-
 
         function getServiceData() {
             return progressBarData;
@@ -82,7 +110,4 @@ angular.module('send2CardApp')
         function toggleProgressBarDisplay(show) {
             progressBarData.display = show;
         }
-
-
-
     });

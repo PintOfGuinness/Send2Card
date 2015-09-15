@@ -10,12 +10,6 @@
 angular.module('send2CardApp')
     .controller('ModalController', function ($scope, $modalInstance) {
 
-        (function () { // init
-            $scope.ok = function () {
-                $modalInstance.close($scope.selected.item);
-            };
-        })();
-
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };

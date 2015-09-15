@@ -2,16 +2,16 @@
 
 /**
  * @ngdoc service
- * @name send2CardApp.sendToCard.Factory
+ * @name send2CardApp.sendSingleCouponFactory
  * @description
  * # sendToCard.Factory
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('sendToCardFactory', function ($http, $q) {
+    .factory('singleCouponFactory', function ($http, $q) {
 
         return {
-            sendCouponToCard: function (extraCareCardNumber, couponSequenceNumber) {
+            sendSingleCoupon: function (extraCareCardNumber, couponSequenceNumber) {
 
                 var baseUrl = 'data/sendToCardSuccess.json';
                 var requestBody = {
@@ -26,9 +26,10 @@ angular.module('send2CardApp')
                         data: requestBody
                     }).then(function (result) {
                         var data = result.data;
-                    
-                        // If success return 1
-                        data = 1;
+
+                        // If success return 1 (Load)
+                        data.state = 1;
+                        data.couponSequenceNumber = couponSequenceNumber;
                         return data;
                     })
                     .catch(function (err) {
