@@ -13,6 +13,7 @@ angular.module('send2CardApp')
         return {
             controller: function () {
                 var cookie;
+                this.hideButton = false;
                 this.createRememberMeCookie = function () {
 
                     if (cookieFactory.getCookieValue("ECCardNumber") === undefined) {
@@ -26,6 +27,12 @@ angular.module('send2CardApp')
 
                     console.log("sausages = " + cookieFactory.getCookieValue("ECCardNumber"));
                 }
+
+
+                this.hideRememberMeButton = function () {
+                    this.hideButton = true;
+                }
+
 
             },
             controllerAs: 'bccController',

@@ -1,5 +1,5 @@
 <div class="shaded padded-left panel-body float-right">
 
-    <button ng-click="bccController.createRememberMeCookie();">
+    <button ng-click="bccController.createRememberMeCookie(); bccController.hideRememberMeButton();" ng-hide="bccController.hideButton">
         Remember Me</button>
 </div>
