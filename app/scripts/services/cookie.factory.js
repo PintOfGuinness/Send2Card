@@ -8,15 +8,21 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('cookieFactory', function () {
+    .factory('cookieFactory', function ($cookies) {
         // Public API here
         return {
-            createCookieUsingKeyAndValue: createCookieUsingKeyAndValue
+            createCookieUsingKeyAndValue: createCookieUsingKeyAndValue,
+            getCookieValue: getCookieValue
         };
 
         function createCookieUsingKeyAndValue(key, value) {
-            $cookie.key = value;
-            return $cookie;
+            $cookies[key] = value;
+            return $cookies;
         }
+
+        function getCookieValue(key) {
+            return $cookies[key];
+        }
+
 
     });
