@@ -49,8 +49,10 @@ img:hover {
 .grey-background {
     background-color: #FAFAFA;
 }
-.red-background {
-    background-color: red;
+.bcc {
+    border: thick;
+    border-color: black;
+    border-style: groove;
 }
 .bottom-align {
     vertical-align: bottom;
