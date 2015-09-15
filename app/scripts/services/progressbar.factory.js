@@ -30,7 +30,7 @@ angular.module('send2CardApp')
         function calculateInitialSavings(couponsData) {
 
             progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
-            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon[0]);
+            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
             progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
             progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
             progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
@@ -50,7 +50,7 @@ angular.module('send2CardApp')
         function getSingleCouponSavings(singleCoupon) {
             var singleCouponSavings = 0.00;
             if (singleCoupon != undefined) {
-                singleCouponSavings += parseFloat(singleCoupon.max_redeem_amt);
+                singleCouponSavings += parseFloat(singleCoupon[0].max_redeem_amt);
             }
             return singleCouponSavings;
         }

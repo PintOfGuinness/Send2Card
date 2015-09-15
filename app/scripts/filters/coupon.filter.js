@@ -32,6 +32,7 @@ angular.module('send2CardApp')
 
                 if (input[index].cpn_seq_nbr !== couponNumberFilter) {
                     if (couponViewable(eachCoupon)) {
+                        eachCoupon = $filter('couponTitleFilter')(eachCoupon);
                         setCouponCollapsedDefault(eachCoupon);
                         if (couponActioned(eachCoupon)) {
                             actionedCoupons.push(eachCoupon);

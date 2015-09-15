@@ -36,7 +36,7 @@ angular.module('send2CardApp')
                 scope.isHidden = true;
             }
 
-            if (scope.coupon.amt_type_cd === "D") {
+/*            if (scope.coupon.amt_type_cd === "D") {
                 scope.coupon.title = scope.coupon.max_redeem_amt;
                 scope.coupon.showDollarSign = true;
                 scope.coupon.showPercentSign = false;
@@ -58,7 +58,7 @@ angular.module('send2CardApp')
                 scope.coupon.showPercentSign = true;
                 scope.coupon.title = scope.coupon.max_redeem_amt + " off";
                 scope.coupon.dollar = scope.coupon.title.substring([0], scope.coupon.title.indexOf('.'));
-            }
+            }*/
 
             scope.clickSendCouponToCard = function () {
                 scope.onSendSingleCoupon()
