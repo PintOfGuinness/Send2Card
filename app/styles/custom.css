@@ -49,6 +49,9 @@ img:hover {
 .grey-background {
     background-color: #FAFAFA;
 }
+.red-background {
+    background-color: red;
+}
 .bottom-align {
     vertical-align: bottom;
 }
