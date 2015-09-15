@@ -1,22 +1,29 @@
 'use strict';
 
-describe('Controller: ErrormodalControllerCtrl', function () {
+describe('Controller: ModalController', function () {
 
-  // load the controller's module
   beforeEach(module('send2CardApp'));
 
-  var ErrormodalControllerCtrl,
-    scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    ErrormodalControllerCtrl = $controller('ErrormodalControllerCtrl', {
-      $scope: scope
-    });
+  var Ctrl, scope, modalInstance; 
+    
+  beforeEach(inject(function($controller, $rootScope){
+      scope = $rootScope.$new();
+      modalInstance = {
+          dismiss: jasmine.createSpy('modalInstance.close')
+      };
+      Ctrl = $controller('ModalController',{
+        $scope: scope,
+        $modalInstance: modalInstance
+      });
   }));
-
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
+    
+    
+  it('should instantiate the controller properly', function () {
+    expect(Ctrl).not.toBeUndefined();
   });
+    
+  it('should dismiss the modal with result "cancel" when accepted', function () {
+      scope.cancel();
+      expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel');
+    });
 });
