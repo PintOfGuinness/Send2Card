@@ -55,10 +55,6 @@ angular.module('send2CardApp')
                 modalProvider.openErrorModal();
             }
 
-            scope.printCoupon = function () {
-                window.print();
-            }
-
             scope.openPrintModal = function () {
                 modalProvider.openPrintModal(scope);
             }
@@ -87,5 +83,5 @@ angular.module('send2CardApp')
                 showSavingsDisplay: '&'
             },
             link: link
-        }
+        };
     });

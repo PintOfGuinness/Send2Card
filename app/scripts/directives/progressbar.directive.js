@@ -20,6 +20,5 @@ angular.module('send2CardApp')
             controllerAs: 'progressBarController',
             bindToController: true,
             restrict: 'E',
-//            link: function postLink(scope, element, attrs) {}
         };
     });
