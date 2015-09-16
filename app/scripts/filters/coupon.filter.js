@@ -149,8 +149,8 @@ angular.module('send2CardApp')
             }
         }
 
-        function setCouponCollapsedDefault(coupon) {
-            coupon.isCollapsed = true;
+        function setCouponCollapsedDefault(eachCoupon) {
+            eachCoupon.isCollapsed = true;
         }
 
         function couponActioned(eachCoupon) {
