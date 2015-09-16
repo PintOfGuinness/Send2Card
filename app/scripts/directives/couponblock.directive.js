@@ -52,6 +52,7 @@ angular.module('send2CardApp')
             function sendSingleCouponFailure(failureState) {
                 console.log("Directive:sendSingleCouponFailure");
                 scope.updateState(failureState.state);
+                modalProvider.openErrorModal();
             }
 
             scope.printCoupon = function () {
