@@ -2,37 +2,49 @@
 
 /**
  * @ngdoc directive
- * @name send2CardApp.directive:couponDirective
+ * @name send2CardApp.directive:couponBlockDirective
  * @description
  * # couponDirective
  */
 angular.module('send2CardApp')
-    .directive('couponDirective', function (modalProvider) {
+    .directive('couponBlockDirective', function (modalProvider, $window) {
 
-        function link(scope, elem, attrs) {
+        function link(scope, element, attrs) {
             scope.isHidden = false;
             scope.isReadyToUse = false;
-            scope.showProgressBar = false;
+
+            initialise();
+
+            function initialise() {
+                if (scope.autoSendSingleCoupon === 'true') {
+                    scope.onSendSingleCoupon()
+                        .then(sendSingleCouponComplete)
+                        .catch(sendSingleCouponFailure);
+                    scope.autoSendSingleCoupon = false;
+                }
+
+                if (scope.coupon.state != 0) {
+                    scope.isReadyToUse = true;
+                }
+
+                if (scope.coupon.state == 1) {
+                    scope.isHidden = true;
+                }
+            }
+
+            angular.element($window).bind("scroll", function () {
+                if (this.pageYOffset >= 100) {
+                    scope.showProgressBar({
+                        display: false
+                    });
+                }
+                scope.$apply();
+            });
 
             scope.collapseSection = function () {
                 var tempIsCollapsed = scope.coupon.isCollapsed;
                 scope.onResetCollapseStateForAll();
                 scope.coupon.isCollapsed = !tempIsCollapsed;
-            }
-
-            if (scope.autoSendSingleCoupon === 'true') {
-                scope.onSendSingleCoupon()
-                    .then(sendSingleCouponComplete)
-                    .catch(sendSingleCouponFailure);
-                scope.autoSendSingleCoupon = false;
-            }
-
-            if (scope.coupon.state != 0) {
-                scope.isReadyToUse = true;
-            }
-
-            if (scope.coupon.state == 1) {
-                scope.isHidden = true;
             }
 
             scope.clickSendCouponToCard = function () {
@@ -42,9 +54,11 @@ angular.module('send2CardApp')
             }
 
             function sendSingleCouponComplete(data) {
+                console.log("Directive:sendSingleCouponComplete");
                 scope.updateState(data.state);
                 scope.isHidden = true;
-                scope.showSavingsDisplay({
+                scope.showProgressBar({
+                    display: true,
                     actionedCoupon: scope.coupon
                 });
             }
@@ -54,8 +68,8 @@ angular.module('send2CardApp')
                 scope.updateState(failureState.state);
                 modalProvider.openErrorModal(scope);
             }
-            
-            scope.openHelpModal = function(){
+
+            scope.openHelpModal = function () {
                 modalProvider.openHelpModal();
             }
 
@@ -88,7 +102,7 @@ angular.module('send2CardApp')
                 coupon: '=',
                 onUpdateState: '&',
                 onResetCollapseStateForAll: '&',
-                showSavingsDisplay: '&'
+                showProgressBar: '&'
             },
             link: link
         }

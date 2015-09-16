@@ -27,7 +27,7 @@ angular.module('send2CardApp')
             getServiceData: getServiceData
         };
 
-        function calculateInitialSavings(couponsData) {
+        function calculateInitialProperties(couponsData) {
 
             progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
             var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
@@ -39,6 +39,18 @@ angular.module('send2CardApp')
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
         }
 
+        function updateProgressBarAfterAction(couponsData, actionedCoupon) {
+
+            if (propertiesInitialised === false) {
+                calculateInitialProperties(couponsData);
+                propertiesInitialised = true;
+            }
+            progressBarData.actionedLength++;
+            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
+            progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
+        }
+    
         function getTotalNumberOfCoupons(couponsData) {
             var totalNumberOfCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
             if (couponsData.singleCoupon != undefined) {
@@ -63,22 +75,8 @@ angular.module('send2CardApp')
             return savings;
         }
 
-
-
         function getTotalSavings(singleCoupon, unactionedSavings, actionedSavings) {
             return singleCoupon + unactionedSavings + actionedSavings;
-        }
-
-        function updateProgressBarAfterAction(couponsData, actionedCoupon) {
-
-            if (propertiesInitialised === false) {
-                calculateInitialSavings(couponsData);
-                propertiesInitialised = true;
-            }
-            progressBarData.actionedLength++;
-            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
-            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
         }
 
         function getActionedLength(actionedCoupons) {

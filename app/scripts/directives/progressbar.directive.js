@@ -10,9 +10,9 @@ angular.module('send2CardApp')
     .directive('progressBarDirective', function () {
         return {
             templateUrl: 'views/progress-bar-template.html',
-            scope: {
+/*            scope: {
                     progressBarServiceData: '='
-            },
+            },*/
             controller: function (progressBarFactory) {
 
                 this.progressBarServiceData = progressBarFactory.getServiceData();
@@ -20,6 +20,5 @@ angular.module('send2CardApp')
             controllerAs: 'progressBarController',
             bindToController: true,
             restrict: 'E',
-//            link: function postLink(scope, element, attrs) {}
         };
     });
