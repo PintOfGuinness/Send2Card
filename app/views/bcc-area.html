@@ -1,7 +1,8 @@
-<div class="shaded padded-left panel-body float-right" ng-hide="bccController.cookieHasAlreadyBeenCreated();">
+<div ng-hide="bccController.cookieHasAlreadyBeenCreated();">
 
     <button ng-click="bccController.createRememberMeCookie(); bccController.hideRememberMeButton();" ng-hide="bccController.cookieHasAlreadyBeenCreated();">
-        Remember Me</button>
+        Remember Me
+    </button>
 </div>
 
-<div class="bcc padded-left panel-body float-right" ng-show="bccController.cookieHasAlreadyBeenCreated();">BCC Area 1.</div>
+<div class="bcc panel-body" ng-show="bccController.cookieHasAlreadyBeenCreated();">BCC Area 1.</div>

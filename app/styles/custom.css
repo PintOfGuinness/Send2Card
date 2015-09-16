@@ -53,6 +53,7 @@ img:hover {
     border: thick;
     border-color: black;
     border-style: groove;
+    width:100%;
 }
 .bottom-align {
     vertical-align: bottom;
