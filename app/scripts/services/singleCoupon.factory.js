@@ -32,9 +32,11 @@ angular.module('send2CardApp')
                         /*data.couponSequenceNumber = couponSequenceNumber;*/
                         return data;
                     })
-                    .catch(function (err) {
+                    .catch(function (error) {
                         console.log("SERVICE SOMETHING WRONG");
-                        return $q.reject("Data not available");
+
+                        error.state = 0;
+                        return $q.reject(error);
                     });
             }
         }

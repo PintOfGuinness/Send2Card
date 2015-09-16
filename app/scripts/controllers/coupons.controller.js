@@ -7,7 +7,7 @@
  * # CouponsController
  * Controller of the send2CardApp
  */
-angular.module('send2CardApp').controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, singleCouponFactory, $scope, displayInformationFactory, queryParameterFactory, screenSize) {
+angular.module('send2CardApp').controller('CouponsController', function ($location, couponsManagerFactory, progressBarFactory, singleCouponFactory, $scope, displayInformationFactory, queryParameterFactory, screenSize, modalProvider, $q) {
 
     var coupons = this;
     var extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
@@ -34,13 +34,13 @@ angular.module('send2CardApp').controller('CouponsController', function ($locati
         return data;
     }
 
-    function sendSingleCouponFailure(data) {
-        var isCouponSent = false;
-        console.log("Controller:sendSingleCouponFailure");
+    function sendSingleCouponFailure(error) {
+        error.isCouponSent = false;
+        console.log("Controller:sendSingleCouponFailure: " + error.state);
         coupons.couponError = true;
         coupons.errorPath = "views/error1.html";
-
-        return isCouponSent;
+        modalProvider.openErrorModal();
+        return $q.reject(error);
     }
 
     couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber).then(function (results) {

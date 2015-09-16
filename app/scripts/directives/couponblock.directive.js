@@ -20,7 +20,6 @@ angular.module('send2CardApp')
                 scope.coupon.isCollapsed = !tempIsCollapsed;
             }
 
-            /* Probably don't need to send full single coupon at this point */
             if (scope.autoSendSingleCoupon === 'true') {
                 scope.onSendSingleCoupon()
                     .then(sendSingleCouponComplete)
@@ -52,7 +51,7 @@ angular.module('send2CardApp')
 
             function sendSingleCouponFailure(failureState) {
                 console.log("Directive:sendSingleCouponFailure");
-                scope.coupon.state = failureState;
+                scope.updateState(failureState.state);
             }
 
             scope.printCoupon = function () {
@@ -68,12 +67,6 @@ angular.module('send2CardApp')
                 scope.coupon.state = newState;
             }
 
-
-            /*      scope.progressBarUpdate=function(){
-                    if(scope.coupon.state !=2){
-                      scope.incrementProgressBarValue();
-                    }
-                  }*/
         }
 
         return {

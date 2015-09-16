@@ -18,8 +18,6 @@ angular.module('send2CardApp')
                     if (this.cookieHasAlreadyBeenCreated("ECCardNumber") === false) {
                         cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumberParameter());
                     }
-
-                    console.log("sausages = " + cookieFactory.getCookieValue("ECCardNumber"));
                 }
 
 
@@ -28,11 +26,9 @@ angular.module('send2CardApp')
                 }
 
                 this.cookieHasAlreadyBeenCreated = function (key) {
-                    console.log(cookieFactory.getCookieValue("ECCardNumber"));
                     if (cookieFactory.getCookieValue("ECCardNumber") === undefined) {
                         return false;
                     } else {
-                        console.log("Cookie already created");
                         this.hideButton = true;
                         return true;
                     }

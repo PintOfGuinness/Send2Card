@@ -12,7 +12,6 @@ angular.module('send2CardApp')
     
     this.openErrorModal = function(){
         var modalInstance = $modal.open({
-            /*templateUrl: 'views/error1.html',*/
             template: '<error-modal-directive></error-modal-directive>',
             controller: 'ModalController'
         });
@@ -20,7 +19,6 @@ angular.module('send2CardApp')
     
     this.openPrintModal = function(scope){
         var modalInstance = $modal.open({
-            /*templateUrl: 'views/printcoupon-modal.html',*/
             template: '<print-coupon-modal-directive></print-coupon-modal-directive>',
             controller: 'ModalController',
             scope: scope
