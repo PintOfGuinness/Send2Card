@@ -1,21 +1,18 @@
-'use strict';
+describe('Directive: errorModalDirective', function () {
 
-describe('Directive: errormodal.directive', function () {
+    beforeEach(module('send2CardApp'));
 
-  // load the directive's module
-  beforeEach(module('send2CardApp'));
+    var $compile, $rootScope;
 
-  var element,
-    scope;
+    beforeEach(inject(function (_$compile_, _$rootScope_) {
+        $compile = _$compile_;
+        $rootScope = _$rootScope_;
+    }));
 
-  beforeEach(inject(function ($rootScope) {
-    scope = $rootScope.$new();
-  }));
-
-  it('should make hidden element visible', function () {
-      expect(true).toEqual(true);
-  /*  element = angular.element('<errormodal.directive></errormodal.directive>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the errormodal.directive directive');*/
-  });
+    it('should make hidden element visible', function () {
+        var element = $compile("<error-modal-directive></error-modal-directive>")($rootScope);
+        $rootScope.$digest();
+        console.log(element.text());
+        expect(true).toEqual(true);
+    });
 });

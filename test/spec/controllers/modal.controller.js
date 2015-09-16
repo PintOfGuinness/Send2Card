@@ -22,7 +22,7 @@ describe('Controller: ModalController', function () {
     expect(Ctrl).not.toBeUndefined();
   });
     
-  it('should dismiss the modal with result "cancel" when accepted', function () {
+  it('should dismiss the modal with result "cancel" when cancelled', function () {
       scope.cancel();
       expect(modalInstance.dismiss).toHaveBeenCalledWith('cancel');
     });
