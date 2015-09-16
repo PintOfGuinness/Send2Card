@@ -56,6 +56,8 @@ angular.module('send2CardApp')
                 }, true)[0];
 
                 if (angular.isDefined(output)) {
+                    output = $filter('couponTitleFilter')(output);
+
                     setCouponCollapsedDefault(output);
                     couponExpiresSoon(output);
                 }
