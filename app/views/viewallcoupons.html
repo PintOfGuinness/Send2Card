@@ -1,4 +1,4 @@
-<div class="full-width">
+<div ng-show="couponsController.showCouponBlock" class="full-width">
     <div class="container" style="padding-left:25px;">
         <br>
         <!--UNACTIONED COUPONS-->
@@ -14,7 +14,7 @@
         </div>
 
         <!-- ACTIONED COUPONS-->
-        <div class="panel-body nopadding">
+        <div ng-show="couponsController.showReadyToUse" class="panel-body nopadding">
             <h4>Offers Ready to Use</h4>
             <br>
             <div ng-repeat="coupon in couponsController.couponsServiceData.actionedCoupons">

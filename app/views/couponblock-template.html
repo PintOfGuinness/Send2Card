@@ -13,7 +13,7 @@
                     <img class="img-size" ng-src="{{printedPath}}">
                 </div>
             </div>
-            <div class="desktoponly print-button">
+            <div ng-show="couponsController.enablePrintAction" class="desktoponly print-button">
                 <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
                 <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
             </div>
