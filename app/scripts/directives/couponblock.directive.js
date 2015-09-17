@@ -10,6 +10,7 @@ angular.module('send2CardApp')
     .directive('couponBlockDirective', function (modalProvider, $window) {
 
         function link(scope, element, attrs) {
+            var didScroll = false;
             scope.isHidden = false;
             scope.isReadyToUse = false;
 
@@ -32,14 +33,20 @@ angular.module('send2CardApp')
                 }
             }
 
-            angular.element($window).bind("scroll", function () {
-                if (this.pageYOffset >= 100) {
+            angular.element($window).bind("wheel", function () {
+                didScroll = true;
+            });
+
+            /* Interval prevents function fired for every pixel moved */
+            setInterval(function () {
+                if (didScroll) {
                     scope.showProgressBar({
                         display: false
                     });
+                    didScroll = false;
                 }
                 scope.$apply();
-            });
+            }, 100);
 
             scope.collapseSection = function () {
                 var tempIsCollapsed = scope.coupon.isCollapsed;
