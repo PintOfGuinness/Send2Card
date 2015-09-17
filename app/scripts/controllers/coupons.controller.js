@@ -20,6 +20,30 @@ angular.module('send2CardApp').controller('CouponsController', function (coupons
     coupons.couponPrinted = "images/printedicon.png";
     coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
 
+    initialise();
+
+    function initialise() {
+        getfilteredCouponLists();
+    }
+
+    function getfilteredCouponLists() {
+        couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber)
+            .then(getfilteredCouponListsSuccess)
+            .catch(getfilteredCouponListsFailed);
+    }
+
+    function getfilteredCouponListsSuccess(results) {
+        if (angular.isUndefined(results.singleCoupon)) {
+            coupons.couponError = true;
+            coupons.errorPath = "views/error4.html";
+        }
+        coupons.couponsServiceData = results;
+    }
+
+    function getfilteredCouponListsFailed(error) {
+        coupons.multiCouponError = error.multiCouponError;
+    }
+
     coupons.resetCollapseStateForAll = function () {
         couponsManagerFactory.resetCollapseStateForAll();
     }
@@ -35,25 +59,12 @@ angular.module('send2CardApp').controller('CouponsController', function (coupons
     }
 
     function sendSingleCouponFailure(error) {
-        error.isCouponSent = false;
         console.log("Controller:sendSingleCouponFailure: " + error.state);
         coupons.couponError = true;
         coupons.errorPath = "views/error2.html";
-        
+
         return $q.reject(error);
     }
-
-    couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber).then(function (results) {
-
-        if (angular.isUndefined(results.singleCoupon)) {
-            coupons.couponError = true;
-            coupons.errorPath = "views/error4.html";
-        }
-        coupons.couponsServiceData = results;
-
-    }).catch(function (error) {
-        coupons.multiCouponError = error.multiCouponError;
-    });
 
     coupons.getRowIndexNumbers = function (indexNumber, arrayName) {
         var array = [];
@@ -65,9 +76,14 @@ angular.module('send2CardApp').controller('CouponsController', function (coupons
         return displayInformationFactory.getCouponsPerRow(coupons);
     }
 
-    coupons.showSavingsDisplay = function (actionedCoupon) {
-        progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData, actionedCoupon);
-        progressBarFactory.toggleProgressBarDisplay(true);
+    coupons.showProgressBar = function (display, actionedCoupon) {
+        if (display) {
+            progressBarFactory.toggleProgressBarDisplay(true);
+            progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData, actionedCoupon);
+        } else {
+            progressBarFactory.toggleProgressBarDisplay(false);
+        }
+
 
     }
 

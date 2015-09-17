@@ -9,8 +9,9 @@
  * Filter in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .filter('categoriseCouponsFilter', function () {
-        return function (input, couponNumberFilter, excludeCouponNumberFilter) {
+  .filter('categoriseCouponsFilter', function ($filter) {
+       return function (input, couponNumberFilter, excludeCouponNumberFilter) {
+
             var output = [];
 
             if (excludeCouponNumberFilter) {
@@ -66,4 +67,101 @@ angular.module('send2CardApp')
 
             return output;
         }
+<<<<<<< HEAD
     });
+=======
+
+        function couponViewable(eachCoupon) {
+            var viewable = false;
+
+            if (!couponRedeemed(eachCoupon)) {
+                viewable = true;
+                filterCoupon(eachCoupon);
+            } else {
+                viewable = false;
+            }
+
+            return viewable;
+        }
+
+        function couponRedeemed(eachCoupon) {
+            if (eachCoupon.redeemable_ind === "Y") {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function filterCoupon(eachCoupon) {
+            if (eachCoupon.state == undefined) {
+                if (couponLoaded(eachCoupon)) {
+                    eachCoupon.state = 1;
+                } else {
+                    if (couponPrinted(eachCoupon)) {
+                        eachCoupon.state = 2
+                    } else {
+                        eachCoupon.state = 0;
+                    }
+                }
+            }
+            couponExpiresSoon(eachCoupon);
+            couponIsNew(eachCoupon);
+            showSoonOverNew(eachCoupon);
+        }
+
+        function couponLoaded(eachCoupon) {
+            if (eachCoupon.load_actl_dt === "") {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function couponPrinted(eachCoupon) {
+            if (eachCoupon.prnt_actl_dt === "") {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function couponExpiresSoon(eachCoupon) {
+            var today = new Date();
+            var expiresSoonRegion = new Date(today);
+            expiresSoonRegion.setDate(today.getDate() + 14);
+            var expiryDate = new Date(eachCoupon.expir_dt);
+
+            if (expiryDate < expiresSoonRegion) {
+                eachCoupon.expiresSoon = true;
+            } else {
+                eachCoupon.expiresSoon = false;
+            }
+        }
+
+        function couponIsNew(eachCoupon) {
+            if (eachCoupon.viewable_ind === "Y") {
+                eachCoupon.isNew = true;
+            } else {
+                eachCoupon.isNew = false;
+            }
+        }
+
+        function showSoonOverNew(eachCoupon) {
+            if (eachCoupon.expiresSoon === true && eachCoupon.isNew === true) {
+                eachCoupon.isNew = false;
+            }
+        }
+
+        function setCouponCollapsedDefault(eachCoupon) {
+            eachCoupon.isCollapsed = true;
+        }
+
+        function couponActioned(eachCoupon) {
+            if (couponLoaded(eachCoupon) || couponPrinted(eachCoupon)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    });
+>>>>>>> origin/master

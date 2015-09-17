@@ -53,6 +53,7 @@ img:hover {
     border: thick;
     border-color: black;
     border-style: groove;
+    width:100%;
 }
 .bottom-align {
     vertical-align: bottom;
@@ -148,7 +149,7 @@ img:hover {
 /* The starting CSS styles for the enter animation */
 
 .slight-delay {
-    transition: 1s linear all 0.80s;
+    transition: 1s linear all 0.10s;
 }
 .progress-bar-section.ng-enter {
     transition: 1s linear all 1s;
@@ -205,6 +206,23 @@ img:hover {
 .printmodal {
     padding: 25px;
 }
+
+.helpmodal{
+    background-color:#fff; 
+    font-size:12px; 
+    line-height:16px; 
+    color:#585858; 
+    font-family:Helvetica,Arial,sans-serif;
+}
+.floatLeft { float:left; }
+.floatRight { float:right; }
+#promocontent a {text-decoration:underline; cursor:pointer; color:#585858;}
+#promocontent a:hover {text-decoration:underline; color:#585858;}
+.promoTextred {color: #CC0000;}
+.promoBodycopy20 {font-size: 1.667em;}
+.promoBold {font-weight:bold;}
+.clear{clear:both;}
+
 .printcoupon {
     border: 5px solid grey;
     padding: 10px;
