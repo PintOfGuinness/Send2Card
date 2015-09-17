@@ -67,9 +67,6 @@ angular.module('send2CardApp')
 
             return output;
         }
-<<<<<<< HEAD
-    });
-=======
 
         function couponViewable(eachCoupon) {
             var viewable = false;
@@ -164,4 +161,3 @@ angular.module('send2CardApp')
             }
         }
     });
->>>>>>> origin/master
