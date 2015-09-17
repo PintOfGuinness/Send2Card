@@ -2,20 +2,20 @@
     <div class="panel-body coupon-leftside">
         <div class="text-center coupon-rightside" ng-class="{'border-yellow' : isReadyToUse }">
 
-            <div ng-switch on="coupon.state" class="nopadding">
+            <div ng-switch on="coupon.state" class="animate-switch-container">
                 <div ng-switch-when=0>
-                    <img class="img-alt-size" ng-click="clickSendCouponToCard(); updateState();" ng-src="{{unSentCouponPath}}">
+                    <img class="img-alt-size" ng-click="clickSendCouponToCard();" ng-src="{{unSentCouponPath}}">
                 </div>
-                <div ng-switch-when=1>
+                <div ng-switch-when=1 class="animate-switch">
                     <img ng-src="{{sentCouponPath}}">
                 </div>
-                <div ng-switch-when=2>
+                <div ng-switch-when=2 class="animate-switch">
                     <img class="img-size" ng-src="{{printedPath}}">
                 </div>
             </div>
-            <div class="desktoponly print-button">
-                <img ng-hide="isHidden" src="images/printer.png" height="20px" width="20px" />
-                <a ng-hide="isHidden" id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
+            <div class="desktoponly print-button" ng-hide="isHidden">
+                <img src="images/printer.png" height="20px" width="20px" />
+                <a id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
             </div>
         </div>
 
