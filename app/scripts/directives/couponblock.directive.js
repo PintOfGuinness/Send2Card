@@ -46,7 +46,7 @@ angular.module('send2CardApp')
                     didScroll = false;
                 }
                 scope.$apply();
-            }, 200);
+            }, 100);
 
             scope.collapseSection = function () {
                 var tempIsCollapsed = scope.coupon.isCollapsed;
