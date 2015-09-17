@@ -54,7 +54,6 @@ angular.module('send2CardApp')
             }
 
             function sendSingleCouponComplete(data) {
-                console.log("Directive:sendSingleCouponComplete");
                 scope.updateState(data.state);
                 scope.isHidden = true;
                 scope.showProgressBar({

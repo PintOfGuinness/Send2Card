@@ -1,25 +1,27 @@
-<div class="full-width-black-background progress-bar-section" ng-if="true" ng-show="progressBarController.progressBarServiceData.display">
-    <div class="container padded-top text-size-uniform">
-        <div class="white-text">More Offers
-            <p class="pull-right white-text">{{progressBarController.progressBarServiceData.unactionedLength }} Offers Available
-                <br>
-                <i class="shmedium-font more-padding-right">That's over $ {{progressBarController.progressBarServiceData.totalSavings }} in savings!</i></b>
-            </p>
-        </div>
-        <div class="white-text pull-right">On Your Card / Printed
-            <div class="white-text pull-right pad-right"> {{progressBarController.progressBarServiceData.totalCoupons}}
+<div ng-show="progressBarController.showProgressBar">
+    <div class="full-width-black-background progress-bar-section" ng-if="true" ng-show="progressBarController.progressBarServiceData.display">
+        <div class="container padded-top text-size-uniform">
+            <div class="white-text">More Offers
+                <p class="pull-right white-text">{{progressBarController.progressBarServiceData.unactionedLength }} Offers Available
+                    <br>
+                    <i class="shmedium-font more-padding-right">That's over $ {{progressBarController.progressBarServiceData.totalSavings }} in savings!</i></b>
+                </p>
             </div>
-            <div class="progress smaller-width pull-right">
-                <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;">{{progressBarController.progressBarServiceData.actionedLength}}
+            <div class="white-text pull-right">On Your Card / Printed
+                <div class="white-text pull-right pad-right"> {{progressBarController.progressBarServiceData.totalCoupons}}
+                </div>
+                <div class="progress smaller-width pull-right">
+                    <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;">{{progressBarController.progressBarServiceData.actionedLength}}
+                    </div>
+
                 </div>
 
+                <br><i class="shmedium-font pull-right">That's over $ {{progressBarController.progressBarServiceData.actionedSavings}} in savings!</i>
+                <br>
+                <br>
             </div>
-
-            <br><i class="shmedium-font pull-right">That's over $ {{progressBarController.progressBarServiceData.actionedSavings}} in savings!</i>
-            <br>
-            <br>
+            </h5>
         </div>
-        </h5>
     </div>
 </div>
 </div>

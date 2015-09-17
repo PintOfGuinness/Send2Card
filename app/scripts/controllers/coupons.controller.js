@@ -7,9 +7,11 @@
  * # CouponsController
  * Controller of the send2CardApp
  */
-angular.module('send2CardApp').controller('CouponsController', function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, screenSize, $q) {
+
+angular.module('send2CardApp').controller('CouponsController', function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, screenSize, $q, configuration) {
 
     var coupons = this;
+
     var extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
     var couponNumber = queryParameterFactory.getCouponNumberParameter();
 
@@ -19,6 +21,18 @@ angular.module('send2CardApp').controller('CouponsController', function (coupons
     coupons.sentCouponPath = "images/oncard.png";
     coupons.couponPrinted = "images/printedicon.png";
     coupons.extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
+
+    // taking the configuration values for use throughout the controller
+    coupons.enablePrintAction = configuration.ENABLE_PRINT_ACTION;
+    coupons.autoSendSingleCoupon = configuration.AUTO_SEND_SINGLE_COUPON;
+    coupons.showSingleCoupon = configuration.SHOW_SINGLE_COUPON;
+    coupons.showCouponBlock = configuration.SHOW_COUPON_BLOCK;
+    coupons.showBCC = configuration.SHOW_BCC;
+    coupons.showMonetate = configuration.SHOW_MONETATE;
+    coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
+
+
+
 
     initialise();
 
