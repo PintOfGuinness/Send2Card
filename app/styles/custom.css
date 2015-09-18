@@ -41,8 +41,7 @@
 
 .front {
     z-index: 2;
-    /* for firefox 31 */
-    transform: rotateY(0deg);
+    right:0;
 }
 
 /* back, initially hidden pane */
