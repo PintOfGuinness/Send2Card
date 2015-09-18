@@ -30,10 +30,11 @@ angular.module('send2CardApp')
                         // If success return 1 (Load)
                         data.state = 1;
                         /*data.couponSequenceNumber = couponSequenceNumber;*/
+                        console.log("SINGLE COUPON SERVICE SOMETHING RIGHT");                    
                         return data;
                     })
                     .catch(function (error) {
-                        console.log("SERVICE SOMETHING WRONG");
+                        console.log("SINGLE COUPON SERVICE SOMETHING WRONG");
 
                         error.state = 0;
                         return $q.reject(error);

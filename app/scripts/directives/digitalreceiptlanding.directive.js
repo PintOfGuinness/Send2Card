@@ -74,10 +74,6 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
-                    /*                    if (angular.isUndefined(results.singleCoupon)) {
-                                            coupons.couponError = true;
-                                            coupons.errorPath = "views/viewallcouponsheader.html";
-                                        }*/
                     coupons.couponsServiceData = results;
                 }
 
@@ -93,7 +89,7 @@ angular.module('send2CardApp')
                 function sendSingleCouponFailure(error) {
                     console.log("Controller:sendSingleCouponFailure: " + error.state);
                     coupons.couponError = true;
-                    coupons.errorPath = "views/error2.html";
+                    coupons.errorPath = "views/error4.html";
 
                     return $q.reject(error);
                 }

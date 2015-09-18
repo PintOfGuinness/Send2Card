@@ -13,6 +13,7 @@ angular.module('send2CardApp')
             var didScroll = false;
             scope.isHidden = false;
             scope.isReadyToUse = false;
+            scope.printed = false;
 
             initialise();
 
@@ -26,16 +27,16 @@ angular.module('send2CardApp')
 
                 if (scope.coupon.state != 0) {
                     scope.isReadyToUse = true;
-                    scope.isFlipped=false;
+                    scope.isFlipped = false;
                 }
 
                 if (scope.coupon.state == 1) {
                     scope.isHidden = true;
-                    scope.isFlipped= true;
+                    scope.isFlipped = true;
                 }
-                
-                if(scope.coupon.state==2){
-                    scope.isFlipped= true;
+
+                if (scope.coupon.state == 2) {
+                    scope.isFlipped = true;
                 }
             }
 
@@ -76,23 +77,30 @@ angular.module('send2CardApp')
             }
 
             function sendSingleCouponFailure(failureState) {
-                console.log("Directive:sendSingleCouponFailure");
                 scope.updateState(failureState.state);
-                modalProvider.openErrorModal(scope);
-            }
-
-            scope.openHelpModal = function () {
-                modalProvider.openHelpModal();
+                scope.isFlipped = false;
             }
 
             scope.openPrintModal = function () {
                 modalProvider.openPrintModal(scope);
+                modalProvider.printModalInstance.result.catch(updateAfterprintModalClosed);
+            }
+
+            function updateAfterprintModalClosed() {
+                console.log(scope.printed);
+                if(scope.printed) {
+                    scope.updateState(2);
+                }
+            }
+
+            scope.confirmPrinted = function () {
+                scope.printed = true;
             }
 
             scope.updateState = function (newState) {
                 scope.isReadyToUse = true;
                 scope.coupon.state = newState;
-                scope.isFlipped= true;
+                scope.isFlipped = true;
             }
         }
 

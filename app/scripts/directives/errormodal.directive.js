@@ -10,6 +10,6 @@ angular.module('send2CardApp')
   .directive('errorModalDirective', function () {
     return {
             restrict: 'E',
-            templateUrl: 'views/error1.html'
+            templateUrl: 'views/error4.html'
         };
   });

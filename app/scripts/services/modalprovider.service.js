@@ -19,7 +19,7 @@ angular.module('send2CardApp')
     }
     
     this.openPrintModal = function(scope){
-        var modalInstance = $modal.open({
+        this.printModalInstance = $modal.open({
             template: '<print-coupon-modal-directive></print-coupon-modal-directive>',
             controller: 'ModalController',
             scope: scope

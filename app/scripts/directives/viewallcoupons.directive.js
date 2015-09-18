@@ -11,7 +11,7 @@ angular.module('send2CardApp')
         return {
             templateUrl: 'views/viewallcoupons.html',
             restrict: 'E',
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, configuration) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, modalProvider, screenSize, $q, configuration) {
 
                 var coupons = this;
                 var extraCareCardNumber;
@@ -21,6 +21,7 @@ angular.module('send2CardApp')
 
                 function initialise() {
 
+                    displayInformationFactory.getCouponsPerRow(coupons);
                     extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
                     couponNumber = queryParameterFactory.getCouponNumberParameter();
 
@@ -41,7 +42,7 @@ angular.module('send2CardApp')
                     coupons.showBCC = configuration.SHOW_BCC;
                     coupons.showMonetate = configuration.SHOW_MONETATE;
                     coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
-                    coupons.enableECOptIn = configuration.ENABLE_EC_OPT_IN; 
+                    coupons.enableECOptIn = configuration.ENABLE_EC_OPT_IN;
 
                     if (validateQueryParameters()) {
                         getfilteredCouponLists();
@@ -69,10 +70,6 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
-                    /*                    if (angular.isUndefined(results.singleCoupon)) {
-                                            coupons.couponError = true;
-                                            coupons.errorPath = "views/error4.html";
-                                        }*/
                     coupons.couponsServiceData = results;
                 }
 
@@ -86,20 +83,18 @@ angular.module('send2CardApp')
 
                 coupons.sendSingleCoupon = function () {
                     return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
-                        .then(sendSingleCouponComplete)
                         .catch(sendSingleCouponFailure);
                 }
 
-                function sendSingleCouponComplete(data) {
-                    return data;
-                }
-
                 function sendSingleCouponFailure(error) {
-                    console.log("Controller:sendSingleCouponFailure: " + error.state);
-                    coupons.couponError = true;
-                    coupons.errorPath = "views/error2.html";
+                    error.state = 0;
+                    modalProvider.openErrorModal();
 
                     return $q.reject(error);
+                }
+                
+                coupons.openHelpModal = function() {
+                    modalProvider.openHelpModal();
                 }
 
                 coupons.getRowIndexNumbers = function (indexNumber, arrayName) {
@@ -110,10 +105,12 @@ angular.module('send2CardApp')
                 }
 
                 screenSize.on('xs, sm, md, lg', function (match) {
+                        console.log("screenSize");
                     coupons.couponsPerRow = displayInformationFactory.getCouponsPerRow(coupons);
                 });
 
                 coupons.getCouponsPerRow = function () {
+                 console.log("getCouponsPerRow");
                     return displayInformationFactory.getCouponsPerRow(coupons);
                 }
 
