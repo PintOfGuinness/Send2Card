@@ -92,8 +92,8 @@ angular.module('send2CardApp')
 
                     return $q.reject(error);
                 }
-                
-                coupons.openHelpModal = function() {
+
+                coupons.openHelpModal = function () {
                     modalProvider.openHelpModal();
                 }
 
@@ -105,12 +105,12 @@ angular.module('send2CardApp')
                 }
 
                 screenSize.on('xs, sm, md, lg', function (match) {
-                        console.log("screenSize");
+                    console.log("screenSize");
                     coupons.couponsPerRow = displayInformationFactory.getCouponsPerRow(coupons);
                 });
 
                 coupons.getCouponsPerRow = function () {
-                 console.log("getCouponsPerRow");
+                    console.log("getCouponsPerRow");
                     return displayInformationFactory.getCouponsPerRow(coupons);
                 }
 

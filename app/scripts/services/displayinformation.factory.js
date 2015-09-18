@@ -46,6 +46,7 @@ angular.module('send2CardApp')
                 } else if (screenSize.is('xs')) {
                     screenMode.mobile = true;
                 }
+                console.dir(screenMode);
                 return screenMode;
             },
 
