@@ -31,6 +31,26 @@ angular.module('send2CardApp')
                 return array;
             },
 
+            getDisplayMode: function () {
+
+                var screenMode = {
+                    mobile: false,
+                    tablet: false,
+                    desktop: false
+                }
+
+                if (screenSize.is('md, lg')) {
+                    screenMode.desktop = true;
+                } else if (screenSize.is('sm')) {
+                    screenMode.tablet = true;
+                } else if (screenSize.is('xs')) {
+                    screenMode.mobile = true;
+                }
+                return screenMode;
+            },
+
+
+
             getCouponsPerRow: function (coupons) {
                 var couponsPerRow = 3;
                 if (screenSize.is('md, lg')) {

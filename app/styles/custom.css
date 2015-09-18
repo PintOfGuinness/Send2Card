@@ -177,10 +177,17 @@ img:hover {
 .text-size-uniform {
     font-size: larger;
 }
+.huge-text {
+    font-size: xx-large;
+}
 .smaller-width {
     width: 250px;
     height: 22px;
     margin-left: 8px;
+}
+.mobile-width {
+    width: 260px;
+    height: 30px;
 }
 .progress-bar-colour {
     background-image: none;
@@ -189,6 +196,9 @@ img:hover {
 .pad-right {
     padding-right: 10px;
     padding-left: 10px;
+}
+.pad-bottom {
+    padding-bottom: 10px;
 }
 .padded-top {
     padding-top: 15px;

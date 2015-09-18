@@ -13,10 +13,15 @@ angular.module('send2CardApp')
             /*            scope: {
                                 progressBarServiceData: '='
                         },*/
-            controller: function (progressBarFactory) {
-
+            controller: function (progressBarFactory, displayInformationFactory) {
+                console.dir(displayInformationFactory.screenMode);
                 this.progressBarServiceData = progressBarFactory.getServiceData();
+                var screenMode = displayInformationFactory.getDisplayMode();
                 this.showProgressBar = configuration.SHOW_PROGRESS_BAR;
+                this.mobileMode = screenMode.mobile;
+                this.tabletMode = screenMode.tablet;
+                this.desktopMode = screenMode.desktop;
+
             },
             controllerAs: 'progressBarController',
             bindToController: true,

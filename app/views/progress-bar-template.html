@@ -1,22 +1,89 @@
+/* * Desktop progress bar */
 <div ng-show="progressBarController.showProgressBar">
-    <div class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
-        <div class="container">
-            <div class="white-text pad-top">You're a
-                <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
+    <div ng-show="progressBarController.desktopMode">
+        <div id="desktop-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
+            <div class="container">
+                <div class="white-text pad-top">You're a
+                    <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
 
 
 
-                <div class="white-text pull-right"><strong class="text-size-uniform pad-left"> {{progressBarController.progressBarServiceData.actionedLength}}</strong> of <strong class="text-size-uniform">{{progressBarController.progressBarServiceData.totalCoupons}}</strong> offers ready to use
-                </div>
-                <div class="progress smaller-width pull-right">
-                    <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;">
+                    <div class="white-text pull-right"><strong class="text-size-uniform pad-left"> {{progressBarController.progressBarServiceData.actionedLength}}</strong> of <strong class="text-size-uniform">{{progressBarController.progressBarServiceData.totalCoupons}}</strong> offers ready to use
+                    </div>
+                    <div class="progress smaller-width pull-right">
+                        <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;">{{progressBarController.progressBarServiceData.actionedLength}}
+
+                        </div>
 
                     </div>
 
+                    <br>
+                    <br>
                 </div>
-
-                <br>
-                <br>
             </div>
         </div>
     </div>
+
+
+
+    /* * Tablet progress bar */
+    <div ng-show="progressBarController.tabletMode">
+        <div id="tablet-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
+            <div class="container">
+                <div class="white-text pad-top">You're a
+                    <div class="white-text pull-right"></div>
+                    <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
+
+
+
+                    <div class="white-text pull-right"><strong class="text-size-uniform pad-left"> {{progressBarController.progressBarServiceData.actionedLength}}</strong> of <strong class="text-size-uniform">{{progressBarController.progressBarServiceData.totalCoupons}}</strong>
+                        <div class="pad-left pad-bottom">offers ready to use</div>
+
+                    </div>
+                    <div class="progress smaller-width pull-right">
+                        <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;">
+                            {{progressBarController.progressBarServiceData.actionedLength}}
+                        </div>
+
+                    </div>
+
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    /* * Mobile progress bar */
+    <div id="mobile-progress-bar" ng-show="progressBarController.mobileMode">
+        <div class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
+            <div class="container">
+                <div class="white-text pad-top">over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
+
+
+
+                    <div class="white-text pull-right">offers ready to use
+
+                    </div>
+                    <div>
+                        <div class="pull-right text-size-uniform">{{progressBarController.progressBarServiceData.totalCoupons}}</div>
+
+                        <div class="progress mobile-width">
+
+                            <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;">
+                                {{progressBarController.progressBarServiceData.actionedLength}}
+
+                            </div>
+                        </div>
+
+                        </dov>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
