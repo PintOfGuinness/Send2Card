@@ -6,7 +6,8 @@ body {
 }
 
 body.modal-open {
-    overflow: visible;
+    overflow: hidden;
+    /*margin-right:15px;*/
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
