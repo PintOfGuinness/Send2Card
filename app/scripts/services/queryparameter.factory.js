@@ -9,17 +9,24 @@
  */
 angular.module('send2CardApp')
     .factory('queryParameterFactory', function ($location) {
-        // Public API here
+
+        var extraCareCardNumber;
+    
         return {
             getExtraCareCardNumberParameter: getExtraCareCardNumberParameter,
             getCouponNumberParameter: getCouponNumberParameter
         };
 
         function getExtraCareCardNumberParameter() {
-            var extraCareCardNumber = $location.search().eccardnum || "12345678";
+            extraCareCardNumber = $location.search().eccardnum;
             return extraCareCardNumber;
         }
 
+        function getExtraCareCardNumberEndDigits() {
+            var extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
+            return extraCareCardNumberEndDigits;
+        }
+    
         function getCouponNumberParameter() {
             var couponNumber = $location.search().couponnum;
             return couponNumber;

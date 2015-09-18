@@ -22,8 +22,8 @@
 
     <div ng-app="send2CardApp">
 
-        <div class="container" ng-controller="CouponsController as couponsController">
-            <single-coupon-directive></single-coupon-directive>
+        <div class="container">
+            <digital-receipt-landing-directive></digital-receipt-landing-directive>
             <view-all-coupons-directive></view-all-coupons-directive>
             <progress-bar-directive></progress-bar-directive>
 
@@ -80,7 +80,6 @@
         <script src="scripts/config.js"></script>
 
         <!--Controllers-->
-        <script src="scripts/controllers/coupons.controller.js"></script>
         <script src="scripts/controllers/modal.controller.js"></script>
         <!--Services-->
         <script src="scripts/services/coupons.service.js"></script>
@@ -94,7 +93,7 @@
         <script src="scripts/services/queryparameter.factory.js"></script>
         <script src="scripts/services/errorhandler.factory.js"></script>
         <!--Directives-->
-        <script src="scripts/directives/singlecoupon.directive.js"></script>
+        <script src="scripts/directives/digitalreceiptlanding.directive.js"></script>
         <script src="scripts/directives/viewallcoupons.directive.js"></script>
         <script src="scripts/directives/couponblock.directive.js"></script>
         <script src="scripts/directives/printcouponmodal.directive.js"></script>

@@ -94,7 +94,6 @@ angular.module('send2CardApp')
                 scope.coupon.state = newState;
                 scope.isFlipped= true;
             }
-
         }
 
         return {
@@ -102,11 +101,11 @@ angular.module('send2CardApp')
             restrict: 'E',
             replace: true,
             scope: {
-                unSentCouponPath: '@',
-                sentCouponPath: '@',
+                enableECOptIn: '@',
+                enablePrintAction: '@',
+                couponButton: '=',
                 autoSendSingleCoupon: '@',
                 onSendSingleCoupon: '&',
-                printedPath: '@',
                 extraCareCardNumberEndDigits: '@',
                 coupon: '=',
                 onUpdateState: '&',

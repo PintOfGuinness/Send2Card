@@ -1,26 +1,28 @@
 <div class="panel panel-default couponpadding" ng-class="{'border-yellow' : isReadyToUse }">
     <div class="panel-body coupon-leftside">
         <div class="text-center coupon-rightside" ng-class="{'border-yellow' : isReadyToUse }">
-            
-                <div class="flip-container" ng-class="{'flip':isFlipped}" ng-click="isFlipped=true;">
+
+            <div class="flip-container" ng-class="{'flip':isFlipped}" ng-click="isFlipped=true;">
 	               <div class="flipper">
 		                <div class="front">
-                        <img class="img-alt-size" ng-click="clickSendCouponToCard();" ng-src="{{unSentCouponPath}}">
+                        <img class="img-alt-size" ng-click="clickSendCouponToCard();" ng-src="{{couponButton.unSentCouponPath}}">
                         </div>
                        <div class="back">
                              <div ng-if="coupon.state==1">
-			                     <img ng-src="{{sentCouponPath}}">
+			                     <img ng-src="{{couponButton.sentCouponPath}}">
                              </div>
                             <div ng-if="coupon.state==2">
-                                <img class="img-size" ng-src="{{printedPath}}">
+                                <img class="img-size" ng-src="{{couponButton.couponPrinted}}">
                             </div>
 		               </div>
                     </div>
                 </div>
+            <div ng-show="{{enablePrintAction}}">
+                <div ng-hide="isHidden" class="desktoponly print-button">
+                    <img src="images/printer.png" height="20px" width="20px" />
+                    <a id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
+                </div>
 
-            <div ng-show="couponsController.enablePrintAction" ng-hide="isHidden" class="desktoponly print-button">
-                <img src="images/printer.png" height="20px" width="20px" />
-                <a id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
             </div>
         </div>
 

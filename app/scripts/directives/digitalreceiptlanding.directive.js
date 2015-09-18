@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc directive
- * @name send2CardApp.directive:viewAllCouponsDirective
+ * @name send2CardApp.directive:SingleCouponDirective
  * @description
- * # viewAllCouponsDirective
+ * # SingleCouponDirective
  */
 angular.module('send2CardApp')
-    .directive('viewAllCouponsDirective', function () {
+    .directive('digitalReceiptLandingDirective', function () {
         return {
-            templateUrl: 'views/viewallcoupons.html',
+            templateUrl: 'views/digitalreceiptlanding.html',
             restrict: 'E',
             controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, configuration) {
 
@@ -25,14 +25,12 @@ angular.module('send2CardApp')
                     couponNumber = queryParameterFactory.getCouponNumberParameter();
 
                     coupons.couponError = false;
-                    coupons.errorPath = "views/blankarea.html";
-                    coupons.couponButton = {
-                        unSentCouponPath: "images/sendtocardicon.png",
-                        sentCouponPath: "images/oncard.png",
-                        couponPrinted: "images/printedicon.png"
-                    };
+                    coupons.errorPath = "views/error3.html";
+                    coupons.couponButton = {};
+                    coupons.couponButton.unSentCouponPath = "images/sendtocardicon.png";
+                    coupons.couponButton.sentCouponPath = "images/oncard.png";
+                    coupons.couponButton.couponPrinted = "images/printedicon.png";
 
-                    console.dir(coupons.couponButton);
                     // taking the configuration values for use throughout the controller
                     coupons.enablePrintAction = configuration.ENABLE_PRINT_ACTION;
                     coupons.autoSendSingleCoupon = configuration.AUTO_SEND_SINGLE_COUPON;
@@ -51,14 +49,21 @@ angular.module('send2CardApp')
                 function validateQueryParameters() {
                     var success = false;
 
-                    if (angular.isUndefined(extraCareCardNumber)) {
-                        coupons.couponError = true;
-                        coupons.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(false);
-                    } else {
+                    if (angular.isDefined(extraCareCardNumber)) {
+
                         coupons.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
                         success = true;
+
+                        if (angular.isUndefined(couponNumber)) {
+                            coupons.couponError = true;
+                            coupons.errorPath = errorHandlerFactory.processMissingCouponNumber(true);
+                        }
+                    } else {
+                        coupons.couponError = true;
+                        coupons.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(true);
                     }
 
+                    console.log(success);
                     return success;
                 }
 
@@ -71,27 +76,18 @@ angular.module('send2CardApp')
                 function getfilteredCouponListsSuccess(results) {
                     /*                    if (angular.isUndefined(results.singleCoupon)) {
                                             coupons.couponError = true;
-                                            coupons.errorPath = "views/error4.html";
+                                            coupons.errorPath = "views/viewallcouponsheader.html";
                                         }*/
                     coupons.couponsServiceData = results;
                 }
 
                 function getfilteredCouponListsFailed(error) {
-                    coupons.errorDisplay = error.htmlDisplay;
-                }
-
-                coupons.resetCollapseStateForAll = function () {
-                    couponsManagerFactory.resetCollapseStateForAll();
+                    coupons.multiCouponError = error.multiCouponError;
                 }
 
                 coupons.sendSingleCoupon = function () {
                     return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
-                        .then(sendSingleCouponComplete)
                         .catch(sendSingleCouponFailure);
-                }
-
-                function sendSingleCouponComplete(data) {
-                    return data;
                 }
 
                 function sendSingleCouponFailure(error) {
@@ -102,19 +98,8 @@ angular.module('send2CardApp')
                     return $q.reject(error);
                 }
 
-                coupons.getRowIndexNumbers = function (indexNumber, arrayName) {
-                    var array = [];
-                    array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
-
-                    return array;
-                }
-
-                screenSize.on('xs, sm, md, lg', function (match) {
-                    coupons.couponsPerRow = displayInformationFactory.getCouponsPerRow(coupons);
-                });
-
-                coupons.getCouponsPerRow = function () {
-                    return displayInformationFactory.getCouponsPerRow(coupons);
+                coupons.resetCollapseStateForAll = function () {
+                    couponsManagerFactory.resetCollapseStateForAll();
                 }
 
                 coupons.showProgressBar = function (display, actionedCoupon) {
@@ -126,7 +111,7 @@ angular.module('send2CardApp')
                     }
                 }
             },
-            controllerAs: 'viewallCouponsController',
+            controllerAs: 'singleCouponController',
             bindToController: true
         };
     });

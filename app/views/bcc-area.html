@@ -1,8 +1,11 @@
-<div ng-hide="bccController.cookieHasAlreadyBeenCreated();">
+<div ng-show="bccController.enableECOptIn">
 
-    <button ng-click="bccController.createRememberMeCookie(); bccController.hideRememberMeButton();" ng-hide="bccController.cookieHasAlreadyBeenCreated();">
-        Remember Me
-    </button>
+    <div ng-hide="bccController.cookieHasAlreadyBeenCreated();">
+
+        <button ng-click="bccController.createRememberMeCookie(); bccController.hideRememberMeButton();" ng-hide="bccController.cookieHasAlreadyBeenCreated();">
+            Remember Me
+        </button>
+    </div>
 </div>
 
 <div class="bcc panel-body" ng-show="bccController.cookieHasAlreadyBeenCreated();">BCC Area 1.</div>
