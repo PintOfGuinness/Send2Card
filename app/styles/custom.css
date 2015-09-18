@@ -16,39 +16,42 @@
 /*ANIMATION*/
 
 .flip-container {
-	perspective: 1000;
+    perspective: 1000;
 }
 
 /* flip speed goes here */
-.flipper {
-	transition: 0.6s;
-	transform-style: preserve-3d;
 
-	position: relative;
+.flipper {
+    transition: 0.6s;
+    transform-style: preserve-3d;
+    position: relative;
 }
 
 /* hide back of pane during swap */
-.front, .back {
-	backface-visibility: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
+
+.front,
+.back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 /* front pane, placed above back */
+
 .front {
-	z-index: 2;
-	/* for firefox 31 */
-	transform: rotateY(0deg);
+    z-index: 2;
+    /* for firefox 31 */
+    transform: rotateY(0deg);
 }
 
 /* back, initially hidden pane */
-.back {
-	transform: rotateY(180deg);
-}
 
+.back {
+    transform: rotateY(180deg);
+}
 .flip-container.flip .flipper {
-	transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 /*-----------------------------------------------------*/
@@ -65,6 +68,12 @@
 .padded-left {
     padding-left: 250px;
     height: 200px;
+}
+.pad-left {
+    padding-left: 20px;
+}
+.pad-top {
+    padding-top: 5px;
 }
 .text-red {
     color: #cc0000;
@@ -94,7 +103,7 @@ img:hover {
     border: thick;
     border-color: black;
     border-style: groove;
-    width:100%;
+    width: 100%;
 }
 .bottom-align {
     vertical-align: bottom;
@@ -247,23 +256,40 @@ img:hover {
 .printmodal {
     padding: 25px;
 }
-
-.helpmodal{
-    background-color:#fff; 
-    font-size:12px; 
-    line-height:16px; 
-    color:#585858; 
-    font-family:Helvetica,Arial,sans-serif;
+.helpmodal {
+    background-color: #fff;
+    font-size: 12px;
+    line-height: 16px;
+    color: #585858;
+    font-family: Helvetica, Arial, sans-serif;
 }
-.floatLeft { float:left; }
-.floatRight { float:right; }
-#promocontent a {text-decoration:underline; cursor:pointer; color:#585858;}
-#promocontent a:hover {text-decoration:underline; color:#585858;}
-.promoTextred {color: #CC0000;}
-.promoBodycopy20 {font-size: 1.667em;}
-.promoBold {font-weight:bold;}
-.clear{clear:both;}
-
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+#promocontent a {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #585858;
+}
+#promocontent a:hover {
+    text-decoration: underline;
+    color: #585858;
+}
+.promoTextred {
+    color: #CC0000;
+}
+.promoBodycopy20 {
+    font-size: 1.667em;
+}
+.promoBold {
+    font-weight: bold;
+}
+.clear {
+    clear: both;
+}
 .printcoupon {
     border: 5px solid grey;
     padding: 10px;
