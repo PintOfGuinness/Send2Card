@@ -26,9 +26,10 @@ angular.module('send2CardApp')
 
                     coupons.couponError = false;
                     coupons.errorPath = "views/error3.html";
-                    coupons.unSentCouponPath = "images/sendtocardicon.png";
-                    coupons.sentCouponPath = "images/oncard.png";
-                    coupons.couponPrinted = "images/printedicon.png";
+                    coupons.couponButton = {};
+                    coupons.couponButton.unSentCouponPath = "images/sendtocardicon.png";
+                    coupons.couponButton.sentCouponPath = "images/oncard.png";
+                    coupons.couponButton.couponPrinted = "images/printedicon.png";
 
                     // taking the configuration values for use throughout the controller
                     coupons.enablePrintAction = configuration.ENABLE_PRINT_ACTION;
@@ -39,28 +40,28 @@ angular.module('send2CardApp')
                     coupons.showMonetate = configuration.SHOW_MONETATE;
                     coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
 
-                    if (checkQueryParameters()) {
+                    if (validateQueryParameters()) {
                         getfilteredCouponLists();
                     }
                 }
 
-                function checkQueryParameters() {
+                function validateQueryParameters() {
                     var success = false;
 
-                    if (angular.isUndefined(couponNumber)) {
-                        console.log("SINGLE COUPON NO COUPON NUMBER " + couponNumber);
-                        coupons.couponError = true;
-                        coupons.errorPath = errorHandlerFactory.processMissingCouponNumber(true);
-                        console.log("SINGLE COUPON VIEW ALL COUPONS " + coupons.errorPath);                                     } 
-                    if (angular.isUndefined(extraCareCardNumber)) {
-                        console.log("SINGLE COUPON NO EXTRACARENUMBER");
-                        coupons.couponError = true;
-                        coupons.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(true);
-                        console.log("SINGLE COUPON VIEW ALL COUPONS " + coupons.errorPath);
-                    } else {
+                    if (angular.isDefined(extraCareCardNumber)) {
+
                         coupons.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
                         success = true;
+
+                        if (angular.isUndefined(couponNumber)) {
+                            coupons.couponError = true;
+                            coupons.errorPath = errorHandlerFactory.processMissingCouponNumber(true);
+                        }
+                    } else {
+                        coupons.couponError = true;
+                        coupons.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(true);
                     }
+
                     console.log(success);
                     return success;
                 }
@@ -72,10 +73,10 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
-/*                    if (angular.isUndefined(results.singleCoupon)) {
-                        coupons.couponError = true;
-                        coupons.errorPath = "views/viewallcouponsheader.html";
-                    }*/
+                    /*                    if (angular.isUndefined(results.singleCoupon)) {
+                                            coupons.couponError = true;
+                                            coupons.errorPath = "views/viewallcouponsheader.html";
+                                        }*/
                     coupons.couponsServiceData = results;
                 }
 

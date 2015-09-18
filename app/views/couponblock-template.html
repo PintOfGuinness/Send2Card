@@ -4,13 +4,13 @@
 
             <div ng-switch on="coupon.state" class="animate-switch-container">
                 <div ng-switch-when=0>
-                    <img class="img-alt-size" ng-click="clickSendCouponToCard();" ng-src="{{unSentCouponPath}}">
+                    <img class="img-alt-size" ng-click="clickSendCouponToCard();" ng-src="{{couponButton.unSentCouponPath}}">
                 </div>
                 <div ng-switch-when=1 class="animate-switch">
-                    <img ng-src="{{sentCouponPath}}">
+                    <img ng-src="{{couponButton.sentCouponPath}}">
                 </div>
                 <div ng-switch-when=2 class="animate-switch">
-                    <img class="img-size" ng-src="{{printedPath}}">
+                    <img class="img-size" ng-src="{{couponButton.couponPrinted}}">
                 </div>
             </div>
             <div ng-show="couponsController.enablePrintAction" ng-hide="isHidden" class="desktoponly print-button">

@@ -6,7 +6,7 @@
             <div ng-repeat="coupon in viewallCouponsController.couponsServiceData.unactionedCoupons track by $index">
                 <div ng-if="$index%(viewallCouponsController.getCouponsPerRow())==0" class="row nopadding" style="display: flex;">
                     <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewallCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index" style="display: flex;">
-                        <coupon-block-directive class="col-xs-12" coupon="viewallCouponsController.couponsServiceData.unactionedCoupons[i]" un-sent-coupon-path="{{ viewallCouponsController.unSentCouponPath }}" sent-coupon-path="{{ viewallCouponsController.sentCouponPath }}" auto-send-single-coupon="{{false}}" on-send-single-coupon="viewallCouponsController.sendSingleCoupon()" printed-path={{viewallCouponsController.couponPrinted}} extra-care-card-number-end-digits="{{viewallCouponsController.extraCareCardNumberEndDigits}}" on-reset-collapse-state-for-all="viewallCouponsController.resetCollapseStateForAll()" show-progress-bar="viewallCouponsController.showProgressBar(display, actionedCoupon)">
+                        <coupon-block-directive class="col-xs-12" coupon="viewallCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewallCouponsController.couponButton" auto-send-single-coupon="{{false}}" on-send-single-coupon="viewallCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewallCouponsController.extraCareCardNumberEndDigits}}" on-reset-collapse-state-for-all="viewallCouponsController.resetCollapseStateForAll()" show-progress-bar="viewallCouponsController.showProgressBar(display, actionedCoupon)">
                         </coupon-block-directive>
                     </div>
                 </div>
@@ -20,7 +20,7 @@
             <div ng-repeat="coupon in viewallCouponsController.couponsServiceData.actionedCoupons">
                 <div ng-if="$index%(viewallCouponsController.getCouponsPerRow())==0" class="row nopadding" style="display: flex;">
                     <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewallCouponsController.getRowIndexNumbers($index, 'actioned') track by $index" style="display: flex;">
-                        <coupon-block-directive class="col-xs-12" coupon="viewallCouponsController.couponsServiceData.actionedCoupons[i]" un-sent-coupon-path="{{ viewallCouponsController.unSentCouponPath }}" sent-coupon-path="{{ viewallCouponsController.sentCouponPath }}" auto-send-single-coupon="{{false}}" on-send-single-coupon="viewallCouponsController.sendSingleCoupon()" printed-path={{viewallCouponsController.couponPrinted}} extra-care-card-number-end-digits="{{viewallCouponsController.extraCareCardNumberEndDigits}}" on-reset-collapse-state-for-all="viewallCouponsController.resetCollapseStateForAll()">
+                        <coupon-block-directive class="col-xs-12" coupon="viewallCouponsController.couponsServiceData.actionedCoupons[i]" coupon-button="viewallCouponsController.couponButton" auto-send-single-coupon="{{false}}" on-send-single-coupon="viewallCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewallCouponsController.extraCareCardNumberEndDigits}}" on-reset-collapse-state-for-all="viewallCouponsController.resetCollapseStateForAll()">
                         </coupon-block-directive>
                     </div>
                 </div>

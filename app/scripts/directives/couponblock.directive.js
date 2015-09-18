@@ -87,7 +87,6 @@ angular.module('send2CardApp')
                 scope.isReadyToUse = true;
                 scope.coupon.state = newState;
             }
-
         }
 
         return {
@@ -95,11 +94,9 @@ angular.module('send2CardApp')
             restrict: 'E',
             replace: true,
             scope: {
-                unSentCouponPath: '@',
-                sentCouponPath: '@',
+                couponButton: '=',
                 autoSendSingleCoupon: '@',
                 onSendSingleCoupon: '&',
-                printedPath: '@',
                 extraCareCardNumberEndDigits: '@',
                 coupon: '=',
                 onUpdateState: '&',

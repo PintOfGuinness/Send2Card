@@ -10,7 +10,7 @@
         <div class="row nopadding" style="display: flex;">
             <br>
             <div ng-show="singleCouponController.showSingleCoupon" class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in singleCouponController.couponsServiceData.singleCoupon">
-                <coupon-block-directive coupon="coupon" un-sent-coupon-path="{{ singleCouponController.unSentCouponPath }}" sent-coupon-path="{{singleCouponController.sentCouponPath}}" auto-send-single-coupon="{{singleCouponController.autoSendSingleCoupon}}" extra-care-card-number-end-digits="{{singleCouponController.extraCareCardNumberEndDigits}}" on-send-single-coupon="singleCouponController.sendSingleCoupon()" on-reset-collapse-state-for-all="singleCouponController.resetCollapseStateForAll()" show-progress-bar="singleCouponController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
+                <coupon-block-directive coupon="coupon" coupon-button="singleCouponController.couponButton" auto-send-single-coupon="{{singleCouponController.autoSendSingleCoupon}}" extra-care-card-number-end-digits="{{singleCouponController.extraCareCardNumberEndDigits}}" on-send-single-coupon="singleCouponController.sendSingleCoupon()" on-reset-collapse-state-for-all="singleCouponController.resetCollapseStateForAll()" show-progress-bar="singleCouponController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
             </div>
 
             <bcc-area-directive ng-show="singleCouponController.showBCC" class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4" style="display: flex;">
