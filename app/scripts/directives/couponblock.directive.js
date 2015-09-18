@@ -94,6 +94,8 @@ angular.module('send2CardApp')
             restrict: 'E',
             replace: true,
             scope: {
+                enableECOptIn: '@',
+                enablePrintAction: '@',
                 couponButton: '=',
                 autoSendSingleCoupon: '@',
                 onSendSingleCoupon: '&',

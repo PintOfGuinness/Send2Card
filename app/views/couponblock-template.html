@@ -13,9 +13,11 @@
                     <img class="img-size" ng-src="{{couponButton.couponPrinted}}">
                 </div>
             </div>
-            <div ng-show="couponsController.enablePrintAction" ng-hide="isHidden" class="desktoponly print-button">
-                <img src="images/printer.png" height="20px" width="20px" />
-                <a id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
+            <div ng-show="{{enablePrintAction}}">
+                <div ng-hide="isHidden" class="desktoponly print-button">
+                    <img src="images/printer.png" height="20px" width="20px" />
+                    <a id="printofferdiv" data-toggle="modal" ng-click="openPrintModal();">Print</a>
+                </div>
             </div>
         </div>
 

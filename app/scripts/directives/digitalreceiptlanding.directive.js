@@ -7,9 +7,9 @@
  * # SingleCouponDirective
  */
 angular.module('send2CardApp')
-    .directive('singleCouponDirective', function () {
+    .directive('digitalReceiptLandingDirective', function () {
         return {
-            templateUrl: 'views/singlecoupon.html',
+            templateUrl: 'views/digitalreceiptlanding.html',
             restrict: 'E',
             controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, configuration) {
 
@@ -39,6 +39,7 @@ angular.module('send2CardApp')
                     coupons.showBCC = configuration.SHOW_BCC;
                     coupons.showMonetate = configuration.SHOW_MONETATE;
                     coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
+                    coupons.enableECOptIn = configuration.ENABLE_EC_OPT_IN; 
 
                     if (validateQueryParameters()) {
                         getfilteredCouponLists();

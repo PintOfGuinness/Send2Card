@@ -7,13 +7,14 @@
  * # bccAreaDirective
  */
 angular.module('send2CardApp')
-    .directive('bccAreaDirective', function ($cookies, queryParameterFactory, cookieFactory) {
+    .directive('bccAreaDirective', function ($cookies, queryParameterFactory, cookieFactory, configuration) {
 
 
         return {
             controller: function () {
                 var cookie;
                 this.hideButton = false;
+                this.enableECOptIn = configuration.ENABLE_EC_OPT_IN;
                 this.createRememberMeCookie = function () {
                     if (this.cookieHasAlreadyBeenCreated("ECCardNumber") === false) {
                         cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumberParameter());

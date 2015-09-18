@@ -41,6 +41,7 @@ angular.module('send2CardApp')
                     coupons.showBCC = configuration.SHOW_BCC;
                     coupons.showMonetate = configuration.SHOW_MONETATE;
                     coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
+                    coupons.enableECOptIn = configuration.ENABLE_EC_OPT_IN; 
 
                     if (validateQueryParameters()) {
                         getfilteredCouponLists();
