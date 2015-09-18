@@ -26,10 +26,16 @@ angular.module('send2CardApp')
 
                 if (scope.coupon.state != 0) {
                     scope.isReadyToUse = true;
+                    scope.isFlipped=false;
                 }
 
                 if (scope.coupon.state == 1) {
                     scope.isHidden = true;
+                    scope.isFlipped= true;
+                }
+                
+                if(scope.coupon.state==2){
+                    scope.isFlipped= true;
                 }
             }
 
@@ -86,6 +92,7 @@ angular.module('send2CardApp')
             scope.updateState = function (newState) {
                 scope.isReadyToUse = true;
                 scope.coupon.state = newState;
+                scope.isFlipped= true;
             }
 
         }
