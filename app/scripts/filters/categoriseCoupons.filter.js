@@ -9,9 +9,8 @@
  * Filter in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .filter('categoriseCouponsFilter', function ($filter) {
+    .filter('categoriseCouponsFilter', function ($filter, constants) {
         return function (input, couponNumberFilter, excludeCouponNumberFilter) {
-
             var output = [];
 
             if (excludeCouponNumberFilter) {
@@ -58,7 +57,7 @@ angular.module('send2CardApp')
                 if (angular.isDefined(singleCoupon)) {
                     singleCoupon = $filter('couponTitleFilter')(singleCoupon);
                     setCouponCollapsedDefault(singleCoupon);
-                    couponState(singleCoupon);  // ????
+                    couponState(singleCoupon); // ????
                     couponExpiresSoon(singleCoupon);
                 }
             } else {
@@ -72,11 +71,11 @@ angular.module('send2CardApp')
             var viewable = false;
 
             if (!couponRedeemed(eachCoupon)) {
-                viewable = true;
                 couponState(eachCoupon);
                 couponExpiresSoon(eachCoupon);
                 couponIsNew(eachCoupon);
                 showSoonOverNew(eachCoupon);
+                viewable = true;
             } else {
                 viewable = false;
             }
@@ -85,7 +84,7 @@ angular.module('send2CardApp')
         }
 
         function couponRedeemed(eachCoupon) {
-            if (eachCoupon.redeemable_ind === "Y") {
+            if (eachCoupon.redeemable_ind === constants.YES) {
                 return false;
             } else {
                 return true;
@@ -95,19 +94,19 @@ angular.module('send2CardApp')
         function couponState(eachCoupon) {
             if (eachCoupon.state == undefined) {
                 if (couponLoaded(eachCoupon)) {
-                    eachCoupon.state = 1;
+                    eachCoupon.state = constants.COUPON_STATE_SENT_TO_CARD;
                 } else {
                     if (couponPrinted(eachCoupon)) {
-                        eachCoupon.state = 2
+                        eachCoupon.state = constants.COUPON_STATE_PRINTED;
                     } else {
-                        eachCoupon.state = 0;
+                        eachCoupon.state = constants.COUPON_STATE_DEFAULT;
                     }
                 }
             }
         }
 
         function couponLoaded(eachCoupon) {
-            if (eachCoupon.load_actl_dt === "") {
+            if (eachCoupon.load_actl_dt === constants.EMPTY_STRING) {
                 return false;
             } else {
                 return true;
@@ -115,7 +114,7 @@ angular.module('send2CardApp')
         }
 
         function couponPrinted(eachCoupon) {
-            if (eachCoupon.prnt_actl_dt === "") {
+            if (eachCoupon.prnt_actl_dt === constants.EMPTY_STRING) {
                 return false;
             } else {
                 return true;
@@ -136,7 +135,7 @@ angular.module('send2CardApp')
         }
 
         function couponIsNew(eachCoupon) {
-            if (eachCoupon.viewable_ind === "Y") {
+            if (eachCoupon.viewable_ind === constants.YES) {
                 eachCoupon.isNew = true;
             } else {
                 eachCoupon.isNew = false;

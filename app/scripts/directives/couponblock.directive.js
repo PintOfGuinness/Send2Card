@@ -25,17 +25,17 @@ angular.module('send2CardApp')
                     scope.configuration.AUTO_SEND_SINGLE_COUPON = false;
                 }
 
-                if (scope.coupon.state != 0) {
+                if (scope.coupon.state != constants.COUPON_STATE_DEFAULT) {
                     scope.isReadyToUse = true;
                     scope.isFlipped = false;
                 }
 
-                if (scope.coupon.state == 1) {
+                if (scope.coupon.state == constants.COUPON_STATE_SENT_TO_CARD) {
                     scope.isHidden = true;
                     scope.isFlipped = true;
                 }
 
-                if (scope.coupon.state == 2) {
+                if (scope.coupon.state == constants.COUPON_STATE_PRINTED) {
                     scope.isFlipped = true;
                 }
             }
@@ -86,14 +86,19 @@ angular.module('send2CardApp')
             }
 
             scope.closePrintModal = function () {
-                modalProvider.closePrintModal();       
+                modalProvider.closePrintModal();
             }
 
             function updateAfterprintModalClosed() {
                 if (scope.printed) {
                     scope.updateState(2);
+                    scope.showProgressBar({
+                        display: true,
+                        actionedCoupon: scope.coupon
+                    });
                 }
             }
+
 
             scope.confirmPrinted = function () {
                 scope.printed = true;

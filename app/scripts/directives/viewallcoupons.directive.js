@@ -101,14 +101,6 @@ angular.module('send2CardApp')
                     }
                 }
 
-                vm.openHelpModal = function () {
-                    modalProvider.openHelpModal();
-                }
-
-                vm.closeHelpModal = function () {
-                    modalProvider.closeHelpModal();
-                }
-
                 vm.getCouponsPerRow = function () {
                     return getDisplayCouponsNumberPerRow();
                 }
