@@ -7,11 +7,9 @@
  * # viewAllCouponsDirective
  */
 angular.module('send2CardApp')
-    .directive('viewAllCouponsDirective', function () {
+    .directive('viewAllCouponsDirective', function (constants) {
         return {
-            templateUrl: 'views/viewallcoupons.html',
-            restrict: 'E',
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, modalProvider, screenSize, $q, configuration) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, modalProvider, screenSize, $q, viewAllCouponsConfiguration, constants) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -30,13 +28,13 @@ angular.module('send2CardApp')
 
                 function initialiseProperties() {
                     vm.couponError = false;
-                    vm.errorPath = "views/blank.html";
+                    vm.errorPath = constants.BLANK_VIEW;
                     vm.couponButton = {
-                        unSentCouponPath: "images/sendtocardicon.png",
-                        sentCouponPath: "images/oncard.png",
-                        couponPrinted: "images/printedicon.png"
+                        unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
+                        sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
+                        couponPrinted: constants.COUPON_PRINTED
                     };
-                    vm.configuration = configuration;
+                    vm.configuration = viewAllCouponsConfiguration;
                 }
 
                 function validateQueryParameters() {
@@ -49,7 +47,7 @@ angular.module('send2CardApp')
                         vm.couponError = true;
                         vm.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(false);
                     } else {
-                        vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
+                        vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits();
                         success = true;
                     }
 
@@ -77,15 +75,23 @@ angular.module('send2CardApp')
 
                 function sendSingleCouponFailure(error) {
                     error.state = 0;
-                    modalProvider.openErrorModal();
+                    vm.openErrorModal();
 
                     return $q.reject(error);
                 }
-            
+
+                vm.openErrorModal = function () {
+                    return modalProvider.openErrorModal();
+                }
+
+                vm.closeErrorModal = function () {
+                    return modalProvider.closeErrorModal();
+                }
+
                 vm.resetCollapseStateForAll = function () {
                     couponsManagerFactory.resetCollapseStateForAll();
                 }
-                
+
                 vm.showProgressBar = function (display, actionedCoupon) {
                     if (display) {
                         progressBarFactory.toggleProgressBarDisplay(true);
@@ -98,11 +104,11 @@ angular.module('send2CardApp')
                 vm.openHelpModal = function () {
                     modalProvider.openHelpModal();
                 }
-                
-                screenSize.on('xs, sm, md, lg', function (match) {
-                    vm.couponsPerRow = getDisplayCouponsNumberPerRow();
-                });
-                
+
+                vm.closeHelpModal = function () {
+                    modalProvider.closeHelpModal();
+                }
+
                 vm.getCouponsPerRow = function () {
                     return getDisplayCouponsNumberPerRow();
                 }
@@ -110,12 +116,14 @@ angular.module('send2CardApp')
                 function getDisplayCouponsNumberPerRow() {
                     return displayInformationFactory.getCouponsPerRow(vm);
                 }
-                
+
                 vm.getRowIndexNumbers = function (indexNumber, arrayName) {
                     return displayInformationFactory.getRowIndexNumbers(vm, indexNumber, arrayName);;
-                }                
+                }
             },
-            controllerAs: 'viewallCouponsController',
-            bindToController: true
+            controllerAs: 'viewAllCouponsController',
+            bindToController: true,
+            templateUrl: constants.VIEW_ALL_COUPONS_TEMPLATE,
+            restrict: 'E',
         };
     });

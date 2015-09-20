@@ -7,9 +7,9 @@
  * # errormodal.directive
  */
 angular.module('send2CardApp')
-  .directive('errorModalDirective', function () {
+  .directive('errorModalDirective', function (constants) {
     return {
             restrict: 'E',
-            templateUrl: 'views/error4.html'
+            templateUrl: constants.TECHNICAL_ERROR
         };
   });

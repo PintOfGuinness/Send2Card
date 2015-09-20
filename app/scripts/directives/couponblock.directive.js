@@ -7,7 +7,7 @@
  * # couponDirective
  */
 angular.module('send2CardApp')
-    .directive('couponBlockDirective', function (modalProvider, $window) {
+    .directive('couponBlockDirective', function (modalProvider, $window, constants) {
 
         function link(scope, element, attrs) {
             var didScroll = false;
@@ -18,11 +18,11 @@ angular.module('send2CardApp')
             initialise();
 
             function initialise() {
-                if (scope.autoSendSingleCoupon === 'true') {
+                if (scope.configuration.AUTO_SEND_SINGLE_COUPON === 'true') {
                     scope.onSendSingleCoupon()
                         .then(sendSingleCouponComplete)
                         .catch(sendSingleCouponFailure);
-                    scope.autoSendSingleCoupon = false;
+                    scope.configuration.AUTO_SEND_SINGLE_COUPON = false;
                 }
 
                 if (scope.coupon.state != 0) {
@@ -44,7 +44,7 @@ angular.module('send2CardApp')
                 didScroll = true;
             });
 
-            /* Interval prevents function fired for every pixel moved */
+            /* prevents event fired for every pixel moved */
             setInterval(function () {
                 if (didScroll) {
                     scope.showProgressBar({
@@ -82,13 +82,15 @@ angular.module('send2CardApp')
             }
 
             scope.openPrintModal = function () {
-                modalProvider.openPrintModal(scope);
-                modalProvider.printModalInstance.result.catch(updateAfterprintModalClosed);
+                modalProvider.openPrintModal(scope).result.catch(updateAfterprintModalClosed);
+            }
+
+            scope.closePrintModal = function () {
+                modalProvider.closePrintModal();       
             }
 
             function updateAfterprintModalClosed() {
-                console.log(scope.printed);
-                if(scope.printed) {
+                if (scope.printed) {
                     scope.updateState(2);
                 }
             }
@@ -105,17 +107,15 @@ angular.module('send2CardApp')
         }
 
         return {
-            templateUrl: 'views/couponblock-template.html',
+            templateUrl: constants.COUPON_BLOCK_TEMPLATE,
             restrict: 'E',
             replace: true,
             scope: {
-                enableECOptIn: '@',
+                extraCareCardNumberEndDigits: '@',
                 configuration: '=',
                 couponButton: '=',
-                autoSendSingleCoupon: '@',
-                onSendSingleCoupon: '&',
-                extraCareCardNumberEndDigits: '@',
                 coupon: '=',
+                onSendSingleCoupon: '&',
                 onUpdateState: '&',
                 onResetCollapseStateForAll: '&',
                 showProgressBar: '&'

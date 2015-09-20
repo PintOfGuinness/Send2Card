@@ -8,28 +8,37 @@
  * Service in the send2CardApp.
  */
 angular.module('send2CardApp')
-  .service('modalProvider', function modalProvider($modal) {
-    
-    this.openErrorModal = function(scope){
-        var modalInstance = $modal.open({
-            template: '<error-modal-directive></error-modal-directive>',
-            controller: 'ModalController',
-            scope: scope
-        });
-    }
-    
-    this.openPrintModal = function(scope){
-        this.printModalInstance = $modal.open({
-            template: '<print-coupon-modal-directive></print-coupon-modal-directive>',
-            controller: 'ModalController',
-            scope: scope
-        });
-    }
-    
-    this.openHelpModal = function(){
-        var modalInstance = $modal.open({
-            templateUrl: 'views/helpmodal.html',
-            controller: 'ModalController'
-        });
-    }
-  });
+    .service('modalProvider', function modalProvider($modal) {
+
+        this.openErrorModal = function (scope) {
+            return this.errorModalInstance = $modal.open({
+                template: '<error-modal-directive></error-modal-directive>',
+                scope: scope
+            });
+        }
+
+        this.closeErrorModal = function () {
+            return this.errorModalInstance.dismiss('cancel');
+        }
+
+        this.openPrintModal = function (scope) {
+            return this.printModalInstance = $modal.open({
+                template: '<print-coupon-modal-directive></print-coupon-modal-directive>',
+                scope: scope
+            });
+        }
+
+        this.closePrintModal = function () {
+            return this.printModalInstance.dismiss('cancel');
+        }
+
+        this.openHelpModal = function () {
+            return this.helpModalInstance = $modal.open({
+                templateUrl: 'views/modals/help-modal.html',
+            });
+        }
+
+        this.closeHelpModal = function () {
+            return this.helpModalInstance.dismiss('cancel');
+        }
+    });

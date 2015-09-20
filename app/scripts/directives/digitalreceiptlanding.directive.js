@@ -2,16 +2,14 @@
 
 /**
  * @ngdoc directive
- * @name send2CardApp.directive:SingleCouponDirective
+ * @name send2CardApp.directive:digitalReceiptLandingDirective
  * @description
- * # SingleCouponDirective
+ * # digitalReceiptLandingDirective
  */
 angular.module('send2CardApp')
-    .directive('digitalReceiptLandingDirective', function () {
+    .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            templateUrl: 'views/digitalreceiptlanding.html',
-            restrict: 'E',
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, configuration) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -29,13 +27,13 @@ angular.module('send2CardApp')
 
                 function initialiseProperties() {
                     vm.couponError = false;
-                    vm.errorPath = "views/blank.html";
+                    vm.errorPath = constants.BLANK_VIEW;
                     vm.couponButton = {
-                        unSentCouponPath: "images/sendtocardicon.png",
-                        sentCouponPath: "images/oncard.png",
-                        couponPrinted: "images/printedicon.png"
+                        unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
+                        sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
+                        couponPrinted: constants.COUPON_PRINTED
                     };
-                    vm.configuration = configuration;
+                    vm.configuration = digitalReceiptLandingConfiguration;
                 }
 
                 function validateQueryParameters() {
@@ -81,7 +79,7 @@ angular.module('send2CardApp')
 
                 function sendSingleCouponFailure(error) {
                     vm.couponError = true;
-                    vm.errorPath = "views/error4.html";
+                    vm.errorPath = constants.TECHNICAL_ERROR;
 
                     return $q.reject(error);
                 }
@@ -101,9 +99,15 @@ angular.module('send2CardApp')
 
                 vm.openHelpModal = function () {
                     modalProvider.openHelpModal();
-                }                
+                }
+
+                vm.closeHelpModal = function () {
+                    modalProvider.closeHelpModal();
+                }
             },
-            controllerAs: 'singleCouponController',
-            bindToController: true
+            controllerAs: 'digitalReceiptLandingController',
+            bindToController: true,
+            templateUrl: constants.DIGITAL_RECEIPT_LANDING_TEMPLATE,
+            restrict: 'E'
         };
     });

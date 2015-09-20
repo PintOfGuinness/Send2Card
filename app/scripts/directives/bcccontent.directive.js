@@ -7,8 +7,7 @@
  * # bccAreaDirective
  */
 angular.module('send2CardApp')
-    .directive('bccAreaDirective', function ($cookies, queryParameterFactory, cookieFactory, configuration) {
-
+    .directive('bccContentDirective', function ($cookies, queryParameterFactory, cookieFactory, pageConfiguration, constants) {
 
         return {
             controller: function () {
@@ -16,7 +15,7 @@ angular.module('send2CardApp')
                 var vm = this;
                 var cookie;
                 vm.hideButton = false;
-                vm.enableECOptIn = configuration.ENABLE_EC_OPT_IN;
+                vm.configuration = pageConfiguration;
                 vm.createRememberMeCookie = function () {
                     if (vm.cookieHasAlreadyBeenCreated("ECCardNumber") === false) {
                         cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumberParameter());
@@ -38,7 +37,7 @@ angular.module('send2CardApp')
             },
             controllerAs: 'bccController',
             bindToController: true,
-            templateUrl: 'views/bcc-area.html',
+            templateUrl: constants.BCC_CONTENT_TEMPLATE,
             restrict: 'E',
 
         };

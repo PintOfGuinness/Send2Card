@@ -64,6 +64,5 @@ angular.module('send2CardApp')
                     return coupons.couponsPerRow;
                 }
             }
-
         };
     });

@@ -14,7 +14,8 @@ angular.module('send2CardApp')
     
         return {
             getExtraCareCardNumberParameter: getExtraCareCardNumberParameter,
-            getCouponNumberParameter: getCouponNumberParameter
+            getCouponNumberParameter: getCouponNumberParameter,
+            getExtraCareCardNumberEndDigits: getExtraCareCardNumberEndDigits
         };
 
         function getExtraCareCardNumberParameter() {
@@ -24,6 +25,7 @@ angular.module('send2CardApp')
 
         function getExtraCareCardNumberEndDigits() {
             var extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
+            
             return extraCareCardNumberEndDigits;
         }
     

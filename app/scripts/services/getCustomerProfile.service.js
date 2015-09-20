@@ -8,7 +8,7 @@
  * Service in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .service('couponsService', function couponsService($http) {
+    .service('getCustomerProfileService', function couponsService($http) {
 
         var couponServicePromise = null;
         var service = {

@@ -2,24 +2,23 @@
 
 /**
  * @ngdoc service
- * @name send2CardApp.couponManagerFactory
+ * @name send2CardApp.couponsManagerFactory
  * @description
- * # couponManagerFactory
+ * # couponsManagerFactory
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('couponsManagerFactory', function (couponsService, categoriseCouponsFilterFilter, sortCouponsFilterFilter) {
+    .factory('couponsManagerFactory', function (getCustomerProfileService, categoriseCouponsFilterFilter, sortCouponsFilterFilter) {
 
         var couponLists = {};
 
-        // Public API here
         return {
             getFilteredCouponLists: getFilteredCouponLists,
             resetCollapseStateForAll : resetCollapseStateForAll
         };
 
         function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
-            return couponsService.getUnfilteredCouponsFromJSON(extraCareCardNumber).then(function (results) {
+            return getCustomerProfileService.getUnfilteredCouponsFromJSON(extraCareCardNumber).then(function (results) {
                 
                 var allFilteredCoupons = categoriseCouponsFilterFilter(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
                 couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);

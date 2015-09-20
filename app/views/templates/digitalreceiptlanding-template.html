@@ -1,0 +1,26 @@
+<div>
+    <div ng-hide="digitalReceiptLandingController.couponError">
+        <div class="row nopadding">
+            <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-8 nopadding">
+                <h2 class="red-text">Success!</h2>
+                <h5>The coupon loaded on your ExtraCare card ending in {{digitalReceiptLandingController.extraCareCardNumberEndDigits}} and is ready to use.</h5>
+                <h6>Just present your ExtraCare card to the associate when you check out</h6>
+            </div>
+        </div>
+        <div class="row nopadding" style="display: flex;">
+            <br>
+            <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in digitalReceiptLandingController.couponsServiceData.singleCoupon">
+                <coupon-block-directive coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" on-reset-collapse-state-for-all="digitalReceiptLandingController.resetCollapseStateForAll()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
+            </div>
+
+            <bcc-content-directive ng-show="digitalReceiptLandingController.showBCC" class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4" style="display: flex;">
+            </bcc-content-directive>
+        </div>
+    </div>
+    <div>
+        <div ng-show="digitalReceiptLandingController.couponError">
+            <ng-include src="digitalReceiptLandingController.errorPath"></ng-include>
+        </div>
+    </div>
+    <br>
+</div>

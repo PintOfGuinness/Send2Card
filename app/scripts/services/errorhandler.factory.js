@@ -8,7 +8,7 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('errorHandlerFactory', function () {
+    .factory('errorHandlerFactory', function (constants) {
 
         return {
             processMissingExtraCareCardNumber: processMissingExtraCareCardNumber,
@@ -20,17 +20,17 @@ angular.module('send2CardApp')
 
         function processMissingExtraCareCardNumber(primaryHandler) {
             if (primaryHandler) {
-                return "views/error4.html"
+                return constants.TECHNICAL_ERROR;
             } else {
-                return "views/blankarea.html"
+                return constants.BLANK_VIEW;
             }
         }
 
         function processMissingCouponNumber(primaryHandler) {
             if (primaryHandler) {
-                return "views/viewallcouponsheader.html";
+                return constants.VIEW_ALL_COUPONS_HEADER;
             } else {
-                return "views/blankarea.html";
+                return constants.BLANK_VIEW;
             }
         }
 
