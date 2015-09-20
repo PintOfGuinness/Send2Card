@@ -10,29 +10,27 @@
 angular.module('send2CardApp')
     .factory('displayInformationFactory', function (screenSize) {
 
-        // Public API here
         return {
+            getRowIndexNumbers: function (coupons, indexNumber, couponsCategory) {
+                var rowIndexNumbers = [];
+                var tempArray = [];
 
-            getRowIndexNumbers: function (coupons, indexNumber, arrayName) {
-                var array = [];
-                var couponArray = [];
-                if (arrayName == "unactioned") {
-                    couponArray = coupons.couponsServiceData.unactionedCoupons;
+                if (couponsCategory == "unactioned") {
+                    tempArray = coupons.couponsServiceData.unactionedCoupons;
                 }
-                if (arrayName == "actioned") {
-                    couponArray = coupons.couponsServiceData.actionedCoupons;
+                if (couponsCategory == "actioned") {
+                    tempArray = coupons.couponsServiceData.actionedCoupons;
                 }
                 for (var i = indexNumber; i < coupons.couponsPerRow + indexNumber; i++) {
-                    if (i < couponArray.length) {
-                        array.push(i);
+                    if (i < tempArray.length) {
+                        rowIndexNumbers.push(i);
                     }
                 }
 
-                return array;
+                return rowIndexNumbers;
             },
 
             getDisplayMode: function () {
-
                 var screenMode = {
                     mobile: false,
                     tablet: false,
@@ -46,14 +44,13 @@ angular.module('send2CardApp')
                 } else if (screenSize.is('xs')) {
                     screenMode.mobile = true;
                 }
-                console.dir(screenMode);
+
                 return screenMode;
             },
 
-
-
             getCouponsPerRow: function (coupons) {
                 var couponsPerRow = 3;
+
                 if (screenSize.is('md, lg')) {
                     coupons.couponsPerRow = 3;
                     return coupons.couponsPerRow;

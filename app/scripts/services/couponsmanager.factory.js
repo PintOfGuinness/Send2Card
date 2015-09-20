@@ -32,6 +32,7 @@ angular.module('send2CardApp')
 
             }).catch(function (error) {
                 console.log("getFilteredCouponLists SOMETHING WENT WRONG!!!!!!");
+                
                 return error.multiCouponError = true;
             });
         }
@@ -45,12 +46,12 @@ angular.module('send2CardApp')
             } else {
                 return undefined;
             }
+            
             return singleCoupon;
         }
 
         function getSortedCoupons(couponsList) {
-            var sortedCoupons = sortCouponsFilterFilter(couponsList);
-            return sortedCoupons;
+            return sortCouponsFilterFilter(couponsList);;
         }
 
         function resetCollapseStateForAll() {

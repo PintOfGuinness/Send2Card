@@ -22,7 +22,6 @@ angular.module('send2CardApp')
                 vm.configuration = configuration;
 
                 screenSize.on('xs, sm, md, lg', function (match) {
-                    console.log("screenSize");
                     vm.screenMode = displayInformationFactory.getDisplayMode();
                 });
 
