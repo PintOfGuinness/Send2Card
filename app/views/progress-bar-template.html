@@ -1,7 +1,7 @@
-/* * Desktop progress bar */
-<div ng-show="progressBarController.showProgressBar">
+<!--Desktop progress bar-->
+<div ng-show="progressBarController.configuration.DISPLAY_PROGRESS_BAR">
     <div ng-show="progressBarController.screenMode.desktop">
-        <div id="desktop-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
+        <div id="desktop-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.configuration.DISPLAY_PROGRESS_BAR" ng-show="progressBarController.progressBarServiceData.display">
             <div class="container">
                 <div class="white-text pad-top">You're a
                     <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
@@ -24,9 +24,7 @@
         </div>
     </div>
 
-
-
-    /* * Tablet progress bar */
+    <!--Tablet progress bar-->
     <div ng-show="progressBarController.screenMode.tablet">
         <div id="tablet-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
             <div class="container">
@@ -57,7 +55,7 @@
 
 
 
-    /* * Mobile progress bar */
+    <!--Mobile progress bar-->
     <div id="mobile-progress-bar" ng-show="progressBarController.screenMode.mobile">
         <div class="full-width-black-background progress-bar-section" ng-if="progressBarController.showProgressBar" ng-show="progressBarController.progressBarServiceData.display">
             <div class="container">

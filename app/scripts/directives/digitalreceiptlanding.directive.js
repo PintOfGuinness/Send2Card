@@ -13,57 +13,50 @@ angular.module('send2CardApp')
             restrict: 'E',
             controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, configuration) {
 
-                var coupons = this;
+                var vm = this;
                 var extraCareCardNumber;
                 var couponNumber;
 
                 initialise();
 
                 function initialise() {
-
-                    extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
-                    couponNumber = queryParameterFactory.getCouponNumberParameter();
-
-                    coupons.couponError = false;
-                    coupons.errorPath = "views/error3.html";
-                    coupons.couponButton = {};
-                    coupons.couponButton.unSentCouponPath = "images/sendtocardicon.png";
-                    coupons.couponButton.sentCouponPath = "images/oncard.png";
-                    coupons.couponButton.couponPrinted = "images/printedicon.png";
-
-                    // taking the configuration values for use throughout the controller
-                    coupons.enablePrintAction = configuration.ENABLE_PRINT_ACTION;
-                    coupons.autoSendSingleCoupon = configuration.AUTO_SEND_SINGLE_COUPON;
-                    coupons.showSingleCoupon = configuration.SHOW_SINGLE_COUPON;
-                    coupons.showCouponBlock = configuration.SHOW_COUPON_BLOCK;
-                    coupons.showBCC = configuration.SHOW_BCC;
-                    coupons.showMonetate = configuration.SHOW_MONETATE;
-                    coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
-                    coupons.enableECOptIn = configuration.ENABLE_EC_OPT_IN; 
+                    initialiseProperties();
 
                     if (validateQueryParameters()) {
                         getfilteredCouponLists();
                     }
                 }
 
+                function initialiseProperties() {
+                    vm.couponError = false;
+                    vm.errorPath = "views/blank.html";
+                    vm.couponButton = {
+                        unSentCouponPath: "images/sendtocardicon.png",
+                        sentCouponPath: "images/oncard.png",
+                        couponPrinted: "images/printedicon.png"
+                    };
+                    vm.configuration = configuration;
+                }
+
                 function validateQueryParameters() {
                     var success = false;
 
-                    if (angular.isDefined(extraCareCardNumber)) {
+                    extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
+                    couponNumber = queryParameterFactory.getCouponNumberParameter();
 
-                        coupons.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
+                    if (angular.isDefined(extraCareCardNumber)) {
+                        vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
                         success = true;
 
                         if (angular.isUndefined(couponNumber)) {
-                            coupons.couponError = true;
-                            coupons.errorPath = errorHandlerFactory.processMissingCouponNumber(true);
+                            vm.couponError = true;
+                            vm.errorPath = errorHandlerFactory.processMissingCouponNumber(true);
                         }
                     } else {
-                        coupons.couponError = true;
-                        coupons.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(true);
+                        vm.couponError = true;
+                        vm.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(true);
                     }
 
-                    console.log(success);
                     return success;
                 }
 
@@ -74,38 +67,41 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
-                    coupons.couponsServiceData = results;
+                    vm.couponsServiceData = results;
                 }
 
                 function getfilteredCouponListsFailed(error) {
-                    coupons.multiCouponError = error.multiCouponError;
+                    vm.multiCouponError = error.multiCouponError;
                 }
 
-                coupons.sendSingleCoupon = function () {
+                vm.sendSingleCoupon = function () {
                     return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
                         .catch(sendSingleCouponFailure);
                 }
 
                 function sendSingleCouponFailure(error) {
-                    console.log("Controller:sendSingleCouponFailure: " + error.state);
-                    coupons.couponError = true;
-                    coupons.errorPath = "views/error4.html";
+                    vm.couponError = true;
+                    vm.errorPath = "views/error4.html";
 
                     return $q.reject(error);
                 }
 
-                coupons.resetCollapseStateForAll = function () {
+                vm.resetCollapseStateForAll = function () {
                     couponsManagerFactory.resetCollapseStateForAll();
                 }
 
-                coupons.showProgressBar = function (display, actionedCoupon) {
+                vm.showProgressBar = function (display, actionedCoupon) {
                     if (display) {
                         progressBarFactory.toggleProgressBarDisplay(true);
-                        progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData, actionedCoupon);
+                        progressBarFactory.updateProgressBarAfterAction(vm.couponsServiceData, actionedCoupon);
                     } else {
                         progressBarFactory.toggleProgressBarDisplay(false);
                     }
                 }
+
+                vm.openHelpModal = function () {
+                    modalProvider.openHelpModal();
+                }                
             },
             controllerAs: 'singleCouponController',
             bindToController: true

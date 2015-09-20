@@ -15,18 +15,15 @@ angular.module('send2CardApp')
                         },*/
             controller: function (progressBarFactory, displayInformationFactory, screenSize) {
 
-                var progressBar = this;
+                var vm = this;
                 // console.dir(displayInformationFactory.screenMode);
-                progressBar.progressBarServiceData = progressBarFactory.getServiceData();
-                progressBar.screenMode = displayInformationFactory.getDisplayMode();
-                progressBar.showProgressBar = configuration.SHOW_PROGRESS_BAR;
-                /*                this.mobileMode = screenMode.mobile;
-                                this.tabletMode = screenMode.tablet;
-                                this.desktopMode = screenMode.desktop;*/
+                vm.progressBarServiceData = progressBarFactory.getServiceData();
+                vm.screenMode = displayInformationFactory.getDisplayMode();
+                vm.configuration = configuration;
 
                 screenSize.on('xs, sm, md, lg', function (match) {
                     console.log("screenSize");
-                    progressBar.screenMode = displayInformationFactory.getDisplayMode();
+                    vm.screenMode = displayInformationFactory.getDisplayMode();
                 });
 
             },

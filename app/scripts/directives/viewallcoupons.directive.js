@@ -13,50 +13,43 @@ angular.module('send2CardApp')
             restrict: 'E',
             controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, modalProvider, screenSize, $q, configuration) {
 
-                var coupons = this;
+                var vm = this;
                 var extraCareCardNumber;
                 var couponNumber;
 
                 initialise();
 
                 function initialise() {
-
-                    displayInformationFactory.getCouponsPerRow(coupons);
-                    extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
-                    couponNumber = queryParameterFactory.getCouponNumberParameter();
-
-                    coupons.couponError = false;
-                    coupons.errorPath = "views/blankarea.html";
-                    coupons.couponButton = {
-                        unSentCouponPath: "images/sendtocardicon.png",
-                        sentCouponPath: "images/oncard.png",
-                        couponPrinted: "images/printedicon.png"
-                    };
-
-                    console.dir(coupons.couponButton);
-                    // taking the configuration values for use throughout the controller
-                    coupons.enablePrintAction = configuration.ENABLE_PRINT_ACTION;
-                    coupons.autoSendSingleCoupon = configuration.AUTO_SEND_SINGLE_COUPON;
-                    coupons.showSingleCoupon = configuration.SHOW_SINGLE_COUPON;
-                    coupons.showCouponBlock = configuration.SHOW_COUPON_BLOCK;
-                    coupons.showBCC = configuration.SHOW_BCC;
-                    coupons.showMonetate = configuration.SHOW_MONETATE;
-                    coupons.showReadyToUse = configuration.SHOW_READY_TO_USE;
-                    coupons.enableECOptIn = configuration.ENABLE_EC_OPT_IN;
+                    initialiseProperties();
+                    getDisplayCouponsNumberPerRow()
 
                     if (validateQueryParameters()) {
                         getfilteredCouponLists();
                     }
                 }
 
+                function initialiseProperties() {
+                    vm.couponError = false;
+                    vm.errorPath = "views/blank.html";
+                    vm.couponButton = {
+                        unSentCouponPath: "images/sendtocardicon.png",
+                        sentCouponPath: "images/oncard.png",
+                        couponPrinted: "images/printedicon.png"
+                    };
+                    vm.configuration = configuration;
+                }
+
                 function validateQueryParameters() {
                     var success = false;
 
+                    extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
+                    couponNumber = queryParameterFactory.getCouponNumberParameter();
+
                     if (angular.isUndefined(extraCareCardNumber)) {
-                        coupons.couponError = true;
-                        coupons.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(false);
+                        vm.couponError = true;
+                        vm.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(false);
                     } else {
-                        coupons.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
+                        vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
                         success = true;
                     }
 
@@ -70,18 +63,14 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
-                    coupons.couponsServiceData = results;
+                    vm.couponsServiceData = results;
                 }
 
                 function getfilteredCouponListsFailed(error) {
-                    coupons.errorDisplay = error.htmlDisplay;
+                    vm.errorDisplay = error.htmlDisplay;
                 }
 
-                coupons.resetCollapseStateForAll = function () {
-                    couponsManagerFactory.resetCollapseStateForAll();
-                }
-
-                coupons.sendSingleCoupon = function () {
+                vm.sendSingleCoupon = function () {
                     return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
                         .catch(sendSingleCouponFailure);
                 }
@@ -92,36 +81,39 @@ angular.module('send2CardApp')
 
                     return $q.reject(error);
                 }
-
-                coupons.openHelpModal = function () {
-                    modalProvider.openHelpModal();
+            
+                vm.resetCollapseStateForAll = function () {
+                    couponsManagerFactory.resetCollapseStateForAll();
                 }
-
-                coupons.getRowIndexNumbers = function (indexNumber, arrayName) {
-                    var array = [];
-                    array = displayInformationFactory.getRowIndexNumbers(coupons, indexNumber, arrayName);
-
-                    return array;
-                }
-
-                screenSize.on('xs, sm, md, lg', function (match) {
-                    console.log("screenSize");
-                    coupons.couponsPerRow = displayInformationFactory.getCouponsPerRow(coupons);
-                });
-
-                coupons.getCouponsPerRow = function () {
-                    console.log("getCouponsPerRow");
-                    return displayInformationFactory.getCouponsPerRow(coupons);
-                }
-
-                coupons.showProgressBar = function (display, actionedCoupon) {
+                
+                vm.showProgressBar = function (display, actionedCoupon) {
                     if (display) {
                         progressBarFactory.toggleProgressBarDisplay(true);
-                        progressBarFactory.updateProgressBarAfterAction(coupons.couponsServiceData, actionedCoupon);
+                        progressBarFactory.updateProgressBarAfterAction(vm.couponsServiceData, actionedCoupon);
                     } else {
                         progressBarFactory.toggleProgressBarDisplay(false);
                     }
                 }
+
+                vm.openHelpModal = function () {
+                    modalProvider.openHelpModal();
+                }
+                
+                screenSize.on('xs, sm, md, lg', function (match) {
+                    vm.couponsPerRow = getDisplayCouponsNumberPerRow();
+                });
+                
+                vm.getCouponsPerRow = function () {
+                    return getDisplayCouponsNumberPerRow();
+                }
+
+                function getDisplayCouponsNumberPerRow() {
+                    return displayInformationFactory.getCouponsPerRow(vm);
+                }
+                
+                vm.getRowIndexNumbers = function (indexNumber, arrayName) {
+                    return displayInformationFactory.getRowIndexNumbers(vm, indexNumber, arrayName);;
+                }                
             },
             controllerAs: 'viewallCouponsController',
             bindToController: true

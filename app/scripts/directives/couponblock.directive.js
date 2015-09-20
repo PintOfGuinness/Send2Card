@@ -61,7 +61,7 @@ angular.module('send2CardApp')
                 scope.coupon.isCollapsed = !tempIsCollapsed;
             }
 
-            scope.clickSendCouponToCard = function () {
+            scope.sendSingleCoupon = function () {
                 scope.onSendSingleCoupon()
                     .then(sendSingleCouponComplete)
                     .catch(sendSingleCouponFailure);
@@ -110,7 +110,7 @@ angular.module('send2CardApp')
             replace: true,
             scope: {
                 enableECOptIn: '@',
-                enablePrintAction: '@',
+                configuration: '=',
                 couponButton: '=',
                 autoSendSingleCoupon: '@',
                 onSendSingleCoupon: '&',

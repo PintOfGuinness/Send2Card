@@ -12,31 +12,29 @@ angular.module('send2CardApp')
 
         return {
             controller: function () {
+                
+                var vm = this;
                 var cookie;
-                this.hideButton = false;
-                this.enableECOptIn = configuration.ENABLE_EC_OPT_IN;
-                this.createRememberMeCookie = function () {
-                    if (this.cookieHasAlreadyBeenCreated("ECCardNumber") === false) {
+                vm.hideButton = false;
+                vm.enableECOptIn = configuration.ENABLE_EC_OPT_IN;
+                vm.createRememberMeCookie = function () {
+                    if (vm.cookieHasAlreadyBeenCreated("ECCardNumber") === false) {
                         cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumberParameter());
                     }
                 }
 
-
-                this.hideRememberMeButton = function () {
-                    this.hideButton = true;
+                vm.hideRememberMeButton = function () {
+                    vm.hideButton = true;
                 }
 
-                this.cookieHasAlreadyBeenCreated = function (key) {
+                vm.cookieHasAlreadyBeenCreated = function (key) {
                     if (cookieFactory.getCookieValue("ECCardNumber") === undefined) {
                         return false;
                     } else {
-                        this.hideButton = true;
+                        vm.hideButton = true;
                         return true;
                     }
-
                 }
-
-
             },
             controllerAs: 'bccController',
             bindToController: true,
