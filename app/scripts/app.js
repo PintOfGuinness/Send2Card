@@ -8,6 +8,9 @@
  *
  * Main module of the application.
  */
+
+angular.module('tealiumModule', []);
+
 angular
     .module('send2CardApp', [
     'matchMedia',
@@ -17,6 +20,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'tealiumModule'
   ])
    
