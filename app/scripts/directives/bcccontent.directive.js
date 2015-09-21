@@ -11,17 +11,20 @@ angular.module('send2CardApp')
 
         return {
             controller: function (pageConfiguration) {
-
                 var vm = this;
                 var cookie;
 
                 initialise();
 
                 function initialise() {
-                    //   initialiseProperties();
+                    initialiseProperties();
+
+                    vm.hideButton = checkCookieExists();
+                }
+
+                function initialiseProperties() {
                     vm.hideButton = false;
                     vm.configuration = pageConfiguration;
-                    vm.hideButton = checkCookieExists();
                 }
 
                 function checkCookieExists() {
