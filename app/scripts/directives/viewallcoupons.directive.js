@@ -101,9 +101,9 @@ angular.module('send2CardApp')
                     }
                 }
 
-                vm.getCouponsPerRow = function () {
-                    return getDisplayCouponsNumberPerRow();
-                }
+                screenSize.on('xs, sm, md, lg', function (match) {
+                    vm.screenMode = getDisplayCouponsNumberPerRow();
+                });
 
                 function getDisplayCouponsNumberPerRow() {
                     return displayInformationFactory.getCouponsPerRow(vm);
