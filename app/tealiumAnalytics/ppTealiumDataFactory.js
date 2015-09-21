@@ -12,8 +12,7 @@
         };
 
         function getDefault() {
-            $log.debug('INFO: Tealium UDO - getDefault()');
-            
+            /*$log.debug('INFO: Tealium UDO - getDefault()');*/
             
             var date = new Date();
             var defaultUdo = {

@@ -7,7 +7,7 @@
  * # couponDirective
  */
 angular.module('send2CardApp')
-    .directive('couponBlockDirective', function (modalProvider, $window, constants) {
+    .directive('couponBlockDirective', function (modalProvider, $window, constants,tealiumService, pageConfiguration) {
 
         function link(scope, element, attrs) {
             var didScroll = false;
@@ -18,7 +18,7 @@ angular.module('send2CardApp')
             initialise();
 
             function initialise() {
-                if (scope.configuration.AUTO_SEND_SINGLE_COUPON === 'true') {
+                if (scope.configuration.AUTO_SEND_SINGLE_COUPON) {
                     scope.onSendSingleCoupon()
                         .then(sendSingleCouponComplete)
                         .catch(sendSingleCouponFailure);
@@ -37,6 +37,21 @@ angular.module('send2CardApp')
 
                 if (scope.coupon.state == constants.COUPON_STATE_PRINTED) {
                     scope.isFlipped = true;
+                }
+            }
+
+            if (pageConfiguration.TEALIUM_ENABLED) {
+                scope.recordSend2Card = function () {
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Send To Card','Send To Card');
+                }
+                scope.recordFirstPrintButtonClick = function () {
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click First Print Button','Print');
+                }
+                scope.recordSecondPrintButtonClick = function () {
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Second Print Button','Print');
+                }
+                scope.recordViewDetails = function () {
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click View Details', 'Coupon');
                 }
             }
 

@@ -8,9 +8,9 @@
     function tealiumService(tealiumDataFactory, tealiumHelperFactory) {
 
         return {
-            recordPageView : recordPageView,
-            recordPageLink : recordPageLink,
-            recordErrorMessage : recordErrorMessage,
+            recordPageView: recordPageView,
+            recordPageLink: recordPageLink,
+            recordErrorMessage: recordErrorMessage,
             recordCustomPageLink: recordCustomPageLink,
         };
 
@@ -19,68 +19,72 @@
             udo.pageName = pageName;
 
             tealiumHelperFactory.view(udo);
-            console.log("UDO: "+ udo);
+            console.log("UDO:");
+            console.dir(udo);
             return udo;
         }
 
-        function recordErrorMessage (errorMessage){
+        function recordErrorMessage(errorMessage) {
             var udo = tealiumDataFactory.getDefault();
 
-            if(errorMessage !== 'null') {
+            if (errorMessage !== 'null') {
                 udo.errorMessage = errorMessage;
             }
 
             tealiumHelperFactory.view(udo);
-            console.log("UDO: "+ udo);
+            console.log("UDO:");
+            console.dir(udo);
             return udo;
         }
 
         function recordPageLink(pageName, eventType, eventCategory, eventField) {
             var udo = tealiumDataFactory.getDefault();
             udo.pageName = pageName;
-            if(eventType !== 'null') {
+            if (eventType !== 'null') {
                 udo.eventType = eventType;
             }
 
-            if(eventCategory !== 'null') {
+            if (eventCategory !== 'null') {
                 udo.eventCategory = eventCategory;
             }
 
-            if(eventField !== 'null') {
+            if (eventField !== 'null') {
                 udo.eventField = eventField;
             }
 
-            tealiumHelperFactory.recordEvent (udo);
-            console.log("UDO: "+ udo);
+            tealiumHelperFactory.recordEvent(udo);
+            console.log("UDO:");
+            console.dir(udo);
             return udo;
         }
 
-        function recordCustomPageLink(pageName,crxFlagProfile,crxEmailTriggersCountAll,eventType, eventCategory, eventField){
+        function recordCustomPageLink(pageName, crxFlagProfile, crxEmailTriggersCountAll, eventType, eventCategory, eventField) {
             var udo = tealiumDataFactory.getDefault();
 
             udo.pageName = pageName;
 
-            if(crxFlagProfile !== 'null') {
+            if (crxFlagProfile !== 'null') {
                 udo.crxFlagProfile = crxFlagProfile;
             }
-            if(crxEmailTriggersCountAll !== 'null') {
+            if (crxEmailTriggersCountAll !== 'null') {
                 udo.crxEmailTriggersCountAll = crxEmailTriggersCountAll;
             }
 
-            if(eventType !== 'null') {
+            if (eventType !== 'null') {
                 udo.eventType = eventType;
             }
 
-            if(eventCategory !== 'null') {
+            if (eventCategory !== 'null') {
                 udo.eventCategory = eventCategory;
             }
 
-            if(eventField !== 'null') {
+            if (eventField !== 'null') {
                 udo.eventField = eventField;
             }
 
-            tealiumHelperFactory.recordEvent (udo);
-            console.log("UDO: "+ udo);
+            tealiumHelperFactory.recordEvent(udo);
+            console.log("UDO:");
+            console.dir(udo);
             return udo;
         }
 

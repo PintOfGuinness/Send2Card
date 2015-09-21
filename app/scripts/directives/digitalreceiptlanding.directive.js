@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -22,6 +22,10 @@ angular.module('send2CardApp')
 
                     if (validateQueryParameters()) {
                         getfilteredCouponLists();
+                    }
+
+                    if (pageConfiguration.TEALIUM_ENABLED) {
+                       tealiumService.recordPageView(constants.PAGE_NAME);
                     }
                 }
 
@@ -80,7 +84,9 @@ angular.module('send2CardApp')
                 function sendSingleCouponFailure(error) {
                     vm.couponError = true;
                     vm.errorPath = constants.TECHNICAL_ERROR;
-
+                    if(pageConfiguration.TEALIUM_ENABLED){
+                    tealiumService.recordErrorMessage(error);
+                    }
                     return $q.reject(error);
                 }
 
@@ -94,6 +100,12 @@ angular.module('send2CardApp')
                         progressBarFactory.updateProgressBarAfterAction(vm.couponsServiceData, actionedCoupon);
                     } else {
                         progressBarFactory.toggleProgressBarDisplay(false);
+                    }
+                }
+
+                if (pageConfiguration.TEALIUM_ENABLED) {
+                    vm.helpClick = function () {
+                        tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Help Button', 'Error Modal');
                     }
                 }
 
