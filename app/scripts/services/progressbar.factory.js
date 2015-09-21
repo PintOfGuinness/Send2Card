@@ -8,7 +8,7 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('progressBarFactory', function () {
+    .factory('progressBarFactory', function (constants) {
 
         var progressBarData = {};
         var propertiesInitialised = false;
@@ -33,6 +33,10 @@ angular.module('send2CardApp')
             var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
             progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
             progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
+
+            //TODO clean this up
+            progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
+
             progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
             progressBarData.actionedLength = getActionedLength(couponsData.actionedCoupons);
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
@@ -48,9 +52,26 @@ angular.module('send2CardApp')
             progressBarData.actionedLength++;
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
+            progressBarData.actionedSavingsAsString = (progressBarData.actionedSavings).toFixed(2);
+
+
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
         }
-    
+
+
+        function checkIfZeros(savings) {
+
+            var cents = savings.substring([savings.indexOf(constants.DOT) + 1], [savings.length]);
+            console.log("Cents = " + cents);
+            if ((cents === constants.DISPLAY_ZEROS)) {
+                return savings.substring(savings[0], savings.indexOf(constants.DOT));
+                console.log("Savings have zeros..." + savings);
+            } else {
+                console.log("Savings don't have zeros");
+                return savings;
+            }
+        }
+
         function getTotalNumberOfCoupons(couponsData) {
             var totalNumberOfCoupons = couponsData.unactionedCoupons.length + couponsData.actionedCoupons.length;
             if (couponsData.singleCoupon != undefined) {
@@ -91,8 +112,14 @@ angular.module('send2CardApp')
 
         function updateActionedSavings(actionedCoupon) {
             var actionedSavings = 0.00;
+            console.log("Actioned redeem = " + actionedCoupon.max_redeem_amt);
             actionedSavings += parseFloat(actionedCoupon.max_redeem_amt);
+            console.log("Actioned savings to 2 toFixed = " + (actionedSavings).toFixed(2));
             return actionedSavings;
+        }
+
+        function convertActionedSavingsToString(actionedSavings) {
+            return (actionedSavings).toFixed(2);
         }
 
         function getProgressBarValue(actionedLength, totalCoupons) {

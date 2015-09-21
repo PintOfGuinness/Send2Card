@@ -4,7 +4,7 @@
         <div id="desktop-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.configuration.DISPLAY_PROGRESS_BAR" ng-show="progressBarController.progressBarServiceData.display">
             <div class="container">
                 <div class="white-text pad-top">You're a
-                    <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
+                    <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavingsAsString}}</strong> in savings!
 
 
 
@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="white-text pad-top">You're a
                     <div class="white-text pull-right"></div>
-                    <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
+                    <br><strong class="text-size-uniform">Super Saver</strong> with over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavingsAsString}}</strong> in savings!
 
 
 
@@ -56,7 +56,7 @@
     <div id="mobile-progress-bar" ng-show="progressBarController.screenMode.mobile">
         <div class="full-width-black-background progress-bar-section" ng-if="progressBarController.configuration.DISPLAY_PROGRESS_BAR" ng-show="progressBarController.progressBarServiceData.display">
             <div class="container">
-                <div class="white-text pad-top">over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavings}}</strong> in savings!
+                <div class="white-text pad-top">over <sup>$</sup><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedSavingsAsString}}</strong> in savings!
 
 
 

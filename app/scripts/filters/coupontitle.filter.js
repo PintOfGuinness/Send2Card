@@ -46,13 +46,11 @@ angular.module('send2CardApp')
 
             couponInput.dollars = couponInput.title.substring([0], couponInput.title.indexOf(constants.DOT));
             couponInput.cents = couponInput.title.substring([couponInput.title.indexOf(constants.DOT) + 1], [couponInput.title.length]);
-
             if ((couponInput.cents === constants.DISPLAY_ZEROS)) {
                 couponInput.dontShowCents = true;
             } else {
                 couponInput.dontShowCents = false;
             }
-
             return couponInput;
         }
 
