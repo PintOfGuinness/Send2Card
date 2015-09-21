@@ -10,32 +10,42 @@ angular.module('send2CardApp')
     .directive('bccContentDirective', function ($cookies, queryParameterFactory, cookieFactory, pageConfiguration, constants) {
 
         return {
-            controller: function () {
-                
+            controller: function (pageConfiguration) {
+
                 var vm = this;
                 var cookie;
-                vm.hideButton = false;
-                vm.configuration = pageConfiguration;
+
+                initialise();
+
+                function initialise() {
+                    //   initialiseProperties();
+                    vm.hideButton = false;
+                    vm.configuration = pageConfiguration;
+                    vm.hideButton = checkCookieExists();
+                }
+
+                function checkCookieExists() {
+                    if (cookieFactory.getCookieValue("ECCardNumber") === undefined) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }
+
                 vm.createRememberMeCookie = function () {
-                    if (vm.cookieHasAlreadyBeenCreated("ECCardNumber") === false) {
+                    if (checkCookieExists() === false) {
                         cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumberParameter());
+                        if (angular.isDefined(cookie)) {
+                            vm.hideRememberMeButton();
+                        }
                     }
                 }
 
                 vm.hideRememberMeButton = function () {
                     vm.hideButton = true;
                 }
-
-                vm.cookieHasAlreadyBeenCreated = function (key) {
-                    if (cookieFactory.getCookieValue("ECCardNumber") === undefined) {
-                        return false;
-                    } else {
-                        vm.hideButton = true;
-                        return true;
-                    }
-                }
             },
-            controllerAs: 'bccController',
+            controllerAs: 'bccContentController',
             bindToController: true,
             templateUrl: constants.BCC_CONTENT_TEMPLATE,
             restrict: 'E',

@@ -1,9 +1,9 @@
-<div ng-show="bccController.configuration.ENABLE_EC_OPT_IN">
-    <div ng-hide="bccController.cookieHasAlreadyBeenCreated();">
-        <button ng-click="bccController.createRememberMeCookie(); bccController.hideRememberMeButton();" ng-hide="bccController.cookieHasAlreadyBeenCreated();">
+<div ng-show="bccContentController.configuration.ENABLE_EC_OPT_IN">
+    <div ng-hide="bccContentController.hideButton">
+        <button ng-click="bccContentController.createRememberMeCookie();" ng-hide="bccContentController.hideButton">
             Remember Me
         </button>
     </div>
 </div>
 
-<div class="bcc panel-body" ng-show="bccController.cookieHasAlreadyBeenCreated();">BCC Area 1.</div>
+<div class="bcc panel-body" ng-show="bccContentController.hideButton">BCC Area 1.</div>

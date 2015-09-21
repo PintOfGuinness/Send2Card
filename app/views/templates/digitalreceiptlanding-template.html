@@ -13,7 +13,7 @@
                 <coupon-block-directive coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" on-reset-collapse-state-for-all="digitalReceiptLandingController.resetCollapseStateForAll()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
             </div>
 
-            <bcc-content-directive ng-show="digitalReceiptLandingController.showBCC" class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4" style="display: flex;">
+            <bcc-content-directive ng-show="digitalReceiptLandingController.configuration.DISPLAY_BCC" class="col-xs-12 col-sm-6 col-md-4 col-md-offset-4" style="display: flex;">
             </bcc-content-directive>
         </div>
     </div>
