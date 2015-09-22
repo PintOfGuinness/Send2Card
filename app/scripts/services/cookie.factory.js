@@ -23,6 +23,4 @@ angular.module('send2CardApp')
         function getCookieValue(key) {
             return $cookies[key];
         }
-
-
     });

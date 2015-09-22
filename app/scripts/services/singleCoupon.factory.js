@@ -8,11 +8,13 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('singleCouponFactory', function ($http, $q) {
+    .factory('singleCouponFactory', function ($http, $q, $filter) {
 
         return {
             sendSingleCoupon: function (extraCareCardNumber, couponSequenceNumber) {
 
+                getTimeStampInECFormat();
+                
                 var baseUrl = 'data/sendToCardSuccess.json';
                 var requestBody = {
                     extraCareCard: extraCareCardNumber,
@@ -39,5 +41,11 @@ angular.module('send2CardApp')
                         return $q.reject(error);
                     });
             }
+        }
+        
+        function getTimeStampInECFormat() {
+            var timeStampFormat = "yyyyMMddHH:mm:ssZ";
+            var formattedDate = $filter('date')(new Date(), timeStampFormat);
+            console.log("Date " + formattedDate);
         }
     });
