@@ -9,28 +9,35 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider, spinnerService) {
 
                 var vm = this;
                 var extraCareCardNumber;
                 var couponNumber;
 
+
                 initialise();
 
                 function initialise() {
+                    var delay = 0;
+                    vm.showSpinner = true;
+
                     initialiseProperties();
 
                     if (validateQueryParameters()) {
-                        getfilteredCouponLists();
+                        setTimeout(function () {
+                            getfilteredCouponLists();
+                            vm.showSpinner = false;
+                        }, delay);
                     }
 
                     if (pageConfiguration.TEALIUM_ENABLED) {
-                       tealiumService.recordPageView(constants.PAGE_NAME);
+                        tealiumService.recordPageView(constants.PAGE_NAME);
                     }
                 }
 
                 function initialiseProperties() {
-                    vm.couponError = false;
+                    vm.couponError = true;
                     vm.errorPath = constants.BLANK_VIEW;
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
@@ -69,11 +76,13 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
+                    vm.couponError = false;
                     vm.couponsServiceData = results;
+                    //set getCoupons success
                 }
 
                 function getfilteredCouponListsFailed(error) {
-                    vm.multiCouponError = error.multiCouponError;
+                 // To sort out error handling
                 }
 
                 vm.sendSingleCoupon = function () {
@@ -84,8 +93,8 @@ angular.module('send2CardApp')
                 function sendSingleCouponFailure(error) {
                     vm.couponError = true;
                     vm.errorPath = constants.TECHNICAL_ERROR;
-                    if(pageConfiguration.TEALIUM_ENABLED){
-                    tealiumService.recordErrorMessage(error);
+                    if (pageConfiguration.TEALIUM_ENABLED) {
+                        tealiumService.recordErrorMessage(error);
                     }
                     return $q.reject(error);
                 }

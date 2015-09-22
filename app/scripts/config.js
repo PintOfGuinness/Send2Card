@@ -1,7 +1,7 @@
 var app = angular.module('send2CardApp');
 
 app.constant('pageConfiguration', {
-    DISPLAY_PROGRESS_BAR: true,
+    DISPLAY_PROGRESS_BAR: false,
     DISPLAY_MONETATE: true, //TODO
     ENABLE_EC_OPT_IN: true,
     TEALIUM_ENABLED: false

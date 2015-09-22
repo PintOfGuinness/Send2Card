@@ -27,7 +27,7 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
-                    vm.couponError = false;
+                    vm.couponError = true;
                     vm.errorPath = constants.BLANK_VIEW;
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
@@ -61,6 +61,7 @@ angular.module('send2CardApp')
                 }
 
                 function getfilteredCouponListsSuccess(results) {
+                    vm.couponError = false;
                     vm.couponsServiceData = results;
                 }
 
