@@ -52,7 +52,7 @@ angular.module('send2CardApp')
             progressBarData.actionedLength++;
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
-            progressBarData.actionedSavingsAsString = (progressBarData.actionedSavings).toFixed(2);
+            progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
 
 
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
@@ -60,12 +60,14 @@ angular.module('send2CardApp')
 
 
         function checkIfZeros(savings) {
-
-            var cents = savings.substring([savings.indexOf(constants.DOT) + 1], [savings.length]);
+            console.log("Checking if zero...");
+            console.log("index of dot..." + savings.indexOf(constants.DOT));
+            var cents = savings.substring(savings.indexOf(constants.DOT) + 1, savings.length);
             console.log("Cents = " + cents);
             if ((cents === constants.DISPLAY_ZEROS)) {
-                return savings.substring(savings[0], savings.indexOf(constants.DOT));
                 console.log("Savings have zeros..." + savings);
+
+                return savings.substring(0, savings.indexOf(constants.DOT));
             } else {
                 console.log("Savings don't have zeros");
                 return savings;
