@@ -60,16 +60,11 @@ angular.module('send2CardApp')
 
 
         function checkIfZeros(savings) {
-            console.log("Checking if zero...");
-            console.log("index of dot..." + savings.indexOf(constants.DOT));
-            var cents = savings.substring(savings.indexOf(constants.DOT) + 1, savings.length);
-            console.log("Cents = " + cents);
-            if ((cents === constants.DISPLAY_ZEROS)) {
-                console.log("Savings have zeros..." + savings);
 
+            var cents = savings.substring(savings.indexOf(constants.DOT) + 1, savings.length);
+            if ((cents === constants.DISPLAY_ZEROS)) {
                 return savings.substring(0, savings.indexOf(constants.DOT));
             } else {
-                console.log("Savings don't have zeros");
                 return savings;
             }
         }
@@ -114,9 +109,7 @@ angular.module('send2CardApp')
 
         function updateActionedSavings(actionedCoupon) {
             var actionedSavings = 0.00;
-            console.log("Actioned redeem = " + actionedCoupon.max_redeem_amt);
             actionedSavings += parseFloat(actionedCoupon.max_redeem_amt);
-            console.log("Actioned savings to 2 toFixed = " + (actionedSavings).toFixed(2));
             return actionedSavings;
         }
 
