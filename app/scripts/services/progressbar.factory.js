@@ -73,8 +73,13 @@ angular.module('send2CardApp')
             savingsText.multiPercentSavingsDirective = false;
 
 
+            
+            console.log("percent present = " + percentPresent);
+            console.log("dollarPresent = " + dollarPresent);
+            
             // initial check for presence of dollar and percent discount
             if (percentPresent === true && dollarPresent === true) {
+                console.log("percent and dollar are both true");
                 savingsText.dollarAndPercentSavingsDirective = true;
             }
             // dollar saving, not percent
@@ -84,7 +89,7 @@ angular.module('send2CardApp')
 
             // check percentages then determine if single or multi
             if (percentPresent === true && dollarPresent === false) {
-
+                
                 if (singlePercent === true) {
                     savingsText.singlePercentSavingsDirective = true;
                 } else if (multiPercent === true) {
