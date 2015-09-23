@@ -4,9 +4,23 @@
         <div id="desktop-progress-bar" class="full-width-black-background progress-bar-section" ng-if="progressBarController.configuration.DISPLAY_PROGRESS_BAR" ng-show="progressBarController.progressBarServiceData.display">
             <div class="container">
                 <div class="white-text pad-top">You're a
-                    <div class="no-padding" ng-show="progressBarController.progressBarServiceData.savingsText.dollarSavingsDirective">
+                    <div ng-show="progressBarController.progressBarServiceData.savingsText.dollarSavingsDirective">
                         <dollar-savings-directive></dollar-savings-directive>
                     </div>
+                   <!--<div ng-show="progressBarController.progressBarServiceData.savingsText.dollarSavingsDirective">
+    <dollar-and-percent-savings-directive></dollar-and-percent-savings-directive>
+</div>
+<div ng-show="progressBarController.progressBarServiceData.savingsText.singlePercentSavingsDirective">
+    <single-percent-savings-directive></single-percent-savings-directive>
+</div>
+<div ng-show="progressBarController.progressBarServiceData.savingsText.multiPercentSavingsDirective">
+    <multi-percent-savings-directive></multi-percent-savings-directive>
+</div>-->
+
+
+
+
+
 
 
                     <div class="white-text pull-right"><strong class="text-size-uniform pad-left"> {{progressBarController.progressBarServiceData.actionedLength}}</strong> of <strong class="text-size-uniform">{{progressBarController.progressBarServiceData.totalCoupons}}</strong> offers ready to use
