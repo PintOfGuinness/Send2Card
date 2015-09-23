@@ -30,7 +30,6 @@ angular.module('send2CardApp')
         };
 
         function calculateInitialProperties(couponsData) {
-            console.log("calculateInitialProperties " + couponsData)
             progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
             var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
             progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
@@ -60,7 +59,6 @@ angular.module('send2CardApp')
             progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons);
-            console.dir(progressBarData.savingsText);
         }
 
         function getProgressBarText(actionedCoupons) {
@@ -77,24 +75,19 @@ angular.module('send2CardApp')
 
             // initial check for presence of dollar and percent discount
             if (percentPresent === true && dollarPresent === true) {
-                console.log("Dollar and percent directive true");
                 savingsText.dollarAndPercentSavingsDirective = true;
             }
             // dollar saving, not percent
             if (dollarPresent === true && percentPresent === false) {
-                console.log("Dollar saving directive true");
                 savingsText.dollarSavingsDirective = true;
-                console.log(savingsText.dollarSavingsDirective);
             }
 
             // check percentages then determine if single or multi
             if (percentPresent === true && dollarPresent === false) {
 
                 if (singlePercent === true) {
-                    console.log("Single percent directive true");
                     savingsText.singlePercentSavingsDirective = true;
                 } else if (multiPercent === true) {
-                    console.log("Multi percent directive true");
                     savingsText.multiPercentSavingsDirective = true;
                 }
             }
@@ -114,8 +107,6 @@ angular.module('send2CardApp')
 
         function checkForSinglePercent(actionedCoupons) {
             var singlePercent = false;
-            console.log("checkForSinglePercent");
-            console.log(actionedCoupons.length);
             if (actionedCoupons.length === 1) {
                 singlePercent = true;
             }
