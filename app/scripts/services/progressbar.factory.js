@@ -74,12 +74,8 @@ angular.module('send2CardApp')
 
 
             
-            console.log("percent present = " + percentPresent);
-            console.log("dollarPresent = " + dollarPresent);
-            
             // initial check for presence of dollar and percent discount
             if (percentPresent === true && dollarPresent === true) {
-                console.log("percent and dollar are both true");
                 savingsText.dollarAndPercentSavingsDirective = true;
             }
             // dollar saving, not percent
