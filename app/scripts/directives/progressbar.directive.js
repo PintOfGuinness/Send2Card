@@ -15,6 +15,7 @@ angular.module('send2CardApp')
                 var vm = this;
 
                 vm.progressBarServiceData = progressBarFactory.getServiceData();
+                /* vm.savingsText = progressBarFactory.getProgressBarText();*/
                 vm.screenMode = displayInformationFactory.getDisplayMode();
                 vm.configuration = pageConfiguration;
 

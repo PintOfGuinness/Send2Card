@@ -41,7 +41,7 @@
 
 .front {
     z-index: 2;
-    right:0;
+    right: 0;
 }
 
 /* back, initially hidden pane */
@@ -73,6 +73,12 @@
 }
 .pad-top {
     padding-top: 5px;
+}
+.no-padding {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 .text-red {
     color: #cc0000;
@@ -343,13 +349,11 @@ img:hover {
         display: none;
     }
 }
-
 @media screen and (max-width:768px) {
     .noMobileView {
         display: none;
     }
 }
-
 @media screen and (min-width:768px) {
     .mobileView {
         display: none;
