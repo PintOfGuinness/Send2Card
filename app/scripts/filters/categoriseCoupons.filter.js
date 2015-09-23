@@ -135,7 +135,7 @@ angular.module('send2CardApp')
         }
 
         function couponIsNew(eachCoupon) {
-            if (eachCoupon.viewable_ind === constants.YES) {
+            if (eachCoupon.new_cpn_ind === constants.YES) {
                 eachCoupon.isNew = true;
             } else {
                 eachCoupon.isNew = false;
