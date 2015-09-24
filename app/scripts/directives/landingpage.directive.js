@@ -7,12 +7,23 @@
  * # landingPageDirective
  */
 angular.module('send2CardApp')
-  .directive('landingPageDirective', function () {
-    return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the landingPageDirective directive');
-      }
-    };
-  });
+    .directive('landingPageDirective', function () {
+        return {
+            templateUrl: 'views/templates/landingpage-template.html',
+            controller: function () {
+
+                //  var vm = this;
+                this.displayProgressBar = "chalk";
+                console.log(this.displayProgressBar);
+                /*                this.displayProgressBar = function () {
+                                    console.log("displayProgressBar");
+                                }*/
+            },
+            /*            scope: {
+                            displayProgressBar: '&'
+                        },*/
+            controllerAs: 'landingPageController',
+            bindToController: true,
+            restrict: 'E'
+        };
+    });
