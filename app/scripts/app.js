@@ -14,7 +14,7 @@ angular.module('tealiumModule', []);
 angular
     .module('send2CardApp', [
     'matchMedia',
-    'ngAnimate',
+/*    'ngAnimate',*/
     'ngCookies',
     'ngResource',
     'ngRoute',

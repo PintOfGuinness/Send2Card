@@ -9,12 +9,11 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider/*, spinnerService*/) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider /*, spinnerService*/ ) {
 
                 var vm = this;
                 var extraCareCardNumber;
                 var couponNumber;
-
 
                 initialise();
 
@@ -23,13 +22,15 @@ angular.module('send2CardApp')
                     vm.showSpinner = true;
 
                     initialiseProperties();
+                    validateQueryParameters();
+                    
+/*  Andrew I've moved stuff to the landing page directive if you want to carry on with spinner
 
-                    if (validateQueryParameters()) {
+if (validateQueryParameters()) {
                         setTimeout(function () {
-                            getfilteredCouponLists();
                             vm.showSpinner = false;
                         }, delay);
-                    }
+                    }*/
 
                     if (pageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordPageView(constants.PAGE_NAME);
@@ -37,7 +38,8 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
-                    vm.couponError = true;
+                                   vm.couponsServiceData = {};
+     /*               vm.couponError = true;*/
                     vm.errorPath = constants.BLANK_VIEW;
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
@@ -68,22 +70,15 @@ angular.module('send2CardApp')
 
                     return success;
                 }
-
-                function getfilteredCouponLists() {
-                    couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber)
-                        .then(getfilteredCouponListsSuccess)
-                        .catch(getfilteredCouponListsFailed);
-                }
-
-                function getfilteredCouponListsSuccess(results) {
+/*
+                function getFilteredCouponListsSuccess(results) {
                     vm.couponError = false;
                     vm.couponsServiceData = results;
-                    //set getCoupons success
                 }
 
-                function getfilteredCouponListsFailed(error) {
-                 // To sort out error handling
-                }
+                function getFilteredCouponListsFailed(error) {
+                    // To sort out error handling
+                }*/
 
                 vm.sendSingleCoupon = function () {
                     return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
@@ -100,16 +95,14 @@ angular.module('send2CardApp')
                 }
 
                 vm.resetCollapseStateForAll = function () {
-                    couponsManagerFactory.resetCollapseStateForAll();
+                    vm.resetCollapseStateForAll();
                 }
 
                 vm.showProgressBar = function (display, actionedCoupon) {
-                    if (display) {
-                        progressBarFactory.toggleProgressBarDisplay(true);
-                        progressBarFactory.updateProgressBarAfterAction(vm.couponsServiceData, actionedCoupon);
-                    } else {
-                        progressBarFactory.toggleProgressBarDisplay(false);
-                    }
+                    vm.displayProgressBar({
+                        display: display,
+                        actionedCoupon: actionedCoupon
+                    });
                 }
 
                 if (pageConfiguration.TEALIUM_ENABLED) {
@@ -125,9 +118,17 @@ angular.module('send2CardApp')
                 vm.closeHelpModal = function () {
                     modalProvider.closeHelpModal();
                 }
+                
+                console.dir("d data" + vm.couponsServiceData);
             },
             controllerAs: 'digitalReceiptLandingController',
             bindToController: true,
+            scope: {
+                couponsServiceData: '=',
+                displayProgressBar: '&',
+    /*            getFilteredCouponLists: '&',*/
+                resetCollapseStateForAll: '&'
+            },
             templateUrl: constants.DIGITAL_RECEIPT_LANDING_TEMPLATE,
             restrict: 'E'
         };

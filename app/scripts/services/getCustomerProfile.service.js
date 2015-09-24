@@ -19,7 +19,7 @@ angular.module('send2CardApp')
 
         function getUnfilteredCouponsFromJSON(extraCareCardNumber) {
             if (couponServicePromise === null) {
-                couponServicePromise = $http.get("data/himanshu.json");
+                couponServicePromise = $http.get("data/customer.json");
             }
 
             return couponServicePromise;

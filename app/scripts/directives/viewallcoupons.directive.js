@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('viewAllCouponsDirective', function (constants) {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, modalProvider, screenSize, $q, viewAllCouponsConfiguration, constants) {
+            controller: function (singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, modalProvider, screenSize, $q, viewAllCouponsConfiguration, constants) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -20,14 +20,12 @@ angular.module('send2CardApp')
                 function initialise() {
                     initialiseProperties();
                     getDisplayCouponsNumberPerRow()
-
-                    if (validateQueryParameters()) {
-                        getfilteredCouponLists();
-                    }
+                    validateQueryParameters();
                 }
 
                 function initialiseProperties() {
-                    vm.couponError = true;
+                    vm.couponsServiceData = {};
+                  /*  vm.couponError = true;*/
                     vm.errorPath = constants.BLANK_VIEW;
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
@@ -40,6 +38,7 @@ angular.module('send2CardApp')
                 function validateQueryParameters() {
                     var success = false;
 
+                    // remvoe in future
                     extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
                     couponNumber = queryParameterFactory.getCouponNumberParameter();
 
@@ -52,21 +51,6 @@ angular.module('send2CardApp')
                     }
 
                     return success;
-                }
-
-                function getfilteredCouponLists() {
-                    couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber)
-                        .then(getfilteredCouponListsSuccess)
-                        .catch(getfilteredCouponListsFailed);
-                }
-
-                function getfilteredCouponListsSuccess(results) {
-                    vm.couponError = false;
-                    vm.couponsServiceData = results;
-                }
-
-                function getfilteredCouponListsFailed(error) {
-                    vm.errorDisplay = error.htmlDisplay;
                 }
 
                 vm.sendSingleCoupon = function () {
@@ -90,16 +74,14 @@ angular.module('send2CardApp')
                 }
 
                 vm.resetCollapseStateForAll = function () {
-                    couponsManagerFactory.resetCollapseStateForAll();
+                    vm.resetCollapseStateForAll();
                 }
 
                 vm.showProgressBar = function (display, actionedCoupon) {
-                    if (display) {
-                        progressBarFactory.toggleProgressBarDisplay(true);
-                        progressBarFactory.updateProgressBarAfterAction(vm.couponsServiceData, actionedCoupon);
-                    } else {
-                        progressBarFactory.toggleProgressBarDisplay(false);
-                    }
+                    vm.displayProgressBar({
+                        display: display,
+                        actionedCoupon: actionedCoupon
+                    });
                 }
 
                 screenSize.on('xs, sm, md, lg', function (match) {
@@ -116,6 +98,11 @@ angular.module('send2CardApp')
             },
             controllerAs: 'viewAllCouponsController',
             bindToController: true,
+            scope: {
+                couponsServiceData: '=',                
+                displayProgressBar: '&',
+                resetCollapseStateForAll: '&'
+            },
             templateUrl: constants.VIEW_ALL_COUPONS_TEMPLATE,
             restrict: 'E',
         };

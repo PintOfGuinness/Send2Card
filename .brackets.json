@@ -1,5 +1,6 @@
 {
     "jscodehints.detectedExclusions": [
-        "C:/Users/pmcconnell/Documents/Send2Card/bower_components/jquery/src/./var/support.js"
+        "C:/Users/pmcconnell/Documents/Send2Card/bower_components/jquery/src/./var/support.js",
+        "jquery.js"
     ]
 }

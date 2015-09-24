@@ -1,7 +1,7 @@
 <div class="container">
-    {{landingPageController.displayProgressBar}}
-    <digital-receipt-landing-directive></digital-receipt-landing-directive>
-    <view-all-coupons-directive display-progress-bar="landingPageController.displayProgressBar"></view-all-coupons-directive>
+    
+    <digital-receipt-landing-directive coupons-service-data="landingPageController.couponsServiceData" display-progress-bar="landingPageController.displayProgressBar(display, actionedCoupon)" reset-collapse-state-for-all="landingPageController.resetCollapseStateForAll()"></digital-receipt-landing-directive>
+    <view-all-coupons-directive  coupons-service-data="landingPageController.couponsServiceData" display-progress-bar="landingPageController.displayProgressBar(display, actionedCoupon)" reset-collapse-state-for-all="landingPageController.resetCollapseStateForAll()"></view-all-coupons-directive>
     <br> 
     <progress-bar-directive></progress-bar-directive>
 </div>
