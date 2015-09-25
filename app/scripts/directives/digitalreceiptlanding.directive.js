@@ -51,8 +51,8 @@ angular.module('send2CardApp')
                 }
 
                 function sendSingleCouponFailure(error) {
-                    vm.notificationControl.displayPrimary = true;
-                    vm.notificationControl.primaryPath = notificationViewsFactory.getSingleCouponNotification(error, true);
+                    vm.notificationControl.display = true;
+                    vm.notificationControl.path = notificationViewsFactory.getSingleCouponNotification(error, true);
                     if (pageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordErrorMessage(error);
                     }

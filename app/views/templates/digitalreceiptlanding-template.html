@@ -3,7 +3,7 @@
                 <spinner name="bookspinner" show="digitalReceiptLandingController.showSpinner" img-src="images/spinner.gif" style="position: relative; left: -50%; z-index: 3;"></spinner>
             </div>
     
-    <div ng-hide="digitalReceiptLandingController.notificationControl.displayPrimary">
+    <div ng-hide="digitalReceiptLandingController.notificationControl.display">
         <div class="row nopadding">
             <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-8 nopadding">
                 <h2 class="red-text">Success!</h2>
@@ -24,8 +24,8 @@
         </div>
     </div>
     <div>
-        <div ng-show="digitalReceiptLandingController.notificationControl.displayPrimary">
-            <ng-include src="digitalReceiptLandingController.notificationControl.primaryPath"></ng-include>
+        <div ng-show="digitalReceiptLandingController.notificationControl.display">
+            <ng-include src="digitalReceiptLandingController.notificationControl.path"></ng-include>
         </div>
     </div>
     <br>

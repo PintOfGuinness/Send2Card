@@ -1,5 +1,5 @@
 <div>
-    <div ng-hide="viewAllCouponsController.notificationControl.displaySecondary">
+    <div ng-hide="viewAllCouponsController.notificationControl.display">
         <div ng-show="viewAllCouponsController.configuration.DISPLAY_COUPONS_AVAILABLE" class="full-width">
             <div class="container" style="padding-left:25px;">
                 <br>
@@ -33,8 +33,8 @@
         </div>
     </div>
     <div>
-        <div ng-show="viewAllCouponsController.notificationControl.displaySecondary">
-            <ng-include src="viewAllCouponsController.notificationControl.secondaryPath"></ng-include>
+        <div ng-show="viewAllCouponsController.notificationControl.display">
+            <ng-include src="viewAllCouponsController.notificationControl.path"></ng-include>
         </div>
     </div>
 </div>

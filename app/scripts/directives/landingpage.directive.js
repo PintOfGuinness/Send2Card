@@ -27,11 +27,13 @@ angular.module('send2CardApp')
 
                 function initialiseProperties() {
                     vm.queryParameters = queryParameterFactory.getQueryParameterInformation();
-                    vm.notificationControl = {
-                        displayPrimary: true,
-                        displaySecondary: true,
-                        primaryPath: constants.BLANK_VIEW,
-                        secondaryPath: constants.BLANK_VIEW
+                    vm.primaryNotificationControl = {
+                        display: true,
+                        path: constants.BLANK_VIEW
+                    };
+                    vm.secondaryNotificationControl = {
+                        display: true,
+                        path: constants.BLANK_VIEW
                     };
                 }
 
@@ -40,16 +42,16 @@ angular.module('send2CardApp')
 
                     if (angular.isDefined(vm.queryParameters.extraCareCardNumber)) {
                         if (angular.isUndefined(vm.queryParameters.couponNumber) || vm.queryParameters.couponNumber === "") {
-                            vm.notificationControl.primaryPath = notificationViewsFactory.getViewAllCouponsView();
+                            vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
                         } else {
-                            vm.notificationControl.displayPrimary = false
+                            vm.primaryNotificationControl.display = false
                         }
-                        vm.notificationControl.displaySecondary = false
-                        
+                        vm.secondaryNotificationControl.display = false
+
                         success = true;
                     } else {
-                        vm.notificationControl.primaryPath = notificationViewsFactory.getTechnicalErrorView();
-                        vm.notificationControl.secondaryPath = notificationViewsFactory.getBlankView();
+                        vm.primaryNotificationControl.path = notificationViewsFactory.getTechnicalErrorView();
+                        vm.secondaryNotificationControl.path = notificationViewsFactory.getBlankView();
                     }
 
                     return success;
@@ -63,11 +65,11 @@ angular.module('send2CardApp')
 
                 function getFilteredCouponListsSuccess(results) {
                     vm.couponsServiceData = results;
-                    vm.notificationControl.displaySecondary = false;
+                    vm.secondaryNotificationControl.display = false;
                 }
 
                 function getFilteredCouponListsFailed(error) {
-                    vm.notificationControl.notificationPath = vm.notificationViewsFactory.getGetCustomerProfileNotification(error, true);
+                    vm.primaryNotificationControl.path = vm.notificationViewsFactory.getGetCustomerProfileNotification(error, true);
                 }
 
                 vm.resetCollapseStateForAll = function () {

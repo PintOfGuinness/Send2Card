@@ -32,19 +32,6 @@ angular.module('send2CardApp')
             getServiceData: getServiceData
         };
 
-        function calculateInitialProperties(couponsData, actionedCoupon) {
-            progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
-            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
-            progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
-            progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
-            progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
-            progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
-            progressBarData.actionedLength = getActionedLength(couponsData.actionedCoupons);
-            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons, actionedCoupon);
-        }
-
         function updateProgressBarAfterAction(couponsData, actionedCoupon) {
             if (propertiesInitialised === false) {
                 calculateInitialProperties(couponsData, actionedCoupon);
@@ -58,6 +45,19 @@ angular.module('send2CardApp')
             progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.savingsText = getProgressBarText(updatedCoupons, actionedCoupon);
+        }
+
+        function calculateInitialProperties(couponsData, actionedCoupon) {
+            progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
+            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
+            progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
+            progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
+            progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
+            progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
+            progressBarData.actionedLength = getActionedLength(couponsData.actionedCoupons);
+            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
+            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons, actionedCoupon);
         }
 
         function isSingleActionedCoupon(coupons, actionedCoupon) {
