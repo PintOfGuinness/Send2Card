@@ -3,7 +3,7 @@
                 <spinner name="bookspinner" show="digitalReceiptLandingController.showSpinner" img-src="images/spinner.gif" style="position: relative; left: -50%; z-index: 3;"></spinner>
             </div>
     
-    <div ng-hide="digitalReceiptLandingController.couponError">
+    <div ng-hide="digitalReceiptLandingController.notificationControl.displayPrimary">
         <div class="row nopadding">
             <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-8 nopadding">
                 <h2 class="red-text">Success!</h2>
@@ -14,7 +14,7 @@
         <div class="row nopadding">
             <br>
             <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in digitalReceiptLandingController.couponsServiceData.singleCoupon">
-                <coupon-block-directive coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" on-reset-collapse-state-for-all="digitalReceiptLandingController.resetCollapseStateForAll()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
+                <coupon-block-directive coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" clicked-view-details="digitalReceiptLandingController.clickedViewDetails()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
             </div>
 
             
@@ -24,8 +24,8 @@
         </div>
     </div>
     <div>
-        <div ng-show="digitalReceiptLandingController.couponError">
-            <ng-include src="digitalReceiptLandingController.errorPath"></ng-include>
+        <div ng-show="digitalReceiptLandingController.notificationControl.displayPrimary">
+            <ng-include src="digitalReceiptLandingController.notificationControl.primaryPath"></ng-include>
         </div>
     </div>
     <br>

@@ -9,11 +9,9 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, queryParameterFactory, errorHandlerFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider /*, spinnerService*/ ) {
+            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, notificationViewsFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider /*, spinnerService*/ ) {
 
                 var vm = this;
-                var extraCareCardNumber;
-                var couponNumber;
 
                 initialise();
 
@@ -22,15 +20,15 @@ angular.module('send2CardApp')
                     vm.showSpinner = true;
 
                     initialiseProperties();
-                    validateQueryParameters();
-                    
-/*  Andrew I've moved stuff to the landing page directive if you want to carry on with spinner
+             //       validateQueryParameters();
 
-if (validateQueryParameters()) {
+                    /*  Andrew I've moved stuff to the landing page directive if you want to carry on with spinner
+
+
                         setTimeout(function () {
                             vm.showSpinner = false;
                         }, delay);
-                    }*/
+          */
 
                     if (pageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordPageView(constants.PAGE_NAME);
@@ -38,9 +36,7 @@ if (validateQueryParameters()) {
                 }
 
                 function initialiseProperties() {
-                                   vm.couponsServiceData = {};
-     /*               vm.couponError = true;*/
-                    vm.errorPath = constants.BLANK_VIEW;
+                    vm.couponsServiceData = {};
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
@@ -49,52 +45,21 @@ if (validateQueryParameters()) {
                     vm.configuration = digitalReceiptLandingConfiguration;
                 }
 
-                function validateQueryParameters() {
-                    var success = false;
-
-                    extraCareCardNumber = queryParameterFactory.getExtraCareCardNumberParameter();
-                    couponNumber = queryParameterFactory.getCouponNumberParameter();
-
-                    if (angular.isDefined(extraCareCardNumber)) {
-                        vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits;
-                        success = true;
-
-                        if (angular.isUndefined(couponNumber)) {
-                            vm.couponError = true;
-                            vm.errorPath = errorHandlerFactory.processMissingCouponNumber(true);
-                        }
-                    } else {
-                        vm.couponError = true;
-                        vm.errorPath = errorHandlerFactory.processMissingExtraCareCardNumber(true);
-                    }
-
-                    return success;
-                }
-/*
-                function getFilteredCouponListsSuccess(results) {
-                    vm.couponError = false;
-                    vm.couponsServiceData = results;
-                }
-
-                function getFilteredCouponListsFailed(error) {
-                    // To sort out error handling
-                }*/
-
                 vm.sendSingleCoupon = function () {
-                    return singleCouponFactory.sendSingleCoupon(extraCareCardNumber, couponNumber)
+                    return singleCouponFactory.sendSingleCoupon(vm.queryParameters.extraCareCardNumber, vm.queryParameters.couponNumber)
                         .catch(sendSingleCouponFailure);
                 }
 
                 function sendSingleCouponFailure(error) {
-                    vm.couponError = true;
-                    vm.errorPath = constants.TECHNICAL_ERROR;
+                    vm.notificationControl.displayPrimary = true;
+                    vm.notificationControl.primaryPath = notificationViewsFactory.getSingleCouponNotification(error, true);
                     if (pageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordErrorMessage(error);
                     }
                     return $q.reject(error);
                 }
 
-                vm.resetCollapseStateForAll = function () {
+                vm.clickedViewDetails = function () {
                     vm.resetCollapseStateForAll();
                 }
 
@@ -118,17 +83,17 @@ if (validateQueryParameters()) {
                 vm.closeHelpModal = function () {
                     modalProvider.closeHelpModal();
                 }
-                
-                console.dir("d data" + vm.couponsServiceData);
+
             },
             controllerAs: 'digitalReceiptLandingController',
-            bindToController: true,
             scope: {
+                queryParameters: '=',
+                notificationControl: '=',
                 couponsServiceData: '=',
                 displayProgressBar: '&',
-    /*            getFilteredCouponLists: '&',*/
                 resetCollapseStateForAll: '&'
             },
+            bindToController: true,
             templateUrl: constants.DIGITAL_RECEIPT_LANDING_TEMPLATE,
             restrict: 'E'
         };

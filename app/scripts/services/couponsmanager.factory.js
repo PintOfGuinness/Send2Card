@@ -32,7 +32,7 @@ angular.module('send2CardApp')
             }).catch(function (error) {
                 console.log("getFilteredCouponLists SOMETHING WENT WRONG!!!!!!");
                 
-                return error.multiCouponError = true;
+                return error.multidisplayNotification = true;
             });
         }
 

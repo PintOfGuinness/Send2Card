@@ -38,5 +38,7 @@ app.constant('constants', {
     /* HTML ERROR/NOTIFICATION VIEWS */
     BLANK_VIEW: "views/notifications/blank.html",    
     VIEW_ALL_COUPONS_HEADER: "views/notifications/header1.html",
-    TECHNICAL_ERROR: "views/notifications/error1.html"
+    COUPON_EXPIRED: "views/notifications/error1.html",   
+    TECHNICAL_ERROR: "views/notifications/error4.html"
+
 });

@@ -10,28 +10,36 @@
 angular.module('send2CardApp')
     .factory('queryParameterFactory', function ($location) {
 
-        var extraCareCardNumber;
-    
+        var queryParameterInformation = {
+            extraCareCardNumber: $location.search().eccardnum,
+            couponNumber: $location.search().couponnum
+        };
+
+
         return {
+            getQueryParameterInformation: getQueryParameterInformation,
             getExtraCareCardNumberParameter: getExtraCareCardNumberParameter,
             getCouponNumberParameter: getCouponNumberParameter,
             getExtraCareCardNumberEndDigits: getExtraCareCardNumberEndDigits
         };
 
+        function getQueryParameterInformation() {
+            return queryParameterInformation;
+        }
+
         function getExtraCareCardNumberParameter() {
-            extraCareCardNumber = $location.search().eccardnum;
-            return extraCareCardNumber;
+            return queryParameterInformation.extraCareCardNumber;
+        }
+
+        function getCouponNumberParameter() {
+            return queryParameterInformation.couponNumber;
         }
 
         function getExtraCareCardNumberEndDigits() {
-            var extraCareCardNumberEndDigits = extraCareCardNumber.substring(extraCareCardNumber.length - 4, extraCareCardNumber.length);
-            
+            var extraCareCardNumberEndDigits;
+            if (angular.isDefined(queryParameterInformation.extraCareCardNumber)) {
+                extraCareCardNumberEndDigits = queryParameterInformation.extraCareCardNumber.substring(queryParameterInformation.extraCareCardNumber.length - 4, queryParameterInformation.extraCareCardNumber.length);
+            }
             return extraCareCardNumberEndDigits;
         }
-    
-        function getCouponNumberParameter() {
-            var couponNumber = $location.search().couponnum;
-            return couponNumber;
-        }
-
     });

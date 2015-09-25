@@ -72,7 +72,7 @@ angular.module('send2CardApp')
 
             scope.collapseSection = function () {
                 var tempIsCollapsed = scope.coupon.isCollapsed;
-                scope.onResetCollapseStateForAll();
+                scope.clickedViewDetails();
                 scope.coupon.isCollapsed = !tempIsCollapsed;
             }
 
@@ -137,7 +137,7 @@ angular.module('send2CardApp')
                 coupon: '=',
                 onSendSingleCoupon: '&',
                 onUpdateState: '&',
-                onResetCollapseStateForAll: '&',
+                clickedViewDetails: '&',
                 showProgressBar: '&'
             },
             link: link
