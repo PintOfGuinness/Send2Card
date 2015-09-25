@@ -84,11 +84,6 @@ angular.module('send2CardApp')
                         vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
                     }
                     vm.secondaryNotificationControl.display = false;
-                    
-                    console.log(vm.primaryNotificationControl.path);
-                    console.log(vm.primaryNotificationControl.display);
-                    console.log(vm.secondaryNotificationControl.path);
-                    console.log(vm.secondaryNotificationControl.display);
                 }
 
                 function validateCouponNumberExists() {

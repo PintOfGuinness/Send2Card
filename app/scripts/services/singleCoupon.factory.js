@@ -15,7 +15,7 @@ angular.module('send2CardApp')
 
                 getTimeStampInECFormat();
                 
-                var baseUrl = 'data/himanshu.json';
+                var baseUrl = 'data/sendToCardSuccess.json';
                 var requestBody = {
                     extraCareCard: extraCareCardNumber,
                     cpnSeqNbr: couponSequenceNumber,

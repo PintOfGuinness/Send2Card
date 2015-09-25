@@ -31,6 +31,10 @@ angular.module('send2CardApp')
 
                 if (input[index].cpn_seq_nbr !== couponNumberFilter) {
                     if (couponViewable(eachCoupon)) {
+                        couponState(eachCoupon);
+                        couponExpiresSoon(eachCoupon);
+                        couponIsNew(eachCoupon);
+                        showSoonOverNew(eachCoupon);
                         eachCoupon = $filter('couponTitleFilter')(eachCoupon);
                         setCouponCollapsedDefault(eachCoupon);
                         if (couponActioned(eachCoupon)) {
@@ -68,38 +72,22 @@ angular.module('send2CardApp')
         }
 
         function couponViewable(eachCoupon) {
-            var viewable = false;
-
-            if (!couponViewable(eachCoupon)) {
-                couponState(eachCoupon);
-                couponExpiresSoon(eachCoupon);
-                couponIsNew(eachCoupon);
-                showSoonOverNew(eachCoupon);
-                viewable = true;
-            } else {
-                viewable = false;
-            }
-
-            return viewable;
-        }
-    
-        function couponViewable(eachCoupon) {
             if (eachCoupon.viewable_ind === constants.YES) {
                 return true;
             } else {
                 return false;
             }
         }
-    
-/*   NOTE:  Find out if/how redeemable_ind is used in the logic
 
-function couponRedeemed(eachCoupon) {
-            if (eachCoupon.redeemable_ind === constants.YES) {
-                return false;
-            } else {
-                return true;
-            }
-        }*/
+        /*   NOTE:  Find out if/how redeemable_ind is used in the logic
+
+        function couponRedeemed(eachCoupon) {
+                    if (eachCoupon.redeemable_ind === constants.YES) {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                }*/
 
         function couponState(eachCoupon) {
             if (eachCoupon.state == undefined) {
