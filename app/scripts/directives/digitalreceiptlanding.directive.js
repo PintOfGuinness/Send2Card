@@ -20,7 +20,6 @@ angular.module('send2CardApp')
                     vm.showSpinner = true;
 
                     initialiseProperties();
-             //       validateQueryParameters();
 
                     /*  Andrew I've moved stuff to the landing page directive if you want to carry on with spinner
 
@@ -36,7 +35,6 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
-                    vm.couponsServiceData = {};
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,

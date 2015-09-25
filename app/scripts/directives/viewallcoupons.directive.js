@@ -21,9 +21,6 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
-                    vm.couponsServiceData = {};
-                    vm.displayNotification = true;
-                    vm.notificationPath = constants.BLANK_VIEW;
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
