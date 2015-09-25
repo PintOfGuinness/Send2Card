@@ -8,18 +8,18 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('couponsManagerFactory', function (getCustomerProfileService, categoriseCouponsFilterFilter, sortCouponsFilterFilter) {
+    .factory('couponsManagerFactory', function (getCustomerProfileService, categoriseCouponsFilterFilter, sortCouponsFilterFilter, $q) {
 
         var couponLists = {};
 
         return {
             getFilteredCouponLists: getFilteredCouponLists,
-            resetCollapseStateForAll : resetCollapseStateForAll
+            resetCollapseStateForAll: resetCollapseStateForAll
         };
 
         function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
             return getCustomerProfileService.getUnfilteredCouponsFromJSON(extraCareCardNumber).then(function (results) {
-                
+
                 var allFilteredCoupons = categoriseCouponsFilterFilter(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber, true);
                 couponLists.singleCoupon = getSingleCoupon(results.data.CUST_INF_RESP.XTRACARE.CPNS.ROW, couponNumber);
                 couponLists.unactionedCoupons = getSortedCoupons(allFilteredCoupons.unactionedCoupons);
@@ -31,8 +31,8 @@ angular.module('send2CardApp')
 
             }).catch(function (error) {
                 console.log("getFilteredCouponLists SOMETHING WENT WRONG!!!!!!");
-                
-                return error.multidisplayNotification = true;
+
+                return $q.reject(error);
             });
         }
 
@@ -45,7 +45,7 @@ angular.module('send2CardApp')
             } else {
                 return undefined;
             }
-            
+
             return singleCoupon;
         }
 

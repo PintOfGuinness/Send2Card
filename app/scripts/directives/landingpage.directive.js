@@ -20,7 +20,7 @@ angular.module('send2CardApp')
 
                 function initialise() {
                     initialiseProperties();
-                    if (validateQueryParameters()) {
+                    if (validateExtraCareCardNumber()) {
                         getFilteredCouponLists(vm.queryParameters.extraCareCardNumber, vm.queryParameters.couponNumber);
                     }
                 }
@@ -37,17 +37,10 @@ angular.module('send2CardApp')
                     };
                 }
 
-                function validateQueryParameters() {
+                function validateExtraCareCardNumber() {
                     var success = false;
 
                     if (angular.isDefined(vm.queryParameters.extraCareCardNumber)) {
-                        if (angular.isUndefined(vm.queryParameters.couponNumber) || vm.queryParameters.couponNumber === "") {
-                            vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
-                        } else {
-                            vm.primaryNotificationControl.display = false
-                        }
-                        vm.secondaryNotificationControl.display = false
-
                         success = true;
                     } else {
                         vm.primaryNotificationControl.path = notificationViewsFactory.getTechnicalErrorView();
@@ -57,6 +50,25 @@ angular.module('send2CardApp')
                     return success;
                 }
 
+                /*                function validateQueryParameters() {
+                                    var success = false;
+
+                                    if (angular.isDefined(vm.queryParameters.extraCareCardNumber)) {
+                                        if (angular.isUndefined(vm.queryParameters.couponNumber) || vm.queryParameters.couponNumber === "") {
+                                            vm.primaryNotificationControl.display = true;
+                                            vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
+                                        }
+                                        success = true;
+                                    } else {
+                                        vm.primaryNotificationControl.display = true;
+                                        vm.primaryNotificationControl.path = notificationViewsFactory.getTechnicalErrorView();
+                                        vm.secondaryNotificationControl.display = true;
+                                        vm.secondaryNotificationControl.path = notificationViewsFactory.getBlankView();
+                                    }
+
+                                    return success;
+                                }*/
+
                 function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
                     couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber)
                         .then(getFilteredCouponListsSuccess)
@@ -65,11 +77,34 @@ angular.module('send2CardApp')
 
                 function getFilteredCouponListsSuccess(results) {
                     vm.couponsServiceData = results;
+
+                    if (validateCouponNumberExists()) {
+                        vm.primaryNotificationControl.display = false;
+                    } else {
+                        vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
+                    }
                     vm.secondaryNotificationControl.display = false;
+                    
+                    console.log(vm.primaryNotificationControl.path);
+                    console.log(vm.primaryNotificationControl.display);
+                    console.log(vm.secondaryNotificationControl.path);
+                    console.log(vm.secondaryNotificationControl.display);
+                }
+
+                function validateCouponNumberExists() {
+                    if (angular.isUndefined(vm.queryParameters.couponNumber) || vm.queryParameters.couponNumber === "") {
+                        return false;
+                    } else {
+                        return true;
+                    }
                 }
 
                 function getFilteredCouponListsFailed(error) {
-                    vm.primaryNotificationControl.path = vm.notificationViewsFactory.getGetCustomerProfileNotification(error, true);
+                    vm.primaryNotificationControl.path = notificationViewsFactory.getGetCustomerProfileNotification(error, true);
+                    console.log(vm.primaryNotificationControl.path);
+                    console.log(vm.primaryNotificationControl.display);
+                    console.log(vm.secondaryNotificationControl.path);
+                    console.log(vm.secondaryNotificationControl.display);
                 }
 
                 vm.resetCollapseStateForAll = function () {

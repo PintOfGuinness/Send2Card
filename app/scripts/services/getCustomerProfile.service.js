@@ -27,7 +27,7 @@ angular.module('send2CardApp')
 
         function getUnfilteredCouponsFromService() {
             return $http({
-                method: 'POST',   
+                method: 'POST',
                 url: 'https://rri2eslatp1v.corp.cvscaremark.com:2030/DigitalService/ExtraCare/v1/ECGetCustomerProfile',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,9 +41,14 @@ angular.module('send2CardApp')
                     'xtracare': ['CPNS', 'PTS'],
                     'prefs': ['beauty_club', 'paperless_cpns']
                 }
-            }).
-            then(function (response) {
+            }).then(function (response) {
+                console.dir(response);
                 return response;
+            }).catch(function (error) {
+                console.log("REAL SERVICE SOMETHING WRONG");
+
+                error.state = 0;
+                return $q.reject(error);
             });
         }
     });

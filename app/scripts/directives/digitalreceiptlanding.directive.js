@@ -81,6 +81,7 @@ angular.module('send2CardApp')
                 }
 
                 vm.closeHelpModal = function () {
+                    console.log("closing help");
                     modalProvider.closeHelpModal();
                 }
 
