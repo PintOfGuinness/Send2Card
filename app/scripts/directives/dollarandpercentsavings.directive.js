@@ -11,8 +11,6 @@ angular.module('send2CardApp')
         return {
             templateUrl: 'views/progressbar/dollar-and-percent-savings-template.html',
             restrict: 'E',
-            link: function postLink(scope, element, attrs) {
-                element.text('this is the dollarAndPercentSavingsDirective directive');
-            }
+            link: function postLink(scope, element, attrs) {}
         };
     });

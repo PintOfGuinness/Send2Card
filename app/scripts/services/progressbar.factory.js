@@ -21,6 +21,10 @@ angular.module('send2CardApp')
         progressBarData.totalCoupons = 0;
         progressBarData.savingsText = {};
         progressBarData.singlePercentage = 0;
+        progressBarData.dollarAndPercent = false;
+        progressBarData.multiPercent = false;
+        progressBarData.singlePercent = false;
+        progressBarData.updatedCoupons = [];
 
         // Public API here
         return {
@@ -42,14 +46,14 @@ angular.module('send2CardApp')
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.highestPercentage = getHighestPercentage(couponsData.actionedCoupons, actionedCoupon);
-            console.log("Highest percentage = " + progressBarData.highestPercentage);
+            progressBarData.firstCouponDiscountType = getFirstCouponDiscountType(actionedCoupon);
+            console.log("Getting single coupon discount type" + progressBarData.firstCouponDiscountType);
+
             progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons, actionedCoupon);
 
             if (progressBarData.savingsText.singlePercentSavingsDirective === true) {
                 progressBarData.singlePercentage = getSinglePercentage(actionedCoupon);
-
             }
-
 
         } // end of calculate initial function
 
@@ -64,11 +68,20 @@ angular.module('send2CardApp')
             progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
             progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
-            
-            if(progressBarData.highestPercentage < actionedCoupon.pct_off_amt){
-            progressBarData.highestPercentage = actionedCoupon.pct_off_amt;
+
+            console.log("Highest % = " + progressBarData.highestPercentage);
+            console.log("Actioned coupon % = " + actionedCoupon.pct_off_amt);
+            console.log(progressBarData.highestPercentage < actionedCoupon.pct_off_amt);
+            if (progressBarData.highestPercentage < actionedCoupon.pct_off_amt) {
+                console.log("Setting the highest %" + progressBarData.highestPercentage + "to the actioned coupon amount - " + actionedCoupon.pct_off_amt);
+                progressBarData.highestPercentage = actionedCoupon.pct_off_amt;
             }
 
+            if(progressBarData.singlePercentage > progressBarData.highestPercentage){
+                console.log("Single is greater than the highest");
+                progressBarData.highestPercentage = progressBarData.singlePercentage;
+            }
+            
             var updatedCoupons = [];
             if (progressBarData.actionedLength === 0) {
                 updatedCoupons = updateActionedCoupons(couponsData.actionedCoupons, actionedCoupon);
@@ -85,6 +98,10 @@ angular.module('send2CardApp')
 
         }
 
+        function getFirstCouponDiscountType(actionedCoupon) {
+            return actionedCoupon.amt_type_cd;
+        }
+
         function isSingleActionedCoupon(coupons, actionedCoupon) {
 
             if (coupons.length === 0 && actionedCoupon != undefined) {
@@ -97,9 +114,11 @@ angular.module('send2CardApp')
         function getProgressBarText(actionedCoupons, actionedCoupon) {
             var percentPresent = false;
             var dollarPresent = false;
+            
             if (actionedCoupons.length != 0) {
                 percentPresent = checkForDiscountType(actionedCoupons, constants.COUPON_TYPE_PERCENT);
                 dollarPresent = checkForDiscountType(actionedCoupons, constants.COUPON_TYPE_DECIMAL);
+
             } else if (actionedCoupons.length === 0) {
                 percentPresent = checkIfSingleCouponIsDiscountType(actionedCoupon, constants.COUPON_TYPE_PERCENT);
                 dollarPresent = checkIfSingleCouponIsDiscountType(actionedCoupon, constants.COUPON_TYPE_DECIMAL);
@@ -108,28 +127,71 @@ angular.module('send2CardApp')
             if (percentPresent === true) {
                 var singlePercent = isSingleActionedCoupon(actionedCoupons, actionedCoupons);
                 var multiPercent = checkForMultiplePercent(actionedCoupons, actionedCoupon);
+                if(progressBarData.singlePercentage > actionedCoupon.pct_off_amt){
+                    progressBarData.highestPercentage = progressBarData.singlePercentage;
+                }
             }
 
+
+            if (progressBarData.firstCouponDiscountType === constants.COUPON_TYPE_DECIMAL) {
+                dollarPresent = true;
+            }
+            if (progressBarData.dollarAndPercent === true) {
+                dollarPresent = true;
+                percentPresent = true;
+            }
+
+            if (progressBarData.multiPercent === true) {
+                percentPresent = true;
+            }
+
+           
+            
             var savingsText = {};
             savingsText.dollarAndPercentSavingsDirective = false;
             savingsText.dollarSavingsDirective = false;
             savingsText.singlePercentSavingsDirective = false;
             savingsText.multiPercentSavingsDirective = false;
 
-
+            // per Jenn - if the single coupon % is the same as the actioned, don't update the text
+            if(progressBarData.singlePercent === true){ 
+                console.log("Single percent = true");
+                console.log("Actioned coup % = " + actionedCoupon.pct_off_amt);
+                console.log("Prog bar data % = " + progressBarData.singlePercentage);
+                console.log(actionedCoupon.pct_off_amt === progressBarData.singlePercentage);
+         
+                if(actionedCoupon.pct_off_amt === progressBarData.singlePercentage){
+                multiPercent = false;
+                singlePercent = true;
+                savingsText.multiPercentSavingsDirective === false;
+                savingsText.singlePercentSavingsDirective === true;
+            }
+            }
+            
+            
+            // if the actioned coupon is dollar and percent is present, dollar and % is true
+            if (actionedCoupon.amt_type_cd === constants.COUPON_TYPE_DECIMAL && percentPresent === true) {
+                savingsText.dollarAndPercentSavingsDirective = true;
+            }
             // initial check for presence of dollar and percent discount
             if ((percentPresent === true) && (dollarPresent === true)) {
                 savingsText.dollarAndPercentSavingsDirective = true;
+                progressBarData.dollarAndPercent = true;
             } else if (dollarPresent === true && percentPresent === false) {
                 savingsText.dollarSavingsDirective = true;
+
             } else if (percentPresent === true && dollarPresent === false) {
                 if (singlePercent === true) {
                     savingsText.singlePercentSavingsDirective = true;
+                    progressBarData.singlePercent = true;
                 } else if (multiPercent === true) {
                     savingsText.multiPercentSavingsDirective = true;
+                    progressBarData.multiPercent = true;
                 }
             }
 
+            console.dir(savingsText);
+            
             return savingsText;
         }
 
@@ -152,17 +214,17 @@ angular.module('send2CardApp')
 
             if (actionedCoupons.length === 0) {
                 return highestPercentage = actionedCoupon.pct_off_amt;
-           
+
             } else if (actionedCoupons.length > 0) {
                 angular.forEach(actionedCoupons, function (eachCoupon, index) {
                     if (eachCoupon.pct_off_amt > highestPercentage) {
                         highestPercentage = eachCoupon.pct_off_amt;
                     }
                 });
-                
+
 
                 if (highestPercentage < actionedCoupon.pct_off_amt) {
-                   return highestPercentage = actionedCoupon.pct_off_amt;
+                    return highestPercentage = actionedCoupon.pct_off_amt;
                 }
             }
             return highestPercentage;
@@ -190,17 +252,16 @@ angular.module('send2CardApp')
         }
 
         function updateActionedCoupons(coupons, actionedCoupon) {
-
-            var updatedCoupons = [];
-
             if (coupons != undefined) {
                 angular.forEach(coupons, function (eachCoupon, index) {
-                    updatedCoupons[index] = coupons[index];
+                    progressBarData.updatedCoupons[index] = coupons[index];
                 });
 
-                updatedCoupons[updatedCoupons.length] = actionedCoupon;
+                progressBarData.updatedCoupons[progressBarData.updatedCoupons.length] = actionedCoupon;
             }
-            return updatedCoupons;
+            console.log("Updated coups:::");
+            console.dir(progressBarData.updatedCoupons);
+            return progressBarData.updatedCoupons;
         }
 
         function checkForMultiplePercent(actionedCoupons, actionedCoupon) {
@@ -261,7 +322,9 @@ angular.module('send2CardApp')
 
         function updateActionedSavings(actionedCoupon) {
             var actionedSavings = 0.00;
-            actionedSavings += parseFloat(actionedCoupon.max_redeem_amt);
+            if (actionedCoupon.amt_type_cd === constants.COUPON_TYPE_DECIMAL) {
+                actionedSavings += parseFloat(actionedCoupon.max_redeem_amt);
+            }
             return actionedSavings;
         }
 
