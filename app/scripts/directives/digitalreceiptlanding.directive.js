@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, singleCouponFactory, displayInformationFactory, notificationViewsFactory, screenSize, $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider /*, spinnerService*/ ) {
+            controller: function (singleCouponFactory, notificationViewsFactory,  $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider /*, spinnerService*/ ) {
 
                 var vm = this;
 

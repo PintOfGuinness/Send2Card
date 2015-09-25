@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('viewAllCouponsDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, displayInformationFactory, notificationViewsFactory, modalProvider, screenSize, $q, viewAllCouponsConfiguration, constants) {
+            controller: function (singleCouponFactory, displayInformationFactory,  modalProvider, screenSize, $q, viewAllCouponsConfiguration, constants) {
 
                 var vm = this;
 
