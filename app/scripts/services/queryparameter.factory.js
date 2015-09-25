@@ -18,8 +18,8 @@ angular.module('send2CardApp')
 
         return {
             getQueryParameterInformation: getQueryParameterInformation,
-            getExtraCareCardNumberParameter: getExtraCareCardNumberParameter,
-            getCouponNumberParameter: getCouponNumberParameter,
+            getExtraCareCardNumber: getExtraCareCardNumber,
+            getCouponNumber: getCouponNumber,
             getExtraCareCardNumberEndDigits: getExtraCareCardNumberEndDigits
         };
 
@@ -27,11 +27,11 @@ angular.module('send2CardApp')
             return queryParameterInformation;
         }
 
-        function getExtraCareCardNumberParameter() {
+        function getExtraCareCardNumber() {
             return queryParameterInformation.extraCareCardNumber;
         }
 
-        function getCouponNumberParameter() {
+        function getCouponNumber() {
             return queryParameterInformation.couponNumber;
         }
 

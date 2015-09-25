@@ -50,7 +50,6 @@ angular.module('send2CardApp')
                     } else {
                         vm.notificationControl.primaryPath = notificationViewsFactory.getTechnicalErrorView();
                         vm.notificationControl.secondaryPath = notificationViewsFactory.getBlankView();
-
                     }
 
                     return success;

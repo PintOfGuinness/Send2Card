@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, notificationViewsFactory,  $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider /*, spinnerService*/ ) {
+            controller: function (singleCouponFactory, notificationViewsFactory,  $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {
 
                 var vm = this;
 
@@ -35,6 +35,8 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
+                    vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits();
+
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
@@ -44,7 +46,7 @@ angular.module('send2CardApp')
                 }
 
                 vm.sendSingleCoupon = function () {
-                    return singleCouponFactory.sendSingleCoupon(vm.queryParameters.extraCareCardNumber, vm.queryParameters.couponNumber)
+                    return singleCouponFactory.sendSingleCoupon(queryParameterFactory.getExtraCareCardNumber, queryParameterFactory.getCouponNumber)
                         .catch(sendSingleCouponFailure);
                 }
 
@@ -85,7 +87,6 @@ angular.module('send2CardApp')
             },
             controllerAs: 'digitalReceiptLandingController',
             scope: {
-                queryParameters: '=',
                 notificationControl: '=',
                 couponsServiceData: '=',
                 displayProgressBar: '&',
