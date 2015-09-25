@@ -7,7 +7,7 @@
  * # couponDirective
  */
 angular.module('send2CardApp')
-    .directive('couponBlockDirective', function (modalProvider, $window, constants,tealiumService, pageConfiguration) {
+    .directive('couponBlockDirective', function (modalProvider, $window, constants, tealiumService, pageConfiguration) {
 
         function link(scope, element, attrs) {
             var didScroll = false;
@@ -42,13 +42,13 @@ angular.module('send2CardApp')
 
             if (pageConfiguration.TEALIUM_ENABLED) {
                 scope.recordSend2Card = function () {
-                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Send To Card','Send To Card');
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Send To Card', 'Send To Card');
                 }
                 scope.recordFirstPrintButtonClick = function () {
-                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click First Print Button','Print');
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click First Print Button', 'Print');
                 }
                 scope.recordSecondPrintButtonClick = function () {
-                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Second Print Button','Print');
+                    tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Second Print Button', 'Print');
                 }
                 scope.recordViewDetails = function () {
                     tealiumService.recordPageLink(constants.PAGE_NAME, 'Click View Details', 'Coupon');
@@ -85,6 +85,7 @@ angular.module('send2CardApp')
             function sendSingleCouponComplete(data) {
                 scope.updateState(data.state);
                 scope.isHidden = true;
+
                 scope.showProgressBar({
                     display: true,
                     actionedCoupon: scope.coupon

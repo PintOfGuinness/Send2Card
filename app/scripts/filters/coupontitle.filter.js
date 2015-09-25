@@ -57,7 +57,7 @@ angular.module('send2CardApp')
         function createPercentageOffTitle(couponInput) {
             couponInput.showDollarSign = false;
             couponInput.showPercentSign = true;
-            couponInput.title = couponInput.max_redeem_amt + constants.DISPLAY_SPACE + constants.DISPLAY_OFF;
+            couponInput.title = couponInput.pct_off_amt + constants.DISPLAY_SPACE;
             couponInput.dollar = couponInput.title.substring([0], couponInput.title.indexOf(constants.DOT));
 
             return couponInput;

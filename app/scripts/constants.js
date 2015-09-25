@@ -6,10 +6,10 @@ app.constant('constants', {
     YES: "Y",
     NO: "N",
     EMPTY_STRING: "",
-    
+
     /*PAGE*/
     PAGE_NAME: "EXTRACARE COUPON LANDING PAGE",
-    
+
     /* COUPON */
     COUPON_STATE_DEFAULT: 0,
     COUPON_STATE_SENT_TO_CARD: 1,
@@ -20,6 +20,7 @@ app.constant('constants', {
     COUPON_TYPE_PERCENT: 'P',
     COUPON_TYPE_DECIMAL: 'D',
     DISPLAY_SPACE: ' ',
+    EMPTY_STRING: "",
     DISPLAY_OFF: 'off',
     DISPLAY_ZEROS: '00',
     DOT: '.',
@@ -36,7 +37,7 @@ app.constant('constants', {
     VIEW_ALL_COUPONS_TEMPLATE: "views/templates/viewallcoupons-template.html",
 
     /* HTML ERROR/NOTIFICATION VIEWS */
-    BLANK_VIEW: "views/notifications/blank.html",    
+    BLANK_VIEW: "views/notifications/blank.html",
     VIEW_ALL_COUPONS_HEADER: "views/notifications/header1.html",
     COUPON_EXPIRED: "views/notifications/error1.html",   
     TECHNICAL_ERROR: "views/notifications/error4.html"

@@ -20,6 +20,7 @@ angular.module('send2CardApp')
         progressBarData.actionedSavings = 0;
         progressBarData.totalCoupons = 0;
         progressBarData.savingsText = {};
+        progressBarData.singlePercentage = 0;
 
         // Public API here
         return {
@@ -29,43 +30,86 @@ angular.module('send2CardApp')
             getServiceData: getServiceData
         };
 
-        function calculateInitialProperties(couponsData) {
+        function calculateInitialProperties(couponsData, actionedCoupon) {
             progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
             var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
             progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
             progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
 
-            //TODO clean this up
             progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
-
             progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
             progressBarData.actionedLength = getActionedLength(couponsData.actionedCoupons);
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons);
+            progressBarData.highestPercentage = getHighestPercentage(couponsData.actionedCoupons, actionedCoupon);
+            console.log("Highest percentage = " + progressBarData.highestPercentage);
+            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons, actionedCoupon);
+
+            if (progressBarData.savingsText.singlePercentSavingsDirective === true) {
+                progressBarData.singlePercentage = getSinglePercentage(actionedCoupon);
+
+            }
 
 
-        }
+        } // end of calculate initial function
 
         function updateProgressBarAfterAction(couponsData, actionedCoupon) {
-
             if (propertiesInitialised === false) {
-                calculateInitialProperties(couponsData);
+                calculateInitialProperties(couponsData, actionedCoupon);
                 propertiesInitialised = true;
             }
+
             progressBarData.actionedLength++;
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
             progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons);
+            
+            if(progressBarData.highestPercentage < actionedCoupon.pct_off_amt){
+            progressBarData.highestPercentage = actionedCoupon.pct_off_amt;
+            }
+
+            var updatedCoupons = [];
+            if (progressBarData.actionedLength === 0) {
+                updatedCoupons = updateActionedCoupons(couponsData.actionedCoupons, actionedCoupon);
+                progressBarData.savingsText = getProgressBarText(updateActionedCoupons(updatedCoupons, actionedCoupon));
+            } else if (progressBarData.actionedLength > 1) {
+                updatedCoupons = updateActionedCoupons(updatedCoupons, actionedCoupon);
+                progressBarData.savingsText = getProgressBarText(updatedCoupons, actionedCoupon);
+
+            }
+
+            if (isSingleActionedCoupon(couponsData.actionedCoupons, actionedCoupon) === true) {
+                progressBarData.singlePercentage = actionedCoupon.pct_off_amt;
+            }
+
         }
 
-        function getProgressBarText(actionedCoupons) {
-            var percentPresent = checkForDiscountType(actionedCoupons, "P");
-            var dollarPresent = checkForDiscountType(actionedCoupons, "D");
-            var singlePercent = checkForSinglePercent(actionedCoupons);
-            var multiPercent = checkForMultiplePercent(actionedCoupons);
+        function isSingleActionedCoupon(coupons, actionedCoupon) {
+
+            if (coupons.length === 0 && actionedCoupon != undefined) {
+                return true
+            } else {
+                return false;
+            }
+        }
+
+        function getProgressBarText(actionedCoupons, actionedCoupon) {
+            var percentPresent = false;
+            var dollarPresent = false;
+            if (actionedCoupons.length != 0) {
+                percentPresent = checkForDiscountType(actionedCoupons, constants.COUPON_TYPE_PERCENT);
+                dollarPresent = checkForDiscountType(actionedCoupons, constants.COUPON_TYPE_DECIMAL);
+            } else if (actionedCoupons.length === 0) {
+                percentPresent = checkIfSingleCouponIsDiscountType(actionedCoupon, constants.COUPON_TYPE_PERCENT);
+                dollarPresent = checkIfSingleCouponIsDiscountType(actionedCoupon, constants.COUPON_TYPE_DECIMAL);
+            }
+
+            if (percentPresent === true) {
+                var singlePercent = isSingleActionedCoupon(actionedCoupons, actionedCoupons);
+                var multiPercent = checkForMultiplePercent(actionedCoupons, actionedCoupon);
+            }
+
             var savingsText = {};
             savingsText.dollarAndPercentSavingsDirective = false;
             savingsText.dollarSavingsDirective = false;
@@ -73,19 +117,12 @@ angular.module('send2CardApp')
             savingsText.multiPercentSavingsDirective = false;
 
 
-            
             // initial check for presence of dollar and percent discount
-            if (percentPresent === true && dollarPresent === true) {
+            if ((percentPresent === true) && (dollarPresent === true)) {
                 savingsText.dollarAndPercentSavingsDirective = true;
-            }
-            // dollar saving, not percent
-            if (dollarPresent === true && percentPresent === false) {
+            } else if (dollarPresent === true && percentPresent === false) {
                 savingsText.dollarSavingsDirective = true;
-            }
-
-            // check percentages then determine if single or multi
-            if (percentPresent === true && dollarPresent === false) {
-                
+            } else if (percentPresent === true && dollarPresent === false) {
                 if (singlePercent === true) {
                     savingsText.singlePercentSavingsDirective = true;
                 } else if (multiPercent === true) {
@@ -95,6 +132,42 @@ angular.module('send2CardApp')
 
             return savingsText;
         }
+
+        function checkIfSingleCouponIsDiscountType(actionedCoupon, discountType) {
+            if (actionedCoupon.amt_type_cd === discountType) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+
+        function getSinglePercentage(actionedCoupon) {
+            var singlePercentage = actionedCoupon.pct_off_amt;
+            return singlePercentage;
+        }
+
+        function getHighestPercentage(actionedCoupons, actionedCoupon) {
+            var highestPercentage = 0;
+
+            if (actionedCoupons.length === 0) {
+                return highestPercentage = actionedCoupon.pct_off_amt;
+           
+            } else if (actionedCoupons.length > 0) {
+                angular.forEach(actionedCoupons, function (eachCoupon, index) {
+                    if (eachCoupon.pct_off_amt > highestPercentage) {
+                        highestPercentage = eachCoupon.pct_off_amt;
+                    }
+                });
+                
+
+                if (highestPercentage < actionedCoupon.pct_off_amt) {
+                   return highestPercentage = actionedCoupon.pct_off_amt;
+                }
+            }
+            return highestPercentage;
+        }
+
 
         function checkForDiscountType(coupons, discountType) {
             var discountPresent = false;
@@ -108,15 +181,31 @@ angular.module('send2CardApp')
 
         function checkForSinglePercent(actionedCoupons) {
             var singlePercent = false;
-            if (actionedCoupons.length === 1) {
-                singlePercent = true;
+            if (actionedCoupons.length != 0) {
+                if (actionedCoupons.length === 1) {
+                    singlePercent = true;
+                }
             }
             return singlePercent;
         }
 
-        function checkForMultiplePercent(actionedCoupons) {
+        function updateActionedCoupons(coupons, actionedCoupon) {
+
+            var updatedCoupons = [];
+
+            if (coupons != undefined) {
+                angular.forEach(coupons, function (eachCoupon, index) {
+                    updatedCoupons[index] = coupons[index];
+                });
+
+                updatedCoupons[updatedCoupons.length] = actionedCoupon;
+            }
+            return updatedCoupons;
+        }
+
+        function checkForMultiplePercent(actionedCoupons, actionedCoupon) {
             var multiPercent = false;
-            if (actionedCoupons.length > 1) {
+            if (actionedCoupons.length > 0 && actionedCoupon != undefined) {
                 multiPercent = true;
             }
             return multiPercent;
@@ -174,6 +263,10 @@ angular.module('send2CardApp')
             var actionedSavings = 0.00;
             actionedSavings += parseFloat(actionedCoupon.max_redeem_amt);
             return actionedSavings;
+        }
+
+        function updateActionedSinglePercentage(actionedCoupon) {
+            return actionedCoupon.pct_off_amt;
         }
 
         function convertActionedSavingsToString(actionedSavings) {
