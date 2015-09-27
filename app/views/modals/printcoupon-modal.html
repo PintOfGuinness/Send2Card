@@ -3,28 +3,28 @@
     <div class="printmodal">
 
         <div>
-            <button type="button" class="close" ng-click="closePrintModal();">&times;</button>
+            <button type="button" class="close" ng-click="couponBlockController.closePrintModal();">&times;</button>
             <br>
             <br>
-            <button ng-click="printCoupon(); progressBarUpdate();confirmPrinted();recordSecondPrintButtonClick();" class="btn btn-success pull-right">Print</button>
+            <button ng-click="printCoupon();couponBlockController.confirmPrinted();couponBlockController.recordSecondPrintButtonClick();" class="btn btn-success pull-right">Print</button>
             <h4>Your coupon is ready to print!</h4>
             <br>
         </div>
 
         <div class="printcoupon">
-            <p class="pull-right"> extracare For <b>extra</b>care card ending in <b>{{extraCareCardNumberEndDigits}}</b></p>
+            <p class="pull-right"> extracare For <b>extra</b>care card ending in <b>{{couponBlockController.extraCareCardNumberEndDigits}}</b></p>
             <h4>
         <font color = "red" class = "bigger-font">
-          <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{coupon.dollars}}</strong><sup ng-show="coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</b></strong></sup><strong class="half-size-font"> off</strong></font><br>
+          <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{couponBlockController.coupon.dollars}}</strong><sup ng-show="couponBlockController.coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</strong></sup><strong class="half-size-font"> off</strong></font><br>
 
       </h4>
 
-            <b>{{coupon.cpn_dsc}}</b>
+            <b>{{couponBlockController.coupon.cpn_dsc}}</b>
             <br> Coupon redeemable in store only*
             <hr>
-            <b>Valid through: {{coupon.expir_dt}}
+            <b>Valid through: {{couponBlockController.coupon.expir_dt}}
                 <br>
-                Barcode/coupon code:  {{coupon.cpn_seq_nbr}}
+                Barcode/coupon code:  {{couponBlockController.coupon.cpn_seq_nbr}}
                 </b>
             <br>
             <br>
@@ -37,13 +37,11 @@
             </div>
             <br>
         </div>
-
-
         <br>
         <br>
         <div>
             <b>*Terms &amp; Conditions</b>
-            <br> {{coupon.cpn_terms_txt}}
+            <br> {{couponBlockController.coupon.cpn_terms_txt}}
             <br>
             <br>
             <b>CVS/pharmacy will not accept offers printed from unauthorizes internet postings or reproductions, copies or facsimilies of this offer.</b> This coupon is the copyrighted property of CVS/pharmacy; it is intended for use by ExtraCare cardholders who subscribe to the CVS/pharmacy email program and have received this message directly from CVS/pharmacy. CVS/pharmacy reserves the right to eject any coupon presented by parties outside of the original distribution list. Original coupon must be relinquished at the time of purchase. Coupon is void if copied, transferred and where prohibited by law. No valid at Minute Clinic.

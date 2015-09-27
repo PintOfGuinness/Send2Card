@@ -38,7 +38,9 @@ app.constant('constants', {
 
     /* HTML ERROR/NOTIFICATION VIEWS */
     BLANK_VIEW: "views/notifications/blank.html",
-    VIEW_ALL_COUPONS_HEADER: "views/notifications/header1.html",
+    VIEW_ALL_COUPONS_HEADER: "views/notifications/viewallcoupons-header.html",
+    DIGITAL_RECEIPT_CAMPAIGN_HEADER: "views/notifications/digitalreceiptcampaign-header.html",    
+    EXTRACARE_EMAIL_CAMPAIGN_HEADER: "views/notifications/extracareemailcampaign-header.html", 
     COUPON_EXPIRED: "views/notifications/error1.html",   
     TECHNICAL_ERROR: "views/notifications/error4.html"
 

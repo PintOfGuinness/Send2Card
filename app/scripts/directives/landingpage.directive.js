@@ -9,8 +9,7 @@
 angular.module('send2CardApp')
     .directive('landingPageDirective', function () {
         return {
-            templateUrl: 'views/templates/landingpage-template.html',
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, constants) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, constants) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -20,54 +19,39 @@ angular.module('send2CardApp')
 
                 function initialise() {
                     initialiseProperties();
-                    if (validateExtraCareCardNumber()) {
+                    if (validateExtraCareCardNumberExists()) {
                         getFilteredCouponLists(vm.queryParameters.extraCareCardNumber, vm.queryParameters.couponNumber);
                     }
                 }
 
                 function initialiseProperties() {
                     vm.queryParameters = queryParameterFactory.getQueryParameterInformation();
-                    vm.primaryNotificationControl = {
-                        display: true,
+                    vm.configuration = {
+                        digitalReceiptLanding: digitalReceiptLandingConfiguration,
+                        viewAllCoupons: viewAllCouponsConfiguration
+                    };
+                    vm.primaryViewControl = {
+                        display: false,
                         path: constants.BLANK_VIEW
                     };
-                    vm.secondaryNotificationControl = {
-                        display: true,
+                    vm.secondaryViewControl = {
+                        display: false,
                         path: constants.BLANK_VIEW
                     };
                 }
 
-                function validateExtraCareCardNumber() {
+                function validateExtraCareCardNumberExists() {
                     var success = false;
 
                     if (angular.isDefined(vm.queryParameters.extraCareCardNumber)) {
                         success = true;
                     } else {
-                        vm.primaryNotificationControl.path = notificationViewsFactory.getTechnicalErrorView();
-                        vm.secondaryNotificationControl.path = notificationViewsFactory.getBlankView();
+                        vm.primaryViewControl.display = true;
+                        vm.primaryViewControl.path = notificationViewsFactory.getTechnicalErrorView();
                     }
 
                     return success;
                 }
-
-                /*                function validateQueryParameters() {
-                                    var success = false;
-
-                                    if (angular.isDefined(vm.queryParameters.extraCareCardNumber)) {
-                                        if (angular.isUndefined(vm.queryParameters.couponNumber) || vm.queryParameters.couponNumber === "") {
-                                            vm.primaryNotificationControl.display = true;
-                                            vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
-                                        }
-                                        success = true;
-                                    } else {
-                                        vm.primaryNotificationControl.display = true;
-                                        vm.primaryNotificationControl.path = notificationViewsFactory.getTechnicalErrorView();
-                                        vm.secondaryNotificationControl.display = true;
-                                        vm.secondaryNotificationControl.path = notificationViewsFactory.getBlankView();
-                                    }
-
-                                    return success;
-                                }*/
 
                 function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
                     couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber)
@@ -77,13 +61,23 @@ angular.module('send2CardApp')
 
                 function getFilteredCouponListsSuccess(results) {
                     vm.couponsServiceData = results;
-
-                    if (validateCouponNumberExists()) {
-                        vm.primaryNotificationControl.display = false;
-                    } else {
-                        vm.primaryNotificationControl.path = notificationViewsFactory.getViewAllCouponsView();
+                    
+                    if(vm.couponsServiceData.unactionedCoupons.length === 0) {
+                        vm.configuration.viewAllCoupons.DISPLAY_UNACTIONED_COUPONS = false;
                     }
-                    vm.secondaryNotificationControl.display = false;
+
+                    if(vm.couponsServiceData.actionedCoupons.length === 0) {
+                        vm.configuration.viewAllCoupons.DISPLAY_ACTIONED_COUPONS = false;
+                    }
+                    
+                    if (validateCouponNumberExists()) {
+                        vm.primaryViewControl.display = true;
+                        vm.primaryViewControl.path = notificationViewsFactory.getCampaignHeaderView();
+                    } else {
+                        vm.primaryViewControl.display = true;
+                        vm.primaryViewControl.path = notificationViewsFactory.getViewAllCouponsHeaderView();
+                    }
+                    vm.secondaryViewControl.display = true;
                 }
 
                 function validateCouponNumberExists() {
@@ -95,11 +89,7 @@ angular.module('send2CardApp')
                 }
 
                 function getFilteredCouponListsFailed(error) {
-                    vm.primaryNotificationControl.path = notificationViewsFactory.getGetCustomerProfileNotification(error, true);
-                    console.log(vm.primaryNotificationControl.path);
-                    console.log(vm.primaryNotificationControl.display);
-                    console.log(vm.secondaryNotificationControl.path);
-                    console.log(vm.secondaryNotificationControl.display);
+                    vm.primaryViewControl.path = notificationViewsFactory.getGetCustomerProfileNotification(error, true);
                 }
 
                 vm.resetCollapseStateForAll = function () {
@@ -116,6 +106,7 @@ angular.module('send2CardApp')
                 }
 
             },
+            templateUrl: 'views/templates/landingpage-template.html',
             controllerAs: 'landingPageController',
             bindToController: true,
             restrict: 'E'

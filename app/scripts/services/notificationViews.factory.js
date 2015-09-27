@@ -8,12 +8,13 @@
  * Factory in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .factory('notificationViewsFactory', function (constants) {
+    .factory('notificationViewsFactory', function (constants, digitalReceiptLandingConfiguration) {
 
         return {
             getBlankView: getBlankView,
             getTechnicalErrorView: getTechnicalErrorView,
-            getViewAllCouponsView: getViewAllCouponsView,
+            getViewAllCouponsHeaderView: getViewAllCouponsHeaderView,
+            getCampaignHeaderView: getCampaignHeaderView,
             getSingleCouponNotification: getSingleCouponNotification,
             getGetCustomerProfileNotification: getGetCustomerProfileNotification,
             getBulkCouponsNotification: getBulkCouponsNotification
@@ -26,9 +27,17 @@ angular.module('send2CardApp')
         function getTechnicalErrorView() {
             return constants.TECHNICAL_ERROR;
         }
-    
-        function getViewAllCouponsView() {
+
+        function getViewAllCouponsHeaderView() {
             return constants.VIEW_ALL_COUPONS_HEADER;
+        }
+
+        function getCampaignHeaderView() {
+            if (digitalReceiptLandingConfiguration.AUTO_SEND_SINGLE_COUPON) {
+                return constants.DIGITAL_RECEIPT_CAMPAIGN_HEADER;
+            } else {
+                return constants.EXTRACARE_EMAIL_CAMPAIGN_HEADER;
+            }
         }
 
         function getSingleCouponNotification(errorCode, primaryHandler) {

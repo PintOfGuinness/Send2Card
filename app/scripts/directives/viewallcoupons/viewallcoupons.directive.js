@@ -9,8 +9,7 @@
 angular.module('send2CardApp')
     .directive('viewAllCouponsDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, displayInformationFactory, modalProvider, screenSize, $q, viewAllCouponsConfiguration, queryParameterFactory, constants) {
-
+            controller: function (singleCouponFactory, displayInformationFactory, modalProvider, screenSize, $q, queryParameterFactory, constants) {
                 var vm = this;
 
                 initialise();
@@ -26,7 +25,6 @@ angular.module('send2CardApp')
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
                         couponPrinted: constants.COUPON_PRINTED
                     };
-                    vm.configuration = viewAllCouponsConfiguration;
                 }
 
                 vm.sendSingleCoupon = function () {
@@ -75,7 +73,8 @@ angular.module('send2CardApp')
             controllerAs: 'viewAllCouponsController',
             bindToController: true,
             scope: {
-                notificationControl: '=',
+                viewControl: '=',
+                configuration: '=',
                 couponsServiceData: '=',
                 displayProgressBar: '&',
                 resetCollapseStateForAll: '&'

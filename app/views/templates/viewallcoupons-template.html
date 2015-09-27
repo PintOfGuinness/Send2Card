@@ -1,24 +1,26 @@
 <div>
-    <div ng-hide="viewAllCouponsController.notificationControl.display">
-        <div ng-show="viewAllCouponsController.configuration.DISPLAY_COUPONS_AVAILABLE" class="full-width">
-            <div class="container" style="padding-left:25px;">
-                <br>
-                <!--UNACTIONED COUPONS-->
-                <div class="panel-body nopadding">
-                    <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons track by $index">
-                        <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display: flex;">
-                            <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index" style="display: flex;">
-                                <coupon-block-directive class="col-xs-12" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
-                                </coupon-block-directive>
+    <div ng-show="viewAllCouponsController.viewControl.display" class="full-width">
+        <div class="container" style="padding-left:25px;">
+            <!--UNACTIONED COUPONS-->
+            <div ng-show="viewAllCouponsController.configuration.DISPLAY_UNACTIONED_COUPONS">
+                <h4>Phooar!! Look at all these lovely offers!</h4>                
+                <p>
+                    <div class="panel-body nopadding">
+                        <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons track by $index">
+                            <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display: flex;">
+                                <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index" style="display: flex;">
+                                    <coupon-block-directive class="col-xs-12" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
+                                    </coupon-block-directive>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- ACTIONED COUPONS-->
-                <div ng-show="viewAllCouponsController.configuration.DISPLAY_COUPONS_READY_TO_USE" class="panel-body nopadding">
-                    <h4>Offers Ready to Use</h4>
-                    <br>
+                </p>
+            </div>
+            <!-- ACTIONED COUPONS-->
+            <div ng-show="viewAllCouponsController.configuration.DISPLAY_ACTIONED_COUPONS" class="panel-body nopadding">
+                <h4>Offers Ready to Use</h4>
+                <p>
                     <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.actionedCoupons">
                         <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display: flex;">
                             <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'actioned') track by $index" style="display: flex;">
@@ -27,14 +29,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </p>
             </div>
-
         </div>
     </div>
     <div>
-        <div ng-show="viewAllCouponsController.notificationControl.display">
-            <ng-include src="viewAllCouponsController.notificationControl.path"></ng-include>
-        </div>
+        <div ng-hide="viewAllCouponsController.viewControl.display"></div>
     </div>
 </div>

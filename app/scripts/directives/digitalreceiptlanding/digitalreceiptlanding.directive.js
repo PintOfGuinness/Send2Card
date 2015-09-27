@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, notificationViewsFactory,  $q, digitalReceiptLandingConfiguration, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {
+            controller: function (singleCouponFactory, notificationViewsFactory,  $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {
 
                 var vm = this;
 
@@ -42,7 +42,6 @@ angular.module('send2CardApp')
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
                         couponPrinted: constants.COUPON_PRINTED
                     };
-                    vm.configuration = digitalReceiptLandingConfiguration;
                 }
 
                 vm.sendSingleCoupon = function () {
@@ -51,8 +50,8 @@ angular.module('send2CardApp')
                 }
 
                 function sendSingleCouponFailure(error) {
-                    vm.notificationControl.display = true;
-                    vm.notificationControl.path = notificationViewsFactory.getSingleCouponNotification(error, true);
+                    vm.viewControl.display = true;
+                    vm.viewControl.path = notificationViewsFactory.getSingleCouponNotification(error, true);
                     if (pageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordErrorMessage(error);
                     }
@@ -88,7 +87,8 @@ angular.module('send2CardApp')
             },
             controllerAs: 'digitalReceiptLandingController',
             scope: {
-                notificationControl: '=',
+                viewControl: '=',
+                configuration: '=',                
                 couponsServiceData: '=',
                 displayProgressBar: '&',
                 resetCollapseStateForAll: '&'

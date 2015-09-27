@@ -1,32 +1,10 @@
-<div>    
-             <div style="position: absolute; left: 50%; top: 250px;">
-                <spinner name="bookspinner" show="digitalReceiptLandingController.showSpinner" img-src="images/spinner.gif" style="position: relative; left: -50%; z-index: 3;"></spinner>
-            </div>
-    
-    <div ng-hide="digitalReceiptLandingController.notificationControl.display">
-        <div class="row nopadding">
-            <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-8 nopadding">
-                <h2 class="red-text">Success!</h2>
-                <h5>The coupon loaded on your ExtraCare card ending in {{digitalReceiptLandingController.extraCareCardNumberEndDigits}} and is ready to use.</h5>
-                <h6>Just present your ExtraCare card to the associate when you check out</h6>
-            </div>
-        </div>
-        <div class="row nopadding">
-            <br>
-            <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in digitalReceiptLandingController.couponsServiceData.singleCoupon">
-                <coupon-block-directive coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" clicked-view-details="digitalReceiptLandingController.clickedViewDetails()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
-            </div>
+<div>
+    <div style="position: absolute; left: 50%; top: 250px;">
+        <spinner name="bookspinner" show="digitalReceiptLandingController.showSpinner" img-src="images/spinner.gif" style="position: relative; left: -50%; z-index: 3;"></spinner>
+    </div>
 
-            
-            <bcc-content-directive ng-show="digitalReceiptLandingController.configuration.DISPLAY_BCC" class="noMobileView col-xs-0 col-sm-6 col-md-4 col-md-offset-4">
-            </bcc-content-directive>
-            
-        </div>
+    <div ng-show="digitalReceiptLandingController.viewControl.display">
+        <ng-include src="digitalReceiptLandingController.viewControl.path"></ng-include>
     </div>
-    <div>
-        <div ng-show="digitalReceiptLandingController.notificationControl.display">
-            <ng-include src="digitalReceiptLandingController.notificationControl.path"></ng-include>
-        </div>
-    </div>
-    <br>
+    <div ng-hide="digitalReceiptLandingController.viewControl.display"></div>
 </div>

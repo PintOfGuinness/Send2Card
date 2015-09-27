@@ -15,7 +15,7 @@ app.constant('digitalReceiptLandingConfiguration', {
 });
 
 app.constant('viewAllCouponsConfiguration', {
-    DISPLAY_COUPONS_AVAILABLE: true,
-    DISPLAY_COUPONS_READY_TO_USE: true,
+    DISPLAY_UNACTIONED_COUPONS: true,
+    DISPLAY_ACTIONED_COUPONS: true,
     ENABLE_PRINT_ACTION: true
 });

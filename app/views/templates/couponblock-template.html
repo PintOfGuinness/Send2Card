@@ -1,25 +1,25 @@
 <div class="panel panel-default couponpadding" ng-class="{'border-yellow' : isReadyToUse }">
     <div class="panel-body coupon-leftside">
         <div class="text-center coupon-rightside" ng-class="{'border-yellow' : isReadyToUse }">
-            <div class="flip-container" ng-class="{'flip':isFlipped}" ng-click="isFlipped=true;">
+            <div class="flip-container" ng-class="{'flip':couponBlockController.isFlipped}" ng-click="couponBlockController.isFlipped=true;">
                 <div class="flipper">
                     <div class="front">
-                        <img class="img-alt-size" ng-click="sendSingleCoupon(); recordSend2Card();" ng-src="{{couponButton.unSentCouponPath}}">
+                        <img class="img-alt-size" ng-click="couponBlockController.sendSingleCoupon(); couponBlockController.recordSend2Card();" ng-src="{{couponBlockController.couponButton.unSentCouponPath}}">
                     </div>
                     <div class="back">
-                        <div ng-if="coupon.state==1">
-                            <img ng-src="{{couponButton.sentCouponPath}}">
+                        <div ng-if="couponBlockController.coupon.state==1">
+                            <img ng-src="{{couponBlockController.couponButton.sentCouponPath}}">
                         </div>
-                        <div ng-if="coupon.state==2">
-                            <img class="img-size" ng-src="{{couponButton.couponPrinted}}">
+                        <div ng-if="couponBlockController.coupon.state==2">
+                            <img class="img-size" ng-src="{{couponBlockController.couponButton.couponPrinted}}">
                         </div>
                     </div>
                 </div>
             </div>
-            <div ng-show="configuration.ENABLE_PRINT_ACTION">
-                <div ng-hide="isHidden" class="desktoponly print-button">
+            <div ng-show="couponBlockController.configuration.ENABLE_PRINT_ACTION">
+                <div ng-hide="couponBlockController.isHidden" class="desktoponly print-button">
                     <img src="images/printer.png" height="20px" width="20px" />
-                    <a id="printofferdiv" data-toggle="modal" ng-click="openPrintModal(); recordFirstPrintButtonClick()">Print</a>
+                    <a id="printofferdiv" data-toggle="modal" ng-click="couponBlockController.openPrintModal(); couponBlockController.recordFirstPrintButtonClick()">Print</a>
                 </div>
 
             </div>
@@ -27,44 +27,44 @@
 
         <p>
             <h4><font color = "red" class = "bigger-font">
-                <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{coupon.dollars}}</strong>
-                 <strong class="no-padding" ng-show="coupon.showPercentSign">{{coupon.title}}<sup class="class="no-padding">%</sup></strong>
-        <sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</b></strong></sup><strong class="half-size-font"> off</strong></font>
-        <br></h4> {{coupon.cpn_dsc}}
+                <sup class="medium-font" ng-show="couponBlockController.coupon.showDollarSign">$</sup><strong class = "bigger-font">{{couponBlockController.coupon.dollars}}</strong>
+                 <strong class="no-padding" ng-show="couponBlockController.coupon.showPercentSign">{{couponBlockController.coupon.title}}<sup class="no-padding">%</sup></strong>
+        <sup class = "medium-font" ng-hide="couponBlockController.coupon.dontShowCents"><strong>{{couponBlockController.coupon.cents}}</strong></sup><strong class="half-size-font"> off</strong></font>
+        <br></h4> {{couponBlockController.coupon.cpn_dsc}}
 
             <br>
-            <div ng-show="coupon.expiresSoon">
+            <div ng-show="couponBlockController.coupon.expiresSoon">
                 <br>
-                <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ coupon.expir_dt }}
+                <span class="glyphicon glyphicon-exclamation-sign" style="color:red"></span><strong> SOON</strong> EXP {{ couponBlockController.coupon.expir_dt }}
 
                 <br>
             </div>
 
-            <div ng-show="coupon.isNew">
+            <div ng-show="couponBlockController.coupon.isNew">
                 <br>
-                <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! </strong> EXP {{ coupon.expir_dt }}
+                <span class="glyphicon glyphicon-star" style="color:red"></span><strong> NEW! </strong> EXP {{ couponBlockController.coupon.expir_dt }}
             </div>
 
         </p>
 
-        <div ng-show="!coupon.expiresSoon && !coupon.isNew"> EXP {{ coupon.expir_dt }} </div>
+        <div ng-show="!couponBlockController.coupon.expiresSoon && !couponBlockController.coupon.isNew"> EXP {{ couponBlockController.coupon.expir_dt }} </div>
         <p>
 
-            <strong><div ng-click="collapseSection(); recordViewDetails();" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : coupon.isCollapsed}"></span> View Details </div></strong>
+            <strong><div ng-click="couponBlockController.collapseSection(); couponBlockController.recordViewDetails();" class="accordion-header"><span ng-class="{'glyphicon glyphicon-chevron-down' : !couponBlockController.coupon.isCollapsed, 'glyphicon glyphicon-chevron-right' : couponBlockController.coupon.isCollapsed}"></span> View Details </div></strong>
             <br>
 
     </div>
 
 
 
-    <div collapse="coupon.isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !isReadyToUse, 'border-yellow' : isReadyToUse }">
+    <div collapse="couponBlockController.coupon.isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !couponBlockController.isReadyToUse, 'border-yellow' : couponBlockController.isReadyToUse }">
         <div class="expanded-div-style">
             <small>
                 <p>Coupon redeemable in store only*</p>
-                <p><b>Valid through:</b><b class="text-red"> {{ coupon.expir_dt }} </b>
+                <p><b>Valid through:</b><b class="text-red"> {{ couponBlockController.coupon.expir_dt }} </b>
                 <br/>
-                    <b>Barcode/coupon code:</b><b class="text-red"> {{ coupon.cpn_seq_nbr }} </b></p>
-                <p><b>Terms & Conditions: </b>{{ coupon.cpn_terms_txt }}</p>
+                    <b>Barcode/coupon code:</b><b class="text-red"> {{ couponBlockController.coupon.cpn_seq_nbr }} </b></p>
+                <p><b>Terms & Conditions: </b>{{ couponBlockController.coupon.cpn_terms_txt }}</p>
             </small>
         </div>
     </div>
