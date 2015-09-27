@@ -63,6 +63,7 @@ angular.module('send2CardApp')
                     singleCoupon = $filter('couponTitleFilter')(singleCoupon);
                     setCouponCollapsedDefault(singleCoupon);
                     couponState(singleCoupon); // ????
+                    couponIsExtraBucks(singleCoupon);
                     couponExpiresSoon(singleCoupon);
                 }
             } else {
