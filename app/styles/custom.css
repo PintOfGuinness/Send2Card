@@ -12,6 +12,37 @@
     background-blend-mode: color-dodge;
     background-color: darkgrey;
 }
+.big-image {
+    padding-top: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 60px;
+    width: 60px;
+}
+.remember-me-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.success {
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.remember-me-border {
+    border: 1px solid;
+    border-color: #DDD;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.remember-me-success-border {
+    border: 1px solid;
+    border-color: #66FF99;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 /*ANIMATION*/
 
@@ -69,7 +100,7 @@
     height: 200px;
 }
 .pad-left {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .pad-top {
     padding-top: 5px;
@@ -80,8 +111,19 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+.banner-container {
+    width: 200px;
+    height: 50px;
+}
 .text-red {
     color: #cc0000;
+}
+.red-with-white-text {
+    width: 200px;
+    height: 50px;
+    border-top: 25px solid red;
+    border-bottom: 25px solid red;
+    border-right: 30px solid transparent;
 }
 .soonmarker {
     display: inline-block;
@@ -148,14 +190,19 @@ img:hover {
 
 /*Andrew Dawson is an onion CSS*/
 
-.couponpadding:hover {
+
+/*.couponpadding:hover {
     border-color: #FDE8C9;
 }
 .couponpadding:hover * {
     border-color: #FDE8C9;
-}
+}*/
+
 .border-yellow {
     border-color: #FDE8C9;
+}
+.extrabucks {
+    border-color: #ffde46;
 }
 .border-grey {
     border-color: #DDD;
@@ -180,6 +227,9 @@ img:hover {
 .half-size-font {
     font-size: 50%;
 }
+.smaller-font {
+    font-size: 85%;
+}
 .text-size-uniform {
     font-size: larger;
 }
@@ -197,7 +247,7 @@ img:hover {
 }
 .progress-bar-colour {
     background-image: none;
-    background-color: #65ccc0;
+    background-color: #41C1B3;
 }
 .pad-right {
     padding-right: 10px;
@@ -313,7 +363,7 @@ img:hover {
     position: absolute;
     left: 0;
     right: 0;
-    background-color: #FAFAFA;
+    background-color: #E6F3FF;
 }
 .red-text {
     color: red;
@@ -323,14 +373,31 @@ img:hover {
     left: 0;
     top: 0;
     right: 0;
-    background-color: #363636;
+    background-color: #3D3D3D;
     opacity: 0.80;
+}
+.grey-background {
+    background-color: #6F6F6F;
+}
+.full-width-red-button {
+    background-color: red;
+    display: inline;
 }
 .more-padding-right {
     padding-right: 75px;
 }
+.pad-remember-me {
+    padding-left: 30px;
+    padding-right: 30px;
+}
 .white-text {
     color: #ffffff;
+}
+.green-text {
+    color: #41C1B3;
+}
+.black-text {
+    color: black;
 }
 .errorModalPadding {
     padding: 10px;

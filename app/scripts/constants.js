@@ -24,11 +24,14 @@ app.constant('constants', {
     DISPLAY_OFF: 'off',
     DISPLAY_ZEROS: '00',
     DOT: '.',
+    EXTRABUCKS: 'ExtraBucks',
 
     /* IMAGES */
     COUPON_SEND_TO_CARD_IMAGE: "images/sendtocardicon.png",
     COUPON_SENT_TO_CARD_IMAGE: "images/oncard.png",
     COUPON_PRINTED: "images/printedicon.png",
+    CVS_HEALTH_ICON: "images/cvshealthicon.png",
+    REMEMBER_ME_SUCCESS_ICON: "images/remembermesuccessicon.png",
 
     /* HTML TEMPLATE VIEWS */
     BCC_CONTENT_TEMPLATE: "views/templates/bcccontent-template.html",
@@ -38,10 +41,15 @@ app.constant('constants', {
 
     /* HTML ERROR/NOTIFICATION VIEWS */
     BLANK_VIEW: "views/notifications/blank.html",
+
     VIEW_ALL_COUPONS_HEADER: "views/notifications/viewallcoupons-header.html",
     DIGITAL_RECEIPT_CAMPAIGN_HEADER: "views/notifications/digitalreceiptcampaign-header.html",    
     EXTRACARE_EMAIL_CAMPAIGN_HEADER: "views/notifications/extracareemailcampaign-header.html", 
     COUPON_EXPIRED: "views/notifications/error1.html",   
-    TECHNICAL_ERROR: "views/notifications/error4.html"
+    TECHNICAL_ERROR: "views/notifications/error4.html",
+
+    /* REMEMBER ME TEXT */
+    REMEMBER_ME_TEXT: "Remember My Card makes finding great deals even easier. Choose it and you can see myWeeklyAd Deals and ExtraCare Offers without signing in. That means more savings and convenience for you"
+
 
 });

@@ -35,6 +35,7 @@ angular.module('send2CardApp')
                         couponExpiresSoon(eachCoupon);
                         couponIsNew(eachCoupon);
                         showSoonOverNew(eachCoupon);
+                        couponIsExtraBucks(eachCoupon);
                         eachCoupon = $filter('couponTitleFilter')(eachCoupon);
                         setCouponCollapsedDefault(eachCoupon);
                         if (couponActioned(eachCoupon)) {
@@ -62,6 +63,7 @@ angular.module('send2CardApp')
                     singleCoupon = $filter('couponTitleFilter')(singleCoupon);
                     setCouponCollapsedDefault(singleCoupon);
                     couponState(singleCoupon); // ????
+                    couponIsExtraBucks(singleCoupon);
                     couponExpiresSoon(singleCoupon);
                 }
             } else {
@@ -122,7 +124,7 @@ angular.module('send2CardApp')
         function couponExpiresSoon(eachCoupon) {
             var today = new Date();
             var expiresSoonRegion = new Date(today);
-            expiresSoonRegion.setDate(today.getDate() + 14);
+            expiresSoonRegion.setDate(today.getDate() + 6);
             var expiryDate = new Date(eachCoupon.expir_dt);
 
             if (expiryDate < expiresSoonRegion) {
@@ -138,6 +140,15 @@ angular.module('send2CardApp')
             } else {
                 eachCoupon.isNew = false;
             }
+        }
+
+        function couponIsExtraBucks(eachCoupon) {
+            if (eachCoupon.cpn_dsc.indexOf(constants.EXTRABUCKS) > 1) {
+                return eachCoupon.isExtraBucks = true;
+            } else {
+                return eachCoupon.isExtraBucks = false;
+            }
+
         }
 
         function showSoonOverNew(eachCoupon) {

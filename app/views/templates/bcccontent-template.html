@@ -1,9 +1,26 @@
-<div ng-show="bccContentController.configuration.ENABLE_EC_OPT_IN">
+<div class="remember-me-border" id="rememberMeSection" ng-show="bccContentController.configuration.ENABLE_EC_OPT_IN">
     <div ng-hide="bccContentController.hideButton">
-        <button ng-click="bccContentController.createRememberMeCookie();" ng-hide="bccContentController.hideButton">
-            Remember Me
-        </button>
+        <div ng-hide="bccContentController.showSuccessMessage">
+            <h4><img ng-src="{{bccContentController.cvsHealthIcon}}"/><b>  Never Miss A Deal</b></h4>
+            <h5>{{bccContentController.rememberMeText}}</h5>
+            <button class="full-width-red-button" ng-click="bccContentController.createRememberMeCookie();bccContentController.showRememberMeSuccess();" ng-hide="bccContentController.hideButton">
+                <strong class="white-text pad-remember-me text-size-uniform">Remember My Card</strong>
+            </button>
+            <br> <strong class="smaller-font">Not recommended if on a shared device.</strong>
+            <br>
+            <a ng-click="digitalReceiptLandingController.openHelpModal();digitalReceiptLandingController.helpClick(); ">How it Works ></a>
+        </div>
     </div>
-</div>
 
-<div class="bcc panel-body noMobileView" ng-show="bccContentController.hideButton" style="height: 150px;">BCC Area 1.</div>
+    <div ng-show="bccContentController.showSuccessMessage">
+        <img class="success" ng-src="{{bccContentController.rememberMeSuccessIcon}}" />
+        <h4 class="success">Success</h4>
+        <h5 class="remember-me-padding">Thanks, mate.</h5>
+        <h5 class="remember-me-padding">Now we'll recognize every time you visit, and that'll make finding your deals <b>even easier</b></h5>
+    </div>
+    <div ng-show="{{bccContentController.cookieIsPresent}}">
+        <div class="noMobileView" style="height: 150px;">BCC Area 1.</div>
+    </div>
+
+
+</div>

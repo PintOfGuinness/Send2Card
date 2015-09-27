@@ -1119,7 +1119,7 @@
                         "cmpgn_id": "20013",
                         "sku_nbr": "44539",
                         "cpn_seq_nbr": "45678926033",
-                        "cpn_dsc": "$10 off any two (2) Reading Glasses",
+                        "cpn_dsc": "$10 off any two (2) Reading Glasses ExtraBucks",
                         "web_dsc": "",
                         "cpn_terms_cd": "1",
                         "cpn_terms_txt": "ExtraCare card must be presented to get these savings. Savings applied to total purchase with specified product. Excludes prescriptions, alcohol, milk, lottery, money orders, gift cards, postage stamps, pre-paid cards, and pseudoephedrine. No cash back. Tax charged on pre-coupon price where required. +CRV on beverages applied where applicable.",
@@ -1274,7 +1274,7 @@
                         "ever_web_redeemable_ind": "Y",
                         "store_nbr": "",
                         "store_name": ""
-                    }
+  }
                 ]
             },
             "PREFS": {
