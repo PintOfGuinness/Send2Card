@@ -100,7 +100,7 @@
     height: 200px;
 }
 .pad-left {
-    padding-left: 20px;
+    padding-left: 10px;
 }
 .pad-top {
     padding-top: 5px;
@@ -111,8 +111,19 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+.banner-container {
+    width: 200px;
+    height: 50px;
+}
 .text-red {
     color: #cc0000;
+}
+.red-with-white-text {
+    width: 200px;
+    height: 50px;
+    border-top: 25px solid red;
+    border-bottom: 25px solid red;
+    border-right: 30px solid transparent;
 }
 .soonmarker {
     display: inline-block;
@@ -236,7 +247,7 @@ img:hover {
 }
 .progress-bar-colour {
     background-image: none;
-    background-color: #65ccc0;
+    background-color: #41C1B3;
 }
 .pad-right {
     padding-right: 10px;
@@ -362,8 +373,11 @@ img:hover {
     left: 0;
     top: 0;
     right: 0;
-    background-color: #363636;
+    background-color: #3D3D3D;
     opacity: 0.80;
+}
+.grey-background {
+    background-color: #6F6F6F;
 }
 .full-width-red-button {
     background-color: red;
@@ -378,6 +392,12 @@ img:hover {
 }
 .white-text {
     color: #ffffff;
+}
+.green-text {
+    color: #41C1B3;
+}
+.black-text {
+    color: black;
 }
 .errorModalPadding {
     padding: 10px;
