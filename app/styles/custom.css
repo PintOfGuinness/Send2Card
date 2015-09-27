@@ -13,12 +13,12 @@
     background-color: darkgrey;
 }
 .remember-me-border {
-    border-style: solid;
-    border-color: #EBEBE0;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    border: 1px solid;
+    border-color: #DDD;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 /*ANIMATION*/
@@ -156,12 +156,14 @@ img:hover {
 
 /*Andrew Dawson is an onion CSS*/
 
-.couponpadding:hover {
+
+/*.couponpadding:hover {
     border-color: #FDE8C9;
 }
 .couponpadding:hover * {
     border-color: #FDE8C9;
-}
+}*/
+
 .border-yellow {
     border-color: #FDE8C9;
 }
@@ -190,6 +192,9 @@ img:hover {
 }
 .half-size-font {
     font-size: 50%;
+}
+.smaller-font {
+    font-size: 85%;
 }
 .text-size-uniform {
     font-size: larger;
