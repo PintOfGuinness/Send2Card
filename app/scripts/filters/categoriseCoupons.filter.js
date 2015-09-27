@@ -124,7 +124,7 @@ angular.module('send2CardApp')
         function couponExpiresSoon(eachCoupon) {
             var today = new Date();
             var expiresSoonRegion = new Date(today);
-            expiresSoonRegion.setDate(today.getDate() + 14);
+            expiresSoonRegion.setDate(today.getDate() + 6);
             var expiryDate = new Date(eachCoupon.expir_dt);
 
             if (expiryDate < expiresSoonRegion) {
