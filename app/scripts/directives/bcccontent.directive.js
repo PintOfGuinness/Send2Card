@@ -47,6 +47,9 @@ angular.module('send2CardApp')
                 vm.hideRememberMeButton = function () {
                     vm.hideButton = true;
                 }
+
+                vm.rememberMeText = constants.REMEMBER_ME_TEXT;
+                vm.cvsHealthIcon = constants.CVS_HEALTH_ICON;
             },
             controllerAs: 'bccContentController',
             bindToController: true,

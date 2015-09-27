@@ -12,6 +12,14 @@
     background-blend-mode: color-dodge;
     background-color: darkgrey;
 }
+.remember-me-border {
+    border-style: solid;
+    border-color: #EBEBE0;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
 /*ANIMATION*/
 
@@ -329,8 +337,16 @@ img:hover {
     background-color: #363636;
     opacity: 0.80;
 }
+.full-width-red-button {
+    background-color: red;
+    display: inline;
+}
 .more-padding-right {
     padding-right: 75px;
+}
+.pad-remember-me {
+    padding-left: 30px;
+    padding-right: 30px;
 }
 .white-text {
     color: #ffffff;

@@ -1,8 +1,13 @@
-<div ng-show="bccContentController.configuration.ENABLE_EC_OPT_IN">
+<div class="remember-me-border" ng-show="bccContentController.configuration.ENABLE_EC_OPT_IN">
     <div ng-hide="bccContentController.hideButton">
-        <button ng-click="bccContentController.createRememberMeCookie();" ng-hide="bccContentController.hideButton">
-            Remember Me
+        <h4><img ng-src="{{bccContentController.cvsHealthIcon}}"/><b>  Never Miss A Deal</b></h4>
+        <h5>{{bccContentController.rememberMeText}}</h5>
+        <button class="full-width-red-button" ng-click="bccContentController.createRememberMeCookie();" ng-hide="bccContentController.hideButton">
+            <strong class="white-text pad-remember-me text-size-uniform">Remember My Card</strong>
         </button>
+        <br> Not recommended if on a shared device.
+        <br>
+        <a ng-click="digitalReceiptLandingController.openHelpModal();digitalReceiptLandingController.helpClick(); ">How it Works ></a>
     </div>
 </div>
 
