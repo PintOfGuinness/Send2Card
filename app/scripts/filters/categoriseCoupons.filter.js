@@ -143,7 +143,7 @@ angular.module('send2CardApp')
         }
 
         function couponIsExtraBucks(eachCoupon) {
-            if (eachCoupon.cpn_dsc.indexOf(constants.EXTRABUCKS) > 1) {
+            if (eachCoupon.cmpgn_type_cd === "E" && eachCoupon.cmpgn_subtype_cd === "S") {
                 return eachCoupon.isExtraBucks = true;
             } else {
                 return eachCoupon.isExtraBucks = false;
