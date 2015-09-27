@@ -35,6 +35,7 @@ angular.module('send2CardApp')
                         couponExpiresSoon(eachCoupon);
                         couponIsNew(eachCoupon);
                         showSoonOverNew(eachCoupon);
+                        couponIsExtraBucks(eachCoupon);
                         eachCoupon = $filter('couponTitleFilter')(eachCoupon);
                         setCouponCollapsedDefault(eachCoupon);
                         if (couponActioned(eachCoupon)) {
@@ -138,6 +139,15 @@ angular.module('send2CardApp')
             } else {
                 eachCoupon.isNew = false;
             }
+        }
+
+        function couponIsExtraBucks(eachCoupon) {
+            if (eachCoupon.cpn_dsc.indexOf(constants.EXTRABUCKS) > 1) {
+                return eachCoupon.isExtraBucks = true;
+            } else {
+                return eachCoupon.isExtraBucks = false;
+            }
+
         }
 
         function showSoonOverNew(eachCoupon) {

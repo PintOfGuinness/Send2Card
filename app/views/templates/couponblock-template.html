@@ -1,6 +1,6 @@
-<div class="panel panel-default couponpadding" ng-class="{'border-yellow' : isReadyToUse }">
+<div class="panel panel-default couponpadding" ng-class="{'extrabucks' : coupon.isExtraBucks }">
     <div class="panel-body coupon-leftside">
-        <div class="text-center coupon-rightside" ng-class="{'border-yellow' : isReadyToUse }">
+        <div class="text-center coupon-rightside" ng-class="{'extrabucks' : coupon.isExtraBucks }">
             <div class="flip-container" ng-class="{'flip':isFlipped}" ng-click="isFlipped=true;">
                 <div class="flipper">
                     <div class="front">

@@ -24,6 +24,7 @@ app.constant('constants', {
     DISPLAY_OFF: 'off',
     DISPLAY_ZEROS: '00',
     DOT: '.',
+    EXTRABUCKS: 'ExtraBucks',
 
     /* IMAGES */
     COUPON_SEND_TO_CARD_IMAGE: "images/sendtocardicon.png",
@@ -39,7 +40,7 @@ app.constant('constants', {
     /* HTML ERROR/NOTIFICATION VIEWS */
     BLANK_VIEW: "views/notifications/blank.html",
     VIEW_ALL_COUPONS_HEADER: "views/notifications/header1.html",
-    COUPON_EXPIRED: "views/notifications/error1.html",   
+    COUPON_EXPIRED: "views/notifications/error1.html",
     TECHNICAL_ERROR: "views/notifications/error4.html"
 
 });
