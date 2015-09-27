@@ -25,13 +25,14 @@ angular.module('send2CardApp')
                 function initialiseProperties() {
                     vm.hideButton = false;
                     vm.configuration = pageConfiguration;
+                    vm.showSuccessMessage = false;
                 }
 
                 function checkCookieExists() {
                     if (cookieFactory.getCookieValue("ECCardNumber") === undefined) {
-                        return false;
+                        return vm.cookieIsPresent = false;
                     } else {
-                        return true;
+                        return vm.cookieIsPresent = true;
                     }
                 }
 
@@ -45,11 +46,18 @@ angular.module('send2CardApp')
                 }
 
                 vm.hideRememberMeButton = function () {
+                    var rememberMeSection = document.getElementById("rememberMeSection");
+                    rememberMeSection.className = ("remember-me-success-border");
                     vm.hideButton = true;
+                }
+
+                vm.showRememberMeSuccess = function () {
+                    vm.showSuccessMessage = true;
                 }
 
                 vm.rememberMeText = constants.REMEMBER_ME_TEXT;
                 vm.cvsHealthIcon = constants.CVS_HEALTH_ICON;
+                vm.rememberMeSuccessIcon = constants.REMEMBER_ME_SUCCESS_ICON;
             },
             controllerAs: 'bccContentController',
             bindToController: true,

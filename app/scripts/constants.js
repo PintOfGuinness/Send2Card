@@ -31,6 +31,7 @@ app.constant('constants', {
     COUPON_SENT_TO_CARD_IMAGE: "images/oncard.png",
     COUPON_PRINTED: "images/printedicon.png",
     CVS_HEALTH_ICON: "images/cvshealthicon.png",
+    REMEMBER_ME_SUCCESS_ICON: "images/remembermesuccessicon.png",
 
     /* HTML TEMPLATE VIEWS */
     BCC_CONTENT_TEMPLATE: "views/templates/bcccontent-template.html",

@@ -12,9 +12,32 @@
     background-blend-mode: color-dodge;
     background-color: darkgrey;
 }
+.big-image {
+    padding-top: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    height: 60px;
+    width: 60px;
+}
+.remember-me-padding {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.success {
+    padding-left: 80px;
+    padding-right: 80px;
+}
 .remember-me-border {
     border: 1px solid;
     border-color: #DDD;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.remember-me-success-border {
+    border: 1px solid;
+    border-color: #66FF99;
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 10px;
