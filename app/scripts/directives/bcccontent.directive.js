@@ -37,7 +37,7 @@ angular.module('send2CardApp')
 
                 vm.createRememberMeCookie = function () {
                     if (checkCookieExists() === false) {
-                        cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumberParameter());
+                        cookie = cookieFactory.createCookieUsingKeyAndValue("ECCardNumber", queryParameterFactory.getExtraCareCardNumber());
                         if (angular.isDefined(cookie)) {
                             vm.hideRememberMeButton();
                         }
