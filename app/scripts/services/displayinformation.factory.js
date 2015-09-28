@@ -48,20 +48,17 @@ angular.module('send2CardApp')
                 return screenMode;
             },
 
-            getCouponsPerRow: function (coupons) {
+            getCouponsPerRow: function () {
                 var couponsPerRow = 3;
 
                 if (screenSize.is('md, lg')) {
-                    coupons.couponsPerRow = 3;
-                    return coupons.couponsPerRow;
+                    return 3;
                 } else if (screenSize.is('sm')) {
-                    coupons.couponsPerRow = 2;
-                    return coupons.couponsPerRow;
+                    return 2;
                 } else if (screenSize.is('xs')) {
-                    coupons.couponsPerRow = 1;
-                    return coupons.couponsPerRow;
+                    return 1;
                 } else {
-                    return coupons.couponsPerRow;
+                    return 1;
                 }
             }
         };

@@ -47,9 +47,6 @@ angular.module('send2CardApp')
                     if (vm.coupon.state == constants.COUPON_STATE_PRINTED) {
                         vm.isFlipped = true;
                     }
-
-
-
                 }
 
                 function autoSendToCard() {
@@ -151,15 +148,12 @@ angular.module('send2CardApp')
                     vm.isFlipped = true;
                 }
 
-
-                screenSize.on('xs, sm, md, lg', function (match) {
+                screenSize.on('xs, sm, md, lg', function (match) {                         
                     if (screenSize.is('xs')) {
                         removeOverlayOnMobileView();
                     }
 
                 });
-
-
             },
             controllerAs: 'couponBlockController',
             bindToController: true,
