@@ -3,14 +3,16 @@
         <div class="container" style="padding-left:25px;">
             <!--UNACTIONED COUPONS-->
             <div ng-show="viewAllCouponsController.configuration.DISPLAY_UNACTIONED_COUPONS">
-                <h4>Phooar!! Look at all these lovely offers!</h4>                
+                <h4>Phooar!! Look at all these lovely offers!</h4>
                 <p>
                     <div class="panel-body nopadding">
                         <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons track by $index">
-                            <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display: flex;">
-                                <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index" style="display: flex;">
-                                    <coupon-block-directive class="col-xs-12" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
+                            <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding">
+                                <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index">
+    
+                                    <coupon-block-directive ng-class="{'floatRight' : {{$index==1}}}" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
                                     </coupon-block-directive>
+
                                 </div>
                             </div>
                         </div>
@@ -22,9 +24,9 @@
                 <h4>Offers Ready to Use</h4>
                 <p>
                     <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.actionedCoupons">
-                        <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display: flex;">
-                            <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'actioned') track by $index" style="display: flex;">
-                                <coupon-block-directive class="col-xs-12" coupon="viewAllCouponsController.couponsServiceData.actionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()">
+                        <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding">
+                            <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'actioned') track by $index">
+                                <coupon-block-directive coupon="viewAllCouponsController.couponsServiceData.actionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()">
                                 </coupon-block-directive>
                             </div>
                         </div>

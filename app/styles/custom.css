@@ -174,11 +174,14 @@ img:hover {
     border-color: #ffe87c;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
-.couponpadding {
+.coupon {
     padding: 5px 10px;
     margin: 0 10px 10px 0px !important;
     position: relative;
     border-radius: 0;
+    width:295px;
+    height:200px;
+    min-width: 295px;
 }
 .coupon-leftside {
     margin-right: 77px;
@@ -278,6 +281,11 @@ img:hover {
 .progress-bar-section.ng-enter {
     transition: 1s linear all 1s;
     opacity: 0;
+}
+
+.mobile-center{
+    margin-left: auto !important;
+    margin-right:auto !important;
 }
 
 /* The finishing CSS styles for the enter animation */

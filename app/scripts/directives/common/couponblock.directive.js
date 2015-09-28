@@ -16,7 +16,6 @@ angular.module('send2CardApp')
                 initialise();
 
                 function initialise() {
-
                     initialiseProperties();
                     autoSendToCard();
                 }
@@ -153,6 +152,7 @@ angular.module('send2CardApp')
 
 
                 screenSize.on('xs, sm, md, lg', function (match) {
+                    vm.screenMode = displayInformationFactory.getDisplayMode();
                     if (screenSize.is('xs')) {
                         removeOverlayOnMobileView();
                     }
