@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('landingPageDirective', function () {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, constants) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -27,6 +27,7 @@ angular.module('send2CardApp')
                 function initialiseProperties() {
                     vm.queryParameters = queryParameterFactory.getQueryParameterInformation();
                     vm.configuration = {
+                        landingPage: pageConfiguration,
                         digitalReceiptLanding: digitalReceiptLandingConfiguration,
                         viewAllCoupons: viewAllCouponsConfiguration
                     };
