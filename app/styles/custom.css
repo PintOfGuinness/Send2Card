@@ -95,6 +95,15 @@
     background-color: white;
     margin: 0px -1px;
 }
+.no-overlay {
+    position: relative;
+    top: 100%;
+    left: 0px;
+    right: 0px;
+    z-index: 10;
+    background-color: white;
+    margin: 0px -1px;
+}
 .padded-left {
     padding-left: 250px;
     height: 200px;

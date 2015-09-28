@@ -58,7 +58,7 @@
 
 
 
-    <div collapse="couponBlockController.coupon.isCollapsed" class="overlay hide-top thick-border" ng-class="{'border-grey': !couponBlockController.isReadyToUse, 'border-yellow' : couponBlockController.isReadyToUse }">
+    <div id="view-details-section" collapse="couponBlockController.coupon.isCollapsed" ng-class="{'border-grey': !couponBlockController.isReadyToUse, 'border-yellow' : couponBlockController.isReadyToUse, 'overlay hide-top thick-border' :couponBlockController.overlay, 'no-overlay hide-top thick-border' :couponBlockController.noOverlay  }">
         <div class="expanded-div-style">
             <small>
                 <p>Coupon redeemable in store only*</p>

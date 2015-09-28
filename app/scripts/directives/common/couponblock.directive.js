@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('couponBlockDirective', function (constants) {
         return {
-            controller: function (modalProvider, $window, constants, tealiumService, pageConfiguration, $scope) {
+            controller: function (modalProvider, $window, constants, tealiumService, displayInformationFactory, pageConfiguration, screenSize, $scope) {
 
                 var vm = this;
                 var didScroll = false
@@ -25,6 +25,14 @@ angular.module('send2CardApp')
                     vm.isHidden = false;
                     vm.isReadyToUse = false;
                     vm.printed = false;
+                    vm.overlay = true;
+                    vm.noOverlay = false;
+
+                    vm.screenMode = displayInformationFactory.getDisplayMode();
+
+                    if (vm.screenMode.mobile) {
+                        removeOverlayOnMobileView();
+                    }
 
                     if (vm.coupon.state != constants.COUPON_STATE_DEFAULT) {
                         vm.isReadyToUse = true;
@@ -39,6 +47,9 @@ angular.module('send2CardApp')
                     if (vm.coupon.state == constants.COUPON_STATE_PRINTED) {
                         vm.isFlipped = true;
                     }
+
+
+
                 }
 
                 function autoSendToCard() {
@@ -125,6 +136,11 @@ angular.module('send2CardApp')
                     }
                 }
 
+                function removeOverlayOnMobileView() {
+                    vm.overlay = false;
+                    vm.noOverlay = true;
+                }
+
                 vm.confirmPrinted = function () {
                     vm.printed = true;
                 }
@@ -134,6 +150,16 @@ angular.module('send2CardApp')
                     vm.coupon.state = newState;
                     vm.isFlipped = true;
                 }
+
+
+                screenSize.on('xs, sm, md, lg', function (match) {
+                    if (screenSize.is('xs')) {
+                        removeOverlayOnMobileView();
+                    }
+
+                });
+
+
             },
             controllerAs: 'couponBlockController',
             bindToController: true,
