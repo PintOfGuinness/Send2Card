@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('couponBlockDirective', function (constants) {
         return {
-            controller: function (modalProvider, $window, constants, tealiumService, displayInformationFactory, pageConfiguration, screenSize, $scope) {
+            controller: function (modalProvider, $window, constants, tealiumService, pageConfiguration, screenSize, $scope) {
 
                 var vm = this;
                 var didScroll = false
@@ -26,12 +26,6 @@ angular.module('send2CardApp')
                     vm.printed = false;
                     vm.overlay = true;
                     vm.noOverlay = false;
-
-                    vm.screenMode = displayInformationFactory.getDisplayMode();
-
-                    if (vm.screenMode.mobile) {
-                        removeOverlayOnMobileView();
-                    }
 
                     if (vm.coupon.state != constants.COUPON_STATE_DEFAULT) {
                         vm.isReadyToUse = true;

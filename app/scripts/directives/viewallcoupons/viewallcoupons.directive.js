@@ -20,14 +20,14 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
+                    vm.screenMode = getDisplayMode();                       
                     vm.couponsPerRow = getDisplayCouponsNumberPerRow();
-                    
+
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
                         couponPrinted: constants.COUPON_PRINTED
                     };
-                    vm.screenMode = displayInformationFactory.getDisplayMode();
                 }
 
                 vm.sendSingleCoupon = function () {
@@ -62,8 +62,10 @@ angular.module('send2CardApp')
                 }
 
                 screenSize.on('xs, sm, md, lg', function (match) {
+console.dir(vm.screenMode);                    
                     vm.couponsPerRow = getDisplayCouponsNumberPerRow();
-                    vm.screenMode = getDisplayMode();                
+                    vm.screenMode = getDisplayMode();   
+                    console.dir(vm.screenMode);
                 });
 
                 function getDisplayCouponsNumberPerRow() {
