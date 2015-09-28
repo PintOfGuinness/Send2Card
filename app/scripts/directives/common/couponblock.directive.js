@@ -16,7 +16,6 @@ angular.module('send2CardApp')
                 initialise();
 
                 function initialise() {
-
                     initialiseProperties();
                     autoSendToCard();
                 }
@@ -133,11 +132,6 @@ angular.module('send2CardApp')
                     }
                 }
 
-                function removeOverlayOnMobileView() {
-                    vm.overlay = false;
-                    vm.noOverlay = true;
-                }
-
                 vm.confirmPrinted = function () {
                     vm.printed = true;
                 }
@@ -147,13 +141,6 @@ angular.module('send2CardApp')
                     vm.coupon.state = newState;
                     vm.isFlipped = true;
                 }
-
-                screenSize.on('xs, sm, md, lg', function (match) {                         
-                    if (screenSize.is('xs')) {
-                        removeOverlayOnMobileView();
-                    }
-
-                });
             },
             controllerAs: 'couponBlockController',
             bindToController: true,
@@ -163,6 +150,7 @@ angular.module('send2CardApp')
                 configuration: '=',
                 couponButton: '=',
                 coupon: '=',
+                screenMode: '=',
                 onSendSingleCoupon: '&',
                 onUpdateState: '&',
                 clickedViewDetails: '&',
