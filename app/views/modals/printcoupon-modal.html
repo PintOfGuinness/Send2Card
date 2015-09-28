@@ -1,57 +1,47 @@
+<button type="button" class="close" ng-click="couponBlockController.closePrintModal();">&times;</button>
 
-    <!-- Modal content-->
-    <div class="printmodal">
+<!-- Modal content-->
+<div class="printmodal">
+    <div class="printcoupon">
+        <p class="pull-right"> Extracare card ending in <b>{{couponBlockController.extraCareCardNumberEndDigits}}</b></p>
+        <h4><font color = "red" class = "bigger-font">
+                <sup class="medium-font" ng-show="couponBlockController.coupon.showDollarSign">$</sup><strong class = "bigger-font">{{couponBlockController.coupon.dollars}}</strong>
+                 <strong class="no-padding" ng-show="couponBlockController.coupon.showPercentSign">{{couponBlockController.coupon.title}}<sup class="no-padding">%</sup></strong>
+        <sup class = "medium-font" ng-hide="couponBlockController.coupon.dontShowCents"><strong>{{couponBlockController.coupon.cents}}</strong></sup><strong class="half-size-font"> off</strong></font>
+        <br></h4>
 
-        <div>
-            <button type="button" class="close" ng-click="couponBlockController.closePrintModal();">&times;</button>
-            <br>
-            <br>
-            <button ng-click="printCoupon();couponBlockController.confirmPrinted();couponBlockController.recordSecondPrintButtonClick();" class="btn btn-success pull-right">Print</button>
-            <h4>Your coupon is ready to print!</h4>
-            <br>
-        </div>
+        <p><b>{{couponBlockController.coupon.cpn_dsc}}</b></p>
+        Redeemable in store only*
+        <hr>
+        <b>
+            <p>Valid through: {{couponBlockController.coupon.expir_dt}}</p>
+            <p>Barcode/Coupon code:  {{couponBlockController.coupon.cpn_seq_nbr}}</p>
+            <p>SEQ #: {{couponBlockController.coupon.cpn_seq_nbr}}</p>
+            </b>
 
-        <div class="printcoupon">
-            <p class="pull-right"> extracare For <b>extra</b>care card ending in <b>{{couponBlockController.extraCareCardNumberEndDigits}}</b></p>
-            <h4>
-        <font color = "red" class = "bigger-font">
-          <sup class="medium-font" ng-show="coupon.showDollarSign">$</sup><strong class = "bigger-font">{{couponBlockController.coupon.dollars}}</strong><sup ng-show="couponBlockController.coupon.showPercentSign">%</sup><sup class = "medium-font" ng-hide="coupon.dontShowCents"><strong>{{coupon.cents}}</strong></sup><strong class="half-size-font"> off</strong></font><br>
-
-      </h4>
-
-            <b>{{couponBlockController.coupon.cpn_dsc}}</b>
-            <br> Coupon redeemable in store only*
-            <hr>
-            <b>Valid through: {{couponBlockController.coupon.expir_dt}}
-                <br>
-                Barcode/coupon code:  {{couponBlockController.coupon.cpn_seq_nbr}}
-                </b>
-            <br>
-            <br>
-
+        <p class="large">
             <img class="pull-right" src="images/barcode.png" height="100px" width="100px" /> Redeeming your coupon is easy! Just present your ExtraCare card and this coupon to the associate when you check out.
-            <br>
-            <br>
-            <div>
-                Associate: Scan in the barcode. If unable to scan, select "Sales" tab, then select "item#". Key in all coupon digits and press "Enter".
-            </div>
-            <br>
-        </div>
-        <br>
-        <br>
-        <div>
-            <b>*Terms &amp; Conditions</b>
-            <br> {{couponBlockController.coupon.cpn_terms_txt}}
-            <br>
-            <br>
-            <b>CVS/pharmacy will not accept offers printed from unauthorizes internet postings or reproductions, copies or facsimilies of this offer.</b> This coupon is the copyrighted property of CVS/pharmacy; it is intended for use by ExtraCare cardholders who subscribe to the CVS/pharmacy email program and have received this message directly from CVS/pharmacy. CVS/pharmacy reserves the right to eject any coupon presented by parties outside of the original distribution list. Original coupon must be relinquished at the time of purchase. Coupon is void if copied, transferred and where prohibited by law. No valid at Minute Clinic.
-            <br>
-            <br>
-            <b>Please Note:</b> All images may not print in your internet browser. Just print the coupon in black and white or color, and bring it to the store as is.
+        </p>
 
+        <p class="large">
+            Associate: Scan in the barcode. If unable to scan, select "Sales" tab, then select "item#". Key in all coupon digits and press "Enter".
+        </p>
 
-        </div>
     </div>
 
 
+    <p class="large">
+        <button ng-click="printCoupon();couponBlockController.confirmPrinted();couponBlockController.recordSecondPrintButtonClick();" class="btn btn-success" style="border-radius:0; width:25%; height:45px;">Print</button>
+    </p>
+    
+        <p class="large">
+            <p><b>*Terms &amp; Conditions</b></p>
+            <p> {{couponBlockController.coupon.cpn_terms_txt}} </p>
+        </p>
 
+        <p class="large"><b>CVS/pharmacy will not accept offers printed from unauthorizes internet postings or reproductions, copies or facsimilies of this offer.</b> This coupon is the copyrighted property of CVS/pharmacy; it is intended for use by ExtraCare cardholders who subscribe to the CVS/pharmacy email program and have received this message directly from CVS/pharmacy. CVS/pharmacy reserves the right to eject any coupon presented by parties outside of the original distribution list. Original coupon must be relinquished at the time of purchase. Coupon is void if copied, transferred and where prohibited by law. No valid at Minute Clinic.
+        </p>
+        <p class="large"><b>Please Note:</b> All images may not print in your internet browser. Just print the coupon in black and white or color, and bring it to the store as is.
+        </p>
+
+</div>
