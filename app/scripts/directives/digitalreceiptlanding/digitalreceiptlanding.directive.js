@@ -88,6 +88,7 @@ angular.module('send2CardApp')
             },
             controllerAs: 'digitalReceiptLandingController',
             scope: {
+                screenMode: '=',                
                 viewControl: '=',
                 configuration: '=',
                 couponsServiceData: '=',

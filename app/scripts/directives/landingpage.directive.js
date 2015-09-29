@@ -9,7 +9,8 @@
 angular.module('send2CardApp')
     .directive('landingPageDirective', function () {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, $window, $scope) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, displayInformationFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, screenSize, $window, $scope) {
+
 
                 var vm = this;
                 var didScroll = false;
@@ -28,6 +29,7 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
+                    vm.screenMode = getDisplayMode();
                     vm.queryParameters = queryParameterFactory.getQueryParameterInformation();
                     vm.configuration = {
                         landingPage: pageConfiguration,
@@ -139,6 +141,13 @@ angular.module('send2CardApp')
                     }
                 }
 
+                screenSize.on('xs, sm, md, lg', function (match) {
+                    vm.screenMode = getDisplayMode();
+                });
+
+                function getDisplayMode() {
+                    return displayInformationFactory.getDisplayMode();
+                }
             },
             templateUrl: 'views/templates/landingpage-template.html',
             controllerAs: 'landingPageController',
