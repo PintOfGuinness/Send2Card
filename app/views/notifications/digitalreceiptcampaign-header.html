@@ -8,6 +8,6 @@
 <div class="row nopadding">
     <br>
     <div ng-show="digitalReceiptLandingController.configuration.DISPLAY_DIGITAL_RECEIPT_LANDING" ng-repeat="coupon in digitalReceiptLandingController.couponsServiceData.singleCoupon">
-        <coupon-block-directive coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" clicked-view-details="digitalReceiptLandingController.clickedViewDetails()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
+        <coupon-block-directive screen-mode="digitalReceiptLandingController.screenMode" coupon="coupon" coupon-button="digitalReceiptLandingController.couponButton" configuration="digitalReceiptLandingController.configuration" extra-care-card-number-end-digits="{{digitalReceiptLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="digitalReceiptLandingController.sendSingleCoupon()" clicked-view-details="digitalReceiptLandingController.clickedViewDetails()" show-progress-bar="digitalReceiptLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
     </div>
 </div>

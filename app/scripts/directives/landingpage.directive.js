@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('landingPageDirective', function () {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, screenSize, displayInformationFactory, constants) {
 
                 var vm = this;
                 var extraCareCardNumber;
@@ -25,6 +25,7 @@ angular.module('send2CardApp')
                 }
 
                 function initialiseProperties() {
+                    vm.screenMode = getDisplayMode();
                     vm.queryParameters = queryParameterFactory.getQueryParameterInformation();
                     vm.configuration = {
                         landingPage: pageConfiguration,
@@ -62,15 +63,15 @@ angular.module('send2CardApp')
 
                 function getFilteredCouponListsSuccess(results) {
                     vm.couponsServiceData = results;
-                    
-                    if(vm.couponsServiceData.unactionedCoupons.length === 0) {
+
+                    if (vm.couponsServiceData.unactionedCoupons.length === 0) {
                         vm.configuration.viewAllCoupons.DISPLAY_UNACTIONED_COUPONS = false;
                     }
 
-                    if(vm.couponsServiceData.actionedCoupons.length === 0) {
+                    if (vm.couponsServiceData.actionedCoupons.length === 0) {
                         vm.configuration.viewAllCoupons.DISPLAY_ACTIONED_COUPONS = false;
                     }
-                    
+
                     if (validateCouponNumberExists()) {
                         vm.primaryViewControl.display = true;
                         vm.primaryViewControl.path = notificationViewsFactory.getCampaignHeaderView();
@@ -106,6 +107,13 @@ angular.module('send2CardApp')
                     }
                 }
 
+                screenSize.on('xs, sm, md, lg', function (match) {
+                    vm.screenMode = getDisplayMode();
+                });
+                
+                function getDisplayMode() {
+                    return displayInformationFactory.getDisplayMode();
+                }    
             },
             templateUrl: 'views/templates/landingpage-template.html',
             controllerAs: 'landingPageController',

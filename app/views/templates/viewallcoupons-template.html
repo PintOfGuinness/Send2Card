@@ -7,10 +7,10 @@
                 <p>
                     <div class="panel-body nopadding">
                         <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons track by $index">
-                            <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding">
+                            <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display:flex;">
                                 <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index">
     
-                                    <coupon-block-directive ng-class="{'floatRight' : {{$index==1}}}" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
+                                    <coupon-block-directive ng-class="{'floatRight' : {{$index==1}}}" screen-mode="viewAllCouponsController.screenMode" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
                                     </coupon-block-directive>
 
                                 </div>
@@ -26,7 +26,7 @@
                     <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.actionedCoupons">
                         <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding">
                             <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'actioned') track by $index">
-                                <coupon-block-directive coupon="viewAllCouponsController.couponsServiceData.actionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()">
+                                <coupon-block-directive ng-class="{'floatRight' : {{$index==1}}}" screen-mode="viewAllCouponsController.screenMode" coupon="viewAllCouponsController.couponsServiceData.actionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()">
                                 </coupon-block-directive>
                             </div>
                         </div>

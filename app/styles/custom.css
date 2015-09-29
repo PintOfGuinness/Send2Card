@@ -184,6 +184,9 @@ img:hover {
     height:200px;
     min-width: 295px;
 }
+.mobile-coupon-height{
+      height:auto !important;
+}
 .coupon-leftside {
     margin-right: 77px;
     padding: 5px;
