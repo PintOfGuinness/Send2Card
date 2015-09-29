@@ -29,9 +29,21 @@ angular.module('send2CardApp')
             updateProgressBarAfterAction: updateProgressBarAfterAction,
             toggleProgressBarDisplay: toggleProgressBarDisplay,
             getProgressBarText: getProgressBarText,
-            getServiceData: getServiceData
+            getServiceData: getServiceData,
+            getCouponValue: getCouponValue
         };
 
+        function getCouponValue(coupon) {
+            switch (coupon.amt_type_cd) {
+                case 'P':
+                    return parseFloat(coupon.pct_off_amt);
+                case 'D':
+                    return parseFloat(coupon.max_redeem_amt);
+                default:
+                    return 0;
+            }
+        }
+    
         function updateProgressBarAfterAction(couponsData, actionedCoupon) {
             if (propertiesInitialised === false) {
                 calculateInitialProperties(couponsData, actionedCoupon);

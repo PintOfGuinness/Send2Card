@@ -9,7 +9,7 @@
  * Filter in the send2CardApp.
  */
 angular.module('send2CardApp')
-    .filter('sortCouponsFilter', function () {
+    .filter('sortCouponsFilter', function (progressBarFactory) {
         return function (unsortedCouponList) {
             var allSortedCoupons = sortCouponsByExpiryDate(unsortedCouponList);
             allSortedCoupons = sortCouponsByExtrabucks(allSortedCoupons);
@@ -51,7 +51,7 @@ angular.module('send2CardApp')
                 swapped = false;
                 for (var i = 0; i < extrabucksArray.length - 1; i++) {
                     if (extrabucksArray[i].expir_dt == extrabucksArray[i + 1].expir_dt) {
-                        if (getValue(extrabucksArray[i]) <= getValue(extrabucksArray[i + 1])) {
+                        if (progressBarFactory.getCouponValue(extrabucksArray[i]) <= progressBarFactory.getCouponValue(extrabucksArray[i + 1])) {
                                 var temp = extrabucksArray[i];
                                 extrabucksArray[i] = extrabucksArray[i + 1];
                                 extrabucksArray[i + 1] = temp;
