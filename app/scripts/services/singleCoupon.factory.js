@@ -46,6 +46,5 @@ angular.module('send2CardApp')
         function getTimeStampInECFormat() {
             var timeStampFormat = "yyyyMMddHH:mm:ssZ";
             var formattedDate = $filter('date')(new Date(), timeStampFormat);
-            console.log("Date " + formattedDate);
         }
     });

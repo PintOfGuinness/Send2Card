@@ -87,7 +87,7 @@ angular.module('send2CardApp')
                 }
 
                 function validateCouponNumberExists() {
-                    if (angular.isUndefined(vm.queryParameters.couponNumber) || vm.queryParameters.couponNumber === "") {
+                    if (angular.isUndefined(vm.couponsServiceData.singleCoupon)) {
                         return false;
                     } else {
                         return true;
