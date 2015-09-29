@@ -9,10 +9,9 @@
 angular.module('send2CardApp')
     .directive('couponBlockDirective', function (constants) {
         return {
-            controller: function (modalProvider, $window, constants, tealiumService, pageConfiguration, screenSize, $scope) {
+            controller: function (modalProvider, constants, tealiumService, pageConfiguration, $scope) {
 
                 var vm = this;
-                var didScroll = false
                 initialise();
 
                 function initialise() {
@@ -26,6 +25,7 @@ angular.module('send2CardApp')
                     vm.printed = false;
                     vm.overlay = true;
                     vm.noOverlay = false;
+                    vm.windowPosition = 0;
 
                     if (vm.coupon.state != constants.COUPON_STATE_DEFAULT) {
                         vm.isReadyToUse = true;
@@ -66,21 +66,6 @@ angular.module('send2CardApp')
                     }
                 }
 
-                angular.element($window).bind("wheel", function () {
-                    didScroll = true;
-                });
-
-                /* prevents event fired for every pixel moved */
-                setInterval(function () {
-                    if (didScroll) {
-                        vm.showProgressBar({
-                            display: false
-                        });
-                        didScroll = false;
-                    }
-                    $scope.$apply();
-                }, 100);
-
                 vm.collapseSection = function () {
                     var tempIsCollapsed = vm.coupon.isCollapsed;
                     vm.clickedViewDetails();
@@ -92,6 +77,7 @@ angular.module('send2CardApp')
                         .then(sendSingleCouponComplete)
                         .catch(sendSingleCouponFailure);
                 }
+
 
                 function sendSingleCouponComplete(data) {
                     vm.updateState(data.state);

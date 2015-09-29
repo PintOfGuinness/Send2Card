@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, notificationViewsFactory,  $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {
+            controller: function (singleCouponFactory, notificationViewsFactory, $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {
 
                 var vm = this;
 
@@ -18,6 +18,7 @@ angular.module('send2CardApp')
                 function initialise() {
                     var delay = 0;
                     vm.showSpinner = true;
+
 
                     initialiseProperties();
 
@@ -88,7 +89,7 @@ angular.module('send2CardApp')
             controllerAs: 'digitalReceiptLandingController',
             scope: {
                 viewControl: '=',
-                configuration: '=',                
+                configuration: '=',
                 couponsServiceData: '=',
                 displayProgressBar: '&',
                 resetCollapseStateForAll: '&'

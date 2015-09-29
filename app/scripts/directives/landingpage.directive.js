@@ -9,11 +9,14 @@
 angular.module('send2CardApp')
     .directive('landingPageDirective', function () {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, $window, $scope) {
 
                 var vm = this;
+                var didScroll = false;
                 var extraCareCardNumber;
                 var couponNumber;
+                var windowPosition = 0;
+                var lastScrollPosition = 0;
 
                 initialise();
 
@@ -62,15 +65,15 @@ angular.module('send2CardApp')
 
                 function getFilteredCouponListsSuccess(results) {
                     vm.couponsServiceData = results;
-                    
-                    if(vm.couponsServiceData.unactionedCoupons.length === 0) {
+
+                    if (vm.couponsServiceData.unactionedCoupons.length === 0) {
                         vm.configuration.viewAllCoupons.DISPLAY_UNACTIONED_COUPONS = false;
                     }
 
-                    if(vm.couponsServiceData.actionedCoupons.length === 0) {
+                    if (vm.couponsServiceData.actionedCoupons.length === 0) {
                         vm.configuration.viewAllCoupons.DISPLAY_ACTIONED_COUPONS = false;
                     }
-                    
+
                     if (validateCouponNumberExists()) {
                         vm.primaryViewControl.display = true;
                         vm.primaryViewControl.path = notificationViewsFactory.getCampaignHeaderView();
@@ -95,6 +98,36 @@ angular.module('send2CardApp')
 
                 vm.resetCollapseStateForAll = function () {
                     couponsManagerFactory.resetCollapseStateForAll();
+                }
+
+                angular.element($window).bind("wheel", function () {
+                    didScroll = true;
+                });
+
+                /* prevents event fired for every pixel moved */
+                setInterval(function () {
+                    if (didScroll) {
+                        if (detectScrollDown()) {
+                            vm.displayProgressBar(false);
+                            didScroll = false;
+                        }
+                    }
+                    $scope.$apply();
+                }, 100);
+
+                function detectScrollDown() {
+                    var scrollDown = false;
+                    windowPosition = window.pageYOffset;
+
+                    if (windowPosition > lastScrollPosition) {
+                        scrollDown = true;
+                    } else {
+                        scrollDown = false;
+                    }
+
+                    lastScrollPosition = windowPosition;
+
+                    return scrollDown;
                 }
 
                 vm.displayProgressBar = function (display, actionedCoupon) {
