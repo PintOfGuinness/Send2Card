@@ -128,9 +128,13 @@
 .text-red {
     color: #cc0000;
 }
+.top-align {
+    vertical-align: top;
+}
 .red-with-white-text {
+    align-content: stretch;
     width: 200px;
-    height: 50px;
+    height: 10px;
     border-top: 25px solid red;
     border-bottom: 25px solid red;
     border-right: 30px solid transparent;
@@ -180,12 +184,12 @@ img:hover {
     margin: 0 10px 10px 0px !important;
     position: relative;
     border-radius: 0;
-    width:295px;
-    height:200px;
+    width: 295px;
+    height: 200px;
     min-width: 295px;
 }
-.mobile-coupon-height{
-      height:auto !important;
+.mobile-coupon-height {
+    height: auto !important;
 }
 .coupon-leftside {
     margin-right: 77px;
@@ -253,8 +257,8 @@ img:hover {
     font-size: xx-large;
 }
 .smaller-width {
-    width: 250px;
-    height: 22px;
+    width: 400px;
+    height: 30px;
     margin-left: 8px;
 }
 .mobile-width {
@@ -286,10 +290,9 @@ img:hover {
     transition: 1s linear all 1s;
     opacity: 0;
 }
-
-.mobile-center{
+.mobile-center {
     margin-left: auto !important;
-    margin-right:auto !important;
+    margin-right: auto !important;
 }
 
 /* The finishing CSS styles for the enter animation */
@@ -320,20 +323,17 @@ img:hover {
     border-top: 0;
 }
 p {
-   margin-top:4px;
-   margin-bottom:4px
+    margin-top: 4px;
+    margin-bottom: 4px
 }
-
 .medium {
-   margin-top:10px;
-   margin-bottom:10px
+    margin-top: 10px;
+    margin-bottom: 10px
 }
-
 .large {
-   margin-top:15px;
-   margin-bottom:15px
+    margin-top: 15px;
+    margin-bottom: 15px
 }
-
 .medium-font {
     font-size: medium;
 }
@@ -446,6 +446,9 @@ p {
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
+}
+.pad-bottom {
+    padding-bottom: 50px;
 }
 @media screen and (max-width:992px) {
     .desktoponly {
