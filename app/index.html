@@ -13,8 +13,8 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css" type="text/css">
-    <link rel="stylesheet" href="styles/custom.css" type="text/css">
+    <link rel="stylesheet" href="assets/styles/main.css" type="text/css">
+    <link rel="stylesheet" href="assets/styles/custom.css" type="text/css">
     <!-- endbuild -->
 </head>
 
@@ -69,44 +69,68 @@
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
+        <script src="app.js"></script>
         <!--Config File -->
-        <script src="scripts/config.js"></script>
-        <script src="scripts/constants.js"></script>
+        <script src="assets/configuration/config.js"></script>
+        <script src="assets/constants/constants.js"></script>
 
         <!--Services-->
-        <script src="scripts/services/getCustomerProfile.service.js"></script>
-        <script src="scripts/services/modalprovider.service.js"></script>
+        <script src="services/getCustomerProfile.service.js"></script>
+        <script src="services/modalprovider.service.js"></script>
         <!--Factorys-->
-        <script src="scripts/services/singleCoupon.factory.js"></script>
-        <script src="scripts/services/couponsmanager.factory.js"></script>
-        <script src="scripts/services/displayinformation.factory.js"></script>
-        <script src="scripts/services/progressbar.factory.js"></script>
-        <script src="scripts/services/cookie.factory.js"></script>
-        <script src="scripts/services/queryparameter.factory.js"></script>
-        <script src="scripts/services/notificationViews.factory.js"></script>
-        <!--Directives-->
-        <script src="scripts/directives/landingpage.directive.js"></script>
-        <script src="scripts/directives/digitalreceiptlanding/digitalreceiptlanding.directive.js"></script>
-        <script src="scripts/directives/viewallcoupons/viewallcoupons.directive.js"></script>
-        <script src="scripts/directives/viewallcoupons/errormodal.directive.js"></script>        
-        <script src="scripts/directives/common/couponblock.directive.js"></script>
-        <script src="scripts/directives/common/printcouponmodal.directive.js"></script>
-        <script src="scripts/directives/progressbar/progressbar.directive.js"></script>
-        <script src="scripts/directives/progressbar/dollarsavings.directive.js"></script>
-        <script src="scripts/directives/progressbar/dollarandpercentsavings.directive.js"></script>
-        <script src="scripts/directives/progressbar/singlepercentsavings.directive.js"></script>
-        <script src="scripts/directives/progressbar/multipercentsavings.directive.js"></script>
-        <script src="scripts/directives/marketing/bcccontent.directive.js"></script>
+        <script src="services/singleCoupon.factory.js"></script>
+        <script src="services/couponsmanager.factory.js"></script>
+        <script src="services/displayinformation.factory.js"></script>
+
+        <script src="services/cookie.factory.js"></script>
+        <script src="services/queryparameter.factory.js"></script>
+        <script src="services/notificationViews.factory.js"></script>
         <!--Filters-->
-        <script src="scripts/filters/sortcoupons.filter.js"></script>
-        <script src="scripts/filters/coupontitle.filter.js"></script>
-        <script src="scripts/filters/categoriseCoupons.Filter.js"></script>
+        <script src="services/sortcoupons.filter.js"></script>
+        <script src="services/coupontitle.filter.js"></script>
+        <script src="services/categoriseCoupons.Filter.js"></script>
+        <!--Directives-->
+
+
+
+
+
+        
+
+
+
 
         <!--Tealium-->
-        <script src="tealiumAnalytics/ppTealiumDataFactory.js"></script>
-        <script src="tealiumAnalytics/ppTealiumHelperFactory.js"></script>
-        <script src="tealiumAnalytics/tealiumService.js"></script>
+        <script src="assets/tealiumanalytics/ppTealiumDataFactory.js"></script>
+        <script src="assets/tealiumanalytics/ppTealiumHelperFactory.js"></script>
+        <script src="assets/tealiumanalytics/tealiumService.js"></script>
+
+        <!--Landing Page-->
+        <script src="components/landingpage/landingpage.directive.js"></script>
+
+        <!--Digitial Receipt Landing-->
+        <script src="components/landingpage/digitalreceiptlanding/digitalreceiptlanding.directive.js"></script>
+
+        <!--View All Coupons-->
+        <script src="components/landingpage/viewallcoupons/viewallcoupons.directive.js"></script>
+        <script src="components/landingpage/viewallcoupons/errormodal.directive.js"></script>
+
+        <!--Coupon Block-->
+        <script src="components/landingpage/shared/couponblock/couponblock.directive.js"></script>        
+        
+        <!--Print Coupon Modal-->
+        <script src="components/landingpage/shared/printcouponmodal/printcouponmodal.directive.js"></script>
+        
+        <!--Progress Bar--->
+        <script src="components/landingpage/shared/progressbar/progressbar.directive.js"></script>
+        <script src="components/landingpage/shared/progressbar/progressbar.factory.js"></script>
+        <script src="components/landingpage/shared/progressbar/dollarsavings.directive.js"></script>
+        <script src="components/landingpage/shared/progressbar/dollarandpercentsavings.directive.js"></script>
+        <script src="components/landingpage/shared/progressbar/singlepercentsavings.directive.js"></script>
+        <script src="components/landingpage/shared/progressbar/multipercentsavings.directive.js"></script>
+
+        <!--Marketing--->
+        <script src="components/landingpage/marketing/bcccontent.directive.js"></script>
 
         <!-- endbuild -->
 

@@ -149,7 +149,7 @@ angular.module('send2CardApp')
                     return displayInformationFactory.getDisplayMode();
                 }
             },
-            templateUrl: 'views/templates/landingpage-template.html',
+            templateUrl: 'components/landingpage/landingpage-template.html',
             controllerAs: 'landingPageController',
             bindToController: true,
             restrict: 'E'

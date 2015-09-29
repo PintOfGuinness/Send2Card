@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('progressBarDirective', function () {
         return {
-            templateUrl: 'views/templates/progress-bar-template.html',
+            templateUrl: 'components/landingpage/shared/progressbar/progress-bar-template.html',
             controller: function (progressBarFactory, displayInformationFactory, pageConfiguration, screenSize) {
 
                 var vm = this;

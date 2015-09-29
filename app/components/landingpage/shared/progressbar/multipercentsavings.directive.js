@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('multiPercentSavingsDirective', function () {
         return {
-            templateUrl: 'views/progressbar/multi-percent-savings-template.html',
+            templateUrl: 'components/landingpage/shared/progressbar/multi-percent-savings-template.html',
             restrict: 'E',
         };
     });

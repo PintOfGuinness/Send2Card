@@ -9,7 +9,7 @@
 angular.module('send2CardApp')
     .directive('dollarSavingsDirective', function () {
         return {
-            templateUrl: 'views/progressbar/dollar-savings-template.html',
+            templateUrl: 'components/landingpage/shared/progressbar/dollar-savings-template.html',
             restrict: 'E',
         };
     });
