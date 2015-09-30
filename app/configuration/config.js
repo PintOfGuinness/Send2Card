@@ -5,7 +5,8 @@ app.constant('pageConfiguration', {
     DISPLAY_BCC: true,    
     DISPLAY_MONETATE: true, //TODO
     ENABLE_EC_OPT_IN: true,
-    TEALIUM_ENABLED: false
+    TEALIUM_ENABLED: false,
+    DISPLAY_SPINNER: false
 });
 
 app.constant('digitalReceiptLandingConfiguration', {

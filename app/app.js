@@ -20,6 +20,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
-    'tealiumModule'
+    'tealiumModule',
+    'angularSpinners'
   ])
    

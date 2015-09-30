@@ -22,6 +22,9 @@ angular.module('drstc')
                 initialise();
 
                 function initialise() {
+                    if (pageConfiguration.DISPLAY_SPINNER) {
+                        vm.showSpinner = true;
+                    }
                     initialiseProperties();
                     if (validateExtraCareCardNumberExists()) {
                         getFilteredCouponLists(vm.queryParameters.extraCareCardNumber, vm.queryParameters.couponNumber);
@@ -62,7 +65,11 @@ angular.module('drstc')
                 function getFilteredCouponLists(extraCareCardNumber, couponNumber) {
                     couponsManagerFactory.getFilteredCouponLists(extraCareCardNumber, couponNumber)
                         .then(getFilteredCouponListsSuccess)
-                        .catch(getFilteredCouponListsFailed);
+                        .catch(getFilteredCouponListsFailed)
+                        .finally(function () {
+                            vm.showSpinner = false;
+                        });
+
                 }
 
                 function getFilteredCouponListsSuccess(results) {

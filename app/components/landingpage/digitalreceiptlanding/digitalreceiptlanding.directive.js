@@ -9,7 +9,7 @@
 angular.module('drstc')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, notificationViewsFactory, $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {
+            controller: function (singleCouponFactory, notificationViewsFactory, $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory) {
 
                 var vm = this;
 
@@ -17,19 +17,8 @@ angular.module('drstc')
 
                 function initialise() {
                     var delay = 0;
-                    vm.showSpinner = true;
-
-
                     initialiseProperties();
-
-                    /*  Andrew I've moved stuff to the landing page directive if you want to carry on with spinner
-
-
-                        setTimeout(function () {
-                            vm.showSpinner = false;
-                        }, delay);
-          */
-
+                    
                     if (pageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordPageView(constants.PAGE_NAME);
                     }

@@ -30,19 +30,29 @@
 .remember-me-border {
     border: 1px solid;
     border-color: #DDD;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 15px;
+    margin-right: 15px;
+    margin-top: 25px;
 }
 .remember-me-success-border {
     border: 1px solid;
     border-color: #66FF99;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px 15px;
+    margin-right: 15px;
+    margin-top: 25px;
 }
+.spinner{
+    position: absolute; 
+    left: 50%; 
+    margin-left:-56px; 
+    z-index: 3
+}
+.spinnerContainer{
+    position: absolute; 
+    left: 50%; 
+    top: 250px;
+}
+
 
 /*ANIMATION*/
 
