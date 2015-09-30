@@ -7,7 +7,7 @@
  * # modalProvider
  * Service in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .service('modalProvider', function modalProvider($modal) {
 
         this.openErrorModal = function (scope) {

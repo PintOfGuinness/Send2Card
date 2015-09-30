@@ -7,7 +7,7 @@
  * # progressBarFactory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('progressBarFactory', function (constants) {
 
         var progressBarData = {};

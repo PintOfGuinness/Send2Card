@@ -6,7 +6,7 @@
  * @description
  * # digitalReceiptLandingDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('digitalReceiptLandingDirective', function (constants) {
         return {
             controller: function (singleCouponFactory, notificationViewsFactory, $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory /*, spinnerService*/ ) {

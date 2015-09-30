@@ -7,7 +7,7 @@
  * # queryParameterFactory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('queryParameterFactory', function ($location) {
 
         var queryParameterInformation = {

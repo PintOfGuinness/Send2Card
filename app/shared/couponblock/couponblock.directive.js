@@ -6,7 +6,7 @@
  * @description
  * # couponDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('couponBlockDirective', function (constants) {
         return {
             controller: function (modalProvider, constants, tealiumService, pageConfiguration, $scope) {

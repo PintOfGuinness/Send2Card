@@ -6,7 +6,7 @@
  * @description
  * # viewAllCouponsDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('viewAllCouponsDirective', function (constants) {
         return {
             controller: function (singleCouponFactory, displayInformationFactory, modalProvider, screenSize, $q, queryParameterFactory, constants) {

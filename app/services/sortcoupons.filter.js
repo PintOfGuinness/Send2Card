@@ -8,7 +8,7 @@
  * # sortCouponFilter
  * Filter in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .filter('sortCouponsFilter', function (progressBarFactory) {
         return function (unsortedCouponList) {
             var allSortedCoupons = sortCouponsByExpiryDate(unsortedCouponList);

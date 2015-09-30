@@ -6,10 +6,10 @@
  * @description
  * # singlePercentSavingDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('singlePercentSavingsDirective', function () {
         return {
-            templateUrl: 'components/landingpage/shared/progressbar/single-percent-savings-template.html',
+            templateUrl: 'app/components/landingpage/progressbar/single-percent-savings-template.html',
             restrict: 'E',
         };
     });

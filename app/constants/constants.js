@@ -1,4 +1,4 @@
-var app = angular.module('send2CardApp');
+var app = angular.module('drstc');
 
 app.constant('constants', {
 
@@ -34,19 +34,19 @@ app.constant('constants', {
     REMEMBER_ME_SUCCESS_ICON: "assets/images/remembermesuccessicon.png",
 
     /* HTML TEMPLATE VIEWS */
-    BCC_CONTENT_TEMPLATE: "components/landingpage/marketing/bcccontent-template.html",
-    COUPON_BLOCK_TEMPLATE: "components/landingpage/shared/couponblock/couponblock-template.html",
-    DIGITAL_RECEIPT_LANDING_TEMPLATE: "components/landingpage/digitalreceiptlanding/digitalreceiptlanding-template.html",
-    VIEW_ALL_COUPONS_TEMPLATE: "components/landingpage/viewallcoupons/viewallcoupons-template.html",
+    BCC_CONTENT_TEMPLATE: "app/components/landingpage/marketing/bcccontent-template.html",
+    COUPON_BLOCK_TEMPLATE: "app/shared/couponblock/couponblock-template.html",
+    DIGITAL_RECEIPT_LANDING_TEMPLATE: "app/components/landingpage/digitalreceiptlanding/digitalreceiptlanding-template.html",
+    VIEW_ALL_COUPONS_TEMPLATE: "app/components/landingpage/viewallcoupons/viewallcoupons-template.html",
 
     /* HTML ERROR/NOTIFICATION VIEWS */
-    BLANK_VIEW: "components/landingpage/digitalreceiptlanding/notifications/blank.html",
+    BLANK_VIEW: "app/components/landingpage/digitalreceiptlanding/notifications/blank.html",
 
-    VIEW_ALL_COUPONS_HEADER: "components/landingpage/digitalreceiptlanding/notifications/viewallcoupons-header.html",
-    DIGITAL_RECEIPT_CAMPAIGN_HEADER: "components/landingpage/digitalreceiptlanding/notifications/digitalreceiptcampaign-header.html",    
-    EXTRACARE_EMAIL_CAMPAIGN_HEADER: "components/landingpage/digitalreceiptlanding/notifications/extracareemailcampaign-header.html", 
-    COUPON_EXPIRED: "components/landingpage/digitalreceiptlanding/notifications/error1.html",   
-    TECHNICAL_ERROR: "components/landingpage/digitalreceiptlanding/notifications/error4.html",
+    VIEW_ALL_COUPONS_HEADER: "app/components/landingpage/digitalreceiptlanding/notifications/viewallcoupons-header.html",
+    DIGITAL_RECEIPT_CAMPAIGN_HEADER: "app/components/landingpage/digitalreceiptlanding/notifications/digitalreceiptcampaign-header.html",    
+    EXTRACARE_EMAIL_CAMPAIGN_HEADER: "app/components/landingpage/digitalreceiptlanding/notifications/extracareemailcampaign-header.html", 
+    COUPON_EXPIRED: "app/components/landingpage/digitalreceiptlanding/notifications/error1.html",   
+    TECHNICAL_ERROR: "app/components/landingpage/digitalreceiptlanding/notifications/error4.html",
 
     /* REMEMBER ME TEXT */
     REMEMBER_ME_TEXT: "Remember My Card makes finding great deals even easier. Choose it and you can see myWeeklyAd Deals and ExtraCare Offers without signing in. That means more savings and convenience for you"

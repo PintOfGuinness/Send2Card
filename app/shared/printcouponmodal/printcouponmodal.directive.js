@@ -6,11 +6,11 @@
  * @description
  * # printCouponModalDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('printCouponModalDirective', function () {
         return {
             restrict: 'E',
-            templateUrl: 'components/landingpage/shared/printcouponmodal/printcoupon-modal.html',
+            templateUrl: 'app/shared/printcouponmodal/printcoupon-modal.html',
             link: link
         };
 

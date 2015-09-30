@@ -6,10 +6,10 @@
  * @description
  * # multiPercentSavingsDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('multiPercentSavingsDirective', function () {
         return {
-            templateUrl: 'components/landingpage/shared/progressbar/multi-percent-savings-template.html',
+            templateUrl: 'app/components/landingpage/progressbar/multi-percent-savings-template.html',
             restrict: 'E',
         };
     });

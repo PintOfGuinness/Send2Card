@@ -6,7 +6,7 @@
  * @description
  * # errormodal.directive
  */
-angular.module('send2CardApp')
+angular.module('drstc')
   .directive('errorModalDirective', function (constants) {
     return {
             restrict: 'E',

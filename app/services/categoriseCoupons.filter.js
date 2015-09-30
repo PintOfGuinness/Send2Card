@@ -8,7 +8,7 @@
  * # categoriseCouponsFilter
  * Filter in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .filter('categoriseCouponsFilter', function ($filter, constants) {
         return function (input, couponNumberFilter, excludeCouponNumberFilter) {
             var output = [];

@@ -6,7 +6,7 @@
  * @description
  * # landingPageDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('landingPageDirective', function () {
         return {
             controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, displayInformationFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, screenSize, $window, $scope) {
@@ -149,7 +149,7 @@ angular.module('send2CardApp')
                     return displayInformationFactory.getDisplayMode();
                 }
             },
-            templateUrl: 'components/landingpage/landingpage-template.html',
+            templateUrl: 'app/components/landingpage/landingpage-template.html',
             controllerAs: 'landingPageController',
             bindToController: true,
             restrict: 'E'

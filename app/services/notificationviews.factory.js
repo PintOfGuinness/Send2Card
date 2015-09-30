@@ -7,7 +7,7 @@
  * # notificationViewsFactory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('notificationViewsFactory', function (constants, digitalReceiptLandingConfiguration) {
 
         return {

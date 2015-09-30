@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc overview
- * @name send2CardApp
+ * @name drstc
  * @description
- * # send2CardApp
+ * # drstc
  *
  * Main module of the application.
  */
@@ -12,9 +12,8 @@
 angular.module('tealiumModule', []);
 
 angular
-    .module('send2CardApp', [
+    .module('drstc', [
     'matchMedia',
-/*    'ngAnimate',*/
     'ngCookies',
     'ngResource',
     'ngRoute',

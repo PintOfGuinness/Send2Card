@@ -1,4 +1,4 @@
-var app = angular.module('send2CardApp');
+var app = angular.module('drstc');
 
 app.constant('pageConfiguration', {
     DISPLAY_PROGRESS_BAR: true,

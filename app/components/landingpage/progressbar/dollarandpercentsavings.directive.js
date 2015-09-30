@@ -6,10 +6,10 @@
  * @description
  * # dollarAndPercentSavingsDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('dollarAndPercentSavingsDirective', function () {
         return {
-            templateUrl: 'components/landingpage/shared/progressbar/dollar-and-percent-savings-template.html',
+            templateUrl: 'app/components/landingpage/progressbar/dollar-and-percent-savings-template.html',
             restrict: 'E'
         };
     });

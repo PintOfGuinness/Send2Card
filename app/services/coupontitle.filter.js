@@ -8,7 +8,7 @@
  * # couponTitleFilter
  * Filter in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .filter('couponTitleFilter', function (constants) {
         return function (couponInput) {
             var couponOutput = [];

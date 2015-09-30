@@ -7,7 +7,7 @@
  * # couponsManagerFactory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('couponsManagerFactory', function (getCustomerProfileService, categoriseCouponsFilterFilter, sortCouponsFilterFilter, $q) {
 
         var couponLists = {};

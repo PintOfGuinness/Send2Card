@@ -7,7 +7,7 @@
  * # displayInformationFactory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('displayInformationFactory', function (screenSize) {
 
         return {

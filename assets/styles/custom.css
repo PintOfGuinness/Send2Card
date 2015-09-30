@@ -190,7 +190,7 @@ img:hover {
 }
 .mobile-coupon-height {
     height: auto;
-    /*width: auto;  uncomment if mobile should be full width*/
+    width: auto;
 }
 .coupon-leftside {
     margin-right: 77px;

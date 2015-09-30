@@ -7,7 +7,7 @@
  * # cookieFactory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('cookieFactory', function ($cookies) {
         // Public API here
         return {

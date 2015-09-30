@@ -7,7 +7,7 @@
  * # couponsService
  * Service in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .service('getCustomerProfileService', function couponsService($http) {
 
         var couponServicePromise = null;

@@ -6,7 +6,7 @@
  * @description
  * # bccAreaDirective
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .directive('bccContentDirective', function ($cookies, queryParameterFactory, cookieFactory, pageConfiguration, constants) {
 
         return {

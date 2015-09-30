@@ -7,7 +7,7 @@
  * # sendToCard.Factory
  * Factory in the send2CardApp.
  */
-angular.module('send2CardApp')
+angular.module('drstc')
     .factory('singleCouponFactory', function ($http, $q, $filter) {
 
         return {
