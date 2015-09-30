@@ -43,7 +43,31 @@ angular.module('drstc')
                     return 0;
             }
         }
-    
+
+        function calculateInitialProperties(couponsData, actionedCoupon) {
+            progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
+            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
+            progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
+            progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
+            progressBarData.actionedSavingsAsString = formatActionedSavings((progressBarData.actionedSavings).toFixed(2));
+            progressBarData.dollars = getDollarAmount(progressBarData.actionedSavings);
+
+            if (checkForZeroCents(progressBarData.actionedSavings) === true) {
+                progressBarData.showCents = false;
+                console.log("Show cents is false");
+            } else {
+                progressBarData.showCents = true;
+                console.log("Show cents is true");
+            }
+
+            progressBarData.cents = getCentsAmount(progressBarData.actionedSavingsAsString);
+            progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
+            progressBarData.actionedLength = getActionedLength(couponsData.actionedCoupons);
+            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
+            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
+            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons, actionedCoupon);
+        }
+
         function updateProgressBarAfterAction(couponsData, actionedCoupon) {
             if (propertiesInitialised === false) {
                 calculateInitialProperties(couponsData, actionedCoupon);
@@ -54,22 +78,20 @@ angular.module('drstc')
             progressBarData.actionedLength++;
             progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.actionedSavings += updateActionedSavings(actionedCoupon);
-            progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
+            progressBarData.actionedSavingsAsString = formatActionedSavings((progressBarData.actionedSavings).toFixed(2));
+            progressBarData.dollars = getDollarAmount(progressBarData.actionedSavings);
+
+            if (checkForZeroCents(progressBarData.actionedSavings) === true) {
+                progressBarData.showCents = false;
+                console.log("show cents is false...");
+            } else {
+                progressBarData.showCents = true;
+                console.log("show cents is true...");
+            }
+
+            progressBarData.cents = getCentsAmount(progressBarData.actionedSavingsAsString);
             progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
             progressBarData.savingsText = getProgressBarText(updatedCoupons, actionedCoupon);
-        }
-
-        function calculateInitialProperties(couponsData, actionedCoupon) {
-            progressBarData.totalCoupons = getTotalNumberOfCoupons(couponsData);
-            var singleCouponSavings = getSingleCouponSavings(couponsData.singleCoupon);
-            progressBarData.unactionedSavings = getSavings(couponsData.unactionedCoupons);
-            progressBarData.actionedSavings = getSavings(couponsData.actionedCoupons);
-            progressBarData.actionedSavingsAsString = checkIfZeros((progressBarData.actionedSavings).toFixed(2));
-            progressBarData.totalSavings = getTotalSavings(singleCouponSavings, progressBarData.unactionedSavings, progressBarData.actionedSavings);
-            progressBarData.actionedLength = getActionedLength(couponsData.actionedCoupons);
-            progressBarData.unactionedLength = getUnactionedLength(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.progressBarValue = getProgressBarValue(progressBarData.actionedLength, progressBarData.totalCoupons);
-            progressBarData.savingsText = getProgressBarText(couponsData.actionedCoupons, actionedCoupon);
         }
 
         function isSingleActionedCoupon(coupons, actionedCoupon) {
@@ -134,6 +156,20 @@ angular.module('drstc')
             }
         }
 
+        function checkForZeroCents(actionedSavings) {
+            console.log(actionedSavings);
+            var actionedSavingsString = actionedSavings.toFixed(2);
+            console.log(actionedSavingsString);
+
+            var cents = actionedSavingsString.substring(actionedSavingsString.indexOf(constants.DOT) + 1, actionedSavingsString.length);
+            if ((cents === constants.DISPLAY_ZEROS)) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
         function getSinglePercentage(actionedCoupon) {
             var singlePercentage = actionedCoupon.pct_off_amt;
             return singlePercentage;
@@ -194,7 +230,7 @@ angular.module('drstc')
             return multiPercent;
         }
 
-        function checkIfZeros(savings) {
+        function formatActionedSavings(savings) {
 
             var cents = savings.substring(savings.indexOf(constants.DOT) + 1, savings.length);
             if ((cents === constants.DISPLAY_ZEROS)) {
@@ -232,6 +268,15 @@ angular.module('drstc')
 
         function getTotalSavings(singleCoupon, unactionedSavings, actionedSavings) {
             return singleCoupon + unactionedSavings + actionedSavings;
+        }
+
+        function getDollarAmount(actionedSavings) {
+            var actionedSavingsString = actionedSavings.toFixed(2);
+            return actionedSavingsString.substring(0, actionedSavingsString.indexOf(constants.DOT));
+        }
+
+        function getCentsAmount(actionedSavingsString) {
+            return actionedSavingsString.substring(actionedSavingsString.indexOf(constants.DOT) + 1, actionedSavingsString.length);
         }
 
         function getActionedLength(actionedCoupons) {

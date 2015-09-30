@@ -3,35 +3,36 @@
 
     <div ng-show="progressBarController.screenMode.desktop">
         <div id="desktop-progress-bar" class="full-width-black-background progress-bar-section top-align" ng-if="progressBarController.configuration.DISPLAY_PROGRESS_BAR" ng-show="progressBarController.progressBarServiceData.display">
-
             <div class="container">
 
-                <div class="green-text pull-right text-size-uniform pad-left"> <strong>{{progressBarController.progressBarServiceData.totalCoupons}}     </strong>
+
+               <div class="white-text pull-left">
+    <div ng-show="progressBarController.progressBarServiceData.savingsText.dollarSavingsDirective">
+        <dollar-savings-directive></dollar-savings-directive>
+    </div>
+    <div ng-show="progressBarController.progressBarServiceData.savingsText.dollarAndPercentSavingsDirective">
+        <dollar-and-percent-savings-directive></dollar-and-percent-savings-directive>
+    </div>
+    <div ng-show="progressBarController.progressBarServiceData.savingsText.singlePercentSavingsDirective">
+        <single-percent-savings-directive></single-percent-savings-directive>
+    </div>
+    <div ng-show="progressBarController.progressBarServiceData.savingsText.multiPercentSavingsDirective">
+        <multi-percent-savings-directive></multi-percent-savings-directive>
+    </div>
+</div>
+
+
+
+                <div class="green-text pull-right text-size-uniform pad-left pad-top"> <strong>{{progressBarController.progressBarServiceData.totalCoupons}}     </strong>
                 </div>
-                <div class="progress smaller-width pull-right grey-background">
-                    <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay black-text" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;"><strong>{{progressBarController.progressBarServiceData.actionedLength}}</strong>
+                <div class="pull-right pad-top">
+                    <div class="progress smaller-width pull-right grey-background">
+                        <div id="progressBar" class="progress-bar active progress-bar-colour slight-delay black-text" role="progressbar" aria-valuemin="0" aria-valuenow="{{progressBarController.progressBarServiceData.progressBarValue}}" aria-valuemax="100" style="width:{{progressBarController.progressBarServiceData.progressBarValue}}%;"><strong class="text-size-uniform">{{progressBarController.progressBarServiceData.actionedLength}}</strong>
+                        </div>
                     </div>
                 </div>
-
-
-
-
-                <div class="white-text top-align">
-                    <div ng-show="progressBarController.progressBarServiceData.savingsText.dollarSavingsDirective">
-                        <dollar-savings-directive></dollar-savings-directive>
-                    </div>
-                    <div ng-show="progressBarController.progressBarServiceData.savingsText.dollarAndPercentSavingsDirective">
-                        <dollar-and-percent-savings-directive></dollar-and-percent-savings-directive>
-                    </div>
-                    <div ng-show="progressBarController.progressBarServiceData.savingsText.singlePercentSavingsDirective">
-                        <single-percent-savings-directive></single-percent-savings-directive>
-                    </div>
-                    <div ng-show="progressBarController.progressBarServiceData.savingsText.multiPercentSavingsDirective">
-                        <multi-percent-savings-directive></multi-percent-savings-directive>
-                    </div>
-
-
-                </div>
+                <div class="grey-text right-aligned pad-top text-size-uniform"><strong>
+                        Deals ready to use</strong> </div>
 
             </div>
         </div>
