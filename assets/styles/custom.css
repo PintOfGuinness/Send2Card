@@ -1,23 +1,24 @@
+/*-----------View Details--------*/
+
 .expanded-div-style {
     padding: 15px 20px 10px 20px;
     border-top: none;
 }
-.show-top {
-    border-top: solid;
+.overlay {
+    position: relative;
+    z-index: 10;
+    background-color: white;
+    margin: 0px -1px;
+    padding: 15px 20px 10px 20px;
 }
-.align-top {
-    vertical-align: top;
-}
-.shaded {
-    background-blend-mode: color-dodge;
-    background-color: darkgrey;
-}
-.big-image {
-    padding-top: 5px;
-    padding-left: 80px;
-    padding-right: 80px;
-    height: 60px;
-    width: 60px;
+
+/*-------------Remember Me Cookie & BCC--------------*/
+
+.bcc {
+    border: thick;
+    border-color: black;
+    border-style: groove;
+    width: 100%;
 }
 .remember-me-padding {
     padding-left: 15px;
@@ -41,53 +42,48 @@
     margin-right: 15px;
     margin-top: 25px;
 }
-.spinner{
-    position: absolute; 
-    left: 50%; 
-    margin-left:-56px; 
+.full-width-red-button {
+    background-color: red;
+    display: inline;
+}
+.pad-remember-me {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/*-------------Spinner--------------*/
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    margin-left: -56px;
     z-index: 3
 }
-.spinnerContainer{
-    position: absolute; 
-    left: 50%; 
+.spinnerContainer {
+    position: absolute;
+    left: 50%;
     top: 250px;
 }
 
-
-/*ANIMATION*/
+/*--------------Flip Animation------------------------------*/
 
 .flip-container {
     perspective: 1000;
 }
-
-/* flip speed goes here */
-
 .flipper {
     transition: 0.6s;
     transform-style: preserve-3d;
     position: relative;
 }
-
-/* hide back of pane during swap */
-
 .front,
 .back {
     backface-visibility: hidden;
     position: absolute;
-    top: 0;
-    left: 0;
 }
-
-/* front pane, placed above back */
-
 .front {
     z-index: 2;
-    right: 0;
     transform: rotateY(0deg);
 }
-
-/* back, initially hidden pane */
-
 .back {
     transform: rotateY(180deg);
 }
@@ -95,45 +91,13 @@
     transform: rotateY(180deg);
 }
 
-/*-----------------------------------------------------*/
+/*-----------------Progress Bar Styling-------------------*/
 
-.overlay {
-    position: absolute;
-    top: 100%;
-    left: 0px;
-    right: 0px;
-    z-index: 10;
-    background-color: white;
-    margin: 0px -1px;
-}
-.no-overlay {
-    position: relative;
-    top: 100%;
-    left: 0px;
-    right: 0px;
-    z-index: 10;
-    background-color: white;
-    margin: 0px -1px;
-}
-.padded-left {
-    padding-left: 250px;
-    height: 200px;
-}
 .pad-left {
     padding-left: 10px;
 }
 .pad-top {
     padding-top: 20px;
-}
-.no-padding {
-    padding-top: 0px;
-    padding-bottom: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-.banner-container {
-    width: 200px;
-    height: 50px;
 }
 .text-red {
     color: #cc0000;
@@ -149,138 +113,15 @@
     border-bottom: 32px solid #D10000;
     border-right: 15px solid transparent;
 }
-.soonmarker {
-    display: inline-block;
-}
 .accordion-header:hover {
     text-decoration: underline;
     cursor: pointer;
 }
-.inline {
-    display: inline-block;
-}
-img {
-    opacity: 0.8;
-    filter: alpha(opacity=40);
-}
-img:hover {
-    opacity: 1.0;
-    filter: alpha(opacity=100);
-}
 .grey-background {
     background-color: #FAFAFA;
 }
-.bcc {
-    border: thick;
-    border-color: black;
-    border-style: groove;
-    width: 100%;
-}
-.bottom-align {
-    vertical-align: bottom;
-}
-
-/*--------------------------------------------------------------------------
- Coupon Styling
----------------------------------------------------------------------------*/
-
-.thick-border {
-    border: 1px solid;
-    border-color: #ffe87c;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
-}
-.coupon {
-    padding: 5px 10px;
-    margin: 0 10px 10px 0px !important;
-    position: relative;
-    border-radius: 0;
-    width: 295px;
-    height: 200px;
-    min-width: 295px;
-}
-.mobile-coupon-height {
-    height: auto;
-    width: auto;
-}
-.coupon-leftside {
-    margin-right: 77px;
-    padding: 5px;
-}
-.coupon-rightside {
-    position: absolute;
-    right: 0px;
-    bottom: 20px;
-    top: 20px;
-    border-left: 2px dotted #DDD;
-    padding: 0 5px;
-    width: 90px;
-}
-
-/*---------------------------------------------------------------------------*/
-
-
-/*--------------------------------------------------------------------------
-Progress Bar Styling
----------------------------------------------------------------------------*/
-
-.progress-bar-left {
-    float: left;
-}
-.progress-bar-centre {}
-.progress-bar-right {
-    float: right;
-}
 .right-aligned {
     text-align: right;
-}
-
-/*Andrew Dawson is an onion CSS*/
-
-
-/*.couponpadding:hover {
-    border-color: #FDE8C9;
-}
-.couponpadding:hover * {
-    border-color: #FDE8C9;
-}*/
-
-.border-yellow {
-    border-color: #FDE8C9;
-}
-.extrabucks {
-    border-color: #ffde46;
-}
-.border-grey {
-    border-color: #DDD;
-}
-.hide-top {
-    border-top: none;
-}
-.text-centre {
-    text-align: center;
-}
-.top-aligned {
-    vertical-align: inherit;
-}
-.small-font {
-    font-size: 50%;
-    vertical-align: top;
-}
-.shmedium-font {
-    font-size: 75%;
-    vertical-align: top;
-}
-.half-size-font {
-    font-size: 50%;
-}
-.smaller-font {
-    font-size: 85%;
-}
-.text-size-uniform {
-    font-size: larger;
-}
-.huge-text {
-    font-size: xx-large;
 }
 .smaller-width {
     width: 400px;
@@ -291,20 +132,9 @@ Progress Bar Styling
     width: 260px;
     height: 30px;
 }
+.progress-bar {}
 .progress-bar-colour {
-    background-image: none;
     background-color: #41C1B3;
-}
-.pad-right {
-    padding-right: 10px;
-    padding-left: 10px;
-}
-.pad-bottom {
-    padding-bottom: 15px;
-}
-.padded-top {
-    padding-top: 15px;
-    padding-bottom: 10px;
 }
 
 /* The starting CSS styles for the enter animation */
@@ -315,13 +145,6 @@ Progress Bar Styling
 .progress-bar-section.ng-enter {
     transition: 1s linear all 1s;
     opacity: 0;
-}
-.mobile-center {
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
-.enormous-text {
-    font-size: 25px;
 }
 
 /* The finishing CSS styles for the enter animation */
@@ -342,62 +165,25 @@ Progress Bar Styling
     transition: 1s linear all 1s;
     opacity: 0.8;
 }
-.sticky {
-    background-color: #F7F7FF;
+.full-width-black-background {
     position: fixed;
-    width: 200px;
+    left: 0;
+    top: 0;
     right: 0;
-    top: 100px;
-    z-index: 100;
-    border-top: 0;
+    background-color: #3C3C3C;
 }
-p {
-    margin-top: 4px;
-    margin-bottom: 4px
+.grey-background {
+    background-color: #6F6F6F;
 }
-.medium {
-    margin-top: 10px;
-    margin-bottom: 10px
-}
-.large {
-    margin-top: 15px;
-    margin-bottom: 15px
-}
-.medium-font {
-    font-size: medium;
-}
-.bigger-font {
-    font-size: xx-large;
-    font-stretch: ultra-expanded;
-}
-.img-size {
-    height: 72px;
-    width: 83px;
-}
-.img-alt-size {
-    height: 75px;
-    width: 60px;
-}
-.print-button {
-    position: absolute;
-    bottom: 0px;
-    right: 18px;
-}
-.printmodal {
-    padding: 50px;
-}
+
+/*------------Help Modal ------------------------------*/
+
 .helpmodal {
     background-color: #fff;
     font-size: 12px;
     line-height: 16px;
     color: #585858;
     font-family: Helvetica, Arial, sans-serif;
-}
-.floatLeft {
-    float: left;
-}
-.floatRight {
-    float: right;
 }
 #promocontent a {
     text-decoration: underline;
@@ -420,42 +206,27 @@ p {
 .clear {
     clear: both;
 }
-.printcoupon {
-    border: 2px solid grey;
-    padding: 30px;
+
+/*-----------------Fonts & Colours------------------------------*/
+
+p {
+    margin-top: 4px;
+    margin-bottom: 4px
 }
-.full-width {
-    position: absolute;
-    left: 0;
-    right: 0;
-    background-color: #E6F3FF;
+.medium {
+    margin-top: 10px;
+    margin-bottom: 10px
 }
-.red-text {
-    color: red;
+.large {
+    margin-top: 15px;
+    margin-bottom: 15px
 }
-.full-width-black-background {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    background-color: #3C3C3C;
+.medium-font {
+    font-size: medium;
 }
-.grey-background {
-    background-color: #6F6F6F;
-}
-.grey-text {
-    color: #CBD6D9;
-}
-.full-width-red-button {
-    background-color: red;
-    display: inline;
-}
-.more-padding-right {
-    padding-right: 75px;
-}
-.pad-remember-me {
-    padding-left: 30px;
-    padding-right: 30px;
+.bigger-font {
+    font-size: xx-large;
+    font-stretch: ultra-expanded;
 }
 .white-text {
     color: #ffffff;
@@ -466,38 +237,48 @@ p {
 .black-text {
     color: black;
 }
+.grey-text {
+    color: #CBD6D9;
+}
+.half-size-font {
+    font-size: 50%;
+}
+.smaller-font {
+    font-size: 85%;
+}
+.enormous-text {
+    font-size: 25px;
+}
+.text-size-uniform {
+    font-size: larger;
+}
+
+/*----------------Other-----------------------------*/
+
+.floatLeft {
+    float: left;
+}
+.floatRight {
+    float: right;
+}
+body.modal-open {
+    overflow: hidden;
+}
+.printmodal {
+    padding: 50px;
+}
+.printcoupon {
+    border: 2px solid grey;
+    padding: 30px;
+}
 .errorModalPadding {
     padding: 10px;
-}
-.float-down {
-    position: absolute;
-    bottom: 0px;
-    right: 20px;
-}
-.nopadding {
-    padding: 0 !important;
-    margin: 0 !important;
-}
-.pad-bottom {
-    padding-bottom: 50px;
-}
-@media screen and (max-width:992px) {
-    .desktoponly {
-        display: none;
-    }
 }
 @media screen and (max-width:768px) {
     .noMobileView {
         display: none;
     }
 }
-@media screen and (min-width:768px) {
-    .mobileView {
-        display: none;
-    }
-}
-@media print {
-    .container {
-        display: none;
-    }
+@media print {}
+
 }

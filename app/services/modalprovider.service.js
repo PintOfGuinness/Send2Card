@@ -34,7 +34,7 @@ angular.module('drstc')
 
         this.openHelpModal = function () {
             return this.helpModalInstance = $modal.open({
-                templateUrl: 'views/modals/help-modal.html',
+                templateUrl: 'app/shared/helpmodal/help-modal.html',
             });
         }
 

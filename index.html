@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title></title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta charset="utf-8">
-  <link href="app.less" type="text/css" rel="stylesheet/less">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="app.less" type="text/css" rel="stylesheet/less">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -12,98 +16,96 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="assets/styles/main.css" type="text/css">
-    <link rel="stylesheet" href="assets/styles/custom.css" type="text/css">    
+    <link rel="stylesheet" href="assets/styles/custom.css" type="text/css">
+    <link rel="stylesheet" href="assets/styles/app.css" type="text/css">
+    <link rel="stylesheet" href="assets/styles/cvs-bootstrap.css" type="text/css">
 </head>
+
 <body>
-
     <div ng-app="drstc">
-
         <landing-page-directive></landing-page-directive>
-  <!-- Livereload script for development only (stripped during dist build) -->
-  <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
-
-  <!-- JS from Bower Components -->
-        <script src="bower_components/jquery/dist/jquery.js"></script>
-        <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <script src="bower_components/angular-animate/angular-animate.js"></script>
-        <script src="bower_components/angular-touch/angular-touch.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
-        <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-        <script src="bower_components/matchmedia/matchMedia.js"></script>
-        <script src="bower_components/ngSticky/lib/sticky.js"></script>
-        <script src="bower_components/angular-media-queries/match-media.js"></script>
-        <!-- endbower -->
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="app/app.js"></script>
-        <!--Config File -->
-        <script src="app/configuration/config.js"></script>
-        <script src="app/constants/constants.js"></script>
-
-        <!--Services-->
-        <script src="app/services/getCustomerProfile.service.js"></script>
-        <script src="app/services/modalprovider.service.js"></script>
-        <!--Factorys-->
-        <script src="app/services/singleCoupon.factory.js"></script>
-        <script src="app/services/couponsmanager.factory.js"></script>
-        <script src="app/services/displayinformation.factory.js"></script>
-
-        <script src="app/services/cookie.factory.js"></script>
-        <script src="app/services/queryparameter.factory.js"></script>
-        <script src="app/services/notificationViews.factory.js"></script>
-        <!--Filters-->
-        <script src="app/services/sortcoupons.filter.js"></script>
-        <script src="app/services/coupontitle.filter.js"></script>
-        <script src="app/services/categoriseCoupons.Filter.js"></script>
-        <!--Directives-->
-
-        <!--Tealium-->
-        <script src="app/tealiumanalytics/ppTealiumDataFactory.js"></script>
-        <script src="app/tealiumanalytics/ppTealiumHelperFactory.js"></script>
-        <script src="app/tealiumanalytics/tealiumService.js"></script>
-
-        <!--Landing Page-->
-        <script src="app/components/landingpage/landingpage.directive.js"></script>
-        <script src="bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
-
-        <!--Digitial Receipt Landing-->
-        <script src="app/components/landingpage/digitalreceiptlanding/digitalreceiptlanding.directive.js"></script>
-
-        <!--View All Coupons-->
-        <script src="app/components/landingpage/viewallcoupons/viewallcoupons.directive.js"></script>
-        <script src="app/components/landingpage/viewallcoupons/errormodal.directive.js"></script>
-
-        <!--Coupon Block-->
-        <script src="app/shared/couponblock/couponblock.directive.js"></script>        
-        
-        <!--Print Coupon Modal-->
-        <script src="app/shared/printcouponmodal/printcouponmodal.directive.js"></script>
-        
-        <!--Progress Bar--->
-        <script src="app/components/landingpage/progressbar/progressbar.directive.js"></script>
-        <script src="app/components/landingpage/progressbar/progressbar.factory.js"></script>
-        <script src="app/components/landingpage/progressbar/dollarsavings.directive.js"></script>
-        <script src="app/components/landingpage/progressbar/dollarandpercentsavings.directive.js"></script>
-        <script src="app/components/landingpage/progressbar/singlepercentsavings.directive.js"></script>
-        <script src="app/components/landingpage/progressbar/multipercentsavings.directive.js"></script>
-
-        <!--Marketing--->
-        <script src="app/components/landingpage/marketing/bcccontent.directive.js"></script>
-  <!-- Add New Component JS Above -->
-
-  <div>
-    <div id="content" class="container">
-      <div class="row">
-        <div ng-view>
-        </div>
-      </div>
     </div>
-  </div>
+
+    <!-- Livereload script for development only (stripped during dist build) -->
+    <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
+
+    <!-- JsBarcode -->
+    <script src="bower_components/jsbarcode/JsBarcode.js"></script>
+    <script src="bower_components/jsbarcode/EAN_UPC.js"></script>
+
+    <!-- JS from Bower Components -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/matchmedia/matchMedia.js"></script>
+    <script src="bower_components/angular-media-queries/match-media.js"></script>
+    <!-- endbower -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="app/app.js"></script>
+    <!--Config File -->
+    <script src="app/configuration/config.js"></script>
+    <script src="app/constants/constants.js"></script>
+
+    <!--Services-->
+    <script src="app/services/getCustomerProfile.service.js"></script>
+    <script src="app/services/modalprovider.service.js"></script>
+    <!--Factorys-->
+    <script src="app/services/singleCoupon.factory.js"></script>
+    <script src="app/services/couponsmanager.factory.js"></script>
+    <script src="app/services/displayinformation.factory.js"></script>
+
+    <script src="app/services/cookie.factory.js"></script>
+    <script src="app/services/queryparameter.factory.js"></script>
+    <script src="app/services/notificationViews.factory.js"></script>
+    <!--Filters-->
+    <script src="app/services/sortcoupons.filter.js"></script>
+    <script src="app/services/coupontitle.filter.js"></script>
+    <script src="app/services/categoriseCoupons.Filter.js"></script>
+    <!--Directives-->
+
+    <!--Tealium-->
+    <script src="app/tealiumanalytics/ppTealiumDataFactory.js"></script>
+    <script src="app/tealiumanalytics/ppTealiumHelperFactory.js"></script>
+    <script src="app/tealiumanalytics/tealiumService.js"></script>
+
+    <!--Landing Page-->
+    <script src="app/components/landingpage/landingpage.directive.js"></script>
+    <script src="bower_components/angular-spinners/dist/angular-spinners.min.js"></script>
+
+    <!--Digitial Receipt Landing-->
+    <script src="app/components/landingpage/digitalreceiptlanding/digitalreceiptlanding.directive.js"></script>
+
+    <!--View All Coupons-->
+    <script src="app/components/landingpage/viewallcoupons/viewallcoupons.directive.js"></script>
+    <script src="app/components/landingpage/viewallcoupons/errormodal.directive.js"></script>
+
+    <!--Coupon Block-->
+    <script src="app/shared/couponblock/couponblock.directive.js"></script>
+
+    <!--Print Coupon Modal-->
+    <script src="app/shared/printcouponmodal/printcouponmodal.directive.js"></script>
+
+    <!--Progress Bar--->
+    <script src="app/components/landingpage/progressbar/progressbar.directive.js"></script>
+    <script src="app/components/landingpage/progressbar/progressbar.factory.js"></script>
+    <script src="app/components/landingpage/progressbar/dollarsavings.directive.js"></script>
+    <script src="app/components/landingpage/progressbar/dollarandpercentsavings.directive.js"></script>
+    <script src="app/components/landingpage/progressbar/singlepercentsavings.directive.js"></script>
+    <script src="app/components/landingpage/progressbar/multipercentsavings.directive.js"></script>
+
+    <!--Marketing--->
+    <script src="app/components/landingpage/marketing/bcccontent.directive.js"></script>
+    <!-- Add New Component JS Above -->
 
 </body>
+
+
 </html>

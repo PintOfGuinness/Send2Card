@@ -1,41 +1,49 @@
 <div>
-    <div ng-show="viewAllCouponsController.viewControl.display" class="full-width">
-        <div class="container" style="padding-left:25px;">
-            <!--UNACTIONED COUPONS-->
-            <div ng-show="viewAllCouponsController.configuration.DISPLAY_UNACTIONED_COUPONS">
-                <h4>Phooar!! Look at all these lovely offers!</h4>
-                <p>
-                    <div class="panel-body nopadding">
-                        <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons track by $index">
-                            <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding" style="display:flex;">
-                                <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'unactioned') track by $index">
-    
-                                    <coupon-block-directive ng-class="{'floatRight' : {{$index==1}}}" screen-mode="viewAllCouponsController.screenMode" coupon="viewAllCouponsController.couponsServiceData.unactionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
-                                    </coupon-block-directive>
+    <div ng-show="viewAllCouponsController.viewControl.display">
 
+        <!-- UNACTIONED COUPONS-->
+        <section class="section-coupons section-coupons--new bg-white">
+            <div class="container">
+                <div ng-show="viewAllCouponsController.configuration.DISPLAY_UNACTIONED_COUPONS">
+                    <div class="row">
+                        <div class="col-sm-24">
+                            <h1 class="section__title">New! <br>Act on these deals now!</h1>
+                            <h2 class="section__subtitle">Simply send them to your card.</h2>
+                            <div class="coupon-grid">
+
+                                <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons" class="coupon-grid__item">
+                                    <coupon-block-directive screen-mode="viewAllCouponsController.screenMode" coupon="coupon" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
+                                    </coupon-block-directive>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-                </p>
+                </div>
             </div>
-            <!-- ACTIONED COUPONS-->
-            <div ng-show="viewAllCouponsController.configuration.DISPLAY_ACTIONED_COUPONS" class="panel-body nopadding">
-                <h4>Offers Ready to Use</h4>
-                <p>
-                    <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.actionedCoupons">
-                        <div ng-if="$index%(viewAllCouponsController.couponsPerRow)==0" class="row nopadding">
-                            <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="i in viewAllCouponsController.getRowIndexNumbers($index, 'actioned') track by $index">
-                                <coupon-block-directive ng-class="{'floatRight' : {{$index==1}}}" screen-mode="viewAllCouponsController.screenMode" coupon="viewAllCouponsController.couponsServiceData.actionedCoupons[i]" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()">
-                                </coupon-block-directive>
+        </section>
+
+        <!-- ACTIONED COUPONS-->
+        <section class="section-coupons section-coupons--deals bg-blue-light1">
+            <div class="container">
+                <div ng-show="viewAllCouponsController.configuration.DISPLAY_ACTIONED_COUPONS" class="panel-body nopadding">
+                    <div class="row">
+                        <div class="col-sm-24">
+                            <h1 class="section__title">Offers Ready to Use</h1>
+                            <div class="coupon-grid">
+
+                                <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.actionedCoupons" class="coupon-grid__item">
+                                    <coupon-block-directive screen-mode="viewAllCouponsController.screenMode" coupon="coupon" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
+                                    </coupon-block-directive>
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </p>
+                </div>
             </div>
-        </div>
-    </div>
-    <div>
-        <div ng-hide="viewAllCouponsController.viewControl.display"></div>
+        </section>
+
+
     </div>
 </div>

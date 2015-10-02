@@ -1,22 +1,38 @@
-<div class="container">
+<div id="pl-prototype">
+    
     <div class="spinnerContainer">
         <spinner class="spinner" show="landingPageController.showSpinner" img-src="assets/images/spinner.gif"></spinner>
     </div>
-    
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 nopadding">
-                <digital-receipt-landing-directive view-control="landingPageController.primaryViewControl" screen-mode="landingPageController.screenMode" configuration="landingPageController.configuration.digitalReceiptLanding" coupons-service-data="landingPageController.couponsServiceData" display-progress-bar="landingPageController.displayProgressBar(display, actionedCoupon)" reset-collapse-state-for-all="landingPageController.resetCollapseStateForAll()">
-                </digital-receipt-landing-directive>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-5 nopadding pull-right">
-                <bcc-content-directive ng-show="landingPageController.configuration.landingPage.DISPLAY_BCC" class="noMobileView">
-                </bcc-content-directive>
+
+    <section class="section-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-14 col-md-16">
+                    <digital-receipt-landing-directive view-control="landingPageController.primaryViewControl" screen-mode="landingPageController.screenMode" configuration="landingPageController.configuration.digitalReceiptLanding" coupons-service-data="landingPageController.couponsServiceData" display-progress-bar="landingPageController.displayProgressBar(display, actionedCoupon)" reset-collapse-state-for-all="landingPageController.resetCollapseStateForAll()">
+                    </digital-receipt-landing-directive>
+                    <p class="intro__help">Questions? Get <a ng-click="landingPageController.openHelpModal()">help here</a>.
+                        <br>Didn’t find your answer through the link? Please call ExtraCare Customer Service at <strong>1-800-746-7278</strong>.</p>
+                </div>
+                <div class="col-sm-10 col-md-8">
+                    <bcc-content-directive ng-show="landingPageController.configuration.landingPage.DISPLAY_BCC" class="noMobileView">
+                    </bcc-content-directive>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="section-divider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-24">
+                    <div class="hr"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <view-all-coupons-directive view-control="landingPageController.secondaryViewControl" screen-mode="landingPageController.screenMode" configuration="landingPageController.configuration.viewAllCoupons" coupons-service-data="landingPageController.couponsServiceData" display-progress-bar="landingPageController.displayProgressBar(display, actionedCoupon)" reset-collapse-state-for-all="landingPageController.resetCollapseStateForAll()"></view-all-coupons-directive>
     <br>
     <progress-bar-directive></progress-bar-directive>
+
 </div>

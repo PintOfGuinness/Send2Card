@@ -9,7 +9,7 @@
 angular.module('drstc')
     .directive('landingPageDirective', function () {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, displayInformationFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, screenSize, $window, $scope) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, displayInformationFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, screenSize, $window, $scope, modalProvider) {
 
 
                 var vm = this;
@@ -139,6 +139,10 @@ angular.module('drstc')
                     return scrollDown;
                 }
 
+                vm.openHelpModal = function (){
+                    modalProvider.openHelpModal();
+                }
+                
                 vm.displayProgressBar = function (display, actionedCoupon) {
                     if (display) {
                         progressBarFactory.toggleProgressBarDisplay(true);

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-expiring__new</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="-_Shared-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-40.000000, -40.000000)" fill="#CC0000">
+            <path d="M56,48 C56,52.4186667 52.4186667,56 48,56 C43.5813333,56 40,52.4186667 40,48 C40,43.5813333 43.5813333,40 48,40 C52.4186667,40 56,43.5813333 56,48 L56,48 Z M46.936,46.4142222 L43,46.3991111 L46.1928889,48.7004444 L44.9617778,52.4382222 L48.1368889,50.1128889 L51.3128889,52.4382222 L50.0817778,48.7004444 L53.2746667,46.3991111 L49.3386667,46.4142222 L48.1368889,42.6666667 L46.936,46.4142222 L46.936,46.4142222 Z" id="icon-expiring__new" sketch:type="MSShapeGroup"></path>
+        </g>
+    </g>
+</svg>

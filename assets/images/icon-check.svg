@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.3.3 (12072) - http://www.bohemiancoding.com/sketch -->
+    <title>icon-check</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="-_Shared-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Icons" sketch:type="MSArtboardGroup" transform="translate(-100.000000, -40.000000)">
+            <g id="icon-check" sketch:type="MSLayerGroup" transform="translate(100.000000, 40.000000)">
+                <circle id="base" fill="#37BAAB" sketch:type="MSShapeGroup" cx="18" cy="18" r="18"></circle>
+                <path d="M25.3541667,10.6875 L15.0875,24.9221667 L10.6875,19.7461667" id="check" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

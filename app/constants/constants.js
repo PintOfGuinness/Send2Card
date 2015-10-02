@@ -27,9 +27,9 @@ app.constant('constants', {
     EXTRABUCKS: 'ExtraBucks',
 
     /* IMAGES */
-    COUPON_SEND_TO_CARD_IMAGE: "assets/images/sendtocardicon.png",
-    COUPON_SENT_TO_CARD_IMAGE: "assets/images/oncard.png",
-    COUPON_PRINTED: "assets/images/printedicon.png",
+    COUPON_SEND_TO_CARD_IMAGE: "assets/images/icon-send2card.svg",
+    COUPON_SENT_TO_CARD_IMAGE: "assets/images/icon-check.svg",
+    COUPON_PRINTED: "assets/images/icon-check.svg",
     CVS_HEALTH_ICON: "assets/images/cvshealthicon.png",
     REMEMBER_ME_SUCCESS_ICON: "assets/images/remembermesuccessicon.png",
 
