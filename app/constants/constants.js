@@ -36,17 +36,17 @@ app.constant('constants', {
     /* HTML TEMPLATE VIEWS */
     BCC_CONTENT_TEMPLATE: "app/components/landingpage/marketing/bcccontent-template.html",
     COUPON_BLOCK_TEMPLATE: "app/shared/couponblock/couponblock-template.html",
-    DIGITAL_RECEIPT_LANDING_TEMPLATE: "app/components/landingpage/digitalreceiptlanding/digitalreceiptlanding-template.html",
+    DIGITAL_RECEIPT_LANDING_TEMPLATE: "app/components/landingpage/campaignLanding/campaignLanding-template.html",
     VIEW_ALL_COUPONS_TEMPLATE: "app/components/landingpage/viewallcoupons/viewallcoupons-template.html",
 
     /* HTML ERROR/NOTIFICATION VIEWS */
-    BLANK_VIEW: "app/components/landingpage/digitalreceiptlanding/notifications/blank.html",
+    BLANK_VIEW: "app/components/landingpage/campaignLanding/notifications/blank.html",
 
-    VIEW_ALL_COUPONS_HEADER: "app/components/landingpage/digitalreceiptlanding/notifications/viewallcoupons-header.html",
-    DIGITAL_RECEIPT_CAMPAIGN_HEADER: "app/components/landingpage/digitalreceiptlanding/notifications/digitalreceiptcampaign-header.html",    
-    EXTRACARE_EMAIL_CAMPAIGN_HEADER: "app/components/landingpage/digitalreceiptlanding/notifications/extracareemailcampaign-header.html", 
-    COUPON_EXPIRED: "app/components/landingpage/digitalreceiptlanding/notifications/error1.html",   
-    TECHNICAL_ERROR: "app/components/landingpage/digitalreceiptlanding/notifications/error4.html",
+    VIEW_ALL_COUPONS_HEADER: "app/components/landingpage/campaignLanding/notifications/viewallcoupons-header.html",
+    DIGITAL_RECEIPT_CAMPAIGN_HEADER: "app/components/landingpage/campaignLanding/notifications/digitalreceiptcampaign-header.html",    
+    EXTRACARE_EMAIL_CAMPAIGN_HEADER: "app/components/landingpage/campaignLanding/notifications/extracareemailcampaign-header.html", 
+    COUPON_EXPIRED: "app/components/landingpage/campaignLanding/notifications/error1.html",   
+    TECHNICAL_ERROR: "app/components/landingpage/campaignLanding/notifications/error4.html",
 
     /* REMEMBER ME TEXT */
     REMEMBER_ME_TEXT: "Remember My Card makes finding great deals even easier. Choose it and you can see myWeeklyAd Deals and ExtraCare Offers without signing in. That means more savings and convenience for you"

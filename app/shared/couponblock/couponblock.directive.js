@@ -9,7 +9,7 @@
 angular.module('drstc')
     .directive('couponBlockDirective', function (constants) {
         return {
-            controller: function (modalProvider, constants, tealiumService, pageConfiguration, $scope) {
+            controller: function (modalProvider, constants, tealiumService, landingPageConfiguration, $scope) {
 
                 var vm = this;
                 initialise();
@@ -51,7 +51,7 @@ angular.module('drstc')
                     }
                 }
 
-                if (pageConfiguration.TEALIUM_ENABLED) {
+                if (landingPageConfiguration.TEALIUM_ENABLED) {
                     vm.recordSend2Card = function () {
                         tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Send To Card', 'Send To Card');
                     }

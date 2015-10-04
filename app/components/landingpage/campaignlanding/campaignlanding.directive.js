@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc directive
- * @name send2CardApp.directive:digitalReceiptLandingDirective
+ * @name send2CardApp.directive:campaignLandingDirective
  * @description
- * # digitalReceiptLandingDirective
+ * # campaignLandingDirective
  */
 angular.module('drstc')
-    .directive('digitalReceiptLandingDirective', function (constants) {
+    .directive('campaignLandingDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, notificationViewsFactory, $q, constants, tealiumService, pageConfiguration, modalProvider, queryParameterFactory) {
+            controller: function (couponsManagerFactory, singleCouponFactory, notificationViewsFactory, campaignLandingConfiguration, landingPageConfiguration, $q, constants, tealiumService,  modalProvider, queryParameterFactory) {
 
                 var vm = this;
 
@@ -19,14 +19,15 @@ angular.module('drstc')
                     var delay = 0;
                     initialiseProperties();
                     
-                    if (pageConfiguration.TEALIUM_ENABLED) {
+                    if (landingPageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordPageView(constants.PAGE_NAME);
                     }
                 }
 
                 function initialiseProperties() {
+                    vm.allCoupons = couponsManagerFactory.allCoupons;
+                    vm.configuration = campaignLandingConfiguration;
                     vm.extraCareCardNumberEndDigits = queryParameterFactory.getExtraCareCardNumberEndDigits();
-
                     vm.couponButton = {
                         unSentCouponPath: constants.COUPON_SEND_TO_CARD_IMAGE,
                         sentCouponPath: constants.COUPON_SENT_TO_CARD_IMAGE,
@@ -42,7 +43,7 @@ angular.module('drstc')
                 function sendSingleCouponFailure(error) {
                     vm.viewControl.display = true;
                     vm.viewControl.path = notificationViewsFactory.getSingleCouponNotification(error, true);
-                    if (pageConfiguration.TEALIUM_ENABLED) {
+                    if (landingPageConfiguration.TEALIUM_ENABLED) {
                         tealiumService.recordErrorMessage(error);
                     }
                     return $q.reject(error);
@@ -59,7 +60,7 @@ angular.module('drstc')
                     });
                 }
 
-                if (pageConfiguration.TEALIUM_ENABLED) {
+                if (landingPageConfiguration.TEALIUM_ENABLED) {
                     vm.helpClick = function () {
                         tealiumService.recordPageLink(constants.PAGE_NAME, 'Click Help Button', 'Error Modal');
                     }
@@ -75,12 +76,10 @@ angular.module('drstc')
                 }
 
             },
-            controllerAs: 'digitalReceiptLandingController',
+            controllerAs: 'campaignLandingController',
             scope: {
                 screenMode: '=',                
                 viewControl: '=',
-                configuration: '=',
-                couponsServiceData: '=',
                 displayProgressBar: '&',
                 resetCollapseStateForAll: '&'
             },

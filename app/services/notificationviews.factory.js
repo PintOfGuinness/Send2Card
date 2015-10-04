@@ -8,7 +8,7 @@
  * Factory in the send2CardApp.
  */
 angular.module('drstc')
-    .factory('notificationViewsFactory', function (constants, digitalReceiptLandingConfiguration) {
+    .factory('notificationViewsFactory', function (constants, campaignLandingConfiguration) {
 
         return {
             getBlankView: getBlankView,
@@ -33,7 +33,7 @@ angular.module('drstc')
         }
 
         function getCampaignHeaderView() {
-            if (digitalReceiptLandingConfiguration.AUTO_SEND_SINGLE_COUPON) {
+            if (campaignLandingConfiguration.AUTO_SEND_SINGLE_COUPON) {
                 return constants.DIGITAL_RECEIPT_CAMPAIGN_HEADER;
             } else {
                 return constants.EXTRACARE_EMAIL_CAMPAIGN_HEADER;

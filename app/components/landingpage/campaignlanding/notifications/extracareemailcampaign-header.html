@@ -1,0 +1,15 @@
+<h3>Welcome!</h3>
+<p>Active your offer for your ExtraCare card ending in {{campaignLandingController.extraCareCardNumberEndDigits}}
+</p>
+<h6>Just present your ExtraCare card to the associate when you check out</h6>
+
+<div class="row nopadding">
+    <br>
+    <div class="col-xs-12 col-sm-6 col-md-4 nopadding" ng-repeat="coupon in campaignLandingController.couponsServiceData.singleCoupon">
+        <coupon-block-directive coupon="coupon" coupon-button="campaignLandingController.couponButton" screen-mode="campaignLandingController.screenMode" configuration="campaignLandingController.configuration" extra-care-card-number-end-digits="{{campaignLandingController.extraCareCardNumberEndDigits}}" on-send-single-coupon="campaignLandingController.sendSingleCoupon()" clicked-view-details="campaignLandingController.clickedViewDetails()" show-progress-bar="campaignLandingController.showProgressBar(display, actionedCoupon)"></coupon-block-directive>
+    </div>
+
+
+    <bcc-content-directive ng-show="campaignLandingController.configuration.DISPLAY_BCC" class="noMobileView col-xs-0 col-sm-6 col-md-4 col-md-offset-4">
+    </bcc-content-directive>
+</div>

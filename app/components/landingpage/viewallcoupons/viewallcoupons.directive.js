@@ -9,7 +9,7 @@
 angular.module('drstc')
     .directive('viewAllCouponsDirective', function (constants) {
         return {
-            controller: function (singleCouponFactory, displayInformationFactory, modalProvider, screenSize, $q, queryParameterFactory, constants) {
+            controller: function (couponsManagerFactory, singleCouponFactory, viewAllCouponsConfiguration, displayInformationFactory, modalProvider, screenSize, $q, queryParameterFactory, constants) {
                 var vm = this;
 
                 initialise();
@@ -19,8 +19,9 @@ angular.module('drstc')
                     getDisplayCouponsNumberPerRow()
                 }
 
-                function initialiseProperties() {
-
+                function initialiseProperties() {                   
+                    vm.allCoupons = couponsManagerFactory.allCoupons;
+                    vm.configuration = viewAllCouponsConfiguration;
                     vm.screenMode = getDisplayMode();
                     vm.couponsPerRow = getDisplayCouponsNumberPerRow();
                     vm.couponButton = {
@@ -29,7 +30,7 @@ angular.module('drstc')
                         couponPrinted: constants.COUPON_PRINTED
                     };
                 }
-
+                
                 vm.sendSingleCoupon = function () {
                     return singleCouponFactory.sendSingleCoupon(queryParameterFactory.extraCareCardNumber, queryParameterFactory.couponNumber)
                         .catch(sendSingleCouponFailure);
@@ -85,8 +86,6 @@ angular.module('drstc')
             scope: {
                 screenMode: '=',
                 viewControl: '=',
-                configuration: '=',
-                couponsServiceData: '=',
                 displayProgressBar: '&',
                 resetCollapseStateForAll: '&'
             },

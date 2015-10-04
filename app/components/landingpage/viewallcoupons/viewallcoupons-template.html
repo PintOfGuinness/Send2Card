@@ -11,7 +11,7 @@
                             <h2 class="section__subtitle">Simply send them to your card.</h2>
                             <div class="coupon-grid">
 
-                                <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.unactionedCoupons" class="coupon-grid__item">
+                                <div ng-repeat="coupon in viewAllCouponsController.allCoupons.unactionedCoupons" class="coupon-grid__item">
                                     <coupon-block-directive screen-mode="viewAllCouponsController.screenMode" coupon="coupon" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
                                     </coupon-block-directive>
                                 </div>
@@ -32,7 +32,7 @@
                             <h1 class="section__title">Offers Ready to Use</h1>
                             <div class="coupon-grid">
 
-                                <div ng-repeat="coupon in viewAllCouponsController.couponsServiceData.actionedCoupons" class="coupon-grid__item">
+                                <div ng-repeat="coupon in viewAllCouponsController.allCoupons.actionedCoupons" class="coupon-grid__item">
                                     <coupon-block-directive screen-mode="viewAllCouponsController.screenMode" coupon="coupon" coupon-button="viewAllCouponsController.couponButton" configuration="viewAllCouponsController.configuration" screen-mode="viewAllCouponsController.screenMode" on-send-single-coupon="viewAllCouponsController.sendSingleCoupon()" extra-care-card-number-end-digits="{{viewAllCouponsController.extraCareCardNumberEndDigits}}" clicked-view-details="viewAllCouponsController.clickedViewDetails()" show-progress-bar="viewAllCouponsController.showProgressBar(display, actionedCoupon)">
                                     </coupon-block-directive>
                                 </div>

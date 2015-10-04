@@ -9,7 +9,7 @@
 angular.module('drstc')
     .directive('landingPageDirective', function () {
         return {
-            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, displayInformationFactory, notificationViewsFactory, digitalReceiptLandingConfiguration, viewAllCouponsConfiguration, pageConfiguration, constants, screenSize, $window, $scope, modalProvider) {
+            controller: function (couponsManagerFactory, progressBarFactory, queryParameterFactory, displayInformationFactory, notificationViewsFactory, campaignLandingConfiguration, viewAllCouponsConfiguration, landingPageConfiguration, constants, screenSize, $window, $scope, modalProvider) {
 
 
                 var vm = this;
@@ -22,7 +22,7 @@ angular.module('drstc')
                 initialise();
 
                 function initialise() {
-                    if (pageConfiguration.DISPLAY_SPINNER) {
+                    if (landingPageConfiguration.DISPLAY_SPINNER) {
                         vm.showSpinner = true;
                     }
                     initialiseProperties();
@@ -35,8 +35,8 @@ angular.module('drstc')
                     vm.screenMode = getDisplayMode();
                     vm.queryParameters = queryParameterFactory.getQueryParameterInformation();
                     vm.configuration = {
-                        landingPage: pageConfiguration,
-                        digitalReceiptLanding: digitalReceiptLandingConfiguration,
+                        landingPage: landingPageConfiguration,
+                        campaignLanding: campaignLandingConfiguration,
                         viewAllCoupons: viewAllCouponsConfiguration
                     };
                     vm.primaryViewControl = {
@@ -74,7 +74,7 @@ angular.module('drstc')
 
                 function getFilteredCouponListsSuccess(results) {
                     vm.couponsServiceData = results;
-
+                    
                     if (vm.couponsServiceData.unactionedCoupons.length === 0) {
                         vm.configuration.viewAllCoupons.DISPLAY_UNACTIONED_COUPONS = false;
                     }
@@ -139,10 +139,10 @@ angular.module('drstc')
                     return scrollDown;
                 }
 
-                vm.openHelpModal = function (){
+                vm.openHelpModal = function () {
                     modalProvider.openHelpModal();
                 }
-                
+
                 vm.displayProgressBar = function (display, actionedCoupon) {
                     if (display) {
                         progressBarFactory.toggleProgressBarDisplay(true);

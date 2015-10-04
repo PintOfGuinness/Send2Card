@@ -14,6 +14,7 @@ angular.module('drstc')
 
         return {
             getFilteredCouponLists: getFilteredCouponLists,
+            allCoupons: couponLists,
             resetCollapseStateForAll: resetCollapseStateForAll
         };
 
@@ -64,5 +65,4 @@ angular.module('drstc')
                 couponLists.actionedCoupons[i].isCollapsed = true;
             }
         }
-
     });

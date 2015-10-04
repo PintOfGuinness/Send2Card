@@ -7,10 +7,10 @@
  * # bccAreaDirective
  */
 angular.module('drstc')
-    .directive('bccContentDirective', function ($cookies, queryParameterFactory, cookieFactory, pageConfiguration, constants) {
+    .directive('bccContentDirective', function ($cookies, queryParameterFactory, cookieFactory, constants) {
 
         return {
-            controller: function (pageConfiguration) {
+            controller: function (landingPageConfiguration) {
                 var vm = this;
                 var cookie;
 
@@ -24,7 +24,7 @@ angular.module('drstc')
 
                 function initialiseProperties() {
                     vm.hideButton = false;
-                    vm.configuration = pageConfiguration;
+                    vm.configuration = landingPageConfiguration;
                     vm.showSuccessMessage = false;
                 }
 
